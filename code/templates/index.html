@@ -16,7 +16,6 @@
             width: 100%;
             height: 50vh;
         }
-
     </style>
 </head>
 <body>
@@ -33,46 +32,8 @@
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-<script>
-    const map = L.map('map').setView([47.3769, 8.5417], 13);
-
-    L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
-    maxZoom: 40,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, Tiles style &copy; <a href="https://cyclosm.org/">CyclOSM</a>',
-}).addTo(map);
-
-    document.getElementById('locate-btn').addEventListener('click', locateUser);
-
-    let currentMarker = null;
-
-    function locateUser() {
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            const user_latlng = L.latLng(position.coords.latitude, position.coords.longitude);
-
-            // falls schon Marker existiert, entfernen
-            if (currentMarker) {
-                map.removeLayer(currentMarker);
-            }
-
-            // setzen des neuen Markers
-            currentMarker = L.marker(user_latlng).addTo(map);
-
-            // getZoom um den aktuellen Zoom-Level zu erhalten
-            let currentZoom = map.getZoom();
-            map.setView(user_latlng, currentZoom);
-        });
-    } else {
-        alert("Geolocation wird von diesem Browser nicht unterstützt");
-    }
-}
-
-
-    locateUser();
-
-</script>
-
-
+<!-- Ihr ausgelagerter JavaScript-Code -->
+<script src="functions.js"></script>
 
 </body>
 </html>
