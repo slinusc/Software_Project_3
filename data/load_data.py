@@ -42,6 +42,7 @@ def load_mongo_db(file_name, db_name, collection_name):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
 if __name__ == '__main__':
     amenities = ["bicycle_parking", "bicycle_rental", "bicycle_repair_station", "compressed_air", "dinking_water"]
     extract_amenity('osm-output', amenities, 'amenity_filtered')
