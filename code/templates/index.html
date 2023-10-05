@@ -21,7 +21,7 @@
 <body>
 
 <div class="container mt-4">
-    <h1>CycleBuddy</h1>
+    <h1 class="text-center">CycleBuddy</h1>
     <div id="map"></div>
 </div>
 
@@ -29,7 +29,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 <script>
-    var map = L.map('map').setView([47.3769, 8.5417], 13);
+    const map = L.map('map').setView([47.3769, 8.5417], 13);
 
     L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
     maxZoom: 40,
