@@ -35,6 +35,18 @@
     maxZoom: 40,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, Tiles style &copy; <a href="https://cyclosm.org/">CyclOSM</a>',
 }).addTo(map);
+
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const user_latlng = L.latLng(position.coords.latitude, position.coords.longitude);
+
+            map.setView(user_latlng, 13);
+            L.marker(user_latlng).addTo(map);
+        });
+    } else {
+        alert("Geolocation wird von diesem Browser nicht unterstützt");
+    }
+
 </script>
 
 </body>
