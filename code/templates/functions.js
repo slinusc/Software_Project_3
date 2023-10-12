@@ -13,7 +13,6 @@ function locateUser() {
             const user_latlng = L.latLng(position.coords.latitude, position.coords.longitude);
 
             if (currentMarker) {
-                // Entfernt den aktuellen Marker, falls vorhanden
                 map.removeLayer(currentMarker);
             }
 
