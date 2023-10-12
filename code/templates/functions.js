@@ -1,8 +1,9 @@
 const map = L.map('map').setView([47.3769, 8.5417], 13);
 
-L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
-    maxZoom: 40,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, Tiles style &copy; <a href="https://cyclosm.org/">CyclOSM</a>',
+// Ändern Sie die L.tileLayer URL zu OSM Standard-Kacheln
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
 }).addTo(map);
 
 let currentMarker = null;
