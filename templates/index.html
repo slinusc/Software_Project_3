@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CycleBuddy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <style>
+        #map {
+            width: 100%;
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <h1 class="text-center">CycleBuddy</h1>
+    <div id="map"></div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <button id="locate-btn" class="btn btn-primary">Aktualisiere meinen Standort</button>
+</div>
+
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="mb-2">
+        <input type="checkbox" id="parken" name="amenity" value="bicycle_parking">
+        <label for="parken">Fahrradparkplatz</label>
+    </div>
+
+    <div class="mb-2">
+        <input type="checkbox" id="mieten" name="amenity" value="bicycle_rental">
+        <label for="mieten">Fahrradverleih</label>
+    </div>
+
+    <div class="mb-2">
+        <input type="checkbox" id="reparieren" name="amenity" value="bicycle_repair_station">
+        <label for="reparieren">Reparatur</label>
+    </div>
+    <div class="mb-2">
+        <input type="checkbox" id="pumpen" name="amenity" value="compressed_air">
+        <label for="pumpen">Fahrradpumpen</label>
+    </div>
+    <div class="mb-2">
+        <input type="checkbox" id="trinken" name="amenity" value="dinking_water">
+        <label for="trinken">Trinkwasser</label>
+    </div>
+    <div class="mb-2">
+        <input type="checkbox" id="unterstand" name="amenity" value="bicycle_parking">
+        <label for="unterstand">Unterstand/Schutz</label>
+    </div>
+</div>
+
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<!-- Ihr ausgelagerter JavaScript-Code -->
+<script src="../static/functions.js"></script>
+
+
+</body>
+</html>
+
+
