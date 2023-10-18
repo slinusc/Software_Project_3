@@ -8,7 +8,7 @@
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/code/templates" />
+        <option value="$MODULE_DIR$/../software_project_3/code/templates" />
       </list>
     </option>
   </component>
