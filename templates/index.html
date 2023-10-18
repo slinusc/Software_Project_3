@@ -10,59 +10,79 @@
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 
-    <!-- Link zum separaten CSS-Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+    <style>
+        #map {
+            width: 100%;
+            height: 50vh;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-4">
-        <div class="d-flex align-items-center">
-            <!-- Logo -->
-            <img src="Logo_cycle1.jpg" alt="CycleBuddy Logo" id="logo">
-            <!-- Titel -->
-            <h1 class="text-center ml-3">CycleBuddy</h1>
-        </div>
-        <div id="map"></div>
+
+<div class="container mt-4">
+    <h1 class="text-center">CycleBuddy</h1>
+    <div id="map"></div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <button id="locate-btn" class="btn btn-primary">Aktualisiere meinen Standort</button>
+</div>
+
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="mb-2">
+        <input type="checkbox" id="parken" name="amenity" value="bicycle_parking">
+        <label for="parken">Fahrradparkplatz</label>
     </div>
 
-    <div class="d-flex justify-content-center">
-        <button id="locate-btn" class="btn btn-primary">Aktualisiere meinen Standort</button>
+    <div class="mb-2">
+        <input type="checkbox" id="mieten" name="amenity" value="bicycle_rental">
+        <label for="mieten">Fahrradverleih</label>
     </div>
 
-    <div class="d-flex flex-column align-items-center justify-content-center">
-        <div class="mb-2">
-            <input type="checkbox" id="parken" name="amenity" value="bicycle_parking">
-            <label for="parken">Fahrradparkplatz</label>
-        </div>
-
-        <div class="mb-2">
-            <input type="checkbox" id="mieten" name="amenity" value="bicycle_rental">
-            <label for="mieten">Fahrradverleih</label>
-        </div>
-
-        <div class="mb-2">
-            <input type="checkbox" id="reparieren" name="amenity" value="bicycle_repair_station">
-            <label for="reparieren">Reparatur</label>
-        </div>
-        <div class="mb-2">
-            <input type="checkbox" id="pumpen" name="amenity" value="compressed_air">
-            <label for="pumpen">Fahrradpumpen</label>
-        </div>
-        <div class "mb-2">
-            <input type="checkbox" id="trinken" name="amenity" value="drinking_water">
-            <label for="trinken">Trinkwasser</label>
-        </div>
-        <div class="mb-2">
-            <input type="checkbox" id="unterstand" name="amenity" value="bicycle_parking">
-            <label for "unterstand">Unterstand/Schutz</label>
-        </div>
+    <div class="mb-2">
+        <input type="checkbox" id="reparieren" name="amenity" value="bicycle_repair_station">
+        <label for="reparieren">Reparatur</label>
     </div>
+    <div class="mb-2">
+        <input type="checkbox" id="pumpen" name="amenity" value="compressed_air">
+        <label for="pumpen">Fahrradpumpen</label>
+    </div>
+    <div class="mb-2">
+        <input type="checkbox" id="trinken" name="amenity" value="drinking_water">
+        <label for="trinken">Trinkwasser</label>
+    </div>
+    <div class="mb-2">
+        <input type="checkbox" id="unterstand" name="amenity" value="bicycle_parking">
+        <label for="unterstand">Unterstand/Schutz</label>
+    </div>
+</div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<div class="mt-2 mb-2 text-center">
+    <label for="address-input">Adresse eingeben:</label>
+    <input type="text" id="address-input" class="form-control form-control-sm" placeholder="Geben Sie eine Adresse ein..."> <!-- Hinzufügen der "form-control"-Klasse für das Eingabefeld -->
+    <button id="navigate-btn" class="btn btn-secondary mt-2">Navigieren</button> <!-- Hinzufügen der "mt-2"-Klasse für den Abstand nach unten -->
+</div>
 
-    <!-- Ihr ausgelagerter JavaScript-Code -->
-    <script src="../static/functions.js"></script>
+
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+
+
+<!-- ausgelagerter JavaScript-Code -->
+<script type="module" src="../static/main.js"></script>
+
+
+
 </body>
 </html>
+
+
