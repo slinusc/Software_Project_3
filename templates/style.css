@@ -1,0 +1,13 @@
+#logo {
+    width: 150px; /* Passen Sie die Breite nach Bedarf an */
+    height: auto; /* Die Höhe automatisch anpassen, um das Seitenverhältnis beizubehalten */
+}
+
+h1 {
+    font-size: 36px; /* Passen Sie die Schriftgröße nach Bedarf an */
+}
+
+#map {
+    width: 100%;
+    height: 50vh;
+}
