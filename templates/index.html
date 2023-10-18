@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 
     <style>
         #map {
@@ -60,10 +62,20 @@
     </div>
 </div>
 
+<div class="mt-2 mb-2 text-center">
+    <label for="address-input">Adresse eingeben:</label>
+    <input type="text" id="address-input" class="form-control form-control-sm" placeholder="Geben Sie eine Adresse ein..."> <!-- Hinzufügen der "form-control"-Klasse für das Eingabefeld -->
+    <button id="navigate-btn" class="btn btn-secondary mt-2">Navigieren</button> <!-- Hinzufügen der "mt-2"-Klasse für den Abstand nach unten -->
+</div>
+
+
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+
 
 <!-- ausgelagerter JavaScript-Code -->
 <script type="module" src="../static/main.js"></script>
