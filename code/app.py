@@ -26,7 +26,8 @@ def fetch_amenities_from_db(amenities):
         "id": loc["node"]["id"],
         "lat": loc["node"]["lat"],
         "lon": loc["node"]["lon"],
-        "name": loc["node"].get("name", "")
+        "name": loc["node"].get("name", ""),
+        "amenity": loc["amenity"]
     } for loc in locations]
     return results
 
@@ -40,8 +41,8 @@ def get_locations():
         return jsonify({"error": "amenities parameter is required"}), 400
 
     results = fetch_amenities_from_db(amenities)
-
     return jsonify(results)
+
 
 
 @app.route('/clear_cache', methods=['GET'])
