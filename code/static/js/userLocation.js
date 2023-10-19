@@ -7,6 +7,13 @@ import { map } from './mapInitialization.js';
 
 let currentMarker = null;
 
+var bikeIcon = L.icon({
+    iconUrl: '../static/images/person-biking-solid.svg', // Pfad zu Ihrem Fahrrad-Icon
+    iconSize: [38, 38], // Größe des Icons
+    iconAnchor: [19, 38], // Position des Ankers des Icons
+});
+
+
 export function locateUser() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -16,7 +23,7 @@ export function locateUser() {
                 map.removeLayer(currentMarker);
             }
 
-            currentMarker = L.marker(user_latlng).addTo(map);
+            currentMarker = L.marker(user_latlng, {icon: bikeIcon}).addTo(map);
             map.setView(user_latlng, 15, { animate: true }); // Zoom auf den Marker
         });
     } else {
