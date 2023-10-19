@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90eff3f9-d13a-4b6c-9d88-3b208e974178" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/code/static/images/person-biking-solid.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/static/js/userLocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/userLocation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +35,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "isa",
-    "last_opened_file_path": "C:/Users/linus/OneDrive/BSc_Data_Science/Semester_3/Web_and_Software_Engineering/cycle_buddy_app/code/static/images",
+    "last_opened_file_path": "C:/Users/isaal/ZHAW/PM3",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -73,6 +74,8 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cycle_buddy_app$app.coverage" NAME="app Coverage Results" MODIFIED="1697722108718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/cycle_buddy_app$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1697630194322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cycle_buddy_app$app.coverage" NAME="app Coverage Results" MODIFIED="1697724750098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/cycle_buddy_app$load_data.coverage" NAME="load_data Coverage Results" MODIFIED="1696591259366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
   </component>
 </project>
