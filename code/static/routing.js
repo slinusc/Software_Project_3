@@ -18,7 +18,7 @@ export function initializeRouting(map) {
             // Routing-Optionen
             const routingOptions = {
                 profile: 'bike', // Verwenden Sie das Profil "bike" für Fahrradrouten
-                useMotoway: false, // Vermeiden Sie Autobahnen
+                useMotorway: false, // Vermeiden Sie Autobahnen
                 useRoads: true, // Erlauben Sie die Verwendung von Straßen
                 usePaths: true, // Erlauben Sie die Verwendung von Radwegen
                 useTraffic: true, //  die Verwendung von Verkehrsdaten
