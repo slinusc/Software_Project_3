@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90eff3f9-d13a-4b6c-9d88-3b208e974178" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/code/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/static/routing.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/routing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/getAmenities.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/getAmenities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/mapInitialization.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/mapInitialization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/routing.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/routing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/userLocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/userLocation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/Logo_cycle1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/images/Logo_cycle1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,6 +44,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/linus/OneDrive/BSc_Data_Science/Semester_3/Web_and_Software_Engineering/cycle_buddy_app",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -35,6 +52,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\linus\OneDrive\BSc_Data_Science\Semester_3\Web_and_Software_Engineering\cycle_buddy_app\code\static\css" />
+      <recent name="C:\Users\linus\OneDrive\BSc_Data_Science\Semester_3\Web_and_Software_Engineering\cycle_buddy_app\code\static\js" />
+      <recent name="C:\Users\linus\OneDrive\BSc_Data_Science\Semester_3\Web_and_Software_Engineering\cycle_buddy_app\code\static" />
+      <recent name="C:\Users\linus\OneDrive\BSc_Data_Science\Semester_3\Web_and_Software_Engineering\cycle_buddy_app\code\templates\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -53,6 +78,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cycle_buddy_app$app.coverage" NAME="app Coverage Results" MODIFIED="1697712967185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/cycle_buddy_app$app.coverage" NAME="app Coverage Results" MODIFIED="1697722108718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
   </component>
 </project>

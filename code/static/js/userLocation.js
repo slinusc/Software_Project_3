@@ -17,7 +17,7 @@ export function locateUser() {
             }
 
             currentMarker = L.marker(user_latlng).addTo(map);
-            map.setView(user_latlng, map.getZoom()); // Behält den aktuellen Zoomlevel bei
+            map.setView(user_latlng, 15, { animate: true }); // Zoom auf den Marker
         });
     } else {
         alert("Geolocation wird von diesem Browser nicht unterstützt");

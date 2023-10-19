@@ -44,5 +44,11 @@ def get_locations():
     return jsonify(results)
 
 
+@app.route('/clear_cache', methods=['GET'])
+def clear_cache():
+    cache.clear()
+    return "Cache has been cleared!", 200
+
+
 if __name__ == '__main__':
     app.run(debug=True)

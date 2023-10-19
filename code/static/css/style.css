@@ -1,0 +1,30 @@
+#map {
+            width: 100%;
+            height: 50vh;
+            z-index: 1;
+        }
+
+#locate-btn{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            color: black;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+#checkbox-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 250px;
+        }
+
+#cyclebuddy-logo {
+            width: 170px;
+        }
