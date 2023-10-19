@@ -15,17 +15,19 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 
-    <style>
-        #map {
-            width: 100%;
-            height: 50vh;
-        }
-    </style>
+    <!-- Link zum separaten CSS-Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 
 <div class="container mt-4">
-    <h1 class="text-center">CycleBuddy</h1>
+    <div class="d-flex align-items-center">
+            <!-- Logo -->
+            <img src="Logo_cycle1.jpg" alt="CycleBuddy Logo" id="logo">
+            <!-- Titel -->
+            <h1 class="text-center ml-3">CycleBuddy</h1>
+        </div>
     <div id="map"></div>
 </div>
 
