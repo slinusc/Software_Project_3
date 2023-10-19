@@ -4,6 +4,13 @@
 
 import { map } from './mapInitialization.js';
 
+var bicycleParking = L.icon({
+    iconUrl: '../static/images/square-parking-solid.svg', // Pfad zu Ihrem Fahrrad-Icon
+    iconSize: [38, 38],
+    iconAnchor: [19, 19], // Position des Ankers des Icons
+});
+
+
 export function updateMap() {
     const amenities = document.querySelectorAll('input[name="amenity"]:checked');
     let selectedAmenities = [];
@@ -34,7 +41,7 @@ export function updateMap() {
 
             // Hinzufügen von neuen Markern zum Cluster
             data.forEach(loc => {
-                const marker = L.marker([loc.lat, loc.lon]);
+                const marker = L.marker([loc.lat, loc.lon], {icon: bicycleParking});
                 markers.addLayer(marker);
             });
 

@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90eff3f9-d13a-4b6c-9d88-3b208e974178" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/code/static/images/person-biking-solid.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/images/person-biking-solid.svg" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/images/person-biking-solid.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/images/square-parking-solid.svg" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/images/square-parking-solid.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/static/js/getAmenities.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/getAmenities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/static/js/userLocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/static/js/userLocation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "isa",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/linus/OneDrive/BSc_Data_Science/Semester_3/Web_and_Software_Engineering/cycle_buddy_app/code/static/images",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -73,6 +76,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cycle_buddy_app$app.coverage" NAME="app Coverage Results" MODIFIED="1697722108718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/cycle_buddy_app$app.coverage" NAME="app Coverage Results" MODIFIED="1697724763421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
   </component>
 </project>

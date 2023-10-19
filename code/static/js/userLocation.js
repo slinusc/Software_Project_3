@@ -9,8 +9,10 @@ let currentMarker = null;
 
 var bikeIcon = L.icon({
     iconUrl: '../static/images/person-biking-solid.svg', // Pfad zu Ihrem Fahrrad-Icon
-    iconSize: [38, 38], // Größe des Icons
+    iconSize: [38, 38],
     iconAnchor: [19, 38], // Position des Ankers des Icons
+    popupAnchor: [0, -38] // Position des Popups
+
 });
 
 
