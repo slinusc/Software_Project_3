@@ -28,3 +28,8 @@
 #cyclebuddy-logo {
             width: 170px;
         }
+
+#address-input {
+    width: 250px;
+    padding: 10px;
+}
