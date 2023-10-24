@@ -1,11 +1,12 @@
 import { map } from './mapInitialization.js';
 import { locateUser, getCurrentMarker } from './userLocation.js';
 import { updateMap } from './getAmenities.js';
-import { initializeRouting, navigateToCoordinates } from './routing.js';
+import { navigateToCoordinates } from './routing.js';
 
 
 // Event-Listener für den "Benutzer lokalisieren"-Button
 document.getElementById('locate-btn').addEventListener('click', locateUser);
+
 
 // Event-Listener für jede Checkbox zum Aktualisieren der Karte
 document.querySelectorAll('input[name="amenity"]').forEach(checkbox => {
@@ -14,17 +15,8 @@ document.querySelectorAll('input[name="amenity"]').forEach(checkbox => {
     });
 });
 
-// Routing
-document.getElementById('navigate-btn').addEventListener('click', function() {
-    initializeRouting(map);
-});
 
-// Benutzer lokalisieren beim Laden des Skripts
-if (!getCurrentMarker()) {
-    locateUser();
-}
-
-// Event-Listener für das "amenityClicked"-Event
+// Routing (Event-Listener für das "amenityClicked"-Event)
 window.addEventListener('amenityClicked', function(e) {
     const startMarker = getCurrentMarker();
     const start_latlon = [startMarker.getLatLng().lat, startMarker.getLatLng().lng];
@@ -34,3 +26,7 @@ window.addEventListener('amenityClicked', function(e) {
 });
 
 
+// Benutzer lokalisieren beim Laden des Skripts
+if (!getCurrentMarker()) {
+    locateUser();
+}

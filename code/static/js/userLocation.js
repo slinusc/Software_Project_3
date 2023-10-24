@@ -12,7 +12,6 @@ var bikeIcon = L.icon({
     iconSize: [38, 38],
     iconAnchor: [19, 38], // Position des Ankers des Icons
     popupAnchor: [0, -38] // Position des Popups
-
 });
 
 
