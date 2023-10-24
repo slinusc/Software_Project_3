@@ -2,42 +2,45 @@
  * Abrufen und Anzeigen von Standorten basierend auf den ausgewählten Annehmlichkeiten.
  */
 
-import { map } from './mapInitialization.js';
 
-var bicycleParking = L.icon({
+const icon_size = [25, 25];
+
+const icon_anchor = [19, 19];
+
+const bicycleParking = L.icon({
     iconUrl: '../static/images/square-parking-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 19],
+    iconSize: icon_size,
+    iconAnchor: icon_anchor,
 });
 
-var bicycleRepair = L.icon({
+const bicycleRepair = L.icon({
     iconUrl: '../static/images/screwdriver-wrench-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 19],
+    iconSize: icon_size,
+    iconAnchor: icon_anchor,
 });
 
-var bicycleRental = L.icon({
+const bicycleRental = L.icon({
     iconUrl: '../static/images/retweet-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 19],
+    iconSize: icon_size,
+    iconAnchor: icon_anchor,
 });
 
-var drinkingWater = L.icon({
+const drinkingWater = L.icon({
     iconUrl: '../static/images/faucet-drip-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 19],
+    iconSize: icon_size,
+    iconAnchor: icon_anchor,
 });
 
-var shelter = L.icon({
+const shelter = L.icon({
     iconUrl: '../static/images/person-shelter-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 19],
+    iconSize: icon_size,
+    iconAnchor: icon_anchor,
 });
 
-var compressedAir = L.icon({
+const compressedAir = L.icon({
     iconUrl: '../static/images/pump-soap-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 19],
+    iconSize: icon_size,
+    iconAnchor: icon_anchor,
 });
 
 const amenityToIconMap = {
@@ -49,7 +52,7 @@ const amenityToIconMap = {
     'shelter': shelter
 };
 
-export function updateMap() {
+export function updateMap(map) {
     const amenities = document.querySelectorAll('input[name="amenity"]:checked');
     let selectedAmenities = [];
 
@@ -66,12 +69,13 @@ export function updateMap() {
     })
     .then(response => response.json())
     .then(data => {
-        // Entfernen Sie alle alten Marker und Cluster von der Karte
+
+        // Entfernt alle alten Marker und Cluster von der Karte
         if (window.markerClusterGroup) {
             window.markerClusterGroup.clearLayers();
         }
 
-        // Erstellen Sie eine neue MarkerClusterGroup
+        // Erstellt eine neue MarkerClusterGroup
         const markers = L.markerClusterGroup({
             maxClusterRadius: 40,
             disableClusteringAtZoom: 18,
@@ -82,8 +86,20 @@ export function updateMap() {
             const amenityType = loc.amenity;
             const iconForAmenity = amenityToIconMap[amenityType] || bicycleParking;
             const marker = L.marker([loc.lat, loc.lon], {icon: iconForAmenity});
+
+            // Event-Listener für das Klicken auf einen Marker
+            marker.on('click', function() {
+                const event = new CustomEvent('amenityClicked', {
+                detail: {
+                    lat: loc.lat,
+                    lon: loc.lon
+                }
+                });
+                window.dispatchEvent(event);
+            });
             markers.addLayer(marker);
         });
+
 
         map.addLayer(markers);
 

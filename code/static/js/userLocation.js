@@ -25,7 +25,7 @@ export function locateUser() {
                 map.removeLayer(currentMarker);
             }
 
-            currentMarker = L.marker(user_latlng, {icon: bikeIcon}).addTo(map);
+            currentMarker = L.marker(user_latlng, {icon: bikeIcon, draggable: false}).addTo(map);
             map.setView(user_latlng, 15, { animate: true }); // Zoom auf den Marker
         });
     } else {
