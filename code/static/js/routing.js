@@ -8,8 +8,8 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
         map.removeControl(routingControl);
     }
 
-    const [lat, lng] = endCoordinates;
-    const [startLat, startLng] = startCoordinates;
+    const [lat, lng] = endCoordinates; // Zielkoordinaten
+    const [startLat, startLng] = startCoordinates; // Startkoordinaten
 
     routingControl = L.Routing.control({
         waypoints: [
@@ -26,7 +26,7 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
         show: true, // Zeigt die Instructions an
         router: new L.Routing.OSRMv1({
             serviceUrl: 'https://router.project-osrm.org/route/v1',
-            profile: 'bike',
+            profile: 'bike', // Fahrradprofil
         }),
 
     }).addTo(map);
