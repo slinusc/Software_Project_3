@@ -23,6 +23,7 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
         },
         routeWhileDragging: false,
         addWaypoints: false, // Verhindert das Hinzufügen von Zwischenstopps
+        draggableWaypoints: false, // Verhindert das Verschieben der Zwischenstopps
         show: true, // Zeigt die Instructions an
         router: new L.Routing.OSRMv1({
             serviceUrl: 'https://router.project-osrm.org/route/v1',
