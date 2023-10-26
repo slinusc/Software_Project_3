@@ -29,47 +29,46 @@
     <img id="cyclebuddy-logo" src="../static/images/Logo_cycle1.jpg" alt="CycleBuddy Logo" />
 </div>
 
-<div id="menu_map" class="container" onclick="myFunction(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-</div>
-
-
 <div class="container mt-4">
     <div class="container">
         <h1 class="text-center"></h1>
         <div id="map">
 
+            <!-- Menu Button -->
+            <button id="toggleMenu" class="menu-button">
+                <img src="../static/images/menu.png" alt="Menu" />
+            </button>
+
 
             <!-- Checkboxen Container -->
-            <div id="checkbox-container" class="d-flex flex-column align-items-start justify-content-center">
-                <div class="mb-2">
+            <div id="checkboxMenu" class="hidden checkbox-menu">
+                <div class="checkbox-item">
                     <input type="checkbox" id="parken" name="amenity" value="bicycle_parking">
                     <label for="parken">Fahrradparkplatz</label>
                 </div>
-                <div class="mb-2">
+                <div class="checkbox-item">
                     <input type="checkbox" id="mieten" name="amenity" value="bicycle_rental">
                     <label for="mieten">Fahrradverleih</label>
                 </div>
-                <div class="mb-2">
+                <div class="checkbox-item">
                     <input type="checkbox" id="reparieren" name="amenity" value="bicycle_repair_station">
                     <label for="reparieren">Reparatur</label>
                 </div>
-                <div class="mb-2">
+                <div class="checkbox-item">
                     <input type="checkbox" id="pumpen" name="amenity" value="compressed_air">
                     <label for="pumpen">Fahrradpumpen</label>
                 </div>
-                <div class="mb-2">
+                <div class="checkbox-item">
                     <input type="checkbox" id="trinken" name="amenity" value="drinking_water">
                     <label for="trinken">Trinkwasser</label>
                 </div>
-                <div class="mb-2">
+                <div class="checkbox-item">
                     <input type="checkbox" id="unterstand" name="amenity" value="bicycle_parking">
                     <label for="unterstand">Unterstand/Schutz</label>
                 </div>
             </div>
 
+            <!-- Standort Button -->
             <button id="locate-btn" class="btn btn-primary btn-icon">
                 <i class="fa-solid fa-location-crosshairs"></i>
             </button>
@@ -97,15 +96,7 @@
 
 <!-- ausgelagerter JavaScript-Code -->
 <script type="module" src="../static/js/main.js"></script>
-
-<script>
-    function myFunction(x) {
-        x.classList.toggle("change");
-        // Hier können Sie Code hinzufügen, um das Checkbox-Container-Menü zu öffnen/schließen.
-        var menuContainer = document.getElementById("menu-container");
-        menuContainer.classList.toggle("menu-open");
-    }
-</script>
+<script src="../static/js/menubutton.js"></script>
 
 
 </body>
