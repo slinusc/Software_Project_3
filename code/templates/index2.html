@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CycleBuddy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
+
+    <!-- Style sheet -->
+    <link rel="stylesheet" href="../static/css/style.css" />
+
+    <!-- font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- Map -->
+<div class="map_container">
+        <div id="map">
+            
+            <!-- Menu Button -->
+            <button id="toggleMenu" class="menu-button">
+                <img src="../static/images/menu.png" alt="Menu" />
+            </button>
+
+
+            <!-- Checkboxen Container -->
+            <div id="checkboxMenu" class="hidden checkbox-menu">
+                <div class="checkbox-item">
+                    <input type="radio" id="parken" name="amenity" value="bicycle_parking">
+                    <label for="parken">Fahrradparkplatz</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="mieten" name="amenity" value="bicycle_rental">
+                    <label for="mieten">Fahrradverleih</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="reparieren" name="amenity" value="bicycle_repair_station">
+                    <label for="reparieren">Reparatur</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="pumpen" name="amenity" value="compressed_air">
+                    <label for="pumpen">Fahrradpumpen</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="trinken" name="amenity" value="drinking_water">
+                    <label for="trinken">Trinkwasser</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="unterstand" name="amenity" value="bicycle_parking">
+                    <label for="unterstand">Unterstand/Schutz</label>
+
+                </div>
+            </div>
+
+            <!-- Standort Button -->
+            <button id="locate-btn" class="btn btn-primary btn-icon">
+                <i class="fa-solid fa-location-crosshairs"></i>
+            </button>
+
+        </div>
+</div>
+
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+
+
+<!-- ausgelagerter JavaScript-Code -->
+<script type="module" src="../static/js/main.js"></script>
+<script src="../static/js/menubutton.js"></script>
+
+</body>
+</html>
+
+
