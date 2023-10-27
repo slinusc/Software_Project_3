@@ -307,14 +307,25 @@ body.dark .switch::before{
 }
 
 #locate-btn{
+    position: absolute;
+    bottom: 10px;
+}
+
+.location {
             position: absolute;
-            bottom: 10px;
+            bottom: 15px;
             left: 10px;
             z-index: 1000;
             color: black;
             border-radius: 5px;
+            padding: 8px;
             background-color: rgba(255, 255, 255, 0.8);
             border-color: rgba(255, 255, 255, 0.8);
+        }
+
+.location img {
+            width: 20px;
+            height: 20px;
         }
 
 #checkbox-container {
@@ -327,11 +338,6 @@ body.dark .switch::before{
             border-radius: 5px;
             max-width: 250px;
         }
-
-#cyclebuddy-logo {
-            width: 120px;
-        }
-
 
 #map_container {
             display: flex;
@@ -358,18 +364,17 @@ body.dark .switch::before{
     bottom: 10px;
     right: 10px;
     z-index: 1001;
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
     border-radius: 5px;
     max-width: 250px;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.8);
 }
 
 .menu-button img {
-    width: 20px; /* Hier kannst du die Breite anpassen */
-    height: 20px; /* Hier kannst du die Höhe anpassen */
+    width: 20px;
+    height: 20px;
 }
-
 
 .checkbox-menu {
     position: absolute;
