@@ -307,26 +307,26 @@ body.dark .switch::before{
 }
 
 #locate-btn{
-            position: absolute;
-            bottom: 10px;
+    position: absolute;
+    bottom: 10px;
 }
 
-.location{
+.location {
             position: absolute;
             bottom: 15px;
             left: 10px;
             z-index: 1000;
             color: black;
-            padding: 8px;
             border-radius: 5px;
+            padding: 8px;
             background-color: rgba(255, 255, 255, 0.8);
             border-color: rgba(255, 255, 255, 0.8);
         }
 
-.location img{
-            width: 20px; /* Hier kannst du die Breite anpassen */
-            height: 20px; /* Hier kannst du die Höhe anpassen */
-}
+.location img {
+            width: 20px;
+            height: 20px;
+        }
 
 #checkbox-container {
             position: absolute;
@@ -338,11 +338,6 @@ body.dark .switch::before{
             border-radius: 5px;
             max-width: 250px;
         }
-
-#cyclebuddy-logo {
-            width: 120px;
-        }
-
 
 #map_container {
             display: flex;
@@ -366,7 +361,7 @@ body.dark .switch::before{
 /* In deiner CSS-Datei (style.css) */
 .menu-button {
     position: absolute;
-    bottom: 15px;
+    bottom: 10px;
     right: 10px;
     z-index: 1001;
     background-color: rgba(255, 255, 255, 0.8);
@@ -377,18 +372,17 @@ body.dark .switch::before{
 }
 
 .menu-button img {
-    width: 20px; /* Hier kannst du die Breite anpassen */
-    height: 20px; /* Hier kannst du die Höhe anpassen */
+    width: 20px;
+    height: 20px;
 }
 
 .checkbox-menu {
     position: absolute;
-    bottom: 55px;
+    bottom: 50px;
     right: 10px;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
+    background-color: rgba(255, 255, 255, 0.9); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
     padding: 10px;
     border-radius: 5px;
     max-width: 250px;
 }
-

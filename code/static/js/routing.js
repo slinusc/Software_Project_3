@@ -28,6 +28,7 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
         router: new L.Routing.OSRMv1({
             serviceUrl: 'https://router.project-osrm.org/route/v1',
             profile: 'bike', // Fahrradprofil
+            exclude: 'motorway' // Autobahnen ausschliessen
         }),
 
     }).addTo(map);
