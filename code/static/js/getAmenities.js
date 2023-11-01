@@ -3,30 +3,30 @@
  */
 
 
-const icon_size = [25, 25];
+const icon_size = [30, 30];
 
 const icon_anchor = [19, 19];
 
 const bicycleParking = L.icon({
-    iconUrl: '../static/images/square-parking-solid.svg',
+    iconUrl: '../static/images/Parking-bicycle.png',
     iconSize: icon_size,
     iconAnchor: icon_anchor,
 });
 
 const bicycleRepair = L.icon({
-    iconUrl: '../static/images/screwdriver-wrench-solid.svg',
+    iconUrl: '../static/images/Bicycle_repair_station.png',
     iconSize: icon_size,
     iconAnchor: icon_anchor,
 });
 
 const bicycleRental = L.icon({
-    iconUrl: '../static/images/retweet-solid.svg',
+    iconUrl: '../static/images/Rental-bicycle.png',
     iconSize: icon_size,
     iconAnchor: icon_anchor,
 });
 
 const drinkingWater = L.icon({
-    iconUrl: '../static/images/faucet-drip-solid.svg',
+    iconUrl: '../static/images/Drinking-water-16.svg',
     iconSize: icon_size,
     iconAnchor: icon_anchor,
 });
@@ -38,7 +38,7 @@ const shelter = L.icon({
 });
 
 const compressedAir = L.icon({
-    iconUrl: '../static/images/pump-soap-solid.svg',
+    iconUrl: '../static/images/compressed_air.png',
     iconSize: icon_size,
     iconAnchor: icon_anchor,
 });

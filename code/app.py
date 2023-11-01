@@ -11,13 +11,26 @@ cache = Cache(app)
 client = MongoClient('localhost', 27017)
 db = client['data_base_OSM']
 
-
 # Routes
 @app.route('/')
 @cache.cached(timeout=300)
 def index():
     return render_template('index.html')
 
+@app.route('/navigation')
+@cache.cached(timeout=300)
+def navigation():
+    return render_template('navi.html')
+
+@app.route('/analytics')
+@cache.cached(timeout=300)
+def analytics():
+    return render_template('analytics.html')
+
+@app.route('/about')
+@cache.cached(timeout=300)
+def about():
+    return render_template('about.html')
 
 @cache.memoize(300)  # Zwischenspeichern des Ergebnisses für 300 Sekunden (5 Minuten)
 def fetch_amenities_from_db(amenities):

@@ -315,7 +315,7 @@ body.dark .switch::before{
             position: absolute;
             bottom: 15px;
             left: 10px;
-            z-index: 1000;
+            z-index: 1001;
             color: black;
             border-radius: 5px;
             padding: 8px;

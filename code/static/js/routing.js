@@ -5,31 +5,36 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
 
     // Stellt sicher, dass die alte Routing-Kontrolle entfernt wird, bevor eine neue hinzugefügt wird
     if (routingControl) {
-        map.removeControl(routingControl);
+        map.removeLayer(routingControl);
+        routingControl = null;
     }
 
-    const [lat, lng] = endCoordinates; // Zielkoordinaten
     const [startLat, startLng] = startCoordinates; // Startkoordinaten
+    const [endLat, endLng] = endCoordinates; // Zielkoordinaten
 
-    routingControl = L.Routing.control({
-        waypoints: [
-            L.latLng(startLat, startLng), // Startpunkt
-            L.latLng(lat, lng) // Ziel
-        ],
+    // URL für Mapbox Directions API
+    const directionsUrl = `https://api.mapbox.com/directions/v5/mapbox/cycling/${startLng},${startLat};${endLng},${endLat}?geometries=geojson&access_token=pk.eyJ1Ijoic3R1aGxsaW4iLCJhIjoiY2xvOXY3OTl5MGQwbTJrcGViYmI2MHRtZCJ9.MaOQcyZ99PH5hey-6isRpw`;
 
-        createMarker: function(i, waypoint, n) {
-        return null;  // Entfernt Marker für die Routenpunkte
-
-        },
-        routeWhileDragging: false,
-        addWaypoints: false, // Verhindert das Hinzufügen von Zwischenstopps
-        draggableWaypoints: false, // Verhindert das Verschieben der Zwischenstopps
-        show: true, // Zeigt die Instructions an
-        router: new L.Routing.OSRMv1({
-            serviceUrl: 'https://router.project-osrm.org/route/v1',
-            profile: 'bike', // Fahrradprofil
-            exclude: 'motorway' // Autobahnen ausschliessen
-        }),
-
-    }).addTo(map);
+    fetch(directionsUrl)
+        .then(response => response.json())
+        .then(data => {
+            const route = data.routes[0].geometry.coordinates;
+            const geojson = {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                    type: 'LineString',
+                    coordinates: route
+                }
+            };
+            // Falls bereits eine Route vorhanden ist, entfernen
+            if (routingControl) {
+                map.removeLayer(routingControl);
+            }
+            // Route auf der Karte anzeigen
+            routingControl = L.geoJSON(geojson).addTo(map);
+        })
+        .catch(error => {
+            console.error('Fehler bei der Routing-Anfrage:', error);
+        });
 }

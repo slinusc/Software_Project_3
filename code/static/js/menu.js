@@ -25,3 +25,19 @@ const body = document.querySelector("body"),
             modeText.innerText = "Dark Mode"
         }
     });
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.content-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            let target = this.getAttribute('data-target');
+
+            fetch(target)
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector(".home").innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+});
