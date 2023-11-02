@@ -130,7 +130,7 @@ header .image-text .header-text{
 .sidebar header .toggle{
     position: absolute;
     top: 50%;
-    right: -20px;
+    right: -25px;
     transform: translateY(-50%) rotate(180deg);
     height: 25px;
     width: 25px;
@@ -298,45 +298,12 @@ body.dark .switch::before{
 
 
 /* ====== Map ====== */
-
 #map {
     position: relative;
     width: 100%;
     height: 100vh;
     z-index: 1;
 }
-
-.location {
-    position: absolute;
-    bottom: 15px;
-    left: 10px;
-    color: black;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    padding: 15px 15px;
-    text-decoration: none;
-    transition: background-color 0.2s, color 0.2s;
-    z-index: 1000;
-    border: none;
-}
-
-.location img {
-    width: 20px;
-    height: 20px;
-}
-
-#checkbox-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            max-width: 250px;
-        }
 
 #map_container {
             display: flex;
@@ -346,12 +313,72 @@ body.dark .switch::before{
             cursor: pointer;
         }
 
+/* ====== Location Button ====== */
+.location {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    bottom: 15px;
+    left: 10px;
+    border-radius: 6px;
+    background-color: rgba(246, 245, 255, 0.8);
+    z-index: 1001;
+    border: none;
+}
+
+.location .icon {
+    font-size: 20px;
+}
+
+.location:hover {
+    background-color: var(--primary-color);
+}
+
+.location:hover .icon{
+    color: var(--sidebar-color)
+}
+
+body.dark .location {
+    background-color: var(--sidebar-color); /* Setze die Hintergrundfarbe auf die gewünschte dunkle Farbe */
+    color: var(--text-color);
+}
+
+/* Im dunklen Modus - Hover */
+body.dark .location:hover {
+    background-color: var(--primary-color); /* Im dunklen Modus auf Hover: Verwende die helle Hintergrundfarbe */
+}
+
+body.dark .location:hover .icon{
+    color: var(--text-color)
+}
+
+
+
+
+
+
+/* ====== Checkbox ====== */
+.checkbox-menu {
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+    z-index: 1000;
+    background-color: rgba(246, 245, 255, 0.8); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 250px;
+}
+
+
 /* New code */
 .hidden {
   display: none;
 }
 
-/* In deiner CSS-Datei (style.css) */
+/* ====== Menu-Button ====== */
 .menu-button {
     position: absolute;
     display: flex;
@@ -362,32 +389,31 @@ body.dark .switch::before{
     transition: background-color 0.2s, color 0.2s;
     bottom: 15px;
     right: 10px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
+    border-radius: 6px;
+    background-color: rgba(246, 245, 255, 0.8);
     z-index: 1001;
     border: none;
 }
 
-.menu-button img {
-    width: 20px;
-    height: 20px;
+.menu-button .icon{
+    font-size: 20px;
 }
 
-.checkbox-menu {
-    position: absolute;
-    bottom: 65px;
-    right: 10px;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
-    padding: 10px;
-    border-radius: 5px;
-    max-width: 250px;
-}
-
-
-.location:hover, .menu-button:hover {
+.menu-button:hover {
     background-color: var(--primary-color);
-    z-index: 1001;
+}
+
+.menu-button:hover .icon{
+    color: var(--sidebar-color)
+}
+
+body.dark .menu-button{
+    color: var(--text-color);
+    background: var(--primary-color)
+}
+
+body.dark .menu-button:hover .icon{
+    color: var(--text-color)
 }
 
 
