@@ -47,14 +47,14 @@ body.dark{
     left: 0;
     height: 100%;
     width: 250px;
-    padding: 10px 14px;
+    padding: 10px 5px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
 }
 
 .sidebar.close{
-    width: 88px;
+    width: 70px;
 }
 
 /* ===== Reusable CSS ===== */
@@ -291,8 +291,8 @@ body.dark .switch::before{
 }
 
 .sidebar.close ~ .home{
-    left: 88px;
-    width: calc(100% - 88px);
+    left: 70px;
+    width: calc(100% - 70px);
 }
 
 
@@ -306,27 +306,26 @@ body.dark .switch::before{
     z-index: 1;
 }
 
-#locate-btn{
+.location {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
+    left: 10px;
+    color: black;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    z-index: 1000;
+    border: none;
 }
 
-.location {
-            position: absolute;
-            bottom: 15px;
-            left: 10px;
-            z-index: 1001;
-            color: black;
-            border-radius: 5px;
-            padding: 8px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-color: rgba(255, 255, 255, 0.8);
-        }
-
 .location img {
-            width: 20px;
-            height: 20px;
-        }
+    width: 20px;
+    height: 20px;
+}
 
 #checkbox-container {
             position: absolute;
@@ -352,23 +351,21 @@ body.dark .switch::before{
   display: none;
 }
 
-
-#toggleMenu {
-  position: absolute;
-  bottom: 10px;
-}
-
 /* In deiner CSS-Datei (style.css) */
 .menu-button {
     position: absolute;
-    bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    bottom: 15px;
     right: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
     z-index: 1001;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 8px;
-    border-radius: 5px;
-    max-width: 250px;
-    border-color: rgba(255, 255, 255, 0.8);
+    border: none;
 }
 
 .menu-button img {
@@ -378,11 +375,17 @@ body.dark .switch::before{
 
 .checkbox-menu {
     position: absolute;
-    bottom: 50px;
+    bottom: 65px;
     right: 10px;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.9); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
+    background-color: rgba(255, 255, 255, 0.8); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
     padding: 10px;
     border-radius: 5px;
     max-width: 250px;
+}
+
+
+.location:hover, .menu-button:hover {
+    background-color: var(--primary-color);
+    z-index: 1001;
 }
