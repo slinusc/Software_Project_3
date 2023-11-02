@@ -1,10 +1,16 @@
-import { map } from './mapInitialization.js';
-import { locateUser, getCurrentMarker } from './userLocation.js';
-import { updateMap } from './getAmenities.js';
+import { map, currentTileLayer , initializeMap, locateUser, getCurrentMarker, updateAmenitiesMap } from './mapInitialization.js';
 import { navigateToCoordinates } from './routing.js';
-import { currentTileLayer } from './mapInitialization.js';
 
 // JavaScript Map ---------------------------------------------
+
+// Initialisieren der Karte
+initializeMap();
+
+
+// Benutzer lokalisieren beim Laden des Skripts
+if (!getCurrentMarker()) {
+    locateUser();
+}
 
 // Event-Listener für den "Benutzer lokalisieren"-Button
 document.getElementById('locate-btn').addEventListener('click', locateUser);
@@ -13,7 +19,7 @@ document.getElementById('locate-btn').addEventListener('click', locateUser);
 // Event-Listener für jede Checkbox zum Aktualisieren der Karte
 document.querySelectorAll('input[name="amenity"]').forEach(checkbox => {
     checkbox.addEventListener('change', function() {
-        updateMap(map);
+        updateAmenitiesMap(map);
     });
 });
 
@@ -27,11 +33,6 @@ window.addEventListener('amenityClicked', function(e) {
     navigateToCoordinates(map, start_latlon, end_latlon);
 });
 
-
-// Benutzer lokalisieren beim Laden des Skripts
-if (!getCurrentMarker()) {
-    locateUser();
-}
 
 // JavaScript Menu ---------------------------------------------
 
@@ -74,11 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.text())
                 .then(data => {
                     document.querySelector(".home").innerHTML = data;
+                    // Wenn die Karte angezeigt wird, muss sie neu initialisiert werden
+                    if (target === '/navigation') {
+                        initializeMap();
+                    }
                 })
                 .catch(error => console.error('Error:', error));
         });
     });
 });
+
 
 // Switch between map styles
 
