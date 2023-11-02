@@ -13,3 +13,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'pk.eyJ1Ijoic3R1aGxsaW4iLCJhIjoiY2xvOXY3OTl5MGQwbTJrcGViYmI2MHRtZCJ9.MaOQcyZ99PH5hey-6isRpw' // Mapbox Access Token
 }).addTo(map);
+
+// Entfernen der Zoom-Steuerung (Zoom-Buttons)
+map.zoomControl.remove();
