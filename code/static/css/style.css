@@ -306,12 +306,12 @@ body.dark .switch::before{
 }
 
 #map_container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            cursor: pointer;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    cursor: pointer;
+}
 
 /* ====== Location Button ====== */
 .location {
@@ -342,13 +342,12 @@ body.dark .switch::before{
 }
 
 body.dark .location {
-    background-color: var(--sidebar-color); /* Setze die Hintergrundfarbe auf die gewünschte dunkle Farbe */
+    background-color: var(--sidebar-color);
     color: var(--text-color);
 }
 
-/* Im dunklen Modus - Hover */
 body.dark .location:hover {
-    background-color: var(--primary-color); /* Im dunklen Modus auf Hover: Verwende die helle Hintergrundfarbe */
+    background-color: var(--primary-color);
 }
 
 body.dark .location:hover .icon{
@@ -373,7 +372,7 @@ body.dark .location:hover .icon{
 }
 
 
-/* New code */
+/* Hide Checkbox-Menu */
 .hidden {
   display: none;
 }
@@ -384,7 +383,6 @@ body.dark .location:hover .icon{
     display: flex;
     align-items: center;
     padding: 15px 15px;
-    color: black;
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
     bottom: 15px;
@@ -407,13 +405,19 @@ body.dark .location:hover .icon{
     color: var(--sidebar-color)
 }
 
-body.dark .menu-button{
+body.dark .menu-button {
+    background-color: var(--sidebar-color);
     color: var(--text-color);
-    background: var(--primary-color)
+}
+
+body.dark .menu-button:hover {
+    background-color: var(--primary-color);
 }
 
 body.dark .menu-button:hover .icon{
     color: var(--text-color)
 }
+
+
 
 
