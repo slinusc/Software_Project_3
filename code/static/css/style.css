@@ -319,7 +319,6 @@ body.dark .switch::before{
     display: flex;
     align-items: center;
     padding: 15px 15px;
-    color: black;
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
     bottom: 15px;
@@ -329,7 +328,6 @@ body.dark .switch::before{
     z-index: 1001;
     border: none;
 }
-
 
 .location .icon {
     font-size: 20px;
@@ -343,12 +341,17 @@ body.dark .switch::before{
     color: var(--sidebar-color)
 }
 
-body.dark .location{
+body.dark .location {
+    background-color: var(--sidebar-color); /* Setze die Hintergrundfarbe auf die gewünschte dunkle Farbe */
     color: var(--text-color);
-    background: var(--primary-color)
 }
 
-body.dark .menu-button:hover .icon{
+/* Im dunklen Modus - Hover */
+body.dark .location:hover {
+    background-color: var(--primary-color); /* Im dunklen Modus auf Hover: Verwende die helle Hintergrundfarbe */
+}
+
+body.dark .location:hover .icon{
     color: var(--text-color)
 }
 
