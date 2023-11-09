@@ -1,6 +1,7 @@
 import os
 import json
 from pymongo import MongoClient
+import os
 
 
 def extract_amenity(name_input_file, amenity_list, name_output_file):
@@ -15,7 +16,7 @@ def extract_amenity(name_input_file, amenity_list, name_output_file):
         for node in data['nodes']:
             amenity = node.get('amenity')
             if amenity in amenity_list:
-                individual_nodes.append({'node': node, 'amenity': amenity})
+                individual_nodes.append({'node': node})
 
         with open(name_output_file + '.json', 'w') as output_file:
             json.dump(individual_nodes, output_file, indent=2)
@@ -46,5 +47,5 @@ def load_mongo_db(file_name, db_name, collection_name):
 if __name__ == '__main__':
     amenities = ["bicycle_parking", "bicycle_rental", "bicycle_repair_station",
                  "compressed_air", "drinking_water", "shelter"]
-    extract_amenity('osm-output', amenities, 'amenity_filtered')
+    extract_amenity('data/osm-output', amenities, 'amenity_filtered')
     load_mongo_db('amenity_filtered', 'data_base_OSM', 'bicycle_amenities')

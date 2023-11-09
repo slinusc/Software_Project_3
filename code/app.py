@@ -32,15 +32,15 @@ def analytics():
 def about():
     return render_template('about.html')
 
-@cache.memoize(300)  # Zwischenspeichern des Ergebnisses für 300 Sekunden (5 Minuten)
+@cache.memoize(300)  # Cache the result for 300 seconds (5 minutes)
 def fetch_amenities_from_db(amenities):
-    locations = db.bicycle_amenities.find({"amenity": {"$in": amenities}})
+    locations = db.bicycle_amenities.find({"node.amenity": {"$in": amenities}})
     results = [{
         "id": loc["node"]["id"],
         "lat": loc["node"]["lat"],
         "lon": loc["node"]["lon"],
         "name": loc["node"].get("name", ""),
-        "amenity": loc["amenity"]
+        "amenity": loc["node"]["amenity"]
     } for loc in locations]
     return results
 
