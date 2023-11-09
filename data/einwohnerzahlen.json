@@ -1,0 +1,30 @@
+{
+  "kantone": [
+    {"Kantonsnummer": 1, "Kantonsname": "Zürich", "Einwohnerzahl": 1564662},
+    {"Kantonsnummer": 2, "Kantonsname": "Bern", "Einwohnerzahl": 1047422},
+    {"Kantonsnummer": 3, "Kantonsname": "Luzern", "Einwohnerzahl": 420326},
+    {"Kantonsnummer": 4, "Kantonsname": "Uri", "Einwohnerzahl": 37047},
+    {"Kantonsnummer": 5, "Kantonsname": "Schwyz", "Einwohnerzahl": 163689},
+    {"Kantonsnummer": 6, "Kantonsname": "Obwalden", "Einwohnerzahl": 38435},
+    {"Kantonsnummer": 7, "Kantonsname": "Nidwalden", "Einwohnerzahl": 43894},
+    {"Kantonsnummer": 8, "Kantonsname": "Glarus", "Einwohnerzahl": 41190},
+    {"Kantonsnummer": 9, "Kantonsname": "Zug", "Einwohnerzahl": 129787},
+    {"Kantonsnummer": 10, "Kantonsname": "Freiburg", "Einwohnerzahl": 329860},
+    {"Kantonsnummer": 11, "Kantonsname": "Solothurn", "Einwohnerzahl": 280245},
+    {"Kantonsnummer": 12, "Kantonsname": "Basel-Stadt", "Einwohnerzahl": 196036},
+    {"Kantonsnummer": 13, "Kantonsname": "Basel-Landschaft", "Einwohnerzahl": 292817},
+    {"Kantonsnummer": 14, "Kantonsname": "Schaffhausen", "Einwohnerzahl": 83995},
+    {"Kantonsnummer": 15, "Kantonsname": "Appenzell Ausserrhoden", "Einwohnerzahl": 55585},
+    {"Kantonsnummer": 16, "Kantonsname": "Appenzell Innerrhoden", "Einwohnerzahl": 16360},
+    {"Kantonsnummer": 17, "Kantonsname": "St.Gallen", "Einwohnerzahl": 519245},
+    {"Kantonsnummer": 18, "Kantonsname": "Graubünden", "Einwohnerzahl": 201376},
+    {"Kantonsnummer": 19, "Kantonsname": "Aargau", "Einwohnerzahl": 703086},
+    {"Kantonsnummer": 20, "Kantonsname": "Thurgau", "Einwohnerzahl": 285964},
+    {"Kantonsnummer": 21, "Kantonsname": "Tessin", "Einwohnerzahl": 352181},
+    {"Kantonsnummer": 22, "Kantonsname": "Waadt", "Einwohnerzahl": 822968},
+    {"Kantonsnummer": 23, "Kantonsname": "Wallis", "Einwohnerzahl": 353209},
+    {"Kantonsnummer": 24, "Kantonsname": "Neuenburg", "Einwohnerzahl": 176166},
+    {"Kantonsnummer": 25, "Kantonsname": "Genf", "Einwohnerzahl": 509448},
+    {"Kantonsnummer": 26, "Kantonsname": "Jura", "Einwohnerzahl": 73798}
+  ]
+}
