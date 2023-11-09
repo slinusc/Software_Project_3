@@ -18,7 +18,7 @@ def add_kanton_to_db(db_name, collection_name):
         lat = float(doc['node']['lat'])  # String to float
         lon = float(doc['node']['lon'])
         canton = get_canton(lat, lon)
-        collection.update_one({'_id': doc['_id']}, {'$set': {'canton': canton}})
+        collection.update_one({'_id': doc['_id']}, {'$set': {'node.canton': canton}})
     
     print("Cantons have been added to the database!")
     
