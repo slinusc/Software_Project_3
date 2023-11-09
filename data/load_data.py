@@ -1,8 +1,8 @@
 import os
 import json
 from pymongo import MongoClient
-import os
 
+os.chdir(os.path.dirname(__file__))  # Change directory to the directory of this file
 
 def extract_amenity(name_input_file, amenity_list, name_output_file):
     if name_output_file + '.json' in os.listdir():
@@ -29,6 +29,7 @@ def load_mongo_db(file_name, db_name, collection_name):
         client = MongoClient('localhost', 27017)
         db = client[db_name]
         collection = db[collection_name]
+        collection.drop()
 
         # JSON-Daten aus einer Datei lesen
         with open(file_name + '.json', 'r') as file:

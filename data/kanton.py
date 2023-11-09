@@ -12,6 +12,7 @@ def add_kanton_to_db(db_name, collection_name):
     client = MongoClient('mongodb://localhost:27017/')
     db = client[db_name]
     collection = db[collection_name]
+    counter = 0
     
     for doc in collection.find():
 
@@ -19,6 +20,8 @@ def add_kanton_to_db(db_name, collection_name):
         lon = float(doc['node']['lon'])
         canton = get_canton(lat, lon)
         collection.update_one({'_id': doc['_id']}, {'$set': {'node.canton': canton}})
+        print(f"{counter}, added canton '{canton}' to document with id '{doc['_id']}'")
+        counter += 1
     
     print("Cantons have been added to the database!")
     
