@@ -64,26 +64,7 @@ const body = document.querySelector("body"),
         }
     });
 
-// Event-Listener für die Links in der Sidebar
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.content-link').forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            let target = this.getAttribute('data-target');
 
-            fetch(target)
-                .then(response => response.text())
-                .then(data => {
-                    document.querySelector(".home").innerHTML = data;
-                    // Wenn die Karte angezeigt wird, muss sie neu initialisiert werden
-                    if (target === '/navigation') {
-                        initializeMap();
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        });
-    });
-});
 
 
 // Switch between map styles
