@@ -47,5 +47,5 @@ def load_mongo_db(file_name, db_name, collection_name):
 if __name__ == '__main__':
     amenities = ["bicycle_parking", "bicycle_rental", "bicycle_repair_station",
                  "compressed_air", "drinking_water", "shelter"]
-    extract_amenity('data/osm-output', amenities, 'amenity_filtered')
+    extract_amenity('osm-output', amenities, 'amenity_filtered')
     load_mongo_db('amenity_filtered', 'data_base_OSM', 'bicycle_amenities')
