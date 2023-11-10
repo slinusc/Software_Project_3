@@ -45,7 +45,14 @@ def load_mongo_db(file_name, db_name, collection_name):
         print(f"An error occurred: {e}")
 
 
+def drop_db():
+    client = MongoClient('localhost', 27017)
+    client.drop_database('data_base_OSM')
+    print("Database has been droped!")
+
+
 if __name__ == '__main__':
+    #drop_db()
     amenities = ["bicycle_parking", "bicycle_rental", "bicycle_repair_station",
                  "compressed_air", "drinking_water", "shelter"]
     extract_amenity('osm-output', amenities, 'amenity_filtered')

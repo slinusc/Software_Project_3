@@ -3,9 +3,13 @@ from pymongo import MongoClient
 
 
 def get_canton(lat, lon):
-    response = requests.get(f'https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lon}&zoom=18&addressdetails=1')
-    data = response.json()
-    return data['address']['state']
+    try:
+        response = requests.get(f'https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lon}&zoom=18&addressdetails=1')
+        data = response.json()
+        return data['address']['state']
+    except:
+        print("Error: Could not get canton from OSM API")
+        return "No canton found"
 
 
 def add_kanton_to_db(db_name, collection_name):
@@ -13,7 +17,7 @@ def add_kanton_to_db(db_name, collection_name):
     db = client[db_name]
     collection = db[collection_name]
     counter = 0
-    
+
     for doc in collection.find():
 
         lat = float(doc['node']['lat'])  # String to float
