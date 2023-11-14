@@ -17,11 +17,6 @@ db = client['data_base_OSM']
 def index():
     return render_template('index.html')
 
-@app.route('/navigation')
-@cache.cached(timeout=300)
-def navigation():
-    return render_template('navi.html')
-
 @app.route('/analytics')
 @cache.cached(timeout=300)
 def analytics():
