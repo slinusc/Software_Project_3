@@ -1,5 +1,6 @@
 import { map, currentTileLayer, initializeMap, locateUser, getCurrentMarker, updateAmenitiesMap } from './mapInitialization.js';
 import { navigateToCoordinates } from './routing.js';
+import { saveMapDarkModeState } from './menu.js';
 
 // JavaScript Map ---------------------------------------------
 
@@ -48,9 +49,12 @@ document.querySelector('.toggle-switch').addEventListener('click', function() {
 
     // Ändern Sie die ID des TileLayers je nach aktuellem Modus
     if (currentTileLayer.options.id === 'mapbox/streets-v11') {
-        currentTileLayer.options.id = 'mapbox/dark-v10';
+        currentTileLayer.options.id = 'mapbox/dark-v10'
+        saveMapDarkModeState(true);
+
     } else {
-        currentTileLayer.options.id = 'mapbox/streets-v11';
+        currentTileLayer.options.id = 'mapbox/streets-v11'
+        saveMapDarkModeState(false);
     }
 
     // Fügt den TileLayer wieder zur Karte hinzu
@@ -68,3 +72,15 @@ window.addEventListener('amenityClicked', function(e) {
 });
 
 
+function loadAndApplyMapDarkModeState() {
+  const mapDarkModeEnabled = localStorage.getItem('mapDarkMode') === 'true';
+  if (mapDarkModeEnabled) {
+    currentTileLayer.options.id = 'mapbox/dark-v10';
+  } else {
+    currentTileLayer.options.id = 'mapbox/streets-v11';
+  }
+  currentTileLayer.addTo(map);
+}
+
+// Rufen Sie die Funktion zum Laden und Anwenden des dunklen Kartenmodus auf
+loadAndApplyMapDarkModeState();

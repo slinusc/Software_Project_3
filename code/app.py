@@ -52,7 +52,6 @@ def get_locations():
     return jsonify(results)
 
 
-
 @app.route('/clear_cache', methods=['GET'])
 def clear_cache():
     cache.clear()

@@ -12,6 +12,10 @@ function saveDarkModeState(enabled) {
   localStorage.setItem('darkMode', enabled);
 }
 
+export function saveMapDarkModeState(enabled) {
+  localStorage.setItem('mapDarkMode', enabled);
+}
+
 // Funktion zum Laden und Anwenden des Dark-Mode-Status
 function loadAndApplyDarkModeState() {
   const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
@@ -45,6 +49,5 @@ toggle.addEventListener("click", () => {
   saveMenuState(menuOpen);
 });
 
-// Rufen Sie die Funktionen zum Laden und Anwenden des Dark-Mode-Status und des Menüstatus auf
 loadAndApplyDarkModeState();
 loadAndApplyMenuState();
