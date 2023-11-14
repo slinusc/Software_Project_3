@@ -1,7 +1,7 @@
 /* ===== Menu ===== */
 
 /* Google Font Import - Poppins */
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -62,7 +62,7 @@ body.dark{
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
-    transition: var(--tran-03);
+    transition: var(--tran-05);
     white-space: nowrap;
     opacity: 1;
 }
@@ -97,7 +97,7 @@ body.dark{
 .sidebar li .icon,
 .sidebar li .text{
     color: var(--text-color);
-    transition: var(--tran-02);
+    transition: var(--tran-05);
 }
 
 .sidebar header{
@@ -141,7 +141,7 @@ header .image-text .header-text{
     border-radius: 50%;
     color: var(--sidebar-color);
     font-size: 22px;
-    transition: var(--tran-03);
+    transition: var(--tran-05);
 }
 
 .sidebar.close header .toggle{
@@ -260,8 +260,8 @@ body.dark .switch::before{
 .home{
     position: relative;
     height: 100vh;
-    left: 210px;
-    width: calc(100% - 210px);
+    left: 60px;
+    width: calc(100% - 60px);
     background: var(--body-color);
     transition: var(--tran-05);
 }
@@ -277,8 +277,6 @@ body.dark .switch::before{
     left: 60px;
     width: calc(100% - 60px);
 }
-
-
 
 /* ====== Map ====== */
 #map {
@@ -337,10 +335,10 @@ body.dark .location:hover .icon{
     color: var(--text-color)
 }
 
-
-
-
-
+.sidebar.open ~ .location {
+    left: 230px;
+    transition: var(--tran-05);
+}
 
 /* ====== Checkbox ====== */
 .checkbox-menu {
