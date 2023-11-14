@@ -168,18 +168,3 @@ export function updateAmenitiesMap(map) {
     });
 }
 
-// Switch between map styles
-
-document.querySelector('.toggle-switch').addEventListener('click', function() {
-    map.removeLayer(currentTileLayer);
-
-    // Ändern Sie die ID des TileLayers je nach aktuellem Modus
-    if (currentTileLayer.options.id === 'mapbox/streets-v11') {
-        currentTileLayer.options.id = 'mapbox/dark-v10';
-    } else {
-        currentTileLayer.options.id = 'mapbox/streets-v11';
-    }
-
-    // Fügen Sie den TileLayer wieder zur Karte hinzu
-    currentTileLayer.addTo(map);
-});
