@@ -7,9 +7,24 @@ const body = document.querySelector("body"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
 
+
 // Funktion zum Speichern des Dark-Mode-Status
 function saveDarkModeState(enabled) {
   localStorage.setItem('darkMode', enabled);
+}
+
+export function saveMapDarkModeState(enabled) {
+  localStorage.setItem('mapDarkMode', enabled);
+}
+
+// Funktion zum Deaktivieren der CSS-Transition
+function disableTransitionMenuSlider() {
+  sidebar.style.transition = 'none';
+}
+
+// Funktion zum Aktivieren der CSS-Transition
+function enableTransitionMenuSlider() {
+  sidebar.style.transition = '';
 }
 
 // Funktion zum Laden und Anwenden des Dark-Mode-Status
@@ -26,8 +41,10 @@ function saveMenuState(open) {
 
 // Funktion zum Laden und Anwenden des Menüstatus
 function loadAndApplyMenuState() {
+  disableTransitionMenuSlider();
   const menuOpen = localStorage.getItem('menuOpen') === 'true';
-  sidebar.classList.toggle('close', !menuOpen);
+  sidebar.classList.toggle('close', !menuOpen)
+  setTimeout(enableTransitionMenuSlider, 0);
 }
 
 // Event-Listener für den Dark-Mode-Schalter
@@ -45,6 +62,5 @@ toggle.addEventListener("click", () => {
   saveMenuState(menuOpen);
 });
 
-// Rufen Sie die Funktionen zum Laden und Anwenden des Dark-Mode-Status und des Menüstatus auf
 loadAndApplyDarkModeState();
 loadAndApplyMenuState();
