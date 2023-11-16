@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from flask_caching import Cache
 from pymongo import MongoClient
+
+# Import der Funktionen aus dem analytics-Modul
 from analytics.calculations import number_amenities_in_radius, find_k_nearest_amenities
 
 # Flask app setup
@@ -12,21 +14,25 @@ cache = Cache(app)
 client = MongoClient('localhost', 27017)
 db = client['data_base_OSM']
 
+
 # Routes
 @app.route('/')
 @cache.cached(timeout=300)
 def index():
     return render_template('index.html')
 
+
 @app.route('/analytics')
 @cache.cached(timeout=300)
 def analytics():
     return render_template('analytics.html')
 
+
 @app.route('/about')
 @cache.cached(timeout=300)
 def about():
     return render_template('about.html')
+
 
 @cache.memoize(300)  # Cache the result for 300 seconds (5 minutes)
 def fetch_amenities_from_db(amenities):
