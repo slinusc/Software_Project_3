@@ -7,8 +7,9 @@ def extract_data_db():
     db = client['data_base_OSM']
     collection = db['bicycle_amenities']
     daten = list(collection.find({}))
-    with open('ameniteis_incl_canton.json', 'w') as file:
+    with open('../data/ameniteis_16_11_23.json', 'w') as file:
         json.dump(daten, file, default=str)
+    print("Data has been extracted!")
 
 
 if __name__ == '__main__':

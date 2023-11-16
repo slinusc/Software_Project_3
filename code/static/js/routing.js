@@ -1,7 +1,6 @@
 let routingControl;
 
 export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
-    console.log("navigateToCoordinates wurde aufgerufen");
 
     // Stellt sicher, dass die alte Routing-Kontrolle entfernt wird, bevor eine neue hinzugefügt wird
     if (routingControl) {
