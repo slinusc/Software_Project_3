@@ -35,7 +35,8 @@ def fetch_amenities_from_db(amenities):
         "lat": loc["node"]["lat"],
         "lon": loc["node"]["lon"],
         "name": loc["node"].get("name", ""),
-        "amenity": loc["node"]["amenity"]
+        "amenity": loc["node"]["amenity"],
+        "canton": loc["node"]["canton"]
     } for loc in locations]
     return results
 
