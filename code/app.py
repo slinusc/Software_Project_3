@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_caching import Cache
 from pymongo import MongoClient
+from analytics.calculations import number_amenities_in_radius, find_k_nearest_amenities
 
 # Flask app setup
 app = Flask(__name__)
@@ -49,6 +50,35 @@ def get_locations():
         return jsonify({"error": "amenities parameter is required"}), 400
 
     results = fetch_amenities_from_db(amenities)
+    return jsonify(results)
+
+
+@app.route('/nearest_amenities', methods=['POST'])
+def get_nearest_amenities():
+    data = request.get_json()
+    lat = data.get('lat')
+    lon = data.get('lon')
+    amenity_type = data.get('amenity_type')
+    k = data.get('k', 5)
+
+    if not lat or not lon or not amenity_type:
+        return jsonify({"error": "lat, lon and amenity_type parameters are required"}), 400
+
+    results = find_k_nearest_amenities(lat, lon, amenity_type, k)
+    return jsonify(results)
+
+
+@app.route('/number_amenities_in_radius', methods=['POST'])
+def get_number_amenities_in_radius():
+    data = request.get_json()
+    lat = data.get('lat')
+    lon = data.get('lon')
+    radius = data.get('radius', 1000)
+
+    if not lat or not lon:
+        return jsonify({"error": "lat and lon parameters are required"}), 400
+
+    results = number_amenities_in_radius(lat, lon, radius)
     return jsonify(results)
 
 
