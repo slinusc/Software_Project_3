@@ -8,8 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 </head>
 <body>
-
-
     <!-- Erstelle ein Canvas-Element für das Diagramm -->
     <canvas id="amenityChartCanvas"></canvas>
 
@@ -22,7 +20,6 @@
         <option value="drinking_water">Drinking Water</option>
         <option value="shelter">Shelter</option>
     </select>
-
 
     <!-- Einbindung von Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -43,87 +40,86 @@
         }
 
         // Funktion zum Aktualisieren des Diagramms basierend auf der ausgewählten Amenität
-function updateChart(selectedAmenity) {
-    console.log("Function updateChart executed!");
+        function updateChart(selectedAmenity) {
+            loadJSON(function (data) {
+                // Vorverarbeitung der Daten: Zähle die Anzahl der ausgewählten Amenities pro Kanton
+                var amenityCountPerCanton = {};
+                var ignoredCantons = ["Baden-Württemberg", "Vorarlberg", "Trentino-Alto Adige/Südtirol", "Lombardia", "Auvergne-Rhône-Alpes", "No canton found", "Grand Est", "Bourgogne-Franche-Comté", "Valle d'Aosta / Vallée d'Aoste"];
 
-    loadJSON(function (data) {
-        // Vorverarbeitung der Daten: Zähle die Anzahl der ausgewählten Amenities pro Kanton
-        var amenityCountPerCanton = {};
-        var ignoredCantons = ["Baden-Württemberg", "Vorarlberg", "Trentino-Alto Adige/Südtirol", "Lombardia", "Auvergne-Rhône-Alpes", "No canton found", "Grand Est", "Bourgogne-Franche-Comté", "Valle d'Aosta / Vallée d'Aoste"];
+                data.forEach(function (entry) {
+                    if (entry.node && entry.node.amenity && entry.node.canton) {
+                        var amenity = entry.node.amenity;
+                        var canton = entry.node.canton;
 
-        data.forEach(function (entry) {
-            if (entry.node && entry.node.amenity && entry.node.canton) {
-                var amenity = entry.node.amenity;
-                var canton = entry.node.canton;
+                        if (ignoredCantons.includes(canton)) {
+                            return;
+                        }
 
-                // Ignoriere bestimmte Werte bei "canton"
-                if (ignoredCantons.includes(canton)) {
-                    return;
-                }
+                        switch (canton) {
+                            case "Vaud":
+                                canton = "Waadt";
+                                break;
+                            case "Graubünden/Grischun/Grigioni":
+                                canton = "Graubünden";
+                                break;
+                            case "Bern/Berne":
+                                canton = "Bern";
+                                break;
+                            case "Valais/Wallis":
+                                canton = "Wallis";
+                                break;
+                            case "Neuchâtel":
+                                canton = "Neuenburg";
+                                break;
+                            case "Ticino":
+                                canton = "Tessin";
+                                break;
+                            case "Genève":
+                                canton = "Genf";
+                                break;
+                            case "Fribourg/Freiburg":
+                                canton = "Freiburg";
+                                break;
+                            // Fügen Sie hier weitere Änderungen hinzu, wenn nötig
+                        }
 
-                // Ändere die Namen der Kantone
-                switch (canton) {
-                    case "Vaud":
-                        canton = "Waadt";
-                        break;
-                    case "Graubünden/Grischun/Grigioni":
-                        canton = "Graubünden";
-                        break;
-                    case "Bern/Berne":
-                        canton = "Bern";
-                        break;
-                    case "Valais/Wallis":
-                        canton = "Wallis";
-                        break;
-                    case "Neuchâtel":
-                        canton = "Neuenburg";
-                        break;
-                    case "Ticino":
-                        canton = "Tessin";
-                        break;
-                    case "Genève":
-                        canton = "Genf";
-                        break;
-                    case "Fribourg/Freiburg":
-                        canton = "Freiburg";
-                        break;
-                    // Fügen Sie hier weitere Änderungen hinzu, wenn nötig
-                }
-
-                if (amenity === selectedAmenity) {
-                    amenityCountPerCanton[canton] = (amenityCountPerCanton[canton] || 0) + 1;
-                }
-            }
-        });
-
-        // Diagramm aktualisieren
-        var ctx = document.getElementById('amenityChartCanvas').getContext('2d');
-        if (window.amenityChart) {
-            window.amenityChart.destroy(); // Zerstöre das vorhandene Diagramm, wenn es existiert
-        }
-        window.amenityChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: Object.keys(amenityCountPerCanton),
-                datasets: [{
-                    label: 'Number of ' + selectedAmenity.replace('_', ' ').capitalize() + ' Amenities per Canton',
-                    data: Object.values(amenityCountPerCanton),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+                        if (amenity === selectedAmenity) {
+                            amenityCountPerCanton[canton] = (amenityCountPerCanton[canton] || 0) + 1;
+                        }
                     }
-                }
-            }
-        });
-    });
-}
+                });
 
+                // Sortiere die Daten nach der Anzahl der Amenities (absteigend)
+                var sortedData = Object.keys(amenityCountPerCanton)
+                    .sort((a, b) => amenityCountPerCanton[b] - amenityCountPerCanton[a]);
+
+                // Diagramm aktualisieren
+                var ctx = document.getElementById('amenityChartCanvas').getContext('2d');
+                if (window.amenityChart) {
+                    window.amenityChart.destroy(); // Zerstöre das vorhandene Diagramm, wenn es existiert
+                }
+                window.amenityChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: sortedData,
+                        datasets: [{
+                            label: 'Anzahl ' + selectedAmenity.replace('_', ' ').capitalize() + ' pro Kanton',
+                            data: sortedData.map(canton => amenityCountPerCanton[canton]),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        }
 
         // Hinzufügen einer capitalize-Funktion zum Formatieren von Amenities für das Diagrammlabel
         String.prototype.capitalize = function () {
@@ -136,11 +132,9 @@ function updateChart(selectedAmenity) {
         // Dropdown-Änderungsereignis hinzufügen, um das Diagramm bei Auswahl zu aktualisieren
         document.getElementById('amenitySelect').addEventListener('change', function () {
             var selectedAmenity = this.value;
-            console.log("Dropdown changed to: " + selectedAmenity); // Test-Log
             updateChart(selectedAmenity);
         });
     </script>
-
-
 </body>
 </html>
+
