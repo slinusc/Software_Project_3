@@ -35,7 +35,6 @@ toggleButton.addEventListener("click", () => {
 
 
 // Event-Listener für jede Checkbox zum Aktualisieren der Karte
-console.log("Adding event listeners to checkboxes");
 document.querySelectorAll('input[name="amenity"]').forEach(checkbox => {
     checkbox.addEventListener('change', function() {
         updateAmenitiesMap(map);
