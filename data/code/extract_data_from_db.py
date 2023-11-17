@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import json
+import datetime as dt
 
 
 def extract_data_db():
@@ -7,7 +8,7 @@ def extract_data_db():
     db = client['data_base_OSM']
     collection = db['bicycle_amenities']
     daten = list(collection.find({}))
-    with open('../data/ameniteis_16_11_23.json', 'w') as file:
+    with open(f'../data/amenities_{dt.datetime.now().date()}.json', 'w') as file:
         json.dump(daten, file, default=str)
     print("Data has been extracted!")
 
