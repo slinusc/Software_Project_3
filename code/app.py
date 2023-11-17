@@ -34,6 +34,7 @@ def about():
     return render_template('about.html')
 
 
+# todo: auslagern in eigenes Modul
 @cache.memoize(300)  # Cache the result for 300 seconds (5 minutes)
 def fetch_amenities_from_db(amenities):
     locations = db.bicycle_amenities.find({"node.amenity": {"$in": amenities}})

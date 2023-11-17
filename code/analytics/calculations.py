@@ -55,7 +55,7 @@ def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
     query = {
         "node.amenity": amenity_type,  # Filter nach dem Amenity-Typ
         "node.location": {
-            "$nearSphere": {
+            "$nearSphere": { # Filter nach der Entfernung zum Stadort des Users mit $nearSphere
                 "$geometry": {
                     "type": "Point",
                     "coordinates": [lon, lat]
