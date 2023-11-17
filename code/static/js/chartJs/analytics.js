@@ -1,4 +1,4 @@
-import { getUserLocation } from "./getUserlocation";
+import { getUserLocation } from "../getUserlocation";
 
 export function getNearestAmenities(amenityType, k) {
     // Erhalten Sie das Marker-Objekt
