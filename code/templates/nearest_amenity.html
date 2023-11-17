@@ -23,65 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        // Funktion zum Laden der JSON-Daten
-        function loadFlaskServerData(amenityType, radius, callback) {
-            fetch('/number_amenities_in_radius', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ amenity_type: amenityType, radius: radius }),
-            })
-                .then(response => response.json())
-                .then(data => callback(data))
-                .catch(error => console.error('Error fetching Flask Server data:', error));
-        }
 
-        // Funktion zum Aktualisieren des Radar-Diagramms basierend auf der ausgewählten Distanz
-        function updateRadarChart() {
-            var selectedAmenity = document.getElementById('amenityRadarChart').value;
-            var selectedDistance = document.getElementById('distanceSelect').value;
-
-            var radarChartData = {
-                labels: ['bicycle_parking', 'bicycle_repair_station', 'bicycle_rental', 'compressed_air', 'drinking_water', 'shelter'],
-                datasets: [{
-                    label: 'Anzahl Amenities im Umkreis von ' + selectedDistance + 'm',
-                    data: [],
-                    fill: true,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            };
-
-            // Laden von Daten für die ausgewählte Distanz
-            loadFlaskServerData(selectedAmenity, selectedDistance, function (data) {
-                radarChartData.datasets[0].data = data.count;
-                updateRadarChartCanvas(radarChartData);
-            });
-        }
-
-        // Funktion zum Aktualisieren des Radar-Diagramms
-        function updateRadarChartCanvas(data) {
-            var ctx = document.getElementById('amenityRadarChart').getContext('2d');
-            if (window.amenityRadarChart) {
-                window.amenityRadarChart.destroy(); // Zerstöre das vorhandene Diagramm, wenn es existiert
-            }
-            window.amenityRadarChart = new Chart(ctx, {
-                type: 'radar',
-                data: data,
-                options: {
-                    scales: {
-                        r: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-
-        // Initiieren des Diagramms mit der Standard-Amenity (bicycle_parking) und Distanz (1000m)
-        updateRadarChart();
 
     </script>
 </body>
