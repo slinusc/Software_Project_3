@@ -53,7 +53,7 @@ def drop_db():
 
 if __name__ == '__main__':
     #drop_db()
-    amenities = ["bicycle_parking", "bicycle_rental", "bicycle_repair_station",
-                 "compressed_air", "drinking_water", "shelter"]
-    extract_amenity('osm-output', amenities, 'amenity_filtered')
-    load_mongo_db('amenity_filtered', 'data_base_OSM', 'bicycle_amenities')
+    #amenities = ["bicycle_parking", "bicycle_rental", "bicycle_repair_station",
+                 #"compressed_air", "drinking_water", "shelter"]
+    #extract_amenity('osm-output', amenities, 'amenity_filtered')
+    load_mongo_db('../data/ameniteis_16_11_23', 'data_base_OSM', 'bicycle_amenities')
