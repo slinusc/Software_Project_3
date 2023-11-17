@@ -1,3 +1,6 @@
+import { getUserLocation } from './getUserlocation.js';
+
+
 export let map;
 export let currentTileLayer;
 let currentMarker = null;
@@ -33,82 +36,44 @@ export function initializeMap() {
     // Entfernen der Zoom-Steuerung (Zoom-Buttons)
     map.zoomControl.remove();
 
-    locateUser();
+    placeCurrentUserMarkerOnMap();
 }
 
-// locate user
+// Lokalisieren des Benutzers auf der Karte
 
-export function locateUser() {
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            const user_latlng = L.latLng(position.coords.latitude, position.coords.longitude);
-
+export function placeCurrentUserMarkerOnMap() {
+    getUserLocation()
+        .then(user_latlng => {
             if (currentMarker) {
                 map.removeLayer(currentMarker);
             }
-
             currentMarker = L.marker(user_latlng, {icon: bikeIcon, draggable: false}).addTo(map);
             map.setView(user_latlng, 15, { animate: true }); // Zoom auf den Marker
+        })
+        .catch(error => {
+            alert(error.message);
         });
-    } else {
-        alert("Geolocation wird von diesem Browser nicht unterstützt");
-    }
 }
 
+// Rückgabe des aktuellen Markers des Benutzers
 export function getCurrentMarker() {
     return currentMarker;
 }
 
-// add amenities to map
+// Initialisierung der Icons für die Amenities
 
 const icon_size = [30, 30];
-
 const icon_anchor = [19, 19];
-
-const bicycleParking = L.icon({
-    iconUrl: '../static/images/Parking-bicycle.png',
-    iconSize: icon_size,
-    iconAnchor: icon_anchor,
-});
-
-const bicycleRepair = L.icon({
-    iconUrl: '../static/images/Bicycle_repair_station.png',
-    iconSize: icon_size,
-    iconAnchor: icon_anchor,
-});
-
-const bicycleRental = L.icon({
-    iconUrl: '../static/images/Rental-bicycle.png',
-    iconSize: icon_size,
-    iconAnchor: icon_anchor,
-});
-
-const drinkingWater = L.icon({
-    iconUrl: '../static/images/Drinking-water-16.svg',
-    iconSize: icon_size,
-    iconAnchor: icon_anchor,
-});
-
-const shelter = L.icon({
-    iconUrl: '../static/images/person-shelter-solid.svg',
-    iconSize: icon_size,
-    iconAnchor: icon_anchor,
-});
-
-const compressedAir = L.icon({
-    iconUrl: '../static/images/compressed_air.png',
-    iconSize: icon_size,
-    iconAnchor: icon_anchor,
-});
-
 const amenityToIconMap = {
-    'bicycle_parking': bicycleParking,
-    'bicycle_rental': bicycleRental,
-    'bicycle_repair_station': bicycleRepair,
-    'compressed_air': compressedAir,
-    'drinking_water': drinkingWater,
-    'shelter': shelter
+    'bicycle_parking': L.icon({iconUrl: '../static/images/Parking-bicycle.png', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'bicycle_rental': L.icon({iconUrl: '../static/images/Rental-bicycle.png', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'bicycle_repair_station': L.icon({iconUrl: '../static/images/Bicycle_repair_station.png', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'compressed_air': L.icon({iconUrl: '../static/images/compressed_air.png', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'drinking_water': L.icon({iconUrl: '../static/images/Drinking-water-16.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'shelter': L.icon({iconUrl: '../static/images/Drinking-water-16.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
 };
+
+// Aktualisieren der Karte basierend auf den ausgewählten Amenities
 
 export function updateAmenitiesMap(map) {
     const amenities = document.querySelectorAll('input[name="amenity"]:checked');
