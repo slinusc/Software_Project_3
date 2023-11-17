@@ -34,11 +34,6 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/chartjs')
-@cache.cached(timeout=300)
-def ameneties_per_canton():
-    return render_template('amenity_canton.html')
-
 @app.route('/chartjs2')
 @cache.cached(timeout=300)
 def radius_amenities():
