@@ -3,7 +3,7 @@ from flask_caching import Cache
 from pymongo import MongoClient
 
 # Import der Funktionen aus dem analytics-Modul
-from analytics.calculations import number_amenities_in_radius, find_k_nearest_amenities
+from analytics.calculations import number_amenities_in_radius, find_k_nearest_amenities, count_amenities_by_canton
 
 # Flask app setup
 app = Flask(__name__)
@@ -34,6 +34,17 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/chartjs')
+@cache.cached(timeout=300)
+def ameneties_per_canton():
+    return render_template('amenity_canton.html')
+
+@app.route('/chartjs2')
+@cache.cached(timeout=300)
+def radius_amenities():
+    return render_template('nearest_amenity.html')
+
+
 @cache.memoize(300)  # Cache the result for 300 seconds (5 minutes)
 def fetch_amenities_from_db(amenities):
     locations = db.bicycle_amenities.find({"node.amenity": {"$in": amenities}})
@@ -57,6 +68,18 @@ def get_locations():
         return jsonify({"error": "amenities parameter is required"}), 400
 
     results = fetch_amenities_from_db(amenities)
+    return jsonify(results)
+
+
+@app.route('/amenities_per_canton', methods=['POST'])
+def get_amenities_per_canton():
+    data = request.get_json()
+    amenity_type = data.get('amenity_type')
+
+    if not amenity_type:
+        return jsonify({"error": "amenity_type parameter is required"}), 400
+
+    results = count_amenities_by_canton(amenity_type)
     return jsonify(results)
 
 

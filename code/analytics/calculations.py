@@ -5,6 +5,14 @@ import time
 
 
 def number_amenities_in_radius(lat, lon, radius=1000):
+
+    """
+    :param lat:
+    :param lon:
+    :param radius: in meter, default 1000m
+    :return:
+    """
+
     client = MongoClient("mongodb://localhost:27017/")
     db = client["data_base_OSM"]
     amenities_collection = db["bicycle_amenities"]
@@ -31,6 +39,14 @@ def number_amenities_in_radius(lat, lon, radius=1000):
 
 
 def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
+
+    """
+    :param lat:
+    :param lon:
+    :param amenity_type: muss mit übergeben werden
+    :param k: anzahl der nächsten amenities, default 5
+    :return:
+    """
     client = MongoClient("mongodb://localhost:27017/")
     db = client["data_base_OSM"]
     amenities_collection = db["bicycle_amenities"]
@@ -92,13 +108,40 @@ def get_address_from_coords(lat, lon):
     return "Adresse nicht verfügbar"
 
 
+def count_amenities_by_canton(amenity_type):
+    # Verbindung zur MongoDB herstellen (passe die Verbindungsdaten entsprechend an)
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client["data_base_OSM"]
+
+    # MongoDB-Abfrage
+
+    pipeline = [
+        {
+            "$match": {
+                "node.amenity": amenity_type,
+                "node.canton": {"$exists": True}  # Filter nach Einträgen mit Kanton
+            }
+        },
+        {
+            "$group": {
+                "_id": "$node.canton",
+                "count": {"$sum": 1}
+            }
+        }
+    ]
+    result = list(db.bicycle_amenities.aggregate(pipeline))
+    return result
+
+
 if __name__ == "__main__":
 
     start_time = time.time()
-    nearest_amenities = find_k_nearest_amenities(47.3769, 8.5417, "bicycle_parking", 5)
+    nearest_amenities = find_k_nearest_amenities(47.3769, 8.5417, "bicycle_parking", 7)
     print(nearest_amenities)
     end_time = time.time()
     print(f"Time elapsed: {end_time - start_time} seconds")
+
+
     """nearest_amenities = number_amenities_in_radius(47.3769, 8.5417, radius=1000) # 1km, Zürich
     print(nearest_amenities)"""
 
