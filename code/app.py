@@ -34,12 +34,6 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/chartjs2')
-@cache.cached(timeout=300)
-def radius_amenities():
-    return render_template('nearest_amenity.html')
-
-
 @cache.memoize(300)  # Cache the result for 300 seconds (5 minutes)
 def fetch_amenities_from_db(amenities):
     locations = db.bicycle_amenities.find({"node.amenity": {"$in": amenities}})
