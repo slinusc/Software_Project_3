@@ -47,6 +47,7 @@ def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
     :param k: anzahl der nächsten amenities, default 5
     :return:
     """
+
     client = MongoClient("mongodb://localhost:27017/")
     db = client["data_base_OSM"]
     amenities_collection = db["bicycle_amenities"]
@@ -109,7 +110,12 @@ def get_address_from_coords(lat, lon):
 
 
 def count_amenities_by_canton(amenity_type):
-    # Verbindung zur MongoDB herstellen (passe die Verbindungsdaten entsprechend an)
+
+    """
+    :param amenity_type: "bicycle_parking"
+    :return: [{'_id': 'BE', 'count': 2}, {'_id': 'ZH', 'count': 1}]
+    """
+
     client = MongoClient("mongodb://localhost:27017/")
     db = client["data_base_OSM"]
 
