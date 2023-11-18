@@ -35,7 +35,7 @@ def about():
 
 
 # todo: auslagern in eigenes Modul
-@cache.memoize(300)  # Cache the result for 300 seconds (5 minutes)
+@cache.memoize(300)
 def fetch_amenities_from_db(amenities):
     locations = db.bicycle_amenities.find({"node.amenity": {"$in": amenities}})
     results = [{

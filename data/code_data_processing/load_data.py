@@ -30,6 +30,7 @@ def load_mongo_db(file_name, db_name, collection_name):
         db = client[db_name]
         collection = db[collection_name]
         collection.drop()
+        print("Collection has been droped!")
 
         # JSON-Daten aus einer Datei lesen
         with open(file_name + '.json', 'r') as file:
@@ -56,4 +57,4 @@ if __name__ == '__main__':
     #amenities = ["bicycle_parking", "bicycle_rental", "bicycle_repair_station",
                  #"compressed_air", "drinking_water", "shelter"]
     #extract_amenity('osm-output', amenities, 'amenity_filtered')
-    load_mongo_db('../data/ameniteis_16_11_23', 'data_base_OSM', 'bicycle_amenities')
+    load_mongo_db('../data/amenities_2023-11-17', 'data_base_OSM', 'bicycle_amenities')
