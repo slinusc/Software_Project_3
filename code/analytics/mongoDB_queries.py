@@ -64,7 +64,7 @@ def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
     :param lon: Koordinaten des Users
     :param amenity_type: Amenity-Typ, z.B. "bicycle_parking"
     :param k: anzahl der nächsten amenities, default 5
-    :return:{"amenity": "bicycle_parking", "address": "Bahnhofquai, 8001", "coordinates": [8.5418991, 47.3767359], "distance": 36.4}
+    :return:{"amenity": "bicycle_parking", "coordinates": [8.5418991, 47.3767359], "address": "Bahnhofquai, 8001", "distance": 36.4}
     """
 
     query = {
@@ -92,8 +92,8 @@ def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
         # Nur Adresse und Koordinaten zur Ergebnisliste hinzufügen
         result.append({
             "amenity": amenity_type,
-            "address": address,
             "coordinates": amenity_coords,
+            "address": address,
             "distance": amenity["distance"]
         })
 
