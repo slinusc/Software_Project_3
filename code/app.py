@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, jsonify
 from flask_caching import Cache
 from pymongo import MongoClient
 
-# Import der Funktionen aus dem analytics-Modul
-from analytics.mongoDB_queries import number_amenities_in_radius, find_k_nearest_amenities, count_amenities_by_canton, \
+# Import der Funktionen aus dem pycode-Modul
+from pycode.mongoDB_queries import number_amenities_in_radius, find_k_nearest_amenities, count_amenities_by_canton, \
     fetch_amenities_from_db
 
 # Flask app setup
