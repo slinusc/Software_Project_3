@@ -23,6 +23,9 @@
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 
+    <!-- Einbindung von Chart.js im Header -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
     <title>CycleBuddy</title>
 </head>
 <body>
@@ -98,7 +101,7 @@
                 <!-- Erstelle ein Canvas-Element für das Diagramm -->
                 <canvas id="amenityChartCanvas"></canvas>
 
-                 <!-- Dropdown-Menü für verschiedene Amenities -->
+                <!-- Dropdown-Menü für verschiedene Amenities -->
                 <select id="amenitySelect">
                     <option value="bicycle_parking">Bicycle Parking</option>
                     <option value="bicycle_repair_station">Repair Station</option>
@@ -108,66 +111,62 @@
                     <option value="shelter">Shelter</option>
                 </select>
 
-                <!-- Einbindung von Chart.js -->
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
                 <script>
-                // Funktion zum Laden der JSON-Daten
-                   // Funktion zum Aktualisieren des Diagramms basierend auf der ausgewählten Amenität
-                function loadFlaskServerData(amenityType, callback) {
-                    fetch('/amenities_per_canton', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ amenity_type: amenityType }),
-                    })
-                        .then(response => response.json())
-                        .then(data => callback(data))
-                        .catch(error => console.error('Error fetching Flask Server data:', error));
-                }
-
-                // Funktion zum Aktualisieren des Diagramms basierend auf der ausgewählten Amenität
-                function updateChart(selectedAmenity) {
-                    loadFlaskServerData(selectedAmenity, function (data) {
-                        // Daten aus dem Flask-Server direkt verwenden
-                        var amenityCountPerCanton = {};
-
-                        // Fülle amenityCountPerCanton mit den Daten aus data
-                        data.forEach(function (entry) {
-                            amenityCountPerCanton[entry._id] = entry.count;
-                        });
-
-                        // Sortiere die Daten nach der Anzahl der Amenities (absteigend)
-                        var sortedData = Object.keys(amenityCountPerCanton)
-                            .sort((a, b) => amenityCountPerCanton[b] - amenityCountPerCanton[a]);
-
-                        // Diagramm aktualisieren
-                        var ctx = document.getElementById('amenityChartCanvas').getContext('2d');
-                        if (window.amenityChart) {
-                            window.amenityChart.destroy(); // Zerstöre das vorhandene Diagramm, wenn es existiert
-                        }
-                        window.amenityChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: sortedData,
-                                datasets: [{
-                                    label: 'Anzahl ' + selectedAmenity.replace('_', ' ').capitalize() + ' pro Kanton',
-                                    data: sortedData.map(canton => amenityCountPerCanton[canton]),
-                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                    borderColor: 'rgba(75, 192, 192, 1)',
-                                    borderWidth: 1
-                                }]
+                    // Funktion zum Laden der JSON-Daten
+                    function loadFlaskServerData(amenityType, callback) {
+                        fetch('/amenities_per_canton', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
                             },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
+                            body: JSON.stringify({ amenity_type: amenityType }),
+                        })
+                            .then(response => response.json())
+                            .then(data => callback(data))
+                            .catch(error => console.error('Error fetching Flask Server data:', error));
+                    }
+
+                    // Funktion zum Aktualisieren des Diagramms basierend auf der ausgewählten Amenität
+                    function updateChart(selectedAmenity) {
+                        loadFlaskServerData(selectedAmenity, function (data) {
+                            // Daten aus dem Flask-Server direkt verwenden
+                            var amenityCountPerCanton = {};
+
+                            // Fülle amenityCountPerCanton mit den Daten aus data
+                            data.forEach(function (entry) {
+                                amenityCountPerCanton[entry._id] = entry.count;
+                            });
+
+                            // Sortiere die Daten nach der Anzahl der Amenities (absteigend)
+                            var sortedData = Object.keys(amenityCountPerCanton)
+                                .sort((a, b) => amenityCountPerCanton[b] - amenityCountPerCanton[a]);
+
+                            // Diagramm aktualisieren
+                            var ctx = document.getElementById('amenityChartCanvas').getContext('2d');
+                            if (window.amenityChart) {
+                                window.amenityChart.destroy(); // Zerstöre das vorhandene Diagramm, wenn es existiert
+                            }
+                            window.amenityChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: sortedData,
+                                    datasets: [{
+                                        label: 'Anzahl ' + selectedAmenity.replace('_', ' ').capitalize() + ' pro Kanton',
+                                        data: sortedData.map(canton => amenityCountPerCanton[canton]),
+                                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
                                     }
                                 }
-                            }
+                            });
                         });
-                    });
                     }
 
                     // Hinzufügen einer capitalize-Funktion zum Formatieren von Amenities für das Diagrammlabel
@@ -185,8 +184,22 @@
                     });
                 </script>
             </div>
-            <div class="Statistic2">
 
+            <div class="Statistic2">
+                <!-- Erstelle ein Canvas-Element für das Diagramm -->
+                <canvas id="amenityBarChart"></canvas>
+
+                <!-- Dropdown-Menü für verschiedene Distanzen -->
+                <select id="radiusSelect" onchange="updateBarChart()">
+                    <option value="1000">1000m</option>
+                    <option value="2000">2000m</option>
+                    <option value="5000">5000m</option>
+                    <option value="10000">10000m</option>
+                </select>
+
+                <script>
+                    // ... (Ihr bestehender JavaScript-Code) ...
+                </script>
             </div>
 
         </div>
@@ -200,5 +213,15 @@
 
     <!-- JavaScript-Code -->
     <script type="module" src="../static/js/menu.js"></script>
+
+    <!-- analytics.js (Ihre bestehende JavaScript-Datei) -->
+    <script type="module" src="../static/js/analytics.js"></script>
+
+    <!-- analytics.js (Ihre bestehende JavaScript-Datei) -->
+    <script type="module" src="../static/js/nearest.js"></script>
+
+
 </body>
 </html>
+
+
