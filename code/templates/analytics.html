@@ -202,6 +202,64 @@
                 </script>
             </div>
 
+            <div class="Statistic3" id="userCoordinates">
+                <script>
+                    // Hier rufen Sie die Funktion auf, um die Benutzerposition zu erhalten
+                    getUserLocation()
+                        .then(userLocation => {
+                            // Benutzerposition erhalten, senden Sie die Daten an Ihren Flask-Server
+                            const lat = userLocation.lat;
+                            const lon = userLocation.lng;
+                            const radius = 1000;  // oder den gewünschten Radius
+
+                            // Senden Sie die Daten an Ihren Flask-Server
+                            fetch('/number_amenities_in_radius', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ lat, lon, radius }),
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                // Daten erhalten, jetzt können Sie Chart.js verwenden, um die Daten zu visualisieren
+                                const ctx = document.getElementById('amenityBarChart').getContext('2d');
+
+                                // Verarbeiten Sie die Daten, um sie in einem Bar-Chart darzustellen
+                                const labels = data.map(entry => entry._id);
+                                const counts = data.map(entry => entry.count);
+
+                                new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: labels,
+                                        datasets: [{
+                                            label: 'Anzahl Annehmlichkeiten',
+                                            data: counts,
+                                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                            borderColor: 'rgba(75, 192, 192, 1)',
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                            })
+                            .catch(error => {
+                                console.error('There was an error!', error);
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error getting user location:', error);
+                        });
+
+                </script>
+            </div>
         </div>
     </section>
 
@@ -217,10 +275,19 @@
     <!-- analytics.js (Ihre bestehende JavaScript-Datei) -->
     <script type="module" src="../static/js/analytics.js"></script>
 
-    <!-- analytics.js (Ihre bestehende JavaScript-Datei) -->
+    <!-- getUserlocation.js -->
+    <script type="module" src="../static/js/getUserlocation.js"></script>
+
+    <!-- nearest.js -->
     <script type="module" src="../static/js/nearest.js"></script>
 
-
+    <!-- Fügen Sie dies am Ende des <body>-Tags hinzu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Rufen Sie die Funktion auf, um die Benutzerposition anzuzeigen
+            getUserLocation();
+        });
+    </script>
 </body>
 </html>
 
