@@ -2,14 +2,17 @@ from flask import Flask, render_template, request, jsonify
 from flask_caching import Cache
 from pymongo import MongoClient
 
-# Import der Funktionen aus dem pycode-Modul
-from pycode.mongoDB_queries import number_amenities_in_radius, find_k_nearest_amenities, count_amenities_by_canton, \
-    fetch_amenities_from_db
+# Import der Funktionen aus dem analytics-Modul
+from analytics.calculations import number_amenities_in_radius, find_k_nearest_amenities, count_amenities_by_canton
 
 # Flask app setup
 app = Flask(__name__)
 app.config['CACHE_TYPE'] = 'simple'
 cache = Cache(app)
+
+# MongoDB setup
+client = MongoClient('localhost', 27017)
+db = client['data_base_OSM']
 
 
 # Routes
@@ -29,6 +32,26 @@ def analytics():
 @cache.cached(timeout=300)
 def about():
     return render_template('about.html')
+
+
+@app.route('/chartjs2')
+@cache.cached(timeout=300)
+def radius_amenities():
+    return render_template('nearest_amenity.html')
+
+
+@cache.memoize(300)  # Cache the result for 300 seconds (5 minutes)
+def fetch_amenities_from_db(amenities):
+    locations = db.bicycle_amenities.find({"node.amenity": {"$in": amenities}})
+    results = [{
+        "id": loc["node"]["id"],
+        "lat": loc["node"]["lat"],
+        "lon": loc["node"]["lon"],
+        "name": loc["node"].get("name", ""),
+        "amenity": loc["node"]["amenity"],
+        "canton": loc["node"]["canton"]
+    } for loc in locations]
+    return results
 
 
 @app.route('/locations', methods=['POST'])
