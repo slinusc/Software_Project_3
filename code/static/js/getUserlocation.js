@@ -3,6 +3,7 @@ export function getUserLocation() {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(position => {
                 const user_latlng = L.latLng(position.coords.latitude, position.coords.longitude);
+                console.log(user_latlng);
                 resolve(user_latlng);
             }, () => {
                 reject(new Error("Unable to retrieve location"));

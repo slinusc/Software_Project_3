@@ -54,7 +54,10 @@ def number_amenities_in_radius(lat, lon, radius=1000):
     ]
 
     result = list(amenities_collection.aggregate(pipeline))
-    return result
+
+    result_dict = {item['_id']: item['count'] for item in result}
+
+    return result_dict
 
 
 def find_k_nearest_amenities(lat, lon, amenity_type, k=5):

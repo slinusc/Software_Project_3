@@ -1,6 +1,5 @@
 import { getUserLocation } from './getUserlocation.js';
 
-
 export let map;
 export let currentTileLayer;
 let currentMarker = null;

@@ -104,8 +104,9 @@
                 <option value="shelter">Shelter</option>
             </select>
 
-            <!-- Einbindung von Chart.js -->
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <canvas id="meinBubbleChart"></canvas>
+
+            <canvas id="meinRadarChart"></canvas>
 
         </div>
     </section>
@@ -116,8 +117,14 @@
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 
+    <!-- Einbindung von Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- JavaScript-Code -->
     <script type="module" src="../static/js/menu.js"></script>
     <script type="module" src="../static/js/chartJs/chartJsAmenityPerCanton.js"></script>
+    <script type="module" src="../static/js/chartJs/chartJsBubbleChart.js"></script>
+    <script type="module" src="../static/js/chartJs/radar.js"></script>
+
 </body>
 </html>
