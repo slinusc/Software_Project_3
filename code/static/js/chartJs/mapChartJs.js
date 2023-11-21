@@ -16,21 +16,30 @@ String.prototype.capitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
+let chart; // Declare chart variable outside the function to keep a reference to the chart instance
+
 function renderMapWithData(amenityData) {
     fetch('https://swiss-maps.interactivethings.io/api/v0?shapes=cantons&format=topojson')
     .then((r) => r.json())
     .then((switzerland) => {
         const cantons = ChartGeo.topojson.feature(switzerland, switzerland.objects.cantons).features;
 
-        // Konvertieren Sie die Daten in ein Format, das für die Karte geeignet ist
+        // Convert the data into a format suitable for the map
         const dataForMap = cantons.map(canton => {
             const cantonId = canton.properties.name;
-            const value = amenityData[cantonId] || 0; // Verwenden Sie 0, wenn keine Daten vorhanden sind
+            const value = amenityData[cantonId] || 0; // Use 0 if no data is available
             return { feature: canton, value: value };
         });
 
         const ctx = document.getElementById("mapTopoJSON").getContext("2d");
-        const chart = new Chart(ctx, {
+
+        // If a chart already exists, destroy it
+        if (chart) {
+            chart.destroy();
+        }
+
+        // Create a new chart
+        chart = new Chart(ctx, {
             type: 'choropleth',
             data: {
                 labels: cantons.map((d) => d.properties.name),
