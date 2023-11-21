@@ -69,7 +69,7 @@ const amenityToIconMap = {
     'bicycle_repair_station': L.icon({iconUrl: '../static/images/Bicycle_repair_station.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'compressed_air': L.icon({iconUrl: '../static/images/compressed_air.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'drinking_water': L.icon({iconUrl: '../static/images/Drinking-water-16.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
-    'shelter': L.icon({iconUrl: '../static/images/Drinking-water-16.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'shelter': L.icon({iconUrl: '../static/images/person-shelter-solid.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
 };
 
 // Aktualisieren der Karte basierend auf den ausgewählten Amenities
