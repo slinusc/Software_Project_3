@@ -399,7 +399,7 @@ body.dark .menu-button:hover .icon{
     color: var(--text-color)
 }
 
-#meinBubbleChart {
+#mapTopoJSON {
             width: 100vw;
             height: 100vh;
         }

@@ -177,11 +177,11 @@ def count_amenities_by_canton(amenity_type):
 
 
 if __name__ == "__main__":
-    """start_time = time.time()
+    start_time = time.time()
     nearest_amenities = find_k_nearest_amenities(47.3769, 8.5417, "bicycle_parking", 5)
     print(nearest_amenities)
     end_time = time.time()
     print(f"Time elapsed: {end_time - start_time} seconds")
 """
     nearest_amenities = number_amenities_in_radius(47.3769, 8.5417, radius=1000)  # 1km, Zürich
-    print(nearest_amenities)
+    print(nearest_amenities)"""

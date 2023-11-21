@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/style.css"/>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -92,7 +92,7 @@
             <h1>Analytics</h1>
 
             <!-- Erstelle ein Canvas-Element für das Diagramm -->
-            <canvas id="amenityChartCanvas"></canvas>
+            <canvas id="mapTopoJSON"></canvas>
 
             <!-- Dropdown-Menü für verschiedene Amenities -->
             <select id="amenitySelect">
@@ -104,7 +104,7 @@
                 <option value="shelter">Shelter</option>
             </select>
 
-            <canvas id="meinBubbleChart"></canvas>
+
 
             <canvas id="meinRadarChart"></canvas>
 
@@ -119,15 +119,14 @@
     <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 
     <!-- Einbindung von Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/chart.js@4"></script>
 
     <!-- Einbindung von Chartjs-Chart-Geo -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo@^3"></script>
+    <script src="https://unpkg.com/chartjs-chart-geo@4"></script>
 
     <!-- JavaScript-Code -->
     <script type="module" src="../static/js/menu.js"></script>
-    <script type="module" src="../static/js/chartJs/chartJsAmenityPerCanton.js"></script>
-    <script type="module" src="../static/js/chartJs/chartJsBubbleChart.js"></script>
+    <script type="module" src="../static/js/chartJs/mapChartJs.js"></script>
     <script type="module" src="../static/js/chartJs/radar.js"></script>
 
 </body>
