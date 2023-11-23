@@ -34,43 +34,50 @@ getUserLocation().then(user_latlng => {
 
 // Funktion zur Aktualisierung des Charts
 function updateChart(labels, data) {
+    // Logarithmierung der Datenpunkte für die Anzeige
+    let logData = data.map(value => Math.log(value + 1)); // +1, um negative Werte zu vermeiden
+
     var ctx = document.getElementById('meinRadarChart').getContext('2d');
     var meinRadarChart = new Chart(ctx, {
-        type: 'radar',
+        type: 'polarArea',
         data: {
-            labels: labels, // Setzen Sie die Labels aus den gefetchten Daten
+            labels: labels,
             datasets: [{
-                label: 'data', // no label
-                data: data, // Setzen Sie die Daten aus den gefetchten Daten
-                backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                pointRadius: 8,
+                label: 'data',
+                data: logData, // Logarithmierte Daten für die Darstellung
+                originalData: data, // Speichern der ursprünglichen Daten im Dataset
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1,
             }]
         },
         options: {
             maintainAspectRatio: true,
             responsive: true,
-            elements: {
-                point: {
-                    clip: false // Setzen Sie dies auf false, um das Abschneiden zu verhindern
-                }
-            },
-            scales: {
-                rAxis: { // Ändern Sie 'r' zu 'rAxis'
-                    type: 'linear',
-                    position: 'bottom',
-                    min: 0,
-                    max: 5,
-                    grid: {
-                        drawBorder: false,
-                        drawTicks: true,
-                        drawOnChartArea: false
-                    },
-                    ticks: {
-                        display: false
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, chartData) {
+                        let label = chartData.labels[tooltipItem.index];
+                        // Zugriff auf die ursprünglichen Daten aus dem Dataset
+                        let originalValue = chartData.datasets[0].originalData[tooltipItem.index];
+                        return label + ': ' + originalValue; // Anzeige des ursprünglichen Werts
                     }
                 }
             },
-            // ...
         }
     });
 }
