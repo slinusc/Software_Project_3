@@ -95,7 +95,7 @@ function renderMapWithData(amenityData) {
                         axis: 'x',
                         quantize: 10, // Erhöhen Sie die Anzahl der Quantisierungsstufen
                         legend: {
-                            position: 'top-right', // Ändern Sie die Position der Legende
+                            position: 'bottom-right', // Ändern Sie die Position der Legende
                             align: 'top', // Ändern Sie die Ausrichtung der Legende
                             ticks: {
                                 // Anpassen der angezeigten Werte auf der Skala
