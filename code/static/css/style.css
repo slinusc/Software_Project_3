@@ -358,6 +358,21 @@ body.dark .location:hover .icon{
   display: none;
 }
 
+.delete-route-button {
+    width: 100%; /* Makes the button span the full width of the container */
+    padding: 10px; /* Adds some padding for better appearance */
+    margin-top: 10px; /* Adds space above the button */
+    background-color: #f44336; /* A red background for visibility */
+    color: white; /* White text for contrast */
+    border: none; /* Removes the default border */
+    border-radius: 5px; /* Optionally adds rounded corners */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+}
+
+.delete-route-button:hover {
+    background-color: #d32f2f; /* Darker shade on hover for interaction feedback */
+}
+
 /* ====== Menu-Button ====== */
 .menu-button {
     position: absolute;
