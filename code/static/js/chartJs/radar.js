@@ -1,6 +1,6 @@
 import {getUserLocation} from '../getUserlocation.js';
 
-let radius = 2000; // Beispiel für Radius
+let radius = 10000; // Beispiel für Radius
 
 // Abrufen der Benutzerposition
 getUserLocation().then(user_latlng => {
@@ -42,7 +42,8 @@ function updateChart(labels, data) {
             datasets: [{
                 label: 'data', // no label
                 data: data, // Setzen Sie die Daten aus den gefetchten Daten
-                backgroundColor: 'rgba(0, 123, 255, 0.5)'
+                backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                pointRadius: 8,
             }]
         },
         options: {
