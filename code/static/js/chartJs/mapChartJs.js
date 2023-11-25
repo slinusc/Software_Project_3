@@ -38,20 +38,47 @@ function getSwitzerlandData(callback) {
 // Deklarieren einer globalen Variablen für die Karte, um sie später zu zerstören
 let chart;
 
-//
+const cantonNameMapping = {
+    'Zürich': 'Zürich',
+    'Bern / Berne': 'Bern',
+    'Luzern': 'Luzern',
+    'Uri': 'Uri',
+    'Schwyz': 'Schwyz',
+    'Obwalden': 'Obwalden',
+    'Nidwalden': 'Nidwalden',
+    'Glarus': 'Glarus',
+    'Zug': 'Zug',
+    'Fribourg / Freiburg': 'Freiburg',
+    'Solothurn': 'Solothurn',
+    'Basel-Stadt': 'Basel-Stadt',
+    'Basel-Landschaft': 'Basel-Landschaft',
+    'Schaffhausen': 'Schaffhausen',
+    'Appenzell Ausserrhoden': 'Appenzell Ausserrhoden',
+    'Appenzell Innerrhoden': 'Appenzell Innerrhoden',
+    'St. Gallen': 'St. Gallen',
+    'Graubünden / Grigioni / Grischun': 'Graubünden',
+    'Aargau': 'Aargau',
+    'Thurgau': 'Thurgau',
+    'Ticino': 'Tessin',
+    'Vaud': 'Waadt',
+    'Valais / Wallis': 'Wallis',
+    'Neuchâtel': 'Neuenburg',
+    'Genève': 'Genf',
+    'Jura': 'Jura'
+};
+
 function renderMapWithData(amenityData) {
     getSwitzerlandData((switzerland) => {
         const cantons = ChartGeo.topojson.feature(switzerland, switzerland.objects.cantons).features;
 
         // Konvertieren der Rohdaten in das richtige Format für die Karte
         const dataForMap = cantons.map(canton => {
-            const cantonId = canton.properties.name;
+            const cantonId = cantonNameMapping[canton.properties.name]; // Verwenden Sie das Mapping, um den Namen zu aktualisieren
             const value = amenityData[cantonId] || 0;
             return { feature: canton, value: value };
         });
 
-        // Erstellen einer wurzelskalierten Farbskala für die Karte
-        const colorScale = d3.scaleSqrt()
+        const colorScale = d3.scaleLinear() // scaleSqrt() für Wurzelskalierung
             .domain([1, d3.max(dataForMap, d => d.value)])
             .range([0, 1])
             .interpolate(() => d3.interpolateBlues);

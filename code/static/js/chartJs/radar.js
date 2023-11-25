@@ -1,6 +1,6 @@
 import {getUserLocation} from '../getUserlocation.js';
 
-let radius = 10000; // Beispiel für Radius
+let radius = 2000; // Beispiel für Radius
 
 // Abrufen der Benutzerposition
 getUserLocation().then(user_latlng => {
@@ -34,6 +34,7 @@ getUserLocation().then(user_latlng => {
 
 // Funktion zur Aktualisierung des Charts
 function updateChart(labels, data) {
+    console.log('updateChart aufgerufen');
     // Logarithmierung der Datenpunkte für die Anzeige
     let logData = data.map(value => Math.log(value + 1)); // +1, um negative Werte zu vermeiden
 
@@ -66,18 +67,31 @@ function updateChart(labels, data) {
             }]
         },
         options: {
-            maintainAspectRatio: true,
-            responsive: true,
-            tooltips: {
-                callbacks: {
-                    label: function(tooltipItem, chartData) {
-                        let label = chartData.labels[tooltipItem.index];
-                        // Zugriff auf die ursprünglichen Daten aus dem Dataset
-                        let originalValue = chartData.datasets[0].originalData[tooltipItem.index];
-                        return label + ': ' + originalValue; // Anzeige des ursprünglichen Werts
-                    }
+            scales: {
+                r: {
+                    ticks: {
+                        display: false,
+                    },
+                    display: true,
                 }
             },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].label;
+                        },
+                        label: function(context) {
+                            console.log('label Funktion aufgerufen');
+                            let originalValue = context.dataset.originalData[context.dataIndex];
+                            return originalValue;
+                        }
+                    }
+                },
+                legend: {
+                    position: 'right'
+                }
+            }
         }
     });
 }
