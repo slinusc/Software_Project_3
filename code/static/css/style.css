@@ -418,3 +418,48 @@ body.dark .menu-button:hover .icon{
             width: 100vw;
             height: 100vh;
         }
+
+
+
+
+/* ====== Neuer Menu-Button ====== */
+.menu-button1 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    bottom: 5px;
+    right: 50px; /* Ändern Sie die Position nach Bedarf */
+    border-radius: 6px;
+    background-color: rgba(246, 245, 255, 0.8);
+    z-index: 1001;
+    border: none;
+}
+
+.menu-button1 .icon{
+    font-size: 20px;
+}
+
+.menu-button1:hover {
+    background-color: var(--primary-color);
+}
+
+.menu-button1:hover .icon{
+    color: var(--sidebar-color);
+}
+
+/* ====== Neues Checkbox-Menü ====== */
+.checkbox-menu1 {
+    position: absolute;
+    bottom: 70px;
+    right: 10px; /* Ändern Sie die Position nach Bedarf */
+    z-index: 1000;
+    background-color: rgba(246, 245, 255, 0.8); /* Hier können Sie die Deckkraft anpassen */
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 210px;
+}
+
+
