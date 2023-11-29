@@ -34,7 +34,6 @@ getUserLocation().then(user_latlng => {
 
 // Funktion zur Aktualisierung des Charts
 function updateChart(labels, data) {
-    console.log('updateChart aufgerufen');
     // Logarithmierung der Datenpunkte für die Anzeige
     let logData = data.map(value => Math.log(value + 1)); // +1, um negative Werte zu vermeiden
 
@@ -82,7 +81,6 @@ function updateChart(labels, data) {
                             return context[0].label;
                         },
                         label: function(context) {
-                            console.log('label Funktion aufgerufen');
                             let originalValue = context.dataset.originalData[context.dataIndex];
                             return originalValue;
                         }
