@@ -83,25 +83,68 @@
         <div class="container">
             <h1>Analytics</h1>
 
-            <canvas id="meinRadarChart"></canvas>
+            <!-- Container für Radar-Diagram -->
+            <div class="diagram-container">
+                <div>
+                   <canvas id="meinRadarChart"></canvas>
+                </div>
 
-            <canvas id="meinBubble"></canvas>
-
-            <!-- Erstelle ein Canvas-Element für das Diagramm -->
-            <canvas id="mapTopoJSON"></canvas>
-
-            <!-- Dropdown-Menü für verschiedene Amenities -->
-            <select id="amenitySelect">
-                <option value="bicycle_parking">Bicycle Parking</option>
-                <option value="bicycle_repair_station">Repair Station</option>
-                <option value="bicycle_rental">Bicycle Rental</option>
-                <option value="compressed_air">Compressed Air</option>
-                <option value="drinking_water">Drinking Water</option>
-                <option value="shelter">Shelter</option>
-            </select>
+                <!-- Menu Button -->
+                <div>
+                    <button id="toggleMenu1" class="menu-button">
+                        <i class='bx bx-menu icon'></i>
+                    </button>
+                </div>
 
 
-        </div>
+                <!-- Checkboxen Container -->
+                <div id="checkboxMenu1" class="hidden checkbox-menu1">
+                    <div class="checkbox-item">
+                        <input type="radio" id="radius_1" name="radius" value="1000">
+                        <label for="radius_1">1 km</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" id="radius_2" name="radius" value="2000">
+                        <label for="radius_2">2 km</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" id="radius_3" name="radius" value="5000">
+                        <label for="radius_3">5 km</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" id="radius_4" name="radius" value="10000">
+                        <label for="radius_4">10 km</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" id="radius_5" name="radius" value="20000">
+                        <label for="radius_5">20 km</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Container für Map-Diagram -->
+            <div class="diagram-container">
+                <!-- Erstelle ein Canvas-Element für das Diagramm -->
+                <canvas id="mapTopoJSON"></canvas>
+
+                <!-- Dropdown-Menü für verschiedene Amenities -->
+                <select id="amenitySelect">
+                    <option value="bicycle_parking">Bicycle Parking</option>
+                    <option value="bicycle_repair_station">Repair Station</option>
+                    <option value="bicycle_rental">Bicycle Rental</option>
+                    <option value="compressed_air">Compressed Air</option>
+                    <option value="drinking_water">Drinking Water</option>
+                    <option value="shelter">Shelter</option>
+                </select>
+
+            </div>
+
+            <div class="diagram-container">
+                <!-- Erstelle ein Canvas-Element für das Diagramm -->
+                <canvas id="meinBubble"></canvas>
+            </div>
+
     </section>
 
     <!-- Leaflet JS -->

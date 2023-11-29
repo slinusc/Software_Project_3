@@ -340,6 +340,52 @@ body.dark .location:hover .icon{
     transition: var(--tran-05);
 }
 
+/* ====== Delete Route Button ====== */
+.deletebtn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    bottom: 15px;
+    right: 130px;
+    border-radius: 6px;
+    background-color: rgba(246, 245, 255, 0.8);
+    z-index: 1000;
+    border: none;
+}
+
+.deletebtn .icon {
+    font-size: 20px;
+}
+
+.deletebtn:hover {
+    background-color: var(--primary-color);
+}
+
+.deletebtn:hover .icon{
+    color: var(--sidebar-color)
+}
+
+body.dark .deletebtn {
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+}
+
+body.dark .deletebtn:hover {
+    background-color: var(--primary-color);
+}
+
+body.dark .deletebtn:hover .icon{
+    color: var(--text-color)
+}
+
+.sidebar.open ~ .deletebtn {
+    left: 230px;
+    transition: var(--tran-05);
+}
+
 /* ====== Checkbox ====== */
 .checkbox-menu {
     position: absolute;
@@ -350,27 +396,13 @@ body.dark .location:hover .icon{
     padding: 10px;
     border-radius: 6px;
     max-width: 210px;
+    min-width: 170px;
 }
 
 
 /* Hide Checkbox-Menu */
 .hidden {
   display: none;
-}
-
-.delete-route-button {
-    width: 100%; /* Makes the button span the full width of the container */
-    padding: 10px; /* Adds some padding for better appearance */
-    margin-top: 10px; /* Adds space above the button */
-    background-color: #f44336; /* A red background for visibility */
-    color: white; /* White text for contrast */
-    border: none; /* Removes the default border */
-    border-radius: 5px; /* Optionally adds rounded corners */
-    cursor: pointer; /* Changes the cursor to a pointer on hover */
-}
-
-.delete-route-button:hover {
-    background-color: #d32f2f; /* Darker shade on hover for interaction feedback */
 }
 
 /* ====== Menu-Button ====== */
@@ -418,3 +450,48 @@ body.dark .menu-button:hover .icon{
             width: 100vw;
             height: 100vh;
         }
+
+
+
+
+/* ====== Neuer Menu-Button ====== */
+.menu-button1 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    bottom: 5px;
+    right: 50px; /* Ändern Sie die Position nach Bedarf */
+    border-radius: 6px;
+    background-color: rgba(246, 245, 255, 0.8);
+    z-index: 1001;
+    border: none;
+}
+
+.menu-button1 .icon{
+    font-size: 20px;
+}
+
+.menu-button1:hover {
+    background-color: var(--primary-color);
+}
+
+.menu-button1:hover .icon{
+    color: var(--sidebar-color);
+}
+
+/* ====== Neues Checkbox-Menü - Radar Chart ====== */
+.checkbox-menu1 {
+    position: absolute;
+    bottom: 70px;
+    right: 10px; /* Ändern Sie die Position nach Bedarf */
+    z-index: 1000;
+    background-color: rgba(246, 245, 255, 0.8); /* Hier können Sie die Deckkraft anpassen */
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 210px;
+}
+
+

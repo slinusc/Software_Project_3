@@ -1,5 +1,16 @@
 import {getUserLocation} from '../getUserlocation.js';
 
+// initialisierung des Menu Buttons
+document.getElementById('toggleMenu1').addEventListener('click', function() {
+    var menu = document.getElementById('checkboxMenu1');
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+    } else {
+        menu.classList.add('hidden');
+    }
+});
+
+
 let radius = 2000; // Beispiel für Radius
 
 // Abrufen der Benutzerposition
