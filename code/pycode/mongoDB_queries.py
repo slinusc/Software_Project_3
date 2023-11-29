@@ -100,7 +100,7 @@ def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
             "distance": amenity["distance"]
         })
 
-    result_json = json.dumps(result)
+    result_json = result
     return result_json
 
 
@@ -141,13 +141,13 @@ def get_address_from_coords(lat, lon):
         # Extrahieren der gewünschten Felder aus der Antwort
         road = data.get("address", {}).get("road", "")
         house_number = data.get("address", {}).get("house_number", "")
-        town = data.get("address", {}).get("town", "")
+        city = data.get("address", {}).get("city", "")
         postcode = data.get("address", {}).get("postcode", "")
         # Formatieren der Adresse
         if house_number:
-            address = f"{road} {house_number}, {town}, {postcode}"
+            address = f"{road} {house_number}, {postcode} {city}"
         else:
-            address = f"{road}, {postcode}"
+            address = f"{road}, {postcode} {city}"
         return address.strip()
     return "Adresse nicht verfügbar"
 
@@ -178,7 +178,7 @@ def count_amenities_by_canton(amenity_type):
 
 if __name__ == "__main__":
     start_time = time.time()
-    nearest_amenities = find_k_nearest_amenities(47.3769, 8.5417, "bicycle_parking", 5)
+    nearest_amenities = find_k_nearest_amenities(47.3759744, 8.5295104, "bicycle_parking", 5)
     print(nearest_amenities)
     end_time = time.time()
     print(f"Time elapsed: {end_time - start_time} seconds")

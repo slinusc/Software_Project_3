@@ -1,61 +1,52 @@
-import {getUserLocation} from '../getUserlocation.js';
+import { getUserLocation } from '../getUserlocation.js';
 
-// initialisierung des Menu Buttons
-document.getElementById('toggleMenu1').addEventListener('click', function() {
-    var menu = document.getElementById('checkboxMenu1');
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-    } else {
-        menu.classList.add('hidden');
-    }
-});
+let meinRadarChart = null; // Globale Variable für das Chart-Objekt
 
+// Funktion zum Abrufen von Annehmlichkeiten in einem bestimmten Radius
+function fetchAmenities(radius) {
+    getUserLocation().then(user_latlng => {
+        let lat = user_latlng.lat;
+        let lon = user_latlng.lng;
 
-let radius = 2000; // Beispiel für Radius
-
-// Abrufen der Benutzerposition
-getUserLocation().then(user_latlng => {
-    let lat = user_latlng.lat;
-    let lon = user_latlng.lng;
-
-    fetch('/number_amenities_in_radius', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            lat: lat,
-            lon: lon,
-            radius: radius
+        fetch('/number_amenities_in_radius', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                lat: lat,
+                lon: lon,
+                radius: radius
+            })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Extrahieren Sie die Labels und Daten aus der Antwort
-        let labels = Object.keys(data);
-        let dataPoints = Object.values(data);
-
-        // Aktualisieren Sie das Diagramm
-        updateChart(labels, dataPoints);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
+        .then(response => response.json())
+        .then(data => {
+            let labels = Object.keys(data);
+            let dataPoints = Object.values(data);
+            updateChart(labels, dataPoints);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     });
-});
+}
 
 // Funktion zur Aktualisierung des Charts
 function updateChart(labels, data) {
-    // Logarithmierung der Datenpunkte für die Anzeige
-    let logData = data.map(value => Math.log(value + 1)); // +1, um negative Werte zu vermeiden
+    // Wenn das Diagramm bereits existiert, zerstören Sie es
+    if (meinRadarChart) {
+        meinRadarChart.destroy();
+    }
 
+    let logData = data.map(value => Math.log(value + 1)); // +1, um zu verhindern, dass 0 logarithmiert wird
     var ctx = document.getElementById('meinRadarChart').getContext('2d');
-    var meinRadarChart = new Chart(ctx, {
+    meinRadarChart = new Chart(ctx, {
         type: 'polarArea',
         data: {
             labels: labels,
             datasets: [{
-                label: 'data',
-                data: logData, // Logarithmierte Daten für die Darstellung
+                label: 'Data',
+                data: logData,// Logarithmierte Daten für die Darstellung
                 originalData: data, // Speichern der ursprünglichen Daten im Dataset
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
@@ -104,3 +95,12 @@ function updateChart(labels, data) {
         }
     });
 }
+
+
+// Event-Listener für die Auswahl des Radius
+document.getElementById('radiusSelect').addEventListener('change', function() {
+    let selectedRadius = parseInt(this.value);
+    fetchAmenities(selectedRadius);
+});
+
+fetchAmenities(1000); // Beispielradius als Startwert

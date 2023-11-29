@@ -89,37 +89,15 @@
                    <canvas id="meinRadarChart"></canvas>
                 </div>
 
-                <!-- Menu Button -->
-                <div>
-                    <button id="toggleMenu1" class="menu-button">
-                        <i class='bx bx-menu icon'></i>
-                    </button>
-                </div>
-
-
                 <!-- Checkboxen Container -->
-                <div id="checkboxMenu1" class="hidden checkbox-menu1">
-                    <div class="checkbox-item">
-                        <input type="radio" id="radius_1" name="radius" value="1000">
-                        <label for="radius_1">1 km</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="radius_2" name="radius" value="2000">
-                        <label for="radius_2">2 km</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="radius_3" name="radius" value="5000">
-                        <label for="radius_3">5 km</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="radius_4" name="radius" value="10000">
-                        <label for="radius_4">10 km</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="radius_5" name="radius" value="20000">
-                        <label for="radius_5">20 km</label>
-                    </div>
-                </div>
+
+                <select name="radius" id="radiusSelect">
+                    <option value="1000">1 km</option>
+                    <option value="2000">2 km</option>
+                    <option value="5000">5 km</option>
+                    <option value="10000">10 km</option>
+                    <option value="20000">20 km</option>
+                </select>
 
             </div>
 
@@ -140,11 +118,22 @@
 
             </div>
 
+            <!-- Container für Bubble-Diagram -->
             <div class="diagram-container">
                 <!-- Erstelle ein Canvas-Element für das Diagramm -->
-                <canvas id="meinBubble"></canvas>
-            </div>
+                <canvas id="meinGeoBubbleChart"></canvas>
 
+                <!-- Dropdown-Menü für verschiedene Amenities -->
+                <select id="amenitySelect2">
+                    <option value="bicycle_parking">Bicycle Parking</option>
+                    <option value="bicycle_repair_station">Repair Station</option>
+                    <option value="bicycle_rental">Bicycle Rental</option>
+                    <option value="compressed_air">Compressed Air</option>
+                    <option value="drinking_water">Drinking Water</option>
+                    <option value="shelter">Shelter</option>
+                </select>
+            </div>
+        </div>
     </section>
 
     <!-- Leaflet JS -->
