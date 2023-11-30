@@ -257,8 +257,6 @@ body.dark .switch::before{
     left: 24px;
 }
 
-/* ====== Main-Section ====== */
-
 .home{
     position: relative;
     height: 100vh;
@@ -454,9 +452,7 @@ body.dark .menu-button:hover .icon{
         }
 
 
-
-
-/* ====== Neuer Menu-Button für Radar Chart ====== */
+/* ====== Neuer Menu-Button ====== */
 .menu-button1 {
     position: absolute;
     display: flex;
