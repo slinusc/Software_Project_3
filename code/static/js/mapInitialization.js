@@ -39,7 +39,6 @@ export function initializeMap() {
 }
 
 // Lokalisieren des Benutzers auf der Karte
-
 export function placeCurrentUserMarkerOnMap() {
     getUserLocation()
         .then(user_latlng => {
@@ -47,7 +46,8 @@ export function placeCurrentUserMarkerOnMap() {
                 map.removeLayer(currentMarker);
             }
             currentMarker = L.marker(user_latlng, {icon: bikeIcon, draggable: false}).addTo(map);
-            map.setView(user_latlng, 15, { animate: true }); // Zoom auf den Marker
+            let currentZoom = map.getZoom(); // Aktuellen Zoom-Level abrufen
+            map.setView(user_latlng, currentZoom, { animate: true }); // Zoom auf den Marker
         })
         .catch(error => {
             alert(error.message);
@@ -98,9 +98,18 @@ export function updateAmenitiesMap(map) {
         }
 
         // Erstellt eine neue MarkerClusterGroup
-        const markers = L.markerClusterGroup({
+        var markers = L.markerClusterGroup({
+            spiderfyOnMaxZoom: false,
+            showCoverageOnHover: false,
             maxClusterRadius: 40,
-            disableClusteringAtZoom: 18,
+            disableClusteringAtZoom: 20,
+            iconCreateFunction: function(cluster) {
+                return L.divIcon({
+                    html: '<div class="cluster-bubble">' + cluster.getChildCount() + '</div>',
+                    className: 'marker-cluster',
+                    iconSize: L.point(40, 40)
+                });
+            }
         });
 
         // Hinzufügen von neuen Markern zum Cluster basierend auf dem Amenity-Typ

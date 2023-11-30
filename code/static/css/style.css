@@ -360,7 +360,7 @@ body.dark .location:hover .icon{
     position: absolute;
     display: flex;
     align-items: center;
-    padding: 15px 15px;
+    padding: 12px 12px;
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
     bottom: 15px;
@@ -372,7 +372,7 @@ body.dark .location:hover .icon{
 }
 
 .deletebtn .icon {
-    font-size: 20px;
+    font-size: 26px;
 }
 
 .deletebtn:hover {
@@ -466,27 +466,6 @@ body.dark .menu-button:hover .icon{
             height: 100vh;
         }
 
-
-/* ====== Neuer Menu-Button ====== */
-.menu-button1 {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    padding: 15px 15px;
-    text-decoration: none;
-    transition: background-color 0.2s, color 0.2s;
-    bottom: 5px;
-    right: 50px; /* Ändern Sie die Position nach Bedarf */
-    border-radius: 6px;
-    background-color: rgba(246, 245, 255, 0.8);
-    z-index: 1001;
-    border: none;
-}
-
-.menu-button1 .icon{
-    font-size: 20px;
-}
-
 .menu-button1:hover {
     background-color: var(--primary-color);
 }
@@ -507,8 +486,20 @@ body.dark .menu-button:hover .icon{
     max-width: 210px;
 }
 
-/* =========31.11.23========= */
+/* ====== Amenity Cluster Bubbles ====== */
+.cluster-bubble {
+    background-color: rgba(15, 47, 255, 0.8); /* Dunkleres Hellblau */
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    opacity: 0.6;
+}
 
+/* =========31.11.23========= */
 
 .home {
     display: flex;
