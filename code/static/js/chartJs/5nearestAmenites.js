@@ -31,13 +31,16 @@ function createGeoBubbleChart(userLocation, data) {
     canvas.width = size;
     canvas.height = size;
 
+    // Sortieren der Daten nach Distanz
+    const sortedData = data.sort((a, b) => a.distance - b.distance);
+
     const bubbleChartData = {
         datasets: [{
             label: 'Nearest Amenities',
-            data: data.map(item => ({
+            data: sortedData.map((item, index) => ({
                 x: (item.coordinates[0] - userLocation.lng) * 1000, // Skalierung der Longitude
                 y: (item.coordinates[1] - userLocation.lat) * 1000, // Skalierung der Latitude
-                r: 20, // Fester Radius für alle Blasen
+                r: 25 - index * 5, // Größe basierend auf dem Index in der sortierten Liste
                 distance: item.distance, // Speichern der ursprünglichen Distanz
                 address: item.address
             })),
