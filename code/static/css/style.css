@@ -507,4 +507,74 @@ body.dark .menu-button:hover .icon{
     max-width: 210px;
 }
 
+/* =========31.11.23========= */
 
+
+.home {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Höhe des .home-Containers ist die volle Höhe des Viewports */
+}
+
+/* Container für Diagramme mit flexibler Anzeige für eine proportionale Größe */
+.diagram-container {
+    display: flex;
+    height: 48.5vh; /* 50% der Höhe des .home-Containers */
+
+    gap: 5px;
+    justify-content: space-around;
+}
+
+.diagram-container .chart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 20px; /* oder ein anderer gewünschter Wert */
+    position: relative;
+    width: 100%; /* Sorgt dafür, dass der Wrapper die volle Breite nutzt */
+}
+
+#meinGeoBubbleChart {
+    max-width: 90%; /* Beschränkt die Breite auf den Container */
+    max-height: 90%; /* Beschränkt die Höhe auf den Container */
+    object-fit: contain; /* Stellt sicher, dass das Bild nicht verzerrt wird */
+}
+
+.diagram-container canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
+    max-height: 90%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
+    object-fit: cover; /* Füllt den verfügbaren Raum aus, ohne das Seitenverhältnis zu verzerren */
+}
+
+/* Container für die Karte mit der vollen verbleibenden Höhe */
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(50vh - 40px); /* Abzüglich des Padding von .diagram-container */
+    width: 100%;
+    padding: 20px;
+}
+
+#meinRadarChart {
+    max-width: 75%; /* Beschränkt die Breite auf den Container */
+    max-height: 75%; /* Beschränkt die Höhe auf den Container */
+    object-fit: contain; /* Stellt sicher, dass das Bild nicht verzerrt wird */
+}
+
+/* Die Karte passt sich der Größe des Containers an */
+.map-container canvas {
+    max-width: 100%; /* Beschränkt die Breite auf den Container */
+    max-height: 100%; /* Beschränkt die Höhe auf den Container */
+    object-fit: contain; /* Stellt sicher, dass das Bild nicht verzerrt wird */
+}
+
+.dropdown-menus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -12,6 +12,7 @@ cache = Cache(app)
 
 
 # Routes
+@cache.cached(timeout=300)
 @app.route('/')
 def index():
     return render_template('index.html')

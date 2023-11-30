@@ -61,11 +61,6 @@ function createGeoBubbleChart(userLocation, data) {
         type: 'bubble',
         data: bubbleChartData,
         options: {
-
-            aspectRatio: 1, // Quadratisches Darstellungsverhältnis
-            layout: {
-                padding: 20 // Setzen Sie dies auf den Radius Ihrer Bubbles
-            },
             scales: {
                 x: {
                     display: false, // x-Achse ausblenden
@@ -122,12 +117,12 @@ function createGeoBubbleChart(userLocation, data) {
                 let yAxis = chart.scales.y;
                 let centerX = xAxis.getPixelForValue(0);
                 let centerY = yAxis.getPixelForValue(0);
-                let maxRadius = Math.max(xAxis.width, yAxis.height) /2;
+                let maxRadius = (Math.max(xAxis.width, yAxis.height) /2);
 
                 ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)'; // Standardfarbe für Linien in Chart.js
 
                 // Weitere Kreise zeichnen, falls gewünscht
-                let totalCircles = 6;
+                let totalCircles = 7;
                 for (let i = 1; i <= totalCircles; i++) {
                     let currentRadius = (i / totalCircles) * maxRadius;
                     ctx.beginPath();

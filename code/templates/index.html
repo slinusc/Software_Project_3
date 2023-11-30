@@ -145,12 +145,19 @@
             <!-- Analytics-Inhalte werden hier dynamisch geladen -->
             <!-- Container für Radar-Diagram -->
             <div class="diagram-container">
-                <div>
+
+                <div class="chart-wrapper">
                    <canvas id="meinRadarChart"></canvas>
                 </div>
 
-                <!-- Checkboxen Container -->
+                <div class="chart-wrapper">
+                    <canvas id="meinGeoBubbleChart"></canvas>
+                </div>
+            </div>
 
+
+            <div class="dropdown-menus">
+                <!-- Dropdown-Menü für Radius -->
                 <select name="radius" id="radiusSelect">
                     <option value="1000">1 km</option>
                     <option value="2000">2 km</option>
@@ -158,30 +165,6 @@
                     <option value="10000">10 km</option>
                     <option value="20000">20 km</option>
                 </select>
-
-            </div>
-
-            <!-- Container für Map-Diagram -->
-            <div class="diagram-container">
-                <!-- Erstelle ein Canvas-Element für das Diagramm -->
-                <canvas id="mapTopoJSON"></canvas>
-
-                <!-- Dropdown-Menü für verschiedene Amenities -->
-                <select id="amenitySelect">
-                    <option value="bicycle_parking">Bicycle Parking</option>
-                    <option value="bicycle_repair_station">Repair Station</option>
-                    <option value="bicycle_rental">Bicycle Rental</option>
-                    <option value="compressed_air">Compressed Air</option>
-                    <option value="drinking_water">Drinking Water</option>
-                    <option value="shelter">Shelter</option>
-                </select>
-
-            </div>
-
-            <!-- Container für Bubble-Diagram -->
-            <div class="diagram-container">
-                <!-- Erstelle ein Canvas-Element für das Diagramm -->
-                <canvas id="meinGeoBubbleChart"></canvas>
 
                 <!-- Dropdown-Menü für verschiedene Amenities -->
                 <select id="amenitySelect2">
@@ -193,6 +176,25 @@
                     <option value="shelter">Shelter</option>
                 </select>
             </div>
+
+
+            <!-- Erstelle ein Canvas-Element für das Diagramm -->
+            <div class="map-container">
+                <canvas id="mapTopoJSON"></canvas>
+            </div>
+
+            <!-- Dropdown-Menü für verschiedene Amenities -->
+            <select id="amenitySelect">
+                <option value="bicycle_parking">Bicycle Parking</option>
+                <option value="bicycle_repair_station">Repair Station</option>
+                <option value="bicycle_rental">Bicycle Rental</option>
+                <option value="compressed_air">Compressed Air</option>
+                <option value="drinking_water">Drinking Water</option>
+                <option value="shelter">Shelter</option>
+            </select>
+
+
+
         </div>
 
         <!-- Section für Analytics -->

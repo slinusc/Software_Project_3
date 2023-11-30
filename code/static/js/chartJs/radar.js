@@ -90,6 +90,7 @@ function updateChart(labels, data) {
                     }
                 },
                 legend: {
+                    display: false,
                     position: 'right'
                 }
             }
