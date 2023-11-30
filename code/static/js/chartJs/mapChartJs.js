@@ -109,6 +109,9 @@ function renderMapWithData(amenityData) {
             },
             options: {
                 plugins: {
+                    tooltip: {
+                        displayColors: false
+                    },
                     legend: {
                         display: false
                     },

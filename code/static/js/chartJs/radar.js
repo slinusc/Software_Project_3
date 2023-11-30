@@ -78,6 +78,7 @@ function updateChart(labels, data) {
             },
             plugins: {
                 tooltip: {
+                    displayColors: false,
                     callbacks: {
                         title: function(context) {
                             return context[0].label;
