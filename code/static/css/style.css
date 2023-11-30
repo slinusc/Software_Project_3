@@ -294,6 +294,21 @@ body.dark .switch::before{
     cursor: pointer;
 }
 
+.home .content-section {
+    display: none; /* Standardmäßig verstecken */
+    position: absolute; /* Oder 'relative', je nach Bedarf */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Falls notwendig */
+}
+
+/* Zeigt die aktive Section an */
+.home .content-section.active {
+    display: block;
+}
+
 /* ====== Location Button ====== */
 .location {
     position: absolute;

@@ -13,21 +13,8 @@ cache = Cache(app)
 
 # Routes
 @app.route('/')
-@cache.cached(timeout=300)
 def index():
     return render_template('index.html')
-
-
-@app.route('/analytics')
-@cache.cached(timeout=300)
-def analytics():
-    return render_template('analytics.html')
-
-
-@app.route('/about')
-@cache.cached(timeout=300)
-def about():
-    return render_template('about.html')
 
 
 @app.route('/locations', methods=['POST'])

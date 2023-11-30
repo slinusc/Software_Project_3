@@ -1,6 +1,6 @@
 import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker, updateAmenitiesMap } from './mapInitialization.js';
 import { navigateToCoordinates } from './routing.js';
-import { saveMapDarkModeState } from './menu.js';
+import {saveMapDarkModeState} from "./menu.js";
 
 
 // JavaScript Map ---------------------------------------------
