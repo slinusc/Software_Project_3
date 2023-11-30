@@ -488,7 +488,7 @@ body.dark .menu-button:hover .icon{
 
 /* ====== Amenity Cluster Bubbles ====== */
 .cluster-bubble {
-    background-color: rgba(15, 47, 255, 0.8); /* Dunkleres Hellblau */
+    background-color: rgba(77, 142, 255, 0.8); /* Dunkleres Hellblau */
     border-radius: 50%;
     color: white;
     display: flex;
@@ -496,7 +496,7 @@ body.dark .menu-button:hover .icon{
     justify-content: center;
     height: 40px;
     width: 40px;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 /* =========31.11.23========= */
