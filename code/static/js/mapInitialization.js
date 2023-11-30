@@ -6,12 +6,25 @@ let currentMarker = null;
 const START_COORDINATES = [47.497366, 8.7297876];
 const START_ZOOM_LEVEL = 13;
 
-const bikeIcon = L.icon({
-    iconUrl: '../static/images/person-biking-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 38],
-    popupAnchor: [0, -38]
-});
+// Funktion zum Erstellen des Icons je nach Modus
+export function getBikeIcon(darkModeEnabled) {
+    if (darkModeEnabled) {
+        return L.icon({
+            iconUrl: '../static/images/person-biking-solid-weiss.svg',
+            iconSize: [38, 38],
+            iconAnchor: [19, 38],
+            popupAnchor: [0, -38]
+        });
+    }
+    const bikeIcon = L.icon({
+        iconUrl: '../static/images/person-biking-solid.svg',
+        iconSize: [38, 38],
+        iconAnchor: [19, 38],
+        popupAnchor: [0, -38]
+    });
+
+    return bikeIcon;
+}
 
 // initialize map
 
@@ -38,8 +51,12 @@ export function initializeMap() {
     placeCurrentUserMarkerOnMap();
 }
 
+// Verwenden Sie die Funktion, um das Icon zu erhalten
+
+
 // Lokalisieren des Benutzers auf der Karte
-export function placeCurrentUserMarkerOnMap() {
+export function placeCurrentUserMarkerOnMap(darkModeEnabled) {
+    const bikeIcon = getBikeIcon(darkModeEnabled);
     getUserLocation()
         .then(user_latlng => {
             if (currentMarker) {
@@ -68,7 +85,7 @@ const amenityToIconMap = {
     'bicycle_rental': L.icon({iconUrl: '../static/images/Rental-bicycle.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'bicycle_repair_station': L.icon({iconUrl: '../static/images/Bicycle_repair_station.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'compressed_air': L.icon({iconUrl: '../static/images/compressed_air.png', iconSize: icon_size, iconAnchor: icon_anchor}),
-    'drinking_water': L.icon({iconUrl: '../static/images/Drinking-water-16.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'drinking_water': L.icon({iconUrl: '../static/images/120px-Drinking-water-16.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'shelter': L.icon({iconUrl: '../static/images/person-shelter-solid.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
 };
 
