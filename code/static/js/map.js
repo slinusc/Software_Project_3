@@ -1,5 +1,5 @@
 import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker, updateAmenitiesMap } from './mapInitialization.js';
-import { navigateToCoordinates } from './routing.js';
+import { navigateToCoordinates, deleteRoute } from './routing.js';
 import {saveMapDarkModeState} from "./menu.js";
 
 
@@ -52,6 +52,10 @@ window.addEventListener('amenityClicked', function(e) {
     navigateToCoordinates(map, start_latlon, end_latlon);
 });
 
+// Event-Listener für den "Route löschen"-Button
+document.getElementById('delete-btn').addEventListener('click', function() {
+    deleteRoute(map);
+});
 
 // Event-listener für Wechsel zwischen hellen und dunklen Kartenmodus
 document.querySelector('.toggle-switch').addEventListener('click', function() {

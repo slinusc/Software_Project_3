@@ -530,15 +530,9 @@ body.dark .menu-button:hover .icon{
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    padding: 20px; /* oder ein anderer gewünschter Wert */
+    padding: 10px; /* oder ein anderer gewünschter Wert */
     position: relative;
     width: 100%; /* Sorgt dafür, dass der Wrapper die volle Breite nutzt */
-}
-
-#meinGeoBubbleChart {
-    max-width: 90%; /* Beschränkt die Breite auf den Container */
-    max-height: 90%; /* Beschränkt die Höhe auf den Container */
-    object-fit: contain; /* Stellt sicher, dass das Bild nicht verzerrt wird */
 }
 
 .diagram-container canvas {
@@ -546,8 +540,8 @@ body.dark .menu-button:hover .icon{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 90%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
-    max-height: 90%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
+    max-width: 80%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
+    max-height: 80%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
     object-fit: cover; /* Füllt den verfügbaren Raum aus, ohne das Seitenverhältnis zu verzerren */
 }
 
@@ -559,12 +553,6 @@ body.dark .menu-button:hover .icon{
     height: calc(50vh - 40px); /* Abzüglich des Padding von .diagram-container */
     width: 100%;
     padding: 20px;
-}
-
-#meinRadarChart {
-    max-width: 75%; /* Beschränkt die Breite auf den Container */
-    max-height: 75%; /* Beschränkt die Höhe auf den Container */
-    object-fit: contain; /* Stellt sicher, dass das Bild nicht verzerrt wird */
 }
 
 /* Die Karte passt sich der Größe des Containers an */
