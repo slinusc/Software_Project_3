@@ -6,12 +6,25 @@ let currentMarker = null;
 const START_COORDINATES = [47.497366, 8.7297876];
 const START_ZOOM_LEVEL = 13;
 
-const bikeIcon = L.icon({
-    iconUrl: '../static/images/person-biking-solid.svg',
-    iconSize: [38, 38],
-    iconAnchor: [19, 38],
-    popupAnchor: [0, -38]
-});
+// Funktion zum Erstellen des Icons je nach Modus
+export function getBikeIcon(darkModeEnabled) {
+    if (darkModeEnabled) {
+        return L.icon({
+            iconUrl: '../static/images/person-biking-solid-weiss.svg',
+            iconSize: [38, 38],
+            iconAnchor: [19, 38],
+            popupAnchor: [0, -38]
+        });
+    }
+    const bikeIcon = L.icon({
+        iconUrl: '../static/images/person-biking-solid.svg',
+        iconSize: [38, 38],
+        iconAnchor: [19, 38],
+        popupAnchor: [0, -38]
+    });
+
+    return bikeIcon;
+}
 
 // initialize map
 
@@ -38,16 +51,20 @@ export function initializeMap() {
     placeCurrentUserMarkerOnMap();
 }
 
-// Lokalisieren des Benutzers auf der Karte
+// Verwenden Sie die Funktion, um das Icon zu erhalten
 
-export function placeCurrentUserMarkerOnMap() {
+
+// Lokalisieren des Benutzers auf der Karte
+export function placeCurrentUserMarkerOnMap(darkModeEnabled) {
+    const bikeIcon = getBikeIcon(darkModeEnabled);
     getUserLocation()
         .then(user_latlng => {
             if (currentMarker) {
                 map.removeLayer(currentMarker);
             }
             currentMarker = L.marker(user_latlng, {icon: bikeIcon, draggable: false}).addTo(map);
-            map.setView(user_latlng, 15, { animate: true }); // Zoom auf den Marker
+            let currentZoom = map.getZoom(); // Aktuellen Zoom-Level abrufen
+            map.setView(user_latlng, currentZoom, { animate: true }); // Zoom auf den Marker
         })
         .catch(error => {
             alert(error.message);
@@ -68,7 +85,7 @@ const amenityToIconMap = {
     'bicycle_rental': L.icon({iconUrl: '../static/images/Rental-bicycle.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'bicycle_repair_station': L.icon({iconUrl: '../static/images/Bicycle_repair_station.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'compressed_air': L.icon({iconUrl: '../static/images/compressed_air.png', iconSize: icon_size, iconAnchor: icon_anchor}),
-    'drinking_water': L.icon({iconUrl: '../static/images/Drinking-water-16.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
+    'drinking_water': L.icon({iconUrl: '../static/images/120px-Drinking-water-16.png', iconSize: icon_size, iconAnchor: icon_anchor}),
     'shelter': L.icon({iconUrl: '../static/images/person-shelter-solid.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
 };
 
@@ -98,9 +115,18 @@ export function updateAmenitiesMap(map) {
         }
 
         // Erstellt eine neue MarkerClusterGroup
-        const markers = L.markerClusterGroup({
+        var markers = L.markerClusterGroup({
+            spiderfyOnMaxZoom: false,
+            showCoverageOnHover: false,
             maxClusterRadius: 40,
-            disableClusteringAtZoom: 18,
+            disableClusteringAtZoom: 20,
+            iconCreateFunction: function(cluster) {
+                return L.divIcon({
+                    html: '<div class="cluster-bubble">' + cluster.getChildCount() + '</div>',
+                    className: 'marker-cluster',
+                    iconSize: L.point(40, 40)
+                });
+            }
         });
 
         // Hinzufügen von neuen Markern zum Cluster basierend auf dem Amenity-Typ

@@ -109,6 +109,11 @@ function renderMapWithData(amenityData) {
             },
             options: {
                 plugins: {
+                    tooltip: {
+                        displayColors: false,
+                        position: 'nearest',
+
+                    },
                     legend: {
                         display: false
                     },

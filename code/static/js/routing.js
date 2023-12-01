@@ -37,3 +37,10 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
             console.error('Fehler bei der Routing-Anfrage:', error);
         });
 }
+
+export function deleteRoute(map) {
+    if (routingControl) {
+        map.removeLayer(routingControl);
+        routingControl = null;
+    }
+}

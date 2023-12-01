@@ -1,6 +1,6 @@
-import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker, updateAmenitiesMap } from './mapInitialization.js';
-import { navigateToCoordinates } from './routing.js';
-import { saveMapDarkModeState } from './menu.js';
+import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker, updateAmenitiesMap} from './mapInitialization.js';
+import { navigateToCoordinates, deleteRoute } from './routing.js';
+import {saveMapDarkModeState} from "./menu.js";
 
 
 // JavaScript Map ---------------------------------------------
@@ -52,6 +52,10 @@ window.addEventListener('amenityClicked', function(e) {
     navigateToCoordinates(map, start_latlon, end_latlon);
 });
 
+// Event-Listener für den "Route löschen"-Button
+document.getElementById('delete-btn').addEventListener('click', function() {
+    deleteRoute(map);
+});
 
 // Event-listener für Wechsel zwischen hellen und dunklen Kartenmodus
 document.querySelector('.toggle-switch').addEventListener('click', function() {
@@ -61,26 +65,14 @@ document.querySelector('.toggle-switch').addEventListener('click', function() {
     if (currentTileLayer.options.id === 'mapbox/streets-v11') {
         currentTileLayer.options.id = 'mapbox/dark-v10'
         saveMapDarkModeState(true);
+        placeCurrentUserMarkerOnMap(true);
 
     } else {
         currentTileLayer.options.id = 'mapbox/streets-v11'
         saveMapDarkModeState(false);
+        placeCurrentUserMarkerOnMap(false);
     }
 
     // Fügt den TileLayer wieder zur Karte hinzu
     currentTileLayer.addTo(map);
 });
-
-// Laden und Anwenden des dunklen Kartenmodus
-function loadAndApplyMapDarkModeState() {
-  const mapDarkModeEnabled = localStorage.getItem('mapDarkMode') === 'true';
-  if (mapDarkModeEnabled) {
-    currentTileLayer.options.id = 'mapbox/dark-v10';
-  } else {
-    currentTileLayer.options.id = 'mapbox/streets-v11';
-  }
-  currentTileLayer.addTo(map);
-}
-
-// Rufen Sie die Funktion zum Laden und Anwenden des dunklen Kartenmodus auf
-loadAndApplyMapDarkModeState();

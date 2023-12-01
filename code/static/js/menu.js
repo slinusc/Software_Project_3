@@ -1,67 +1,37 @@
-// JavaScript Menu ---------------------------------------------
-
 const body = document.querySelector("body"),
     sidebar = body.querySelector(".sidebar"),
     toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
 
+    if (toggle) {
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    }
 
-// Funktion zum Speichern des Dark-Mode-Status
-function saveDarkModeState(enabled) {
-  localStorage.setItem('darkMode', enabled);
-}
+    modeSwitch.addEventListener("click", () =>{
+        body.classList.toggle("dark");
+
+        if(body.classList.contains("dark")){
+            modeText.innerText = "Light Mode"
+        }else{
+            modeText.innerText = "Dark Mode"
+        }
+    });
 
 export function saveMapDarkModeState(enabled) {
   localStorage.setItem('mapDarkMode', enabled);
 }
 
-// Funktion zum Deaktivieren der CSS-Transition
-function disableTransitionMenuSlider() {
-  sidebar.style.transition = 'none';
-}
-
-// Funktion zum Aktivieren der CSS-Transition
-function enableTransitionMenuSlider() {
-  sidebar.style.transition = '';
-}
-
-// Funktion zum Laden und Anwenden des Dark-Mode-Status
-function loadAndApplyDarkModeState() {
-  const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
-  body.classList.toggle('dark', darkModeEnabled);
-  modeText.innerText = darkModeEnabled ? 'Light Mode' : 'Dark Mode';
-}
-
-// Funktion zum Speichern des Menüstatus
-function saveMenuState(open) {
-  localStorage.setItem('menuOpen', open);
-}
-
-// Funktion zum Laden und Anwenden des Menüstatus
-function loadAndApplyMenuState() {
-  disableTransitionMenuSlider();
-  const menuOpen = localStorage.getItem('menuOpen') === 'true';
-  sidebar.classList.toggle('close', !menuOpen)
-  setTimeout(enableTransitionMenuSlider, 0);
-}
-
-// Event-Listener für den Dark-Mode-Schalter
-modeSwitch.addEventListener('click', () => {
-  body.classList.toggle('dark');
-  const darkModeEnabled = body.classList.contains('dark');
-  modeText.innerText = darkModeEnabled ? 'Light Mode' : 'Dark Mode';
-  saveDarkModeState(darkModeEnabled);
+document.querySelectorAll('.menu-links a').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        let targetSectionID = this.getAttribute('href').substring(1); // Entfernt das '#' aus dem href
+        document.querySelectorAll('.home .content-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(targetSectionID).classList.add('active');
+    });
 });
-
-// Event-Listener für die Menüschaltfläche
-toggle.addEventListener("click", () => {
-  sidebar.classList.toggle("close");
-  const menuOpen = !sidebar.classList.contains('close');
-  saveMenuState(menuOpen);
-});
-
-loadAndApplyDarkModeState();
-loadAndApplyMenuState();
-
-

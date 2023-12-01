@@ -21,8 +21,8 @@
     <!-- font awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-    <!-- Bootstrap CSS -->
-    <!link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Icon für Browser-Tab -->
+    <link rel="icon" href="../static/images/img2.png">
 
     <title>CycleBuddy</title>
 </head>
@@ -47,19 +47,19 @@
             <div class="menu">
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="/">
+                        <a href="#map-section">
                             <i class='bx bx-map icon' ></i>
                             <span class="text nav-text">Navigation</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="/analytics">
+                        <a href="#analytics-section">
                             <i class='bx bxs-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Analytics</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="/about">
+                        <a href="#info-section">
                             <i class='bx bx-bell icon' ></i>
                             <span class="text nav-text">About</span>
                         </a>
@@ -86,7 +86,7 @@
 
     <section class="home">
         <!-- Map Container from the second HTML -->
-        <div class="map_container">
+        <div id="map-section" class="content-section active">
             <div id="map">
 
                 <!-- Menu Button -->
@@ -139,6 +139,69 @@
                 </button>
             </div>
         </div>
+
+        <!-- Section für Analytics -->
+        <div id="analytics-section" class="content-section">
+            <!-- Analytics-Inhalte werden hier dynamisch geladen -->
+            <!-- Container für Radar-Diagram -->
+            <div class="diagram-container">
+
+                <div class="chart-wrapper">
+                   <canvas id="meinRadarChart"></canvas>
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="meinGeoBubbleChart"></canvas>
+                </div>
+            </div>
+
+
+            <div class="dropdown-menus">
+                <!-- Dropdown-Menü für Radius -->
+                <select name="radius" id="radiusSelect">
+                    <option value="1000">1 km</option>
+                    <option value="2000">2 km</option>
+                    <option value="5000">5 km</option>
+                    <option value="10000">10 km</option>
+                    <option value="20000">20 km</option>
+                </select>
+
+                <!-- Dropdown-Menü für verschiedene Amenities -->
+                <select id="amenitySelect2">
+                    <option value="bicycle_parking">Bicycle Parking</option>
+                    <option value="bicycle_repair_station">Repair Station</option>
+                    <option value="bicycle_rental">Bicycle Rental</option>
+                    <option value="compressed_air">Compressed Air</option>
+                    <option value="drinking_water">Drinking Water</option>
+                    <option value="shelter">Shelter</option>
+                </select>
+            </div>
+
+
+            <!-- Erstelle ein Canvas-Element für das Diagramm -->
+            <div class="map-container">
+                <canvas id="mapTopoJSON"></canvas>
+            </div>
+
+            <!-- Dropdown-Menü für verschiedene Amenities -->
+            <select id="amenitySelect">
+                <option value="bicycle_parking">Bicycle Parking</option>
+                <option value="bicycle_repair_station">Repair Station</option>
+                <option value="bicycle_rental">Bicycle Rental</option>
+                <option value="compressed_air">Compressed Air</option>
+                <option value="drinking_water">Drinking Water</option>
+                <option value="shelter">Shelter</option>
+            </select>
+
+
+
+        </div>
+
+        <!-- Section für Analytics -->
+        <div id="info-section" class="content-section">
+            <!-- Info-Inhalte werden hier dynamisch geladen -->
+        </div>
+
     </section>
 
     <!-- Leaflet JS -->
@@ -147,8 +210,21 @@
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 
-    <!-- ausgelagerter JavaScript-Code -->
+    <!-- Einbindung von Chart.js -->
+    <script src="https://unpkg.com/chart.js@4"></script>
+
+    <!-- Einbindung von Chartjs-Chart-Geo -->
+    <script src="https://unpkg.com/chartjs-chart-geo@4"></script>
+
+    <!-- Einbindung von D3.js -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <!-- JavaScript-Code -->
     <script type="module" src="../static/js/menu.js"></script>
     <script type="module" src="../static/js/map.js"></script>
+    <script type="module" src="../static/js/chartJs/mapChartJs.js"></script>
+    <script type="module" src="../static/js/chartJs/radar.js"></script>
+    <script type="module" src="../static/js/chartJs/5nearestAmenites.js"></script>
+
 </body>
 </html>
