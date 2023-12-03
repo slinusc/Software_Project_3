@@ -82,12 +82,9 @@ function updateChart(labels, data) {
                 tooltip: {
                     displayColors: false,
                     callbacks: {
-                        title: function(context) {
-                            return context[0].label;
-                        },
                         label: function(context) {
-                            let originalValue = context.dataset.originalData[context.dataIndex];
-                            return originalValue;
+                            let name = context.dataset.originalData[context.dataIndex];
+                            return name;
                         }
                     }
                 },

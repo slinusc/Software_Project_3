@@ -519,8 +519,8 @@ body.dark .menu-button:hover .icon{
 /* Stil für einzelne Chart-Wrapper */
 .chart-wrapper {
     flex: 0 0 auto;
-    width: 412px;
-    height: 413px;
+    width: 350px;
+    height: 350px;
     margin: 0 auto;
     position: relative;
 }
