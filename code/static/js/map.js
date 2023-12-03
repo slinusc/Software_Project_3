@@ -1,6 +1,5 @@
-import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker, updateAmenitiesMap} from './mapInitialization.js';
+import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker, updateAmenitiesMap, changeColorOfMarker} from './mapInitialization.js';
 import { navigateToCoordinates, deleteRoute } from './routing.js';
-import {saveMapDarkModeState} from "./menu.js";
 
 
 // JavaScript Map ---------------------------------------------
@@ -20,7 +19,11 @@ if (!getCurrentMarker()) {
 }
 
 // Event-Listener für den "Benutzer lokalisieren"-Button
-document.getElementById('locate-btn').addEventListener('click', placeCurrentUserMarkerOnMap);
+document.getElementById('locate-btn').addEventListener('click', function() {
+    placeCurrentUserMarkerOnMap(localStorage.getItem('mapDarkMode'));
+    console.log(localStorage.getItem('mapDarkMode'));
+});
+
 
 
 // Event-Listener für das Menu-Schaltflaeche
@@ -52,10 +55,12 @@ window.addEventListener('amenityClicked', function(e) {
     navigateToCoordinates(map, start_latlon, end_latlon);
 });
 
+
 // Event-Listener für den "Route löschen"-Button
 document.getElementById('delete-btn').addEventListener('click', function() {
     deleteRoute(map);
 });
+
 
 // Event-listener für Wechsel zwischen hellen und dunklen Kartenmodus
 document.querySelector('.toggle-switch').addEventListener('click', function() {
@@ -64,14 +69,13 @@ document.querySelector('.toggle-switch').addEventListener('click', function() {
     // Ändern Sie die ID des TileLayers je nach aktuellem Modus
     if (currentTileLayer.options.id === 'mapbox/streets-v11') {
         currentTileLayer.options.id = 'mapbox/dark-v10'
-        saveMapDarkModeState(true);
-        placeCurrentUserMarkerOnMap(true);
 
     } else {
         currentTileLayer.options.id = 'mapbox/streets-v11'
-        saveMapDarkModeState(false);
-        placeCurrentUserMarkerOnMap(false);
     }
+
+    placeCurrentUserMarkerOnMap(localStorage.getItem('mapDarkMode'))
+    console.log(localStorage.getItem('mapDarkMode'));
 
     // Fügt den TileLayer wieder zur Karte hinzu
     currentTileLayer.addTo(map);
