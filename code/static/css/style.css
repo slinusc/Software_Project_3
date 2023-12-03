@@ -557,3 +557,24 @@ body.dark .menu-button:hover .icon{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+
+
+
+/* ===== Titel-Styling für Diagramme ===== */
+.diagram-container .chart-wrapper h2 {
+    position: absolute;
+    top: 0; /* Positioniert den Titel am oberen Rand des chart-wrapper */
+    left: 50%; /* Zentriert den Titel horizontal */
+    transform: translateX(-50%); /* Verschiebt den Titel zur Hälfte seiner Breite nach links, um echte Zentrierung zu erreichen */
+    width: 100%; /* Stellt sicher, dass der Titel die volle Breite des chart-wrapper einnimmt */
+    text-align: center; /* Zentriert den Text im Titel */
+    margin: 10px 0; /* Fügt einen kleinen Abstand nach oben und unten hinzu */
+    color: var(--text-color); /* Verwendet die Textfarbe aus den root Variablen */
+    z-index: 10; /* Stellt sicher, dass der Titel über der Grafik angezeigt wird */
+}
+
+/* Anpassungen für den Dark Mode */
+body.dark .diagram-container .chart-wrapper h2 {
+    color: var(--toggle-color); /* Ändert die Farbe des Titels im Dark Mode */
+}
