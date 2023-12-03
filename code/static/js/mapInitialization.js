@@ -61,7 +61,7 @@ export function changeColorOfMarker(darkModeEnabled) {
 }
 
 
-// Lokalisieren des Benutzers auf der Karte
+// Lokalisierung des Benutzers auf der Karte
 export function placeCurrentUserMarkerOnMap() {
     const bikeIcon = getBikeIcon();
     getUserLocation()
@@ -79,14 +79,13 @@ export function placeCurrentUserMarkerOnMap() {
 }
 
 
-
 // Rückgabe des aktuellen Markers des Benutzers
 export function getCurrentMarker() {
     return currentMarker;
 }
 
-// Initialisierung der Icons für die Amenities
 
+// Initialisierung der Icons für die Amenities
 const icon_size = [30, 30];
 const icon_anchor = [19, 19];
 const amenityToIconMap = {

@@ -1,4 +1,5 @@
-import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker, updateAmenitiesMap, changeColorOfMarker} from './mapInitialization.js';
+import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker,
+    updateAmenitiesMap, changeColorOfMarker} from './mapInitialization.js';
 import { navigateToCoordinates, deleteRoute } from './routing.js';
 
 
