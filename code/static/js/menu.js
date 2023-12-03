@@ -1,34 +1,37 @@
 const body = document.querySelector("body"),
     sidebar = body.querySelector(".sidebar"),
     toggle = body.querySelector(".toggle"),
-    searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
+    localStorage.setItem('mapDarkMode', false);
 
-    if (toggle) {
-        toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-        });
-    }
 
-    modeSwitch.addEventListener("click", () =>{
-        body.classList.toggle("dark");
-
-        if(body.classList.contains("dark")){
-            modeText.innerText = "Hell"
-        }else{
-            modeText.innerText = "Dunkel"
-        }
+// Event-Listener für das Menu-Schaltflaeche
+if (toggle) {
+    toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
     });
-
-export function saveMapDarkModeState(enabled) {
-  localStorage.setItem('mapDarkMode', enabled);
 }
 
+// Event-Listener für Dark Mode / Light Mode
+modeSwitch.addEventListener("click", () => {
+    body.classList.toggle("dark");
+
+    if (body.classList.contains("dark")) {
+        modeText.innerText = "Light Mode";
+        localStorage.setItem('mapDarkMode', true); // Speichert Dark Mode im Web Storage
+    } else {
+        modeText.innerText = "Dark Mode";
+        localStorage.setItem('mapDarkMode', false);  // Speichert Light Mode im Web Storage
+    }
+});
+
+
+// Event-Listener für den Seitenwechsel
 document.querySelectorAll('.menu-links a').forEach(link => {
     link.addEventListener('click', function(event) {
         event.preventDefault();
-        let targetSectionID = this.getAttribute('href').substring(1); // Entfernt das '#' aus dem href
+        let targetSectionID = this.getAttribute('href').substring(1);
         document.querySelectorAll('.home .content-section').forEach(section => {
             section.classList.remove('active');
         });

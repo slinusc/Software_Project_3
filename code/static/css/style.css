@@ -321,7 +321,7 @@ body.dark .switch::before{
     right: 70px;
     border-radius: 6px;
     background-color: rgba(246, 245, 255, 0.8);
-    z-index: 1000;
+    z-index: 1001;
     border: none;
 }
 
@@ -367,7 +367,7 @@ body.dark .location:hover .icon{
     right: 130px;
     border-radius: 6px;
     background-color: rgba(246, 245, 255, 0.8);
-    z-index: 1000;
+    z-index: 1001;
     border: none;
 }
 

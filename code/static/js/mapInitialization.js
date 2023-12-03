@@ -7,8 +7,8 @@ const START_COORDINATES = [47.497366, 8.7297876];
 const START_ZOOM_LEVEL = 13;
 
 // Funktion zum Erstellen des Icons je nach Modus
-export function getBikeIcon(darkModeEnabled) {
-    if (darkModeEnabled) {
+export function getBikeIcon() {
+    if (localStorage.getItem('mapDarkMode') === 'true') {
         return L.icon({
             iconUrl: '../static/images/person-biking-solid-weiss.svg',
             iconSize: [38, 38],
@@ -16,15 +16,16 @@ export function getBikeIcon(darkModeEnabled) {
             popupAnchor: [0, -38]
         });
     }
-    const bikeIcon = L.icon({
-        iconUrl: '../static/images/person-biking-solid.svg',
-        iconSize: [38, 38],
-        iconAnchor: [19, 38],
-        popupAnchor: [0, -38]
-    });
-
-    return bikeIcon;
+    else {
+        return L.icon({
+            iconUrl: '../static/images/person-biking-solid.svg',
+            iconSize: [38, 38],
+            iconAnchor: [19, 38],
+            popupAnchor: [0, -38]
+        });
+    }
 }
+
 
 // initialize map
 
@@ -51,12 +52,18 @@ export function initializeMap() {
     placeCurrentUserMarkerOnMap();
 }
 
-// Verwenden Sie die Funktion, um das Icon zu erhalten
 
-
-// Lokalisieren des Benutzers auf der Karte
-export function placeCurrentUserMarkerOnMap(darkModeEnabled) {
+// Wechsel der Farbe des Icons des Benutzers je nach Modus
+export function changeColorOfMarker(darkModeEnabled) {
     const bikeIcon = getBikeIcon(darkModeEnabled);
+    currentMarker.setIcon(bikeIcon);
+
+}
+
+
+// Lokalisierung des Benutzers auf der Karte
+export function placeCurrentUserMarkerOnMap() {
+    const bikeIcon = getBikeIcon();
     getUserLocation()
         .then(user_latlng => {
             if (currentMarker) {
@@ -71,13 +78,14 @@ export function placeCurrentUserMarkerOnMap(darkModeEnabled) {
         });
 }
 
+
 // Rückgabe des aktuellen Markers des Benutzers
 export function getCurrentMarker() {
     return currentMarker;
 }
 
-// Initialisierung der Icons für die Amenities
 
+// Initialisierung der Icons für die Amenities
 const icon_size = [30, 30];
 const icon_anchor = [19, 19];
 const amenityToIconMap = {
@@ -89,8 +97,8 @@ const amenityToIconMap = {
     'shelter': L.icon({iconUrl: '../static/images/person-shelter-solid.svg', iconSize: icon_size, iconAnchor: icon_anchor}),
 };
 
-// Aktualisieren der Karte basierend auf den ausgewählten Amenities
 
+// Aktualisieren der Karte basierend auf den ausgewählten Amenities
 export function updateAmenitiesMap(map) {
     const amenities = document.querySelectorAll('input[name="amenity"]:checked');
     let selectedAmenities = [];
