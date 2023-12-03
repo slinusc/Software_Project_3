@@ -18,12 +18,11 @@ if (!getCurrentMarker()) {
     placeCurrentUserMarkerOnMap();
 }
 
+
 // Event-Listener für den "Benutzer lokalisieren"-Button
 document.getElementById('locate-btn').addEventListener('click', function() {
     placeCurrentUserMarkerOnMap(localStorage.getItem('mapDarkMode'));
-    console.log(localStorage.getItem('mapDarkMode'));
 });
-
 
 
 // Event-Listener für das Menu-Schaltflaeche
@@ -74,8 +73,7 @@ document.querySelector('.toggle-switch').addEventListener('click', function() {
         currentTileLayer.options.id = 'mapbox/streets-v11'
     }
 
-    placeCurrentUserMarkerOnMap(localStorage.getItem('mapDarkMode'))
-    console.log(localStorage.getItem('mapDarkMode'));
+    changeColorOfMarker(localStorage.getItem('mapDarkMode'))
 
     // Fügt den TileLayer wieder zur Karte hinzu
     currentTileLayer.addTo(map);

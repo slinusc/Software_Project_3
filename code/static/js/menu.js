@@ -3,6 +3,7 @@ const body = document.querySelector("body"),
     toggle = body.querySelector(".toggle"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
+    localStorage.setItem('mapDarkMode', false);
 
 
 // Event-Listener für das Menu-Schaltflaeche
