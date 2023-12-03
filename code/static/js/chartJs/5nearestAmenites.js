@@ -61,6 +61,8 @@ function createGeoBubbleChart(userLocation, data) {
         type: 'bubble',
         data: bubbleChartData,
         options: {
+            maintainAspectRatio: false,
+            responsive: true,
             scales: {
                 x: {
                     display: false, // x-Achse ausblenden

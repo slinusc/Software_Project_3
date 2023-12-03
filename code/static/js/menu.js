@@ -18,10 +18,10 @@ modeSwitch.addEventListener("click", () => {
     body.classList.toggle("dark");
 
     if (body.classList.contains("dark")) {
-        modeText.innerText = "Light Mode";
+        modeText.innerText = "Hell";
         localStorage.setItem('mapDarkMode', true); // Speichert Dark Mode im Web Storage
     } else {
-        modeText.innerText = "Dark Mode";
+        modeText.innerText = "Dunkel";
         localStorage.setItem('mapDarkMode', false);  // Speichert Light Mode im Web Storage
     }
 });

@@ -68,6 +68,8 @@ function updateChart(labels, data) {
             }]
         },
         options: {
+            maintainAspectRatio: false,
+            responsive: true,
             scales: {
                 r: {
                     ticks: {
