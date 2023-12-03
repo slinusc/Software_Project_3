@@ -15,9 +15,9 @@ const body = document.querySelector("body"),
         body.classList.toggle("dark");
 
         if(body.classList.contains("dark")){
-            modeText.innerText = "Light Mode"
+            modeText.innerText = "Hell"
         }else{
-            modeText.innerText = "Dark Mode"
+            modeText.innerText = "Dunkel"
         }
     });
 
