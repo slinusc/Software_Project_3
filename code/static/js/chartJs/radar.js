@@ -2,6 +2,15 @@ import { getUserLocation } from '../getUserlocation.js';
 
 let meinRadarChart = null; // Globale Variable für das Chart-Objekt
 
+const translations = {
+    "bicycle_parking": "Fahrradparkplatz",
+    "bicycle_rental": "Fahrradverleih",
+    "bicycle_repair_station": "Fahrradreparaturstation",
+    "compressed_air": "Luftpumpe",
+    "drinking_water": "Trinkwasser",
+    "shelter": "Unterstand"
+};
+
 // Funktion zum Abrufen von Annehmlichkeiten in einem bestimmten Radius
 function fetchAmenities(radius) {
     getUserLocation().then(user_latlng => {
@@ -23,7 +32,11 @@ function fetchAmenities(radius) {
         .then(data => {
             let labels = Object.keys(data);
             let dataPoints = Object.values(data);
-            updateChart(labels, dataPoints);
+
+            // Übersetzen der Labels
+            let translatedLabels = labels.map(label => translations[label] || label);
+
+            updateChart(translatedLabels, dataPoints);
         })
         .catch((error) => {
             console.error('Error:', error);
