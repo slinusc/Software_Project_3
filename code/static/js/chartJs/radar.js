@@ -81,7 +81,7 @@ function updateChart(labels, data) {
             }]
         },
         options: {
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             responsive: true,
             scales: {
                 r: {

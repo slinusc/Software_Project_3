@@ -149,7 +149,9 @@
                 <!-- Container für Radar-Diagramme -->
                 <div class="charts">
                     <div class="charts-card">
-                        <!-- <canvas id="meinRadarChart"></canvas> -->
+                        <div class="radar-chart">
+                            <canvas id="meinRadarChart"></canvas>
+                        </div>
                         <!-- Dropdown-Menü für Radius -->
                         <select name="radius" id="radiusSelect" class = dropdown-menu>
                             <option value="1000">1 km</option>
@@ -180,7 +182,10 @@
                 <div class="map-grid">
                     <!-- Karte für die 5 nächsten Amenities -->
                     <div class="map-grid-card">
-                        <!-- <canvas id="mapTopoJSON"></canvas> -->
+                        <div class="map-chart">
+                            <canvas id="mapTopoJSON"></canvas>
+                        </div>
+
                         <!-- Dropdown-Menü für verschiedene Amenities -->
                         <select id="amenitySelect" class="dropdown-menu">
                             <option value="bicycle_parking">Fahrradparkplatz</option>
