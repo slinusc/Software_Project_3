@@ -469,6 +469,59 @@ body.dark .menu-button:hover .icon{
 
 /* ========== Analyse Section ========== */
 
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;  /*Zeile*/
+    grid-template-areas:
+        "charts"
+        "map-grid";
+    height: 100vh;
+    width: 100vh;
+    overflow-y: auto;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.charts-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    -webkit-column-break-inside: avoid;
+}
+
+.map-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.map-grid-card{
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    -webkit-column-break-inside: avoid;
+}
+
+
+
+/* ====== Media Queries ====== */
+
+
+
+
+
+
+
+
+/* alter code */
+
 #mapTopoJSON {
             width: 100vw;
             height: 100vh;
@@ -487,95 +540,32 @@ body.dark .menu-button:hover .icon{
     opacity: 0.8;
 }
 
-/* Container für die Radar-Charts */
-.radar-charts-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 10px; /* Fügt einen Abstand zwischen den Elementen hinzu */
-    width: 100%;
-}
 
-.diagram-container canvas {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-    max-width: 80%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
-    max-height: 80%; /* Etwas kleiner als der Wrapper, um das Padding zu berücksichtigen */
-    object-fit: cover; /* Füllt den verfügbaren Raum aus, ohne das Seitenverhältnis zu verzerren */
-}
 
-/* Stil für die Karte */
-.map-container {
-    width: calc(100% - 40px); /* Abzüglich des Paddings */
-    max-height: 409px;
-    margin-top: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-}
 
-/* Stil für einzelne Chart-Wrapper */
-.chart-wrapper {
-    flex: 0 0 auto;
-    width: 350px;
-    height: 350px;
-    margin: 0 auto;
-    position: relative;
-}
-
-/* Die Karte passt sich der Größe des Containers an */
-.map-container canvas {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-    height: auto;
-    object-fit: contain; /* Stellt sicher, dass das Bild nicht verzerrt wird */
-}
-
-/* Position des Titels für die Karte korrigieren */
-.map-container h2 {
-    position: relative; /* Wenn 'absolute', dann ändern auf 'relative' */
-    text-align: center; /* Zentriert den Titel */
-    margin-top: -30px; /* Anpassen, um den Titel nach oben zu verschieben, falls nötig */
-    margin-bottom: 10px; /* Abstand zum Canvas-Element */
-}
-/* Entferne absolute Positionierung von den Canvas-Elementen */
-.chart-wrapper canvas {
-    width: 100%;
-    height: 100%;
-}
-
-/* Entferne alle position: absolute; und transform: translate(); Regeln, die die Titel oder Dropdown-Menüs betreffen */
-.chart-wrapper h2,
-.dropdown-menu {
-    position: relative;
-    transform: none;
-}
-/* Position des Dropdown-Menüs korrigieren, falls nötig */
-.map-container .dropdown-menu {
-    display: block;
-    width: 234px; /* Festgelegte Breite */
-    margin: 10px auto; /* Zentrierung unter dem Canvas */
-}
-
-/* Stil für die Titel der Charts und Karte */
-.home h2 {
-    width: 100%; /* Stellt sicher, dass die Titel die volle Breite einnehmen */
-    text-align: center; /* Zentriert den Text */
-    margin: 10px 0; /* Fügt oben und unten Abstand hinzu */
-}
-
-/* Stil für Dropdown-Menüs */
+/* ==== Stil für Dropdown-Menüs: Chart-Seite ==== */
 .dropdown-menu {
     position: relative;
     top: 10px;
     display: block;
-    width: 234px; /* Festgelegte Breite */
+    width: 200px; /* Festgelegte Breite */
+    height: 40px;
     margin: 10px auto; /* Zentrierung unter dem Chart */
+    background-color: rgba(246, 245, 255, 0.8);
+    border-radius: 6px;
+
 }
 
+.dropdown-menu:hover {
+    background-color: var(--primary-color);
+}
+
+body.dark .dropdown-menu {
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+}
+
+body.dark .dropdown-menu:hover {
+    background-color: var(--primary-color);
+}
 

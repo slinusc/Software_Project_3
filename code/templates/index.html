@@ -142,51 +142,54 @@
 
         <!-- Section für Analytics -->
         <div id="analytics-section" class="content-section">
-            <!-- Analytics-Inhalte werden hier dynamisch geladen -->
+            <div class="grid-container">
 
-            <!-- Container für Radar-Diagramme -->
-            <div class="radar-charts-container">
-                <div class="chart-wrapper">
-                    <h2>Anzahl der Einrichtungen im gewählten Radius</h2>
-                    <canvas id="meinRadarChart"></canvas>
-                    <!-- Dropdown-Menü für Radius -->
-                    <select name="radius" id="radiusSelect" class = dropdown-menu>
-                        <option value="1000">1 km</option>
-                        <option value="2000">2 km</option>
-                        <option value="5000">5 km</option>
-                        <option value="10000">10 km</option>
-                        <option value="20000">20 km</option>
-                    </select>
+                <!-- Analytics-Inhalte werden hier dynamisch geladen -->
+
+                <!-- Container für Radar-Diagramme -->
+                <div class="charts">
+                    <div class="charts-card">
+                        <!-- <canvas id="meinRadarChart"></canvas> -->
+                        <!-- Dropdown-Menü für Radius -->
+                        <select name="radius" id="radiusSelect" class = dropdown-menu>
+                            <option value="1000">1 km</option>
+                            <option value="2000">2 km</option>
+                            <option value="5000">5 km</option>
+                            <option value="10000">10 km</option>
+                            <option value="20000">20 km</option>
+                        </select>
+                    </div>
+
+                    <div class="charts-card">
+                        <!--<canvas id="meinGeoBubbleChart"></canvas> -->
+                        <!-- Dropdown-Menü für verschiedene Amenities -->
+                        <select id="amenitySelect2" class="dropdown-menu">
+                            <option value="bicycle_parking">Fahrradparkplatz</option>
+                            <option value="bicycle_repair_station">Fahrradreparaturstation</option>
+                            <option value="bicycle_rental">Fahrradverleih</option>
+                            <option value="compressed_air">Luftpumpe</option>
+                            <option value="drinking_water">Trinkwasser</option>
+                            <option value="shelter">Unterstand</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="chart-wrapper">
-                    <h2>Entfernung der nächsten 5 Einrichtungen vom Standort</h2>
-                    <canvas id="meinGeoBubbleChart"></canvas>
-                    <!-- Dropdown-Menü für verschiedene Amenities -->
-                    <select id="amenitySelect2" class="dropdown-menu">
-                        <option value="bicycle_repair_station">Reparatur</option>
-                        <option value="bicycle_parking">Fahrradparkplatz</option>
-                        <option value="bicycle_rental">Fahrradverleih</option>
-                        <option value="compressed_air">Fahrradpumpen</option>
-                        <option value="drinking_water">Trinkwasser</option>
-                        <option value="shelter">Unterstand/Schutz</option>
-                    </select>
+                <!-- Container für die Karte(n) -->
+                <div class="map-grid">
+                    <!-- Karte für die 5 nächsten Amenities -->
+                    <div class="map-grid-card">
+                        <!-- <canvas id="mapTopoJSON"></canvas> -->
+                        <!-- Dropdown-Menü für verschiedene Amenities -->
+                        <select id="amenitySelect" class="dropdown-menu">
+                            <option value="bicycle_parking">Fahrradparkplatz</option>
+                            <option value="bicycle_repair_station">Fahrradreparaturstation</option>
+                            <option value="bicycle_rental">Fahrradverleih</option>
+                            <option value="compressed_air">Luftpumpe</option>
+                            <option value="drinking_water">Trinkwasser</option>
+                            <option value="shelter">Unterstand</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Container für die Karte -->
-            <div class="map-container">
-                <h2>Anzahl einer gewählten Einrichtung pro Kanton</h2>
-                <canvas id="mapTopoJSON"></canvas>
-                <!-- Dropdown-Menü für verschiedene Amenities -->
-                <select id="amenitySelect" class="dropdown-menu">
-                    <option value="bicycle_parking">Fahrradparkplatz</option>
-                    <option value="bicycle_repair_station">Reparatur</option>
-                    <option value="bicycle_rental">Fahrradverleih</option>
-                    <option value="compressed_air">Fahrradpumpen</option>
-                    <option value="drinking_water">Trinkwasser</option>
-                    <option value="shelter">Unterstand/Schutz</option>
-                </select>
             </div>
 
         </div>
