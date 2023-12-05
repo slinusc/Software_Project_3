@@ -312,6 +312,7 @@ body.dark .switch::before{
 
 .home .content-section.active { /* Zeigt die aktive Section an */
     display: block;
+
 }
 
 /* ====== Location Button ====== */
@@ -401,10 +402,6 @@ body.dark .deletebtn:hover .icon{
     color: var(--text-color)
 }
 
-.sidebar.open ~ .deletebtn {
-    left: 230px;
-    transition: var(--tran-05);
-}
 
 /* ====== Menu-Button ====== */
 .menu-button {
@@ -615,12 +612,20 @@ body.dark .menu-button:hover .icon{
     background-color: var(--primary-color);
 }
 
+.dropdown-menu:hover option{
+    background-color: var(--body-color); /* oder eine andere gewünschte Farbe */
+}
+
 body.dark .dropdown-menu {
     background-color: var(--sidebar-color);
     color: var(--text-color);
 }
 
 body.dark .dropdown-menu:hover {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-light);
+}
+
+body.dark .dropdown-menu:hover {
+    background-color: var(--primary-color-light);
 }
 
