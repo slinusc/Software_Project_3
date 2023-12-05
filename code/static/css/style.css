@@ -606,16 +606,20 @@ body.dark .menu-button:hover .icon{
     width: 200px; /* Festgelegte Breite */
     height: 40px;
     margin: 10px auto; /* Zentrierung unter dem Chart */
-    background-color: rgba(246, 245, 255, 0.8);
+    background-color: var(--primary-color-light);
     border-radius: 6px;
+    border: none;
 }
 
 .dropdown-menu:hover {
     background-color: var(--primary-color);
+    color: var(--body-color);
+
 }
 
 .dropdown-menu:hover option{
-    background-color: var(--body-color); /* oder eine andere gewünschte Farbe */
+    background-color: var(--primary-color-light);
+    color: #242526/* oder eine andere gewünschte Farbe */
 }
 
 body.dark .dropdown-menu {
@@ -627,8 +631,9 @@ body.dark .dropdown-menu:hover {
     background-color: var(--primary-color-light);
 }
 
-body.dark .dropdown-menu:hover {
+body.dark .dropdown-menu:hover option{
     background-color: var(--primary-color-light);
+    color: var(--text-color);
 }
 
 
