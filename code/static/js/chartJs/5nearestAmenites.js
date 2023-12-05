@@ -61,7 +61,7 @@ function createGeoBubbleChart(userLocation, data) {
         type: 'bubble',
         data: bubbleChartData,
         options: {
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             responsive: true,
             scales: {
                 x: {
