@@ -474,13 +474,13 @@ body.dark .menu-button:hover .icon{
     grid-template-areas:
         "charts"
         "map-grid";
+    overflow-y: scroll;
 }
 
 .charts {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-top: 20px;
 }
 
 .charts-card {
