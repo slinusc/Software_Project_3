@@ -53,6 +53,7 @@ function updateChart(labels, data) {
 
     let logData = data.map(value => Math.log(value + 1)); // +1, um zu verhindern, dass 0 logarithmiert wird
     var ctx = document.getElementById('meinRadarChart').getContext('2d');
+
     meinRadarChart = new Chart(ctx, {
         type: 'polarArea',
         data: {
