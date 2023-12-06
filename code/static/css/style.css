@@ -561,6 +561,9 @@ body.dark .menu-button:hover .icon{
         gap: 10px;
         margin-bottom: 0px;
     }
+    .user-guide-container {
+        padding: 10px;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -572,6 +575,9 @@ body.dark .menu-button:hover .icon{
     .map-grid {
         grid-template-columns: 1fr;
         gap: 5px;
+    }
+    .user-guide-container {
+        padding: 5px;
     }
 }
 
@@ -639,8 +645,50 @@ body.dark .dropdown-menu:hover option{
 
 
 
-
-
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+
+/* ====== Stil für User-Guide / Help - Page ====== */
+/* User Guide spezifische Styles */
+.user-guide-container {
+    margin-top: 15px;
+    margin-left: 95px;
+    overflow-y: scroll;
+}
+
+.user-guide-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.user-guide-container h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+.user-guide-container ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.user-guide-container li {
+    padding: 5px 0;
+}
+
+.user-guide-container li i {
+    font-size: 1.2rem; /* Größere Icons für bessere Sichtbarkeit */
+    width: 30px; /* Feste Breite für Icons */
+    text-align: center;
+}
+
+.user-guide-container a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.user-guide-container a:hover {
+    text-decoration: underline;
 }
