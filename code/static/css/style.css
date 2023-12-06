@@ -36,7 +36,7 @@ body{
 body.dark{
     --body-color: #3A3B3C;
     --sidebar-color: #242526;
-    --sidebar-toggle-color: black;
+    --sidebar-toggle-color: grey;
     --primary-color: #3A3B3C;
     --primary-color-light: #3A3B3C;
     --toggle-color: #FFF;
