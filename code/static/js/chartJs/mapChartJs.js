@@ -102,7 +102,7 @@ function renderMapWithData(amenityData) {
                     data: dataForMap,
                     backgroundColor: function(context) {
                         const data = context.dataset.data[context.dataIndex];
-                        const value = data ? data.value : 1; // Verwenden Sie 1 als minimalen Wert für die log-Skala
+                        const value = data ? data.value : 1;
                         return colorScale(value);
                     }
                 }]
