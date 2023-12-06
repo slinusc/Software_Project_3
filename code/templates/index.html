@@ -107,11 +107,11 @@
                     </div>
                     <div class="checkbox-item">
                         <input type="radio" id="reparieren" name="amenity" value="bicycle_repair_station">
-                        <label for="reparieren">Reparatur</label>
+                        <label for="reparieren">Reparaturstation</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="radio" id="pumpen" name="amenity" value="compressed_air">
-                        <label for="pumpen">Fahrradpumpen</label>
+                        <label for="pumpen">Luftpumpe</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="radio" id="trinken" name="amenity" value="drinking_water">
@@ -119,7 +119,7 @@
                     </div>
                     <div class="checkbox-item">
                         <input type="radio" id="unterstand" name="amenity" value="shelter">
-                        <label for="unterstand">Unterstand/Schutz</label>
+                        <label for="unterstand">Unterstand</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="radio" id="keine" name="amenity" value="">
@@ -168,7 +168,7 @@
                         <!-- Dropdown-Menü für verschiedene Amenities -->
                         <select id="amenitySelect2" class="dropdown-menu">
                             <option value="bicycle_parking">Fahrradparkplatz</option>
-                            <option value="bicycle_repair_station">Fahrradreparaturstation</option>
+                            <option value="bicycle_repair_station">Reparaturstation</option>
                             <option value="bicycle_rental">Fahrradverleih</option>
                             <option value="compressed_air">Luftpumpe</option>
                             <option value="drinking_water">Trinkwasser</option>
@@ -188,7 +188,7 @@
                         <!-- Dropdown-Menü für verschiedene Amenities -->
                         <select id="amenitySelect" class="dropdown-menu">
                             <option value="bicycle_parking">Fahrradparkplatz</option>
-                            <option value="bicycle_repair_station">Fahrradreparaturstation</option>
+                            <option value="bicycle_repair_station">Reparaturstation</option>
                             <option value="bicycle_rental">Fahrradverleih</option>
                             <option value="compressed_air">Luftpumpe</option>
                             <option value="drinking_water">Trinkwasser</option>
@@ -204,32 +204,30 @@
         <div id="info-section" class="content-section">
             <!-- Info-Inhalte werden hier dynamisch geladen -->
             <div class="user-guide-container">
-                <h1 class="user-guide-title">CycleBuddy Navigation: Benutzerhandbuch</h1>
+                <h1 class="user-guide-title">CycleBuddy Navigation</h1>
+                <h2 class="user-guide-title">Benutzerhandbuch</h2>
                 <p>Willkommen bei CycleBuddy Navigation, Ihrem treuen Begleiter auf allen Radtouren. Dieses Handbuch hilft Ihnen dabei, die Funktionen unserer App optimal zu nutzen.</p>
-
-                <h2>Inhaltsverzeichnis</h2>
-                <ul>
-                    <li>Allgemeine Navigation</li>
-                    <li>Kartenansicht</li>
-                    <li>Analysefunktionen</li>
-                    <li>Tages- und Nachtmodus</li>
-                    <li>Hilfe und Support</li>
-                </ul>
 
                 <section id="general-navigation">
                     <h3>Allgemeine Navigation</h3>
                     <p>In der Seitenleiste können Sie zwischen verschiedenen Abschnitten wechseln:</p>
                     <ul>
                         <li><i class="bx bx-map"></i> Navigation – Hier finden Sie Ihre aktuelle Position und Routenvorschläge.</li>
-                        <li><i class="bx bxs-bar-chart-alt-2"></i> Analyse – Statistiken und Grafiken zu den umliegenden Annehmlichkeiten.</li>
-                        <li><i class="bx bx-help-circle"></i> Hilfe – Dieser Bereich, in dem Sie sich gerade befinden.</li>
+                        <li><i class="bx bxs-bar-chart-alt-2"></i> Analyse – Statistiken und Grafiken zu den umliegenden Einrichtungen.</li>
+                        <li><i class="bx bx-help-circle"></i> Hilfe – Benutzerhandbuch, hier befinden Sie sich gerade.</li>
                     </ul>
+                    <p class="spacing-between-lines">Ganz unten in der Seitenleiste können Sie mit dem Kippschalter den <i class="bx bx-sun"></i> Hell- oder <i class="bx bx-moon"></i> Dunkelmodus aktivieren.</p>
+                    <p class="spacing-between-lines">Die Seitenleiste kann zudem Ein- oder Ausgeklappt werden. Der entsprechende Knopf <i class='bx bx-chevron-right' ></i> befindet sich oben neben dem Logo.</p>
                 </section>
 
                 <section id="map-view">
-                    <h3>Kartenansicht</h3>
-                    <p>Der Standort des Nutzers ist mit einem <i class="bx bxs-bike"></i> markiert.</p>
-                    <p>Verwenden Sie Touch-Gesten oder die Maus, um in die Karte hinein- und herauszuzoomen.</p>
+                    <h3>Navigation</h3>
+                    <p>Diese Seite dient der eigentlichen Navigation und dem Aufzeigen nützlicher Einrichtungen für Fahrradfahrende. Es können Fahrradparkplätze, Fahrradverleihstationen, Reparaturstationen, Luftpumpen, Trinkwasser, Unterstände oder keine Einrichtungen angezeigt werden. Beim Anwählen einer Einrichtung erscheint die nächste, für Fahrräder befahrbare Route zur gewählten Einrichtung.</p>
+                    <ul>
+                        <li><i class='bx bx-cycling'></i> Der Standort des Nutzers ist mit einem Fahrrad markiert.</li>
+                        <li><i class='bx bx-chevron-right' ></i> Verwenden Sie Touch-Gesten oder die Maus, um in die Karte hinein- und herauszuzoomen.</li>
+                    </ul>
+
                     <p>Im rechten unteren Bereich gibt es drei Schaltflächen:</p>
                     <ul>
                         <li><i class="bx bx-menu"></i> Menü – Hier können Sie Einrichtungen anzeigen oder verbergen.</li>
@@ -239,19 +237,14 @@
                 </section>
 
                 <section id="analysis-functions">
-                    <h3>Analysefunktionen</h3>
-                    <p><strong>Radar-Chart:</strong> Zeigt die Anzahl verfügbarer Annehmlichkeiten in einem ausgewählten Radius um Ihren Standort an.</p>
-                    <p><strong>Bubble-Radar-Chart:</strong> Visualisiert die fünf nächsten Annehmlichkeiten einer ausgewählten Kategorie.</p>
-                    <p><strong>Schweizer Karte:</strong> Zeigt die Verteilung der Annehmlichkeiten pro Kanton an. Dunklere Färbung entspricht einer höheren Anzahl von Einrichtungen.</p>
-                </section>
-
-                <section id="day-night-mode">
-                    <h3>Tages- und Nachtmodus</h3>
-                    <p>Ganz unten in der Seitenleiste können Sie mit der Schaltfläche <i class="bx bx-moon"></i> den Tages- oder Nachtmodus aktivieren.</p>
+                    <h3>Analyse</h3>
+                    <p><strong>Grafik 1, links: Radarkarte</strong> Es wird die Anzahl verfügbarer Einrichtungen im ausgewählten Radius um Ihren Standort angezeigt. Den Radius können Sie im dazugehörenden Dropdown-Menü anpassen.</p>
+                    <p><strong>Grafik 2, rechts: </strong> Visualisiert die fünf nächsten Annehmlichkeiten einer ausgewählten Kategorie.</p>
+                    <p><strong>Grafik 3: Schweizer Karte:</strong> Zeigt die Verteilung der Annehmlichkeiten pro Kanton an. Dunklere Färbung entspricht einer höheren Anzahl von Einrichtungen.</p>
                 </section>
 
                 <section id="help-support">
-                    <h3>Hilfe und Support</h3>
+                    <h3>Hilfe</h3>
                     <p>Sollten Sie Fragen haben oder Unterstützung benötigen, schauen Sie sich diesen Bereich an oder kontaktieren Sie uns direkt über die App.</p>
                 </section>
             </div>

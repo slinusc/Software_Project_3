@@ -5,7 +5,7 @@ let meinRadarChart = null; // Globale Variable für das Chart-Objekt
 const translations = {
     "bicycle_parking": "Fahrradparkplatz",
     "bicycle_rental": "Fahrradverleih",
-    "bicycle_repair_station": "Fahrradreparaturstation",
+    "bicycle_repair_station": "Reparaturstation",
     "compressed_air": "Luftpumpe",
     "drinking_water": "Trinkwasser",
     "shelter": "Unterstand"
