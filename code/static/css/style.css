@@ -661,6 +661,7 @@ body.dark .dropdown-menu:hover option{
 .user-guide-container {
     margin-top: 15px;
     margin-left: 95px;
+    margin-right: 10px;
     max-height: 97vh;
     overflow-y: auto;
 }
