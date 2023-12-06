@@ -629,6 +629,7 @@ body.dark .dropdown-menu {
 
 body.dark .dropdown-menu:hover {
     background-color: var(--primary-color-light);
+    border: 1px solid var(--sidebar-color);
 }
 
 body.dark .dropdown-menu:hover option{
