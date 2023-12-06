@@ -7,10 +7,12 @@
     /* Colors */
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
+    --sidebar-toggle-color: #695CFE;
     --primary-color: #695CFE;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
+    --text-title-color: #695CFE;
     /* Transition */
     --tran-02: all 0.2s ease;
     --tran-03: all 0.3s ease;
@@ -34,10 +36,12 @@ body{
 body.dark{
     --body-color: #3A3B3C;
     --sidebar-color: #242526;
+    --sidebar-toggle-color: black;
     --primary-color: #3A3B3C;
     --primary-color-light: #3A3B3C;
     --toggle-color: #FFF;
     --text-color: #CCC;
+    --text-title-color: #FFF;
 }
 
 /* ===== Sidebar Styles ===== */
@@ -115,6 +119,7 @@ body.dark{
 header .image-text .header-text{
     display: flex;
     flex-direction: column;
+    margin-left: 10px;
 }
 
 .header-text .name{
@@ -132,7 +137,7 @@ header .image-text .header-text{
     transform: translateY(-50%) rotate(180deg);
     height: 25px;
     width: 25px;
-    background: var(--primary-color);
+    background: var(--sidebar-toggle-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -656,40 +661,49 @@ body.dark .dropdown-menu:hover option{
 .user-guide-container {
     margin-top: 15px;
     margin-left: 95px;
-    overflow-y: scroll;
+    max-height: 97vh;
+    overflow-y: auto;
 }
 
 .user-guide-title {
-    color: var(--primary-color);
+    color: var(--text-title-color);
     margin-bottom: 20px;
 }
 
 .user-guide-container h2 {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
+    color: var(--text-title-color);
+    border-bottom: 2px solid var(--text-title-color);
     padding-bottom: 5px;
+}
+
+.user-guide-container h3 {
+    color: var(--text-title-color);
+    margin-top: 20px;
+    margin-bottom: 3px;
 }
 
 .user-guide-container ul {
     list-style-type: none;
     padding-left: 20px;
+    margin-bottom: 20px;
 }
 
 .user-guide-container li {
     padding: 5px 0;
+    color: var(--text-color);
 }
 
 .user-guide-container li i {
     font-size: 1.2rem; /* Größere Icons für bessere Sichtbarkeit */
     width: 30px; /* Feste Breite für Icons */
     text-align: center;
+    color: var(--text-color);
 }
 
-.user-guide-container a {
-    text-decoration: none;
-    color: var(--primary-color);
+.spacing-between-lines {
+    margin-bottom: 10px;
 }
 
-.user-guide-container a:hover {
-    text-decoration: underline;
+.user-guide-container p {
+    color: var(--text-color);
 }
