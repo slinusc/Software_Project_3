@@ -24,6 +24,7 @@
     <!-- Icon für Browser-Tab -->
     <link rel="icon" href="../static/images/img2.png">
 
+
     <title>CycleBuddy</title>
 </head>
 <body>
@@ -55,13 +56,13 @@
                     <li class="nav-link">
                         <a href="#analytics-section">
                             <i class='bx bxs-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Analytics</span>
+                            <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-link">
                         <a href="#info-section">
-                            <i class='bx bx-bell icon' ></i>
-                            <span class="text nav-text">About</span>
+                            <i class='bx bx-help-circle icon' ></i>
+                            <span class="text nav-text">Hilfe</span>
                         </a>
                     </li>
                 </ul>
@@ -73,7 +74,7 @@
                         <i class='bx bx-moon icon moon' ></i>
                         <i class='bx bx-sun icon sun' ></i>
                     </div>
-                    <span class="mode-text text">Dark Mode</span>
+                    <span class="mode-text text">Dunkel</span>
 
                     <div class="toggle-switch">
                         <span class="switch"></span>
@@ -93,7 +94,6 @@
                 <button id="toggleMenu" class="menu-button">
                     <i class='bx bx-menu icon'></i>
                 </button>
-
 
                 <!-- Checkboxen Container -->
                 <div id="checkboxMenu" class="hidden checkbox-menu">
@@ -142,64 +142,119 @@
 
         <!-- Section für Analytics -->
         <div id="analytics-section" class="content-section">
-            <!-- Analytics-Inhalte werden hier dynamisch geladen -->
-            <!-- Container für Radar-Diagram -->
-            <div class="diagram-container">
+            <div class="grid-container">
+                <!-- Analytics-Inhalte werden hier dynamisch geladen -->
 
-                <div class="chart-wrapper">
-                   <canvas id="meinRadarChart"></canvas>
+                <!-- Container für Radar-Diagramme -->
+                <div class="charts">
+                    <div class="charts-card">
+                        <div class="radar-chart">
+                            <canvas id="meinRadarChart"></canvas>
+                        </div>
+                        <!-- Dropdown-Menü für Radius -->
+                        <select name="radius" id="radiusSelect" class = dropdown-menu>
+                            <option value="1000">1 km</option>
+                            <option value="2000">2 km</option>
+                            <option value="5000">5 km</option>
+                            <option value="10000">10 km</option>
+                            <option value="20000">20 km</option>
+                        </select>
+                    </div>
+
+                    <div class="charts-card">
+                        <div class="bubble-chart">
+                            <canvas id="meinGeoBubbleChart"></canvas>
+                        </div>
+                        <!-- Dropdown-Menü für verschiedene Amenities -->
+                        <select id="amenitySelect2" class="dropdown-menu">
+                            <option value="bicycle_parking">Fahrradparkplatz</option>
+                            <option value="bicycle_repair_station">Fahrradreparaturstation</option>
+                            <option value="bicycle_rental">Fahrradverleih</option>
+                            <option value="compressed_air">Luftpumpe</option>
+                            <option value="drinking_water">Trinkwasser</option>
+                            <option value="shelter">Unterstand</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="chart-wrapper">
-                    <canvas id="meinGeoBubbleChart"></canvas>
+                <!-- Container für die Karte(n) -->
+                <div class="map-grid">
+                    <!-- Karte für die 5 nächsten Amenities -->
+                    <div class="map-grid-card">
+                        <div class="map-chart">
+                            <canvas id="mapTopoJSON"></canvas>
+                        </div>
+
+                        <!-- Dropdown-Menü für verschiedene Amenities -->
+                        <select id="amenitySelect" class="dropdown-menu">
+                            <option value="bicycle_parking">Fahrradparkplatz</option>
+                            <option value="bicycle_repair_station">Fahrradreparaturstation</option>
+                            <option value="bicycle_rental">Fahrradverleih</option>
+                            <option value="compressed_air">Luftpumpe</option>
+                            <option value="drinking_water">Trinkwasser</option>
+                            <option value="shelter">Unterstand</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-
-
-            <div class="dropdown-menus">
-                <!-- Dropdown-Menü für Radius -->
-                <select name="radius" id="radiusSelect">
-                    <option value="1000">1 km</option>
-                    <option value="2000">2 km</option>
-                    <option value="5000">5 km</option>
-                    <option value="10000">10 km</option>
-                    <option value="20000">20 km</option>
-                </select>
-
-                <!-- Dropdown-Menü für verschiedene Amenities -->
-                <select id="amenitySelect2">
-                    <option value="bicycle_repair_station">Repair Station</option>
-                    <option value="bicycle_parking">Bicycle Parking</option>
-                    <option value="bicycle_rental">Bicycle Rental</option>
-                    <option value="compressed_air">Compressed Air</option>
-                    <option value="drinking_water">Drinking Water</option>
-                    <option value="shelter">Shelter</option>
-                </select>
-            </div>
-
-
-            <!-- Erstelle ein Canvas-Element für das Diagramm -->
-            <div class="map-container">
-                <canvas id="mapTopoJSON"></canvas>
-            </div>
-
-            <!-- Dropdown-Menü für verschiedene Amenities -->
-            <select id="amenitySelect">
-                <option value="bicycle_parking">Bicycle Parking</option>
-                <option value="bicycle_repair_station">Repair Station</option>
-                <option value="bicycle_rental">Bicycle Rental</option>
-                <option value="compressed_air">Compressed Air</option>
-                <option value="drinking_water">Drinking Water</option>
-                <option value="shelter">Shelter</option>
-            </select>
-
-
 
         </div>
 
-        <!-- Section für Analytics -->
+        <!-- Section für User Guide / Help -->
         <div id="info-section" class="content-section">
             <!-- Info-Inhalte werden hier dynamisch geladen -->
+            <div class="user-guide-container">
+                <h1 class="user-guide-title">CycleBuddy Navigation: Benutzerhandbuch</h1>
+                <p>Willkommen bei CycleBuddy Navigation, Ihrem treuen Begleiter auf allen Radtouren. Dieses Handbuch hilft Ihnen dabei, die Funktionen unserer App optimal zu nutzen.</p>
+
+                <h2>Inhaltsverzeichnis</h2>
+                <ul>
+                    <li>Allgemeine Navigation</li>
+                    <li>Kartenansicht</li>
+                    <li>Analysefunktionen</li>
+                    <li>Tages- und Nachtmodus</li>
+                    <li>Hilfe und Support</li>
+                </ul>
+
+                <section id="general-navigation">
+                    <h3>Allgemeine Navigation</h3>
+                    <p>In der Seitenleiste können Sie zwischen verschiedenen Abschnitten wechseln:</p>
+                    <ul>
+                        <li><i class="bx bx-map"></i> Navigation – Hier finden Sie Ihre aktuelle Position und Routenvorschläge.</li>
+                        <li><i class="bx bxs-bar-chart-alt-2"></i> Analyse – Statistiken und Grafiken zu den umliegenden Annehmlichkeiten.</li>
+                        <li><i class="bx bx-help-circle"></i> Hilfe – Dieser Bereich, in dem Sie sich gerade befinden.</li>
+                    </ul>
+                </section>
+
+                <section id="map-view">
+                    <h3>Kartenansicht</h3>
+                    <p>Der Standort des Nutzers ist mit einem <i class="bx bxs-bike"></i> markiert.</p>
+                    <p>Verwenden Sie Touch-Gesten oder die Maus, um in die Karte hinein- und herauszuzoomen.</p>
+                    <p>Im rechten unteren Bereich gibt es drei Schaltflächen:</p>
+                    <ul>
+                        <li><i class="bx bx-menu"></i> Menü – Hier können Sie Einrichtungen anzeigen oder verbergen.</li>
+                        <li><i class="bx bx-current-location"></i> Zentrieren – Zentriert die Karte auf Ihren aktuellen Standort.</li>
+                        <li><i class="bx bx-x"></i> Route löschen – Entfernt die ausgewählte Route von der Karte.</li>
+                    </ul>
+                </section>
+
+                <section id="analysis-functions">
+                    <h3>Analysefunktionen</h3>
+                    <p><strong>Radar-Chart:</strong> Zeigt die Anzahl verfügbarer Annehmlichkeiten in einem ausgewählten Radius um Ihren Standort an.</p>
+                    <p><strong>Bubble-Radar-Chart:</strong> Visualisiert die fünf nächsten Annehmlichkeiten einer ausgewählten Kategorie.</p>
+                    <p><strong>Schweizer Karte:</strong> Zeigt die Verteilung der Annehmlichkeiten pro Kanton an. Dunklere Färbung entspricht einer höheren Anzahl von Einrichtungen.</p>
+                </section>
+
+                <section id="day-night-mode">
+                    <h3>Tages- und Nachtmodus</h3>
+                    <p>Ganz unten in der Seitenleiste können Sie mit der Schaltfläche <i class="bx bx-moon"></i> den Tages- oder Nachtmodus aktivieren.</p>
+                </section>
+
+                <section id="help-support">
+                    <h3>Hilfe und Support</h3>
+                    <p>Sollten Sie Fragen haben oder Unterstützung benötigen, schauen Sie sich diesen Bereich an oder kontaktieren Sie uns direkt über die App.</p>
+                </section>
+            </div>
         </div>
 
     </section>

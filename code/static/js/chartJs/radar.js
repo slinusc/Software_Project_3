@@ -53,6 +53,7 @@ function updateChart(labels, data) {
 
     let logData = data.map(value => Math.log(value + 1)); // +1, um zu verhindern, dass 0 logarithmiert wird
     var ctx = document.getElementById('meinRadarChart').getContext('2d');
+
     meinRadarChart = new Chart(ctx, {
         type: 'polarArea',
         data: {
@@ -81,6 +82,8 @@ function updateChart(labels, data) {
             }]
         },
         options: {
+            maintainAspectRatio: true,
+            responsive: true,
             scales: {
                 r: {
                     ticks: {
@@ -93,12 +96,9 @@ function updateChart(labels, data) {
                 tooltip: {
                     displayColors: false,
                     callbacks: {
-                        title: function(context) {
-                            return context[0].label;
-                        },
                         label: function(context) {
-                            let originalValue = context.dataset.originalData[context.dataIndex];
-                            return originalValue;
+                            let name = context.dataset.originalData[context.dataIndex];
+                            return name;
                         }
                     }
                 },
