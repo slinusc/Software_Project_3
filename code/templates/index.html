@@ -17,6 +17,7 @@
 
     <!-- Style sheet -->
     <link rel="stylesheet" href="../static/css/style.css"/>
+    <link rel="stylesheet" href="../static/css/tabelle.css"/>
 
     <!-- font awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -47,9 +48,9 @@
     <div class="menu-bar">
         <div class="menu">
             <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                            <input type="text" placeholder="Adresse...">
-                    </li>
+                <i class='bx bx-search icon'></i>
+                <input type="text" placeholder="Adresse...">
+            </li>
             <ul class="menu-links">
                 <li class="nav-link">
                     <a href="#map-section">
@@ -185,7 +186,34 @@
 
             <!-- Tabelle -->
             <div class="chart-card">
+                <body>
+                <main class="table" id="bike_table">
+                    <section class="table__header">
+                        <h1>Fahrradwege</h1>
+                        <div class="input-group">
+                            <input type="search" placeholder="Suche Gemeinde">
+                        </div>
+                    </section>
+                    <section class="table__body">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th> Gemeinde <span class="icon-arrow">&DownArrow;</span></th>
+                                <th> Fläche <span class="icon-arrow">&DownArrow;</span></th>
+                                <th> Wege <span class="icon-arrow">&DownArrow;</span></th>
+                                <th> Wege/km² <span class="icon-arrow">&DownArrow;</span></th>
+                                <th> Status <span class="icon-arrow">&DownArrow;</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Dynamische Inhalte werden hier geladen -->
+                            </tbody>
+                        </table>
+                    </section>
+                </main>
+                <script type="module" src="../static/js/tabelle.js"></script>
 
+                </body>
             </div>
 
             <!-- Container für die Karte: Einrichtungen pro Kanton -->
@@ -308,6 +336,7 @@
 <script type="module" src="../static/js/chartJs/mapChartJs.js"></script>
 <script type="module" src="../static/js/chartJs/radar.js"></script>
 <script type="module" src="../static/js/chartJs/5nearestAmenites.js"></script>
+<script type="module" src="../static/js/tabelle.js"></script>
 
 </body>
 </html>

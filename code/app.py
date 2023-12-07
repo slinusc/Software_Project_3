@@ -3,7 +3,7 @@ from flask_caching import Cache
 
 # Import der Funktionen aus dem pycode-Modul
 from pycode.mongoDB_queries import number_amenities_in_radius, find_k_nearest_amenities, count_amenities_by_canton, \
-    fetch_amenities_from_db
+    fetch_amenities_from_db, get_bike_ways_for_all_gemeinden
 
 # Flask app setup
 app = Flask(__name__)
@@ -16,6 +16,12 @@ cache = Cache(app)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@cache.cached(timeout=300)
+@app.route('/tabelle')
+def tabel():
+    return render_template('tabelle.html')
 
 
 @app.route('/locations', methods=['POST'])
@@ -68,6 +74,11 @@ def get_number_amenities_in_radius():
         return jsonify({"error": "lat and lon parameters are required"}), 400
 
     results = number_amenities_in_radius(lat, lon, radius)
+    return jsonify(results)
+
+@app.route('/bike_ways', methods=['POST'])
+def get_bike_ways():
+    results = get_bike_ways_for_all_gemeinden()
     return jsonify(results)
 
 
