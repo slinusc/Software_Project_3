@@ -308,8 +308,8 @@ body.dark .switch::before{
     display: none;
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 60px;
+    width: calc(100% - 60px);
     height: 100vh;
     overflow: hidden;
 }
@@ -473,7 +473,6 @@ body.dark .menu-button:hover .icon{
 .grid-container{
     display: grid;
     height: 100vh;
-    margin-left: 60px;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;  /*Zeile*/
     grid-template-areas:
@@ -660,7 +659,7 @@ body.dark .dropdown-menu:hover option{
 /* User Guide spezifische Styles */
 .user-guide-container {
     margin-top: 15px;
-    margin-left: 95px;
+    margin-left: 35px;
     margin-right: 10px;
     max-height: 97vh;
     overflow-y: auto;
