@@ -515,6 +515,11 @@ body.dark .co2container {
 }
 
 
+/*default-einstellung, container versteckt*/
+.hide-co2container {
+    display: none;
+}
+
 
 /* ========== Analyse Section ========== */
 
