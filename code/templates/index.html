@@ -10,13 +10,13 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css"/>
 
     <!-- Style sheet -->
-    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/style.css"/>
 
     <!-- font awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -28,253 +28,276 @@
     <title>CycleBuddy</title>
 </head>
 <body>
-    <nav class="sidebar close">
-        <header>
-            <div class="image-text">
+<nav class="sidebar close">
+    <header>
+        <div class="image-text">
                 <span class="image">
                     <img src="../static/images/img2.png" alt="logo">
                 </span>
 
-                <div class="text header-text">
-                    <span class="name">CycleBuddy</span>
-                    <span class="profession">Navigation</span>
+            <div class="text header-text">
+                <span class="name">CycleBuddy</span>
+                <span class="profession">Navigation</span>
+            </div>
+        </div>
+
+        <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="#map-section">
+                        <i class='bx bx-map icon'></i>
+                        <span class="text nav-text">Navigation</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#analytics-section">
+                        <i class='bx bxs-bar-chart-alt-2 icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#info-section">
+                        <i class='bx bx-help-circle icon'></i>
+                        <span class="text nav-text">Hilfe</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <li class="mode">
+            <div class="moon-sun">
+                <i class='bx bx-moon icon moon'></i>
+                <i class='bx bx-sun icon sun'></i>
+            </div>
+            <span class="mode-text text">Dunkel</span>
+
+            <div class="toggle-switch">
+                <span class="switch"></span>
+            </div>
+        </li>
+
+    </div>
+    </div>
+</nav>
+
+<section class="home">
+    <!-- Map Container from the second HTML -->
+    <div id="map-section" class="content-section active">
+        <div id="map">
+
+            <!-- Menu Button -->
+            <button id="toggleMenu" class="menu-button">
+                <i class='bx bx-menu icon'></i>
+            </button>
+
+            <!-- Checkboxen Container -->
+            <div id="checkboxMenu" class="hidden checkbox-menu">
+                <div class="checkbox-item">
+                    <input type="radio" id="parken" name="amenity" value="bicycle_parking">
+                    <label for="parken">Fahrradparkplatz</label>
                 </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="mieten" name="amenity" value="bicycle_rental">
+                    <label for="mieten">Fahrradverleih</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="reparieren" name="amenity" value="bicycle_repair_station">
+                    <label for="reparieren">Reparaturstation</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="pumpen" name="amenity" value="compressed_air">
+                    <label for="pumpen">Luftpumpe</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="trinken" name="amenity" value="drinking_water">
+                    <label for="trinken">Trinkwasser</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="unterstand" name="amenity" value="shelter">
+                    <label for="unterstand">Unterstand</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="keine" name="amenity" value="">
+                    <label for="keine">Keine</label>
+                </div>
+
             </div>
 
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
+            <!-- Standort Button -->
+            <button id="locate-btn" class="location">
+                <i class='bx bx-current-location icon'></i>
+            </button>
 
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#map-section">
-                            <i class='bx bx-map icon' ></i>
-                            <span class="text nav-text">Navigation</span>
-                        </a>
+            <!-- Delete Route Button -->
+            <button id="delete-btn" class="deletebtn">
+                <i class='bx bx-x icon'></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Section für Analytics -->
+    <div id="analytics-section" class="content-section">
+        <div class="grid-container">
+            <!-- Container für Radar-Diagramme -->
+            <div class="chart-card">
+                <div class="radar-chart">
+                    <canvas id="meinRadarChart"></canvas>
+                </div>
+                <!-- Dropdown-Menü für Radius -->
+                <select name="radius" id="radiusSelect" class=dropdown-menu>
+                    <option value="1000">1 km</option>
+                    <option value="2000">2 km</option>
+                    <option value="5000">5 km</option>
+                    <option value="10000">10 km</option>
+                    <option value="20000">20 km</option>
+                </select>
+            </div>
+
+            <div class="chart-card">
+                <div class="bubble-chart">
+                    <canvas id="meinGeoBubbleChart"></canvas>
+                </div>
+                <!-- Dropdown-Menü für verschiedene Amenities -->
+                <select id="amenitySelect2" class="dropdown-menu">
+                    <option value="bicycle_parking">Fahrradparkplatz</option>
+                    <option value="bicycle_repair_station">Reparaturstation</option>
+                    <option value="bicycle_rental">Fahrradverleih</option>
+                    <option value="compressed_air">Luftpumpe</option>
+                    <option value="drinking_water">Trinkwasser</option>
+                    <option value="shelter">Unterstand</option>
+                </select>
+            </div>
+
+            <!-- Tabelle -->
+            <div class="chart-card">
+
+            </div>
+
+            <!-- Container für die Karte: Einrichtungen pro Kanton -->
+            <div class="chart-card">
+                <div class="map-chart">
+                    <canvas id="mapTopoJSON"></canvas>
+                </div>
+
+                <!-- Dropdown-Menü für verschiedene Amenities -->
+                <select id="amenitySelect" class="dropdown-menu">
+                    <option value="bicycle_parking">Fahrradparkplatz</option>
+                    <option value="bicycle_repair_station">Reparaturstation</option>
+                    <option value="bicycle_rental">Fahrradverleih</option>
+                    <option value="compressed_air">Luftpumpe</option>
+                    <option value="drinking_water">Trinkwasser</option>
+                    <option value="shelter">Unterstand</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Section für User Guide / Help -->
+    <div id="info-section" class="content-section">
+        <!-- Info-Inhalte werden hier dynamisch geladen -->
+        <div class="user-guide-container">
+            <h1 class="user-guide-title">CycleBuddy Navigation</h1>
+            <h2 class="user-guide-title">Benutzerhandbuch</h2>
+            <p>Willkommen bei CycleBuddy Navigation, Ihrem treuen Begleiter auf allen Radtouren. Dieses Handbuch hilft
+                Ihnen dabei, die Funktionen unserer App optimal zu nutzen.</p>
+
+            <section id="general-navigation">
+                <h3>Seitenleiste</h3>
+                <p>In der Seitenleiste können Sie zwischen verschiedenen Abschnitten wechseln:</p>
+                <ul>
+                    <li><i class="bx bx-map"></i> Navigation – Hier finden Sie Ihre aktuelle Position und
+                        Routenvorschläge.
                     </li>
-                    <li class="nav-link">
-                        <a href="#analytics-section">
-                            <i class='bx bxs-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
+                    <li><i class="bx bxs-bar-chart-alt-2"></i> Analyse – Statistiken und Grafiken zu den umliegenden
+                        Einrichtungen.
                     </li>
-                    <li class="nav-link">
-                        <a href="#info-section">
-                            <i class='bx bx-help-circle icon' ></i>
-                            <span class="text nav-text">Hilfe</span>
-                        </a>
+                    <li><i class="bx bx-help-circle"></i> Hilfe – Benutzerhandbuch, hier befinden Sie sich gerade.</li>
+                </ul>
+                <p class="spacing-between-lines">Ganz unten in der Seitenleiste können Sie mit dem Kippschalter den <i
+                        class="bx bx-sun"></i> Hell- oder <i class="bx bx-moon"></i> Dunkelmodus aktivieren.</p>
+                <p class="spacing-between-lines">Die Seitenleiste kann zudem Ein- oder Ausgeklappt werden. Der
+                    entsprechende Knopf <i class='bx bx-chevron-right'></i> befindet sich oben neben dem Logo.</p>
+            </section>
+
+            <section id="map-view">
+                <h3>Navigation</h3>
+                <p class="spacing-between-lines">Diese Seite dient der eigentlichen Navigation und dem Aufzeigen
+                    nützlicher Einrichtungen für Fahrradfahrende. Es können Fahrradparkplätze, Fahrradverleihstationen,
+                    Reparaturstationen, Luftpumpen, Trinkwasser, Unterstände oder keine Einrichtungen angezeigt werden.
+                    Beim Anwählen einer Einrichtung erscheint die nächste, für Fahrräder befahrbare Route zur gewählten
+                    Einrichtung.</p>
+                <ul>
+                    <li><i class='bx bx-cycling'></i> Der Standort des Nutzers ist mit einem Fahrrad markiert.</li>
+                    <li><i class='bx bx-chevron-right'></i> Verwenden Sie Touch-Gesten oder die Maus, um in die Karte
+                        hinein- und herauszuzoomen.
                     </li>
                 </ul>
-            </div>
 
+                <p>Im rechten unteren Bereich gibt es drei Schaltflächen:</p>
+                <ul>
+                    <li><i class="bx bx-menu"></i> Menü – Hier können Sie Einrichtungen anzeigen oder verbergen.</li>
+                    <li><i class="bx bx-current-location"></i> Zentrieren – Zentriert die Karte auf Ihren aktuellen
+                        Standort.
+                    </li>
+                    <li><i class="bx bx-x"></i> Route löschen – Entfernt die ausgewählte Route von der Karte.</li>
+                </ul>
+            </section>
 
-                <li class="mode">
-                    <div class="moon-sun">
-                        <i class='bx bx-moon icon moon' ></i>
-                        <i class='bx bx-sun icon sun' ></i>
-                    </div>
-                    <span class="mode-text text">Dunkel</span>
+            <section id="analysis-functions">
+                <h3>Dashboard</h3>
+                <p class="spacing-between-lines">Auf dieser Seite finden Sie Grafiken, welche Ihnen als Nutzer wertvolle
+                    Informationen auf einen Blick geben.</p>
+                <p class="spacing-between-lines"><strong>Grafik 1, Radarkarte: </strong> Es wird die Anzahl verfügbarer
+                    Einrichtungen im ausgewählten Radius um Ihren Standort angezeigt. Den Radius können Sie im
+                    dazugehörenden Dropdown-Menü anpassen.</p>
+                <p class="spacing-between-lines"><strong>Grafik 2, Radarkarte (mit Punkten): </strong> Die fünf nächsten
+                    Einrichtungen der gewählten Kategorie werden auf der Radarkarte angezeigt. Im Dropdown-Menü können
+                    Sie die gewünschte Einrichtung wählen.</p>
+                <p class="spacing-between-lines"><strong>Grafik 3: Schweizer Karte:</strong> Angezeigt wird die
+                    Verteilung der gewählten Einrichtungen pro Kanton. Eine dunklere Färbung entspricht einer höheren
+                    Anzahl von Einrichtungen. Sie können im Dropdown-Menü die gewünschte Einrichtung wählen.</p>
+                <p>Zusätzlich zu diesen Grafiken wurde eine interaktive Funktion zugefügt: Wenn Sie über Teile/Felder
+                    der Grafiken schweben (hovern), werden automatisch zusätzliche Infomationen angezeigt, wie der Name
+                    und die Anzahl der Einrichtungen, Adressen, Entfernungen und Kantonsnamen.</p>
+            </section>
 
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-
-            </div>
+            <section id="help-support">
+                <h3>Hilfe</h3>
+                <p>Sollten Sie Fragen haben oder Unterstützung benötigen, schauen Sie sich diesen Bereich an oder
+                    kontaktieren Sie uns direkt über die App.</p>
+            </section>
         </div>
-    </nav>
+    </div>
 
-    <section class="home">
-        <!-- Map Container from the second HTML -->
-        <div id="map-section" class="content-section active">
-            <div id="map">
+</section>
 
-                <!-- Menu Button -->
-                <button id="toggleMenu" class="menu-button">
-                    <i class='bx bx-menu icon'></i>
-                </button>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 
-                <!-- Checkboxen Container -->
-                <div id="checkboxMenu" class="hidden checkbox-menu">
-                    <div class="checkbox-item">
-                        <input type="radio" id="parken" name="amenity" value="bicycle_parking">
-                        <label for="parken">Fahrradparkplatz</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="mieten" name="amenity" value="bicycle_rental">
-                        <label for="mieten">Fahrradverleih</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="reparieren" name="amenity" value="bicycle_repair_station">
-                        <label for="reparieren">Reparaturstation</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="pumpen" name="amenity" value="compressed_air">
-                        <label for="pumpen">Luftpumpe</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="trinken" name="amenity" value="drinking_water">
-                        <label for="trinken">Trinkwasser</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="unterstand" name="amenity" value="shelter">
-                        <label for="unterstand">Unterstand</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="radio" id="keine" name="amenity" value="">
-                        <label for="keine">Keine</label>
-                    </div>
+<!-- Einbindung von Chart.js -->
+<script src="https://unpkg.com/chart.js@4"></script>
 
-                </div>
+<!-- Einbindung von Chartjs-Chart-Geo -->
+<script src="https://unpkg.com/chartjs-chart-geo@4"></script>
 
-                <!-- Standort Button -->
-                <button id="locate-btn" class="location">
-                    <i class='bx bx-current-location icon' ></i>
-                </button>
+<!-- Einbindung von D3.js -->
+<script src="https://d3js.org/d3.v6.min.js"></script>
 
-                <!-- Delete Route Button -->
-                <button id="delete-btn" class="deletebtn">
-                    <i class='bx bx-x icon' ></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Section für Analytics -->
-        <div id="analytics-section" class="content-section">
-            <div class="grid-container">
-                <!-- Analytics-Inhalte werden hier dynamisch geladen -->
-
-                <!-- Container für Radar-Diagramme -->
-                <div class="charts">
-                    <div class="charts-card">
-                        <div class="radar-chart">
-                            <canvas id="meinRadarChart"></canvas>
-                        </div>
-                        <!-- Dropdown-Menü für Radius -->
-                        <select name="radius" id="radiusSelect" class = dropdown-menu>
-                            <option value="1000">1 km</option>
-                            <option value="2000">2 km</option>
-                            <option value="5000">5 km</option>
-                            <option value="10000">10 km</option>
-                            <option value="20000">20 km</option>
-                        </select>
-                    </div>
-
-                    <div class="charts-card">
-                        <div class="bubble-chart">
-                            <canvas id="meinGeoBubbleChart"></canvas>
-                        </div>
-                        <!-- Dropdown-Menü für verschiedene Amenities -->
-                        <select id="amenitySelect2" class="dropdown-menu">
-                            <option value="bicycle_parking">Fahrradparkplatz</option>
-                            <option value="bicycle_repair_station">Reparaturstation</option>
-                            <option value="bicycle_rental">Fahrradverleih</option>
-                            <option value="compressed_air">Luftpumpe</option>
-                            <option value="drinking_water">Trinkwasser</option>
-                            <option value="shelter">Unterstand</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Container für die Karte(n) -->
-                <div class="map-grid">
-                    <!-- Karte für die 5 nächsten Amenities -->
-                    <div class="map-grid-card">
-                        <div class="map-chart">
-                            <canvas id="mapTopoJSON"></canvas>
-                        </div>
-
-                        <!-- Dropdown-Menü für verschiedene Amenities -->
-                        <select id="amenitySelect" class="dropdown-menu">
-                            <option value="bicycle_parking">Fahrradparkplatz</option>
-                            <option value="bicycle_repair_station">Reparaturstation</option>
-                            <option value="bicycle_rental">Fahrradverleih</option>
-                            <option value="compressed_air">Luftpumpe</option>
-                            <option value="drinking_water">Trinkwasser</option>
-                            <option value="shelter">Unterstand</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Section für User Guide / Help -->
-        <div id="info-section" class="content-section">
-            <!-- Info-Inhalte werden hier dynamisch geladen -->
-            <div class="user-guide-container">
-                <h1 class="user-guide-title">CycleBuddy Navigation</h1>
-                <h2 class="user-guide-title">Benutzerhandbuch</h2>
-                <p>Willkommen bei CycleBuddy Navigation, Ihrem treuen Begleiter auf allen Radtouren. Dieses Handbuch hilft Ihnen dabei, die Funktionen unserer App optimal zu nutzen.</p>
-
-                <section id="general-navigation">
-                    <h3>Seitenleiste</h3>
-                    <p>In der Seitenleiste können Sie zwischen verschiedenen Abschnitten wechseln:</p>
-                    <ul>
-                        <li><i class="bx bx-map"></i> Navigation – Hier finden Sie Ihre aktuelle Position und Routenvorschläge.</li>
-                        <li><i class="bx bxs-bar-chart-alt-2"></i> Analyse – Statistiken und Grafiken zu den umliegenden Einrichtungen.</li>
-                        <li><i class="bx bx-help-circle"></i> Hilfe – Benutzerhandbuch, hier befinden Sie sich gerade.</li>
-                    </ul>
-                    <p class="spacing-between-lines">Ganz unten in der Seitenleiste können Sie mit dem Kippschalter den <i class="bx bx-sun"></i> Hell- oder <i class="bx bx-moon"></i> Dunkelmodus aktivieren.</p>
-                    <p class="spacing-between-lines">Die Seitenleiste kann zudem Ein- oder Ausgeklappt werden. Der entsprechende Knopf <i class='bx bx-chevron-right' ></i> befindet sich oben neben dem Logo.</p>
-                </section>
-
-                <section id="map-view">
-                    <h3>Navigation</h3>
-                    <p class="spacing-between-lines">Diese Seite dient der eigentlichen Navigation und dem Aufzeigen nützlicher Einrichtungen für Fahrradfahrende. Es können Fahrradparkplätze, Fahrradverleihstationen, Reparaturstationen, Luftpumpen, Trinkwasser, Unterstände oder keine Einrichtungen angezeigt werden. Beim Anwählen einer Einrichtung erscheint die nächste, für Fahrräder befahrbare Route zur gewählten Einrichtung.</p>
-                    <ul>
-                        <li><i class='bx bx-cycling'></i> Der Standort des Nutzers ist mit einem Fahrrad markiert.</li>
-                        <li><i class='bx bx-chevron-right' ></i> Verwenden Sie Touch-Gesten oder die Maus, um in die Karte hinein- und herauszuzoomen.</li>
-                    </ul>
-
-                    <p>Im rechten unteren Bereich gibt es drei Schaltflächen:</p>
-                    <ul>
-                        <li><i class="bx bx-menu"></i> Menü – Hier können Sie Einrichtungen anzeigen oder verbergen.</li>
-                        <li><i class="bx bx-current-location"></i> Zentrieren – Zentriert die Karte auf Ihren aktuellen Standort.</li>
-                        <li><i class="bx bx-x"></i> Route löschen – Entfernt die ausgewählte Route von der Karte.</li>
-                    </ul>
-                </section>
-
-                <section id="analysis-functions">
-                    <h3>Dashboard</h3>
-                    <p class="spacing-between-lines">Auf dieser Seite finden Sie Grafiken, welche Ihnen als Nutzer wertvolle Informationen auf einen Blick geben.</p>
-                    <p class="spacing-between-lines"><strong>Grafik 1, Radarkarte: </strong> Es wird die Anzahl verfügbarer Einrichtungen im ausgewählten Radius um Ihren Standort angezeigt. Den Radius können Sie im dazugehörenden Dropdown-Menü anpassen.</p>
-                    <p class="spacing-between-lines"><strong>Grafik 2, Radarkarte (mit Punkten): </strong> Die fünf nächsten Einrichtungen der gewählten Kategorie werden auf der Radarkarte angezeigt. Im Dropdown-Menü können Sie die gewünschte Einrichtung wählen.</p>
-                    <p class="spacing-between-lines"><strong>Grafik 3: Schweizer Karte:</strong> Angezeigt wird die Verteilung der gewählten Einrichtungen pro Kanton. Eine dunklere Färbung entspricht einer höheren Anzahl von Einrichtungen. Sie können im Dropdown-Menü die gewünschte Einrichtung wählen.</p>
-                    <p>Zusätzlich zu diesen Grafiken wurde eine interaktive Funktion zugefügt: Wenn Sie über Teile/Felder der Grafiken schweben (hovern), werden automatisch zusätzliche Infomationen angezeigt, wie der Name und die Anzahl der Einrichtungen, Adressen, Entfernungen und Kantonsnamen.</p>
-                </section>
-
-                <section id="help-support">
-                    <h3>Hilfe</h3>
-                    <p>Sollten Sie Fragen haben oder Unterstützung benötigen, schauen Sie sich diesen Bereich an oder kontaktieren Sie uns direkt über die App.</p>
-                </section>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
-
-    <!-- Einbindung von Chart.js -->
-    <script src="https://unpkg.com/chart.js@4"></script>
-
-    <!-- Einbindung von Chartjs-Chart-Geo -->
-    <script src="https://unpkg.com/chartjs-chart-geo@4"></script>
-
-    <!-- Einbindung von D3.js -->
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-
-    <!-- JavaScript-Code -->
-    <script type="module" src="../static/js/menu.js"></script>
-    <script type="module" src="../static/js/map.js"></script>
-    <script type="module" src="../static/js/chartJs/mapChartJs.js"></script>
-    <script type="module" src="../static/js/chartJs/radar.js"></script>
-    <script type="module" src="../static/js/chartJs/5nearestAmenites.js"></script>
+<!-- JavaScript-Code -->
+<script type="module" src="../static/js/menu.js"></script>
+<script type="module" src="../static/js/map.js"></script>
+<script type="module" src="../static/js/chartJs/mapChartJs.js"></script>
+<script type="module" src="../static/js/chartJs/radar.js"></script>
+<script type="module" src="../static/js/chartJs/5nearestAmenites.js"></script>
 
 </body>
 </html>
