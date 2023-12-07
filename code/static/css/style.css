@@ -130,7 +130,7 @@ header .image-text .header-text{
     font-weight: 600;
 }
 
-.header-text .profession{
+.header-text .sub{
     margin-top: -2px;
 }
 
@@ -538,6 +538,7 @@ body.dark .co2container {
     padding: 10px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
+    height: 100%;
 }
 
 /* ==== Bubble-Chart ==== */

@@ -103,20 +103,21 @@ function getStatusValue(status) {
 
 function sortTable(column, sort_asc) {
     [...table_rows].sort((a, b) => {
-        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
-            second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+        // Bestimmen Sie, ob die Spalte 3 oder 4 ist, und verwenden Sie in beiden Fällen den Wert von Spalte 3 für den Vergleich
+        let columnIndex = (column === 3 || column === 4) ? 3 : column;
 
-        // Wenn die Spalte "Status" sortiert wird, verwenden Sie die Hilfsfunktion getStatusValue
-        if (column === 4) { // Ersetzen Sie 3 durch den tatsächlichen Index der Statusspalte
-            first_row = getStatusValue(first_row);
-            second_row = getStatusValue(second_row);
-        } else if (column !== 0) { // Überspringen Sie die Konvertierung zu Float für die erste Spalte
-            // Konvertieren Sie die Werte in Zahlen, bevor Sie sie vergleichen
+        let first_row = a.querySelectorAll('td')[columnIndex].textContent.toLowerCase(),
+            second_row = b.querySelectorAll('td')[columnIndex].textContent.toLowerCase();
+
+        // Konvertieren Sie die Werte in Zahlen für alle Spalten außer der ersten
+        if (columnIndex !== 0) {
             first_row = parseFloat(first_row);
             second_row = parseFloat(second_row);
         }
 
+        // Sortierlogik
         return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
     })
-        .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+    .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
 }
+
