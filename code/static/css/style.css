@@ -535,7 +535,7 @@ body.dark .co2container {
 }
 
 .chart-card {
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
 }

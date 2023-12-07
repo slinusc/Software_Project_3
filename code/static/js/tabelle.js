@@ -41,6 +41,7 @@ function updateTable() {
 
                 // Aktualisieren Sie die Referenz auf die Tabellenzeilen
                 table_rows = document.querySelectorAll('tbody tr');
+                sortTable(3, true)
             }
         })
         .catch(error => console.error('Fehler beim Abrufen der Daten:', error));
@@ -80,7 +81,7 @@ table_headings.forEach((head, i) => {
         })
 
         head.classList.toggle('asc', sort_asc);
-        sort_asc = head.classList.contains('asc') ? false : true;
+        sort_asc = !head.classList.contains('asc');
 
         sortTable(i, sort_asc);
     }
