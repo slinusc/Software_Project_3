@@ -83,7 +83,6 @@ table_headings.forEach((head, i) => {
         sort_asc = head.classList.contains('asc') ? false : true;
 
         sortTable(i, sort_asc);
-        console.log("sorted")
     }
 })
 
@@ -110,7 +109,7 @@ function sortTable(column, sort_asc) {
         if (column === 4) { // Ersetzen Sie 3 durch den tatsächlichen Index der Statusspalte
             first_row = getStatusValue(first_row);
             second_row = getStatusValue(second_row);
-        } else {
+        } else if (column !== 0) { // Überspringen Sie die Konvertierung zu Float für die erste Spalte
             // Konvertieren Sie die Werte in Zahlen, bevor Sie sie vergleichen
             first_row = parseFloat(first_row);
             second_row = parseFloat(second_row);
