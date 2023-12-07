@@ -7,12 +7,14 @@
     /* Colors */
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
-    --sidebar-toggle-color: #695CFE;
+    --sidebar-toggle-color: #695CFE; /* Pfeil-toggle*/
     --primary-color: #695CFE;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
     --text-title-color: #695CFE;
+    --containercolor: rgba(246, 245, 255, 0.8);
+    --containertextcolor: black;
     /* Transition */
     --tran-02: all 0.2s ease;
     --tran-03: all 0.3s ease;
@@ -42,6 +44,8 @@ body.dark{
     --toggle-color: #FFF;
     --text-color: #CCC;
     --text-title-color: #FFF;
+    --containercolor: rgba(128, 128, 128, 0.8);
+    --containertextcolor: #FFF;
 }
 
 /* ===== Sidebar Styles ===== */
@@ -285,6 +289,24 @@ body.dark .switch::before{
     left: 60px;
 }
 
+.sidebar .search-box{
+    background: var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+
+.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--primary-color-light);
+    color: var(--text-color);
+    transition: var(--tran-05);
+}
 
 /* ========== Navigation Section ========== */
 
@@ -308,8 +330,8 @@ body.dark .switch::before{
     display: none;
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 60px;
+    width: calc(100% - 60px);
     height: 100vh;
     overflow: hidden;
 }
@@ -454,11 +476,17 @@ body.dark .menu-button:hover .icon{
     bottom: 70px;
     right: 10px;
     z-index: 1000;
-    background-color: rgba(246, 245, 255, 0.8); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
     padding: 10px;
     border-radius: 6px;
     max-width: 210px;
     min-width: 170px;
+}
+
+body.dark .checkbox-menu {
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
 }
 
 
@@ -467,48 +495,50 @@ body.dark .menu-button:hover .icon{
   display: none;
 }
 
+/* ====== Container für C02 ======*/
+.co2container {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 1000;
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 210px;
+    min-width: 170px;
+}
+
+body.dark .co2container {
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
+}
+
+
+/*default-einstellung, container versteckt*/
+.hide-co2container {
+    display: none;
+}
+
 
 /* ========== Analyse Section ========== */
 
 .grid-container{
     display: grid;
     height: 100vh;
-    margin-left: 60px;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;  /*Zeile*/
     grid-template-areas:
-        "charts"
-        "map-grid";
+        "chart chart"
+        "chart chart";
     overflow-y: scroll;
 }
 
-.charts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-}
-
-.charts-card {
-    margin-bottom: 20px;
-    padding: 10px;
+.chart-card {
+    padding: 20px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
 }
-
-.map-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 5px;
-    margin-top: 5px;
-}
-
-.map-grid-card{
-    margin-bottom: 20px;
-    padding: 10px;
-    box-sizing: border-box;
-    -webkit-column-break-inside: avoid;
-}
-
 
 /* ==== Bubble-Chart ==== */
 .bubble-chart{
@@ -538,7 +568,6 @@ body.dark .menu-button:hover .icon{
     max-height: 100%;
 }
 
-
 /* ==== Map-Chart ==== */
 .map-chart{
     width: 100%;
@@ -555,31 +584,33 @@ body.dark .menu-button:hover .icon{
 
 /* ====== Media Queries for different screen sizes ====== */
 @media screen and (max-width: 768px) {
-    .charts {
+    .grid-container {
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
+        grid-template-areas:
+            "chart"
+            "chart"
+            "chart"
+            "chart";
         gap: 10px;
-        margin-bottom: 0px;
     }
 
-    .map-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 0px;
-    }
     .user-guide-container {
         padding: 10px;
+        gap: 10px;
     }
 }
 
 @media screen and (max-width: 576px) {
-    .charts {
+    .grid-container {
         grid-template-columns: 1fr;
-        gap: 5px;
-    }
-
-    .map-grid {
-        grid-template-columns: 1fr;
-        gap: 5px;
+        grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
+        grid-template-areas:
+            "chart"
+            "chart"
+            "chart"
+            "chart";
+        gap: 10px;
     }
     .user-guide-container {
         padding: 5px;
@@ -660,7 +691,8 @@ body.dark .dropdown-menu:hover option{
 /* User Guide spezifische Styles */
 .user-guide-container {
     margin-top: 15px;
-    margin-left: 95px;
+    margin-left: 35px;
+    margin-right: 10px;
     max-height: 97vh;
     overflow-y: auto;
 }
