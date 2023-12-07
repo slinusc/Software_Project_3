@@ -41,9 +41,9 @@ class MongoDBAssistent:
 
 if __name__ == '__main__':
     mongoDB = MongoDBAssistent("data_base_OSM", "bike_ways")
-    #mongoDB.drop_collection()
-    #mongoDB.load_in_db('../../data/raw_data/grosse_gemeinden_data')
-    mongoDB.pull_from_db('../../data/raw_data/backup')
+    mongoDB.drop_collection()
+    mongoDB.load_in_db('../../data/raw_data/backup')
+    #mongoDB.pull_from_db('../../data/raw_data/backup')
 
 
 
