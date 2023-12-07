@@ -482,7 +482,7 @@ body.dark .menu-button:hover .icon{
 }
 
 .chart-card {
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
 }
