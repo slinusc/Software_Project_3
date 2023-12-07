@@ -18,12 +18,6 @@ def index():
     return render_template('index.html')
 
 
-@cache.cached(timeout=300)
-@app.route('/tabelle')
-def tabel():
-    return render_template('tabelle.html')
-
-
 @app.route('/locations', methods=['POST'])
 def get_locations():
     data = request.get_json()
