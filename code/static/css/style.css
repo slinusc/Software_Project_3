@@ -13,6 +13,8 @@
     --toggle-color: #DDD;
     --text-color: #707070;
     --text-title-color: #695CFE;
+    --containercolor: rgba(246, 245, 255, 0.8);
+    --containertextcolor: black;
     /* Transition */
     --tran-02: all 0.2s ease;
     --tran-03: all 0.3s ease;
@@ -42,6 +44,8 @@ body.dark{
     --toggle-color: #FFF;
     --text-color: #CCC;
     --text-title-color: #FFF;
+    --containercolor: rgba(128, 128, 128, 0.8);
+    --containertextcolor: #FFF;
 }
 
 /* ===== Sidebar Styles ===== */
@@ -472,11 +476,17 @@ body.dark .menu-button:hover .icon{
     bottom: 70px;
     right: 10px;
     z-index: 1000;
-    background-color: rgba(246, 245, 255, 0.8); /* Hier kannst du die Deckkraft anpassen (0.9 für 90% undurchsichtig) */
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
     padding: 10px;
     border-radius: 6px;
     max-width: 210px;
     min-width: 170px;
+}
+
+body.dark .checkbox-menu {
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
 }
 
 
@@ -484,6 +494,26 @@ body.dark .menu-button:hover .icon{
 .hidden {
   display: none;
 }
+
+/* ====== Container für C02 ======*/
+.co2container {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 1000;
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 210px;
+    min-width: 170px;
+}
+
+body.dark .co2container {
+    background-color: var(--containercolor);
+    color: var(--containertextcolor);
+}
+
 
 
 /* ========== Analyse Section ========== */
