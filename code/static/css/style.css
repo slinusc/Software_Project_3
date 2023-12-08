@@ -155,6 +155,10 @@ header .image-text .header-text{
     transform: translateY(-50%);
 }
 
+.sidebar.open header .search-box{
+    font-size: 16px;
+}
+
 body.dark .sidebar header .toggle{
     color: var(--text-color);
 }
@@ -630,7 +634,7 @@ body.dark .co2container {
 
 /* ====== Amenity Cluster Bubbles ====== */
 .cluster-bubble {
-    background-color: rgba(77, 142, 255, 0.8); /* Dunkleres Hellblau */
+    background-color: #00A8FF; /* Dunkleres Hellblau */
     border-radius: 50%;
     color: white;
     display: flex;
@@ -638,7 +642,7 @@ body.dark .co2container {
     justify-content: center;
     height: 40px;
     width: 40px;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 

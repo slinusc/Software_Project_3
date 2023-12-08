@@ -1,6 +1,6 @@
 import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker,
     updateAmenitiesMap, changeColorOfMarker} from './mapInitialization.js';
-import { navigateToCoordinates, deleteRoute } from './routing.js';
+import { navigateToCoordinates, deleteRoute, navigateToAddress } from './routing.js';
 
 
 // JavaScript Map ---------------------------------------------
@@ -54,6 +54,31 @@ window.addEventListener('amenityClicked', function(e) {
     console.log("Amenity clicked, navigate from:", start_latlon, "to:", end_latlon);
     navigateToCoordinates(map, start_latlon, end_latlon);
 });
+
+
+// Event Listener für das Suchfeld (Routing Adresse)
+// Debounce Funktion
+function debounce(func, wait) {
+    let timeout;
+
+    return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+}
+
+const searchInput = document.getElementById('searchInput');
+const debouncedNavigate = debounce(function() {
+    const endLocation = searchInput.value;
+    const startMarker = getCurrentMarker();
+    const start_latlon = [startMarker.getLatLng().lat, startMarker.getLatLng().lng];
+    if (endLocation) {
+        navigateToAddress(map, start_latlon, endLocation);
+    }
+}, 800); // 500 Millisekunden Verzögerung
+searchInput.addEventListener('input', debouncedNavigate);
+
 
 
 // Event-Listener für den "Route löschen"-Button

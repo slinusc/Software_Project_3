@@ -1,3 +1,6 @@
+import {navigateToAddress} from "./routing.js";
+import {getUserLocation} from "./getUserlocation.js";
+
 const body = document.querySelector("body"),
     sidebar = body.querySelector(".sidebar"),
     toggle = body.querySelector(".toggle"),
@@ -46,3 +49,4 @@ document.querySelectorAll('.menu-links a').forEach(link => {
         document.getElementById(targetSectionID).classList.add('active');
     });
 });
+
