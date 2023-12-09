@@ -650,7 +650,8 @@ body.dark .info-container-1 {
     justify-content: center;
     height: 40px;
     width: 40px;
-    opacity: 0.6;
+    opacity: 0.5;
+    backdrop-filter: blur(7px);
 }
 
 

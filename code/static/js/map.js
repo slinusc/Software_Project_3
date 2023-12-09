@@ -12,7 +12,7 @@ initializeMap();
 // Initialisierung Menu Button
 const toggleButton = document.getElementById("toggleMenu");
 const checkboxMenu = document.getElementById("checkboxMenu");
-const amenityInfo = document.getElementById('amenity-info');
+const amenityInfo = document.getElementById('routing-info');
 
 
 // Benutzer lokalisieren beim Laden des Skripts
@@ -52,8 +52,7 @@ window.addEventListener('amenityClicked', function(e) {
     const start_latlon = [startMarker.getLatLng().lat, startMarker.getLatLng().lng];
     const end_latlon = [e.detail.lat, e.detail.lon];
     navigateToCoordinates(map, start_latlon, end_latlon);
-    getAddressFromCoords(end_latlon);
-    amenityInfo.style.display = 'block';
+    amenityInfo.style.display = "block";
 });
 
 
