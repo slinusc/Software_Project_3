@@ -394,7 +394,6 @@ body.dark .location:hover .icon{
 /* ====== Delete Route Button ====== */
 .deletebtn {
     position: absolute;
-    display: flex;
     align-items: center;
     padding: 11px 12px;
     text-decoration: none;
@@ -499,8 +498,8 @@ body.dark .checkbox-menu {
   display: none;
 }
 
-/* ====== Container für C02 ======*/
-.hide-co2container {
+/* ====== Routing-Info-Container ======*/
+.info-container-1 {
     position: absolute;
     top: 15px;
     right: 10px;
@@ -511,17 +510,14 @@ body.dark .checkbox-menu {
     border-radius: 6px;
     max-width: 210px;
     min-width: 170px;
+    display: none;
 }
 
-body.dark .hide-co2container {
+body.dark .info-container-1 {
     background-color: var(--containercolor);
     color: var(--containertextcolor);
 }
 
-/* Hide CO2-Container */
-.hide-co2container {
-  display: none;
-}
 
 /* ========== Analyse Section ========== */
 

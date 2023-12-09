@@ -1,10 +1,9 @@
 let routingControl;
 let destinationMarker;
-const co2container = document.getElementById('co2container');
+const routingInfo = document.getElementById('routing-info');
 const deleteRouteButton = document.getElementById('delete-btn');
 
 export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
-
     // Stellt sicher, dass die alte Routing-Kontrolle entfernt wird, bevor eine neue hinzugefügt wird
     if (routingControl) {
         map.removeLayer(routingControl);
@@ -14,64 +13,66 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
     const [startLat, startLng] = startCoordinates; // Startkoordinaten
     const [endLat, endLng] = endCoordinates; // Zielkoordinaten
 
-    // URL für Mapbox Directions API
-    const accessToken = `pk.eyJ1Ijoic3R1aGxsaW4iLCJhIjoiY2xvOXY3OTl5MGQwbTJrcGViYmI2MHRtZCJ9.MaOQcyZ99PH5hey-6isRpw`;
-    const directionsUrl = `https://api.mapbox.com/directions/v5/mapbox/cycling/${startLng},${startLat};${endLng},${endLat}?geometries=geojson&overview=full&access_token=${accessToken}`;
+    // Adresse abrufen
+    getAddressFromCoords([endLat, endLng])
+        .then(address => {
+            const accessToken = `pk.eyJ1Ijoic3R1aGxsaW4iLCJhIjoiY2xvOXY3OTl5MGQwbTJrcGViYmI2MHRtZCJ9.MaOQcyZ99PH5hey-6isRpw`;
+            const directionsUrl = `https://api.mapbox.com/directions/v5/mapbox/cycling/${startLng},${startLat};${endLng},${endLat}?geometries=geojson&overview=full&access_token=${accessToken}`;
 
-    fetch(directionsUrl)
-        .then(response => response.json())
-        .then(data => {
-            const route = data.routes[0].geometry.coordinates;
-            const distance = data.routes[0].distance; // Distanz in Metern
-            const duration = data.routes[0].duration; // Dauer in Sekunden
-            const geojson = {
-                type: 'Feature',
-                properties: {},
-                geometry: {
-                    type: 'LineString',
-                    coordinates: route
-                }
-            };
-            // Falls bereits eine Route vorhanden ist, entfernen
-            if (routingControl) {
-                map.removeLayer(routingControl);
-            }
-            // Routing-Kontrolle erstellen
-            routingControl = L.geoJSON(geojson)
-            // Farbe der Route festlegen
-            routingControl.setStyle({
-                color: '#695CFE',
-                opacity: 1
-            });
-            // Route auf der Karte anzeigen
-            routingControl.addTo(map);
+            fetch(directionsUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const route = data.routes[0].geometry.coordinates;
+                    const distance = data.routes[0].distance; // Distanz in Metern
+                    const duration = data.routes[0].duration; // Dauer in Sekunden
+                    const geojson = {
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                            type: 'LineString',
+                            coordinates: route
+                        }
+                    };
+                    // Falls bereits eine Route vorhanden ist, entfernen
+                    if (routingControl) {
+                        map.removeLayer(routingControl);
+                    }
+                    // Routing-Kontrolle erstellen
+                    routingControl = L.geoJSON(geojson, {style: {color: '#695CFE', opacity: 1}});
+                    // Route auf der Karte anzeigen
+                    routingControl.addTo(map);
 
-            const co2container = document.getElementById('co2container');
-            const hours = Math.floor(duration / 3600);
-            const minutes = Math.floor((duration % 3600) / 60);
-            const co2 = Math.floor((distance / 1000) * 150); // ca. 150 g pro km
+                    const hours = Math.floor(duration / 3600);
+                    const minutes = Math.floor((duration % 3600) / 60);
+                    const co2 = Math.floor((distance / 1000) * 150); // ca. 150 g pro km
 
-            if (co2container) {
-                let durationString = '';
-                if (hours !== 0) {
-                    durationString += `${hours} Std `;
-                }
-                if (minutes !== 0) {
-                    durationString += `${minutes} Min `;
-                }
+                    if (routingInfo) {
+                        let durationString = '';
+                        if (hours !== 0) {
+                            durationString += `${hours} Std `;
+                        }
+                        if (minutes !== 0) {
+                            durationString += `${minutes} Min `;
+                        }
 
-                co2container.innerHTML = `<strong>Distanz:</strong> ${(distance / 1000).toFixed(2)} km<br>
-                              <strong>Dauer:</strong> ${durationString}<br>
-                                <strong>Eingespartes CO2</strong> ${co2.toFixed(0)} g<br>`;
-                co2container.style.display = 'block';
-                deleteRouteButton.style.display = 'block';
-            }
-
+                        routingInfo.innerHTML = `
+                            <strong>Adresse:</strong> ${address}<br>
+                            <strong>Distanz:</strong> ${(distance / 1000).toFixed(2)} km<br>
+                            <strong>Dauer:</strong> ${durationString}<br>
+                            <strong>Eingespartes CO2:</strong> ${co2.toFixed(0)} g<br>`;
+                        routingInfo.style.display = 'block';
+                        deleteRouteButton.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler bei der Routing-Anfrage:', error);
+                });
         })
         .catch(error => {
-            console.error('Fehler bei der Routing-Anfrage:', error);
+            console.error('Fehler bei der Adressabfrage:', error);
         });
 }
+
 
 // Funktion zum Löschen der Route
 export function deleteRoute(map) {
@@ -87,9 +88,9 @@ export function deleteRoute(map) {
         destinationMarker = null;
     }
 
-    if (co2container) {
-        co2container.innerHTML = '';
-        co2container.style.display = 'none';
+    if (routingInfo) {
+        routingInfo.innerHTML = '';
+        routingInfo.style.display = 'none';
         deleteRouteButton.style.display = 'none';
     }
 
@@ -144,5 +145,28 @@ export function navigateToAddress(map, startCoordinates, endLocation) {
                 console.error('Fehler bei der Geokodierung:', error);
             }
         );
+}
+
+
+export function getAddressFromCoords(latlon) {
+    const [lat, lon] = latlon;
+    const accessToken = 'pk.eyJ1Ijoic3R1aGxsaW4iLCJhIjoiY2xvOXY3OTl5MGQwbTJrcGViYmI2MHRtZCJ9.MaOQcyZ99PH5hey-6isRpw';
+    const reverseGeocodingUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=${accessToken}`;
+
+    return fetch(reverseGeocodingUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.features && data.features.length > 0) {
+                // Gibt die Adresse des ersten Suchergebnisses zurück
+                return data.features[0].place_name || 'Keine Adresse gefunden';
+            } else {
+                throw new Error('Koordinaten konnten nicht in eine Adresse umgewandelt werden.');
+            }
+        });
 }
 

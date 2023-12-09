@@ -1,6 +1,6 @@
 import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker,
     updateAmenitiesMap, changeColorOfMarker, debounce } from './mapInitialization.js';
-import { navigateToCoordinates, deleteRoute, navigateToAddress } from './routing.js';
+import {navigateToCoordinates, deleteRoute, navigateToAddress, getAddressFromCoords} from './routing.js';
 
 
 // JavaScript Map ---------------------------------------------
@@ -12,6 +12,7 @@ initializeMap();
 // Initialisierung Menu Button
 const toggleButton = document.getElementById("toggleMenu");
 const checkboxMenu = document.getElementById("checkboxMenu");
+const amenityInfo = document.getElementById('amenity-info');
 
 
 // Benutzer lokalisieren beim Laden des Skripts
@@ -51,6 +52,8 @@ window.addEventListener('amenityClicked', function(e) {
     const start_latlon = [startMarker.getLatLng().lat, startMarker.getLatLng().lng];
     const end_latlon = [e.detail.lat, e.detail.lon];
     navigateToCoordinates(map, start_latlon, end_latlon);
+    getAddressFromCoords(end_latlon);
+    amenityInfo.style.display = 'block';
 });
 
 

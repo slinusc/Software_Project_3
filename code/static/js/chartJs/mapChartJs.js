@@ -73,7 +73,7 @@ function renderMapWithData(amenityData) {
 
         // Konvertieren der Rohdaten in das richtige Format für die Karte
         const dataForMap = cantons.map(canton => {
-            const cantonId = cantonNameMapping[canton.properties.name]; // Verwenden Sie das Mapping, um den Namen zu aktualisieren
+            const cantonId = cantonNameMapping[canton.properties.name]; // Mapping der Namen
             const value = amenityData[cantonId] || 0;
             return { feature: canton, value: value };
         });
