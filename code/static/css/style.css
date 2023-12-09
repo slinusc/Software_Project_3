@@ -13,7 +13,7 @@
     --toggle-color: #DDD;
     --text-color: #707070;
     --text-title-color: #695CFE;
-    --containercolor: rgba(246, 245, 255, 0.8);
+    --containercolor: rgba(246, 245, 255, 0.5);
     --containertextcolor: black;
     /* Transition */
     --tran-02: all 0.2s ease;
@@ -44,7 +44,7 @@ body.dark{
     --toggle-color: #FFF;
     --text-color: #CCC;
     --text-title-color: #FFF;
-    --containercolor: rgba(128, 128, 128, 0.8);
+    --containercolor: rgba(128, 128, 128, 0.5);
     --containertextcolor: #FFF;
 }
 
@@ -180,11 +180,12 @@ body.dark .sidebar header .toggle{
 
 .sidebar li a:hover{
     background: var(--primary-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text{
-    color: var(--sidebar-color)
+    color: var(--sidebar-color);
 }
 
 body.dark .sidebar li a:hover .icon,
@@ -312,6 +313,10 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
+.search-box:hover {
+    box-shadow: 0 .1rem .4rem #0002;
+}
+
 /* ========== Navigation Section ========== */
 
 /* ==== Map ==== */
@@ -356,9 +361,10 @@ body.dark .switch::before{
     bottom: 15px;
     right: 70px;
     border-radius: 6px;
-    background-color: rgba(246, 245, 255, 0.8);
+    background-color: rgba(246, 245, 255, 0.5);
     z-index: 1001;
     border: none;
+    backdrop-filter: blur(7px);
 }
 
 .location .icon {
@@ -367,6 +373,7 @@ body.dark .switch::before{
 
 .location:hover {
     background-color: var(--primary-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 .location:hover .icon{
@@ -380,6 +387,7 @@ body.dark .location {
 
 body.dark .location:hover {
     background-color: var(--primary-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 body.dark .location:hover .icon{
@@ -401,10 +409,11 @@ body.dark .location:hover .icon{
     bottom: 15px;
     right: 130px;
     border-radius: 6px;
-    background-color: rgba(246, 245, 255, 0.8);
+    background-color: rgba(246, 245, 255, 0.5);
     z-index: 1001;
     border: none;
     display: none; /* Versteckt den Button wenn keine Route angezeigt */
+    backdrop-filter: blur(7px);
 }
 
 .deletebtn .icon {
@@ -413,6 +422,7 @@ body.dark .location:hover .icon{
 
 .deletebtn:hover {
     background-color: var(--primary-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 .deletebtn:hover .icon{
@@ -426,6 +436,7 @@ body.dark .deletebtn {
 
 body.dark .deletebtn:hover {
     background-color: var(--primary-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 body.dark .deletebtn:hover .icon{
@@ -444,9 +455,10 @@ body.dark .deletebtn:hover .icon{
     bottom: 15px;
     right: 10px;
     border-radius: 6px;
-    background-color: rgba(246, 245, 255, 0.8);
+    background-color: rgba(246, 245, 255, 0.5);
     z-index: 1001;
     border: none;
+    backdrop-filter: blur(7px);
 }
 
 .menu-button .icon{
@@ -455,6 +467,7 @@ body.dark .deletebtn:hover .icon{
 
 .menu-button:hover {
     background-color: var(--primary-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 .menu-button:hover .icon{
@@ -468,6 +481,7 @@ body.dark .menu-button {
 
 body.dark .menu-button:hover {
     background-color: var(--primary-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 body.dark .menu-button:hover .icon{
@@ -486,6 +500,7 @@ body.dark .menu-button:hover .icon{
     border-radius: 6px;
     max-width: 210px;
     min-width: 170px;
+    backdrop-filter: blur(7px);
 }
 
 body.dark .checkbox-menu {
@@ -511,6 +526,7 @@ body.dark .checkbox-menu {
     max-width: 210px;
     min-width: 170px;
     display: none;
+    backdrop-filter: blur(7px);
 }
 
 body.dark .info-container-1 {
@@ -617,8 +633,6 @@ body.dark .info-container-1 {
 }
 
 
-
-
 /* alter code */
 
 #mapTopoJSON {
@@ -655,7 +669,7 @@ body.dark .info-container-1 {
 .dropdown-menu:hover {
     background-color: var(--primary-color);
     color: var(--body-color);
-
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 .dropdown-menu:hover option{
@@ -670,7 +684,7 @@ body.dark .dropdown-menu {
 
 body.dark .dropdown-menu:hover {
     background-color: var(--primary-color-light);
-    border: 1px solid var(--sidebar-color);
+    box-shadow: 0 .1rem .4rem #0002;
 }
 
 body.dark .dropdown-menu:hover option{
@@ -787,21 +801,19 @@ main.table {
 
 .table__header .input-group {
     width: 35%;
-    height: 100%;
-    background-color: #E4E9F7;
+    height: 99%;
     padding: 0 .7rem;
-    border-radius: 2rem;
-
+    border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     transition: .2s;
+    background: var(--primary-color-light);
 }
 
 .table__header .input-group:hover {
-    width: 45%;
-    background-color: #fff8;
+    width: 36%;
+    height: 100%;
     box-shadow: 0 .1rem .4rem #0002;
 }
 
@@ -819,10 +831,8 @@ main.table {
     font-size: .9rem;
     max-height: calc(89% - 1.6rem);
     background-color: #E4E9F7;
-
     margin: .8rem auto;
     border-radius: .6rem;
-
     overflow: auto;
 }
 
@@ -834,7 +844,7 @@ main.table {
 }
 
 .table__body::-webkit-scrollbar-thumb {
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     background-color: #0004;
     visibility: hidden;
 }
@@ -843,11 +853,9 @@ main.table {
     visibility: visible;
 }
 
-
 table {
     width: 100%;
 }
-
 
 table, th, td {
     border-collapse: collapse;
@@ -863,6 +871,7 @@ thead th {
     background-color: #d5d1defe;
     cursor: pointer;
     text-transform: capitalize;
+    width: 100%;
 }
 
 tbody tr:nth-child(even) {
@@ -988,18 +997,14 @@ thead th.active, tbody td.active {
 .export__file .export__file-options {
     position: absolute;
     right: 0;
-
     width: 12rem;
     border-radius: .5rem;
     overflow: hidden;
     text-align: center;
-
     opacity: 0;
     transform: scale(.8);
     transform-origin: top right;
-
     box-shadow: 0 .2rem .5rem #0004;
-
     transition: .2s;
 }
 
