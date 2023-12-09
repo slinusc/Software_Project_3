@@ -396,7 +396,7 @@ body.dark .location:hover .icon{
     position: absolute;
     display: flex;
     align-items: center;
-    padding: 12px 12px;
+    padding: 11px 12px;
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
     bottom: 15px;
@@ -405,6 +405,7 @@ body.dark .location:hover .icon{
     background-color: rgba(246, 245, 255, 0.8);
     z-index: 1001;
     border: none;
+    display: none; /* Versteckt den Button wenn keine Route angezeigt */
 }
 
 .deletebtn .icon {
@@ -493,14 +494,13 @@ body.dark .checkbox-menu {
     color: var(--containertextcolor);
 }
 
-
 /* Hide Checkbox-Menu */
 .hidden {
   display: none;
 }
 
 /* ====== Container für C02 ======*/
-.co2container {
+.hide-co2container {
     position: absolute;
     top: 15px;
     right: 10px;
@@ -513,17 +513,15 @@ body.dark .checkbox-menu {
     min-width: 170px;
 }
 
-body.dark .co2container {
+body.dark .hide-co2container {
     background-color: var(--containercolor);
     color: var(--containertextcolor);
 }
 
-
-/*default-einstellung, container versteckt*/
+/* Hide CO2-Container */
 .hide-co2container {
-    display: none;
+  display: none;
 }
-
 
 /* ========== Analyse Section ========== */
 

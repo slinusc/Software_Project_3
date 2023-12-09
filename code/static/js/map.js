@@ -1,5 +1,5 @@
 import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getCurrentMarker,
-    updateAmenitiesMap, changeColorOfMarker} from './mapInitialization.js';
+    updateAmenitiesMap, changeColorOfMarker, debounce } from './mapInitialization.js';
 import { navigateToCoordinates, deleteRoute, navigateToAddress } from './routing.js';
 
 
@@ -30,11 +30,10 @@ document.getElementById('locate-btn').addEventListener('click', function() {
 toggleButton.addEventListener("click", () => {
   if (checkboxMenu.classList.contains("hidden")) {
     checkboxMenu.classList.remove("hidden");
-    toggleButton.innerHTML = '<i class=\'bx bx-menu icon\'></i>'; // Setze das Bild im Button
   } else {
     checkboxMenu.classList.add("hidden");
-    toggleButton.innerHTML = '<i class=\'bx bx-menu icon\'></i>'; // Setze das Bild im Button
   }
+  toggleButton.innerHTML = '<i class=\'bx bx-menu icon\'></i>'; // Setze das Bild im Button
 });
 
 
@@ -51,23 +50,11 @@ window.addEventListener('amenityClicked', function(e) {
     const startMarker = getCurrentMarker();
     const start_latlon = [startMarker.getLatLng().lat, startMarker.getLatLng().lng];
     const end_latlon = [e.detail.lat, e.detail.lon];
-    console.log("Amenity clicked, navigate from:", start_latlon, "to:", end_latlon);
     navigateToCoordinates(map, start_latlon, end_latlon);
 });
 
 
 // Event Listener für das Suchfeld (Routing Adresse)
-// Debounce Funktion
-function debounce(func, wait) {
-    let timeout;
-
-    return function(...args) {
-        const context = this;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(context, args), wait);
-    };
-}
-
 const searchInput = document.getElementById('searchInput');
 const debouncedNavigate = debounce(function() {
     const endLocation = searchInput.value;
@@ -76,9 +63,8 @@ const debouncedNavigate = debounce(function() {
     if (endLocation) {
         navigateToAddress(map, start_latlon, endLocation);
     }
-}, 800); // 500 Millisekunden Verzögerung
+}, 1000); // 1000 Millisekunden Verzögerung
 searchInput.addEventListener('input', debouncedNavigate);
-
 
 
 // Event-Listener für den "Route löschen"-Button
@@ -104,3 +90,4 @@ document.querySelector('.toggle-switch').addEventListener('click', function() {
     // Fügt den TileLayer wieder zur Karte hinzu
     currentTileLayer.addTo(map);
 });
+

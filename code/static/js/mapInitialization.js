@@ -166,3 +166,13 @@ export function updateAmenitiesMap(map) {
     });
 }
 
+
+// Debounce-Funktion
+export function debounce(func, wait) { // Debounce Funktion für das Suchfeld
+    let timeout;
+    return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+}

@@ -87,20 +87,6 @@ table_headings.forEach((head, i) => {
     }
 })
 
-
-function getStatusValue(status) {
-    switch (status.toLowerCase()) {
-        case 'viel':
-            return 3;
-        case 'mittel':
-            return 2;
-        case 'wenig':
-            return 1;
-        default:
-            return 0;
-    }
-}
-
 function sortTable(column, sort_asc) {
     [...table_rows].sort((a, b) => {
         // Bestimmen Sie, ob die Spalte 3 oder 4 ist, und verwenden Sie in beiden Fällen den Wert von Spalte 3 für den Vergleich
