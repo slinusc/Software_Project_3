@@ -6,11 +6,11 @@ let search = document.querySelector('.input-group input'),
 // Funktion, die den Status basierend auf Fahrradwege pro km2 zurückgibt
 function getStatus(fahrradwegeProKm2) {
     if (fahrradwegeProKm2 < 1) {
-        return `<p class="status wenig">Wenig</p>`;
+        return `<p class="status wenig">wenig</p>`;
     } else if (fahrradwegeProKm2 <= 2) {
-        return `<p class="status mittel">Mittel</p>`;
+        return `<p class="status mittel">mittel</p>`;
     } else {
-        return `<p class="status viel">Viel</p>`;
+        return `<p class="status viel">viel</p>`;
     }
 }
 

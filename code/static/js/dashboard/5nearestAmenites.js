@@ -15,12 +15,12 @@ function fetchNearestAmenities(lat, lon, amenityType, k) {
             k: k
         })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Netzwerkantwort war nicht ok');
-        }
-        return response.json(); // Stellen Sie sicher, dass die Antwort als JSON geparst wird
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Netzwerkantwort war nicht ok');
+            }
+            return response.json(); // Stellen Sie sicher, dass die Antwort als JSON geparst wird
+        });
 }
 
 function createGeoBubbleChart(userLocation, data) {
@@ -91,13 +91,14 @@ function createGeoBubbleChart(userLocation, data) {
                 }
             },
             plugins: {
+
                 legend: {
                     display: false // Legende ausblenden
                 },
                 tooltip: {
                     displayColors: false,
                     callbacks: {
-                        label: function(context) {
+                        label: function (context) {
                             let address = context.raw.address; // Adresse aus den Rohdaten extrahieren
                             let distance = context.raw.distance; // Distanz aus den Rohdaten extrahieren
                             return [`Adresse: ${address}`, `Distanz: ${distance.toFixed(2)} m`];
@@ -119,11 +120,11 @@ function createGeoBubbleChart(userLocation, data) {
                 let yAxis = chart.scales.y;
                 let centerX = xAxis.getPixelForValue(0);
                 let centerY = yAxis.getPixelForValue(0);
-                let maxRadius = (Math.max(xAxis.width, yAxis.height) /2)*1.15;
+                let maxRadius = (Math.max(xAxis.width, yAxis.height) / 2);// * 1.15;
 
-                ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)'; // Standardfarbe für Linien in Chart.js
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)'; // Standardfarbe für Linien
 
-                // Weitere Kreise zeichnen, falls gewünscht
+                // Zeichnen der Kreise
                 let totalCircles = 6;
                 for (let i = 1; i <= totalCircles; i++) {
                     let currentRadius = (i / totalCircles) * maxRadius;
@@ -131,13 +132,35 @@ function createGeoBubbleChart(userLocation, data) {
                     ctx.arc(centerX, centerY, currentRadius, 0, 2 * Math.PI);
                     ctx.stroke();
                 }
+
+                // Zeichnen der horizontalen Linie
+                ctx.beginPath();
+                ctx.moveTo(0, centerY);
+                ctx.lineTo(chart.width, centerY);
+                ctx.stroke();
+
+                // Zeichnen der vertikalen Linie
+                ctx.beginPath();
+                ctx.moveTo(centerX, 0);
+                ctx.lineTo(centerX, chart.height);
+                ctx.stroke();
+
+                // Hinzufügen der Himmelsrichtungen
+                ctx.font = "20px";
+                ctx.textAlign = "center";
+                ctx.fillText("N", centerX, centerY - maxRadius - 10);
+                ctx.fillText("S", centerX, centerY + maxRadius + 15);
+                ctx.fillText("W", centerX - maxRadius - 15, centerY+4);
+                ctx.fillText("O", centerX + maxRadius + 15, centerY+4);
             }
         }]
+
+
     });
 }
 
 // Event-Listener für das 'change'-Event hinzufügen
-document.getElementById('amenitySelect2').addEventListener('change', function() {
+document.getElementById('amenitySelect2').addEventListener('change', function () {
     // Den ausgewählten Wert als Amenity setzen
     let selectedAmenity = this.value;
 
