@@ -90,14 +90,10 @@ def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
         amenity_coords = amenity["node"]["location"]["coordinates"]
         amenity["distance"] = calculate_distance_mapbox(lat, lon, amenity_coords[1], amenity_coords[0])
 
-        # Adressinformationen abrufen (Beispiel mit OpenStreetMap Nominatim API)
-        address = get_address_from_coords(amenity_coords[1], amenity_coords[0])
-
         # Nur Adresse und Koordinaten zur Ergebnisliste hinzufügen
         result.append({
             "amenity": amenity_type,
             "coordinates": amenity_coords,
-            "address": address,
             "distance": amenity["distance"]
         })
 
@@ -125,32 +121,6 @@ def calculate_distance_mapbox(lat1, lon1, lat2, lon2):
         return distance
     except:
         return 0
-
-
-def get_address_from_coords(lat, lon):
-    """
-    Bezieht die Adresse für eine bestimmte Koordinate mit der OpenStreetMap Nominatim API.
-    :param lat: User-Koordinaten
-    :param lon: User-Koordinaten
-    :return: Adresse für Koordinaten der Amenities
-    """
-
-    url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lon}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        # Extrahieren der gewünschten Felder aus der Antwort
-        road = data.get("address", {}).get("road", "")
-        house_number = data.get("address", {}).get("house_number", "")
-        city = data.get("address", {}).get("city", "")
-        postcode = data.get("address", {}).get("postcode", "")
-        # Formatieren der Adresse
-        if house_number:
-            address = f"{road} {house_number}, {postcode} {city}"
-        else:
-            address = f"{road}, {postcode} {city}"
-        return address.strip()
-    return "Adresse nicht verfügbar"
 
 
 def count_amenities_by_canton(amenity_type):
@@ -207,15 +177,18 @@ def get_bike_ways_for_all_gemeinden():
 
 
 if __name__ == "__main__":
-    """
+
     start_time = time.time()
     nearest_amenities = find_k_nearest_amenities(47.3759744, 8.5295104, "bicycle_parking", 5)
     print(nearest_amenities)
     end_time = time.time()
     print(f"Time elapsed: {end_time - start_time} seconds")
 
-    nearest_amenities = number_amenities_in_radius(47.3769, 8.5417, radius=1000)  # 1km, Zürich
+    """nearest_amenities = number_amenities_in_radius(47.3769, 8.5417, radius=1000)  # 1km, Zürich
     print(nearest_amenities)"""
+
+    """
     test = get_bike_ways_for_all_gemeinden()
     for i in test:
         print(i)
+    """

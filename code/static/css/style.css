@@ -650,8 +650,7 @@ body.dark .info-container-1 {
     justify-content: center;
     height: 40px;
     width: 40px;
-    opacity: 0.5;
-    backdrop-filter: blur(7px);
+    opacity: 0.6;
 }
 
 
@@ -813,7 +812,7 @@ main.table {
 }
 
 .table__header .input-group:hover {
-    width: 36%;
+    width: 37%;
     height: 100%;
     box-shadow: 0 .1rem .4rem #0002;
 }

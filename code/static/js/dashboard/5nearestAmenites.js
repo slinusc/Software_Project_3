@@ -1,8 +1,9 @@
 import {getUserLocation} from "../getUserlocation.js";
+import {getAddressFromCoords} from "../routing.js";
 
 let myChart;
 
-function fetchNearestAmenities(lat, lon, amenityType, k) {
+async function fetchNearestAmenities(lat, lon, amenityType, k) {
     return fetch('/nearest_amenities', {
         method: 'POST',
         headers: {
@@ -15,13 +16,29 @@ function fetchNearestAmenities(lat, lon, amenityType, k) {
             k: k
         })
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Netzwerkantwort war nicht ok');
-            }
-            return response.json(); // Stellen Sie sicher, dass die Antwort als JSON geparst wird
-        });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Netzwerkantwort war nicht ok');
+        }
+        return response.json(); // Stellen Sie sicher, dass die Antwort als JSON geparst wird
+    })
+    .then(async data => {
+        // Verwenden Sie Promise.all, um alle Adressabfragen parallel auszuführen
+        const dataWithAddresses = await Promise.all(
+            data.map(async item => {
+                try {
+                    const address = await getAddressFromCoords([item.coordinates[1], item.coordinates[0]]);
+                    return { ...item, address }; // Füge die Adresse zu jedem Element hinzu
+                } catch (error) {
+                    console.error('Fehler beim Abrufen der Adresse:', error);
+                    return { ...item, address: 'Adresse nicht verfügbar' };
+                }
+            })
+        );
+        return dataWithAddresses; // Gibt die angereicherten Daten zurück
+    });
 }
+
 
 function createGeoBubbleChart(userLocation, data) {
     const canvas = document.getElementById('meinGeoBubbleChart');
@@ -33,6 +50,8 @@ function createGeoBubbleChart(userLocation, data) {
 
     // Sortieren der Daten nach Distanz
     const sortedData = data.sort((a, b) => a.distance - b.distance);
+
+    console.log(sortedData)
 
     const bubbleChartData = {
         datasets: [{
@@ -47,10 +66,9 @@ function createGeoBubbleChart(userLocation, data) {
             backgroundColor: 'rgba(0, 123, 255, 0.5)',
         }]
     };
-
     // Calculate maxRadius
     let maxRadius = Math.max(...bubbleChartData.datasets[0].data.map(d => Math.sqrt(d.x * d.x + d.y * d.y)));
-
+    console.log(bubbleChartData.datasets[0])
     // Wenn ein Diagramm bereits existiert, zerstören Sie es
     if (myChart) {
         myChart.destroy();

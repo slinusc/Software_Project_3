@@ -162,8 +162,11 @@ export function getAddressFromCoords(latlon) {
         })
         .then(data => {
             if (data.features && data.features.length > 0) {
-                // Gibt die Adresse des ersten Suchergebnisses zurück
-                return data.features[0].place_name || 'Keine Adresse gefunden';
+                // Extrahieren Sie die Adresse und entfernen Sie den letzten Teil (Land)
+                let fullAddress = data.features[0].place_name || 'Keine Adresse gefunden';
+                let addressParts = fullAddress.split(',');
+                addressParts.pop(); // Entfernt den letzten Teil der Adresse (normalerweise das Land)
+                return addressParts.join(','); // Fügt die Teile ohne das Land wieder zusammen
             } else {
                 throw new Error('Koordinaten konnten nicht in eine Adresse umgewandelt werden.');
             }
