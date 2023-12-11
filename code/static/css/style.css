@@ -788,7 +788,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     overflow: hidden;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     main.table, main.bubble-chart, main.radar-chart, main.map-chart {
         width: 80vw;
         height: 45vh;
