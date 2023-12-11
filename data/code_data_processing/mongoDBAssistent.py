@@ -46,6 +46,3 @@ if __name__ == '__main__':
     mongoDB.load_in_db('../../data/raw_data/backup_2023-12-07')
     mongoDB2.load_in_db('../../data/raw_data/amenities_2023-11-20')
     #mongoDB.pull_from_db('../../data/raw_data/backup')
-
-
-
