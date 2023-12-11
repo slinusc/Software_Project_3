@@ -801,7 +801,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 
 .table__header {
     width: 100%;
-    height: 15%;
+    height: 18%;
     background: var(--sidebar-color);
     color: var(--text-color);
     padding: .8rem 1rem;
