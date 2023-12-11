@@ -12,7 +12,6 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css"/>
 
     <!-- Style sheet -->
@@ -165,7 +164,9 @@
                         </select>
                     </section>
                     <div class="radar-chart">
+                        <div class="square2">
                         <canvas id="meinRadarChart"></canvas>
+                        </div>
                     </div>
 
 
@@ -186,7 +187,10 @@
                         </select>
                     </section>
                     <div class="bubble-chart">
-                        <canvas id="meinGeoBubbleChart"></canvas>
+                        <div class="square">
+                            <canvas id="meinGeoBubbleChart"></canvas>
+                        </div>
+
                     </div>
 
 
@@ -213,8 +217,6 @@
                                 <th> Status <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
                                 <th> Fläche <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
                                 <th> Wege <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-
-
                             </tr>
                             </thead>
                             <tbody>
