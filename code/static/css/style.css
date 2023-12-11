@@ -553,8 +553,6 @@ body.dark .info-container-1 {
     padding: 10px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
-    height: 100%;
-    width: 100%;
 }
 
 /* ==== Bubble-Chart ==== */
@@ -666,6 +664,7 @@ body.dark .info-container-1 {
     background-color: var(--primary-color-light);
     border-radius: 6px;
     border: none;
+    padding: 10px;
 }
 
 .dropdown-menu:hover {
@@ -781,17 +780,28 @@ body {
 }
 
 main.table, main.bubble-chart, main.radar-chart, main.map-chart {
-    width: 82vw;
-    height: 80vh;
+    width: 45vw;
+    height: 45vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);
     border-radius: 6px;
     overflow: hidden;
 }
 
+@media only screen and (max-width: 600px) {
+    main.table, main.bubble-chart, main.radar-chart, main.map-chart {
+        width: 80vw;
+        height: 45vh;
+        background-color: #fff5;
+        backdrop-filter: blur(7px);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+}
+
 .table__header {
     width: 100%;
-    height: 10%;
+    height: 15%;
     background: var(--sidebar-color);
     color: var(--text-color);
     padding: .8rem 1rem;
@@ -834,7 +844,6 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     max-height: calc(89% - 1.6rem);
     background-color: #E4E9F7;
     margin: 0 auto;
-    border-radius: .6rem;
     overflow: auto;
 }
 
