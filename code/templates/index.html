@@ -182,39 +182,6 @@
                 </select>
             </div>
 
-            <!-- Tabelle -->
-            <div class="chart-card">
-                <body>
-                <main class="table" id="bike_table">
-                    <section class="table__header">
-                        <h1>Fahrradwege</h1>
-                        <div class="input-group">
-                            <input type="search" placeholder="Suche Gemeinde...">
-                        </div>
-                    </section>
-                    <section class="table__body">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th> Gemeinde <span class="icon-arrow"><i class="bx bx-chevron-down toggle"></i></span>
-                                </th>
-                                <th> Fläche <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-                                <th> Wege <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-                                <th> Wege/km² <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-                                <th> Status <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!-- Dynamische Inhalte werden hier geladen -->
-                            </tbody>
-                        </table>
-                    </section>
-                </main>
-                <script type="module" src="../static/js/dashboard/tabelle.js"></script>
-
-                </body>
-            </div>
 
             <!-- Container für die Karte: Einrichtungen pro Kanton -->
             <div class="chart-card">
@@ -232,6 +199,40 @@
                     <option value="shelter">Unterstand</option>
                 </select>
             </div>
+        </div>
+
+        <!-- Tabelle -->
+        <div class="table-card">
+            <body>
+            <main class="table" id="bike_table">
+                <section class="table__header">
+                    <h1>Fahrradwege</h1>
+                    <div class="input-group">
+                        <input type="search" placeholder="Suche Gemeinde...">
+                    </div>
+                </section>
+                <section class="table__body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th> Gemeinde <span class="icon-arrow"><i class="bx bx-chevron-down toggle"></i></span>
+                            </th>
+                            <th> Fläche <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+                            <th> Wege <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+                            <th> Wege/km² <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+                            <th> Status <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Dynamische Inhalte werden hier geladen -->
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+            <script type="module" src="../static/js/dashboard/tabelle.js"></script>
+
+            </body>
         </div>
 
     </div>
