@@ -42,7 +42,8 @@ class MongoDBAssistent:
 if __name__ == '__main__':
     mongoDB = MongoDBAssistent("data_base_OSM", "bike_ways")
     mongoDB2 = MongoDBAssistent("data_base_OSM", "bicycle_amenities")
-    #mongoDB.drop_collection()
+    mongoDB.drop_collection()
+    mongoDB2.drop_collection()
     mongoDB.load_in_db('../../data/raw_data/backup_2023-12-07')
     mongoDB2.load_in_db('../../data/raw_data/amenities_2023-11-20')
     #mongoDB.pull_from_db('../../data/raw_data/backup')
