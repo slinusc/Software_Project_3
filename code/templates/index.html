@@ -129,7 +129,6 @@
                     <input type="radio" id="keine" name="amenity" value="">
                     <label for="keine">Keine</label>
                 </div>
-
             </div>
 
             <!-- Standort Button -->
@@ -154,85 +153,101 @@
         <div class="grid-container">
             <!-- Container für Radar-Diagramme -->
             <div class="chart-card">
-                <div class="radar-chart">
-                    <canvas id="meinRadarChart"></canvas>
-                </div>
-                <!-- Dropdown-Menü für Radius -->
-                <select name="radius" id="radiusSelect" class=dropdown-menu>
-                    <option value="1000">1 km</option>
-                    <option value="2000">2 km</option>
-                    <option value="5000">5 km</option>
-                    <option value="10000">10 km</option>
-                    <option value="20000">20 km</option>
-                </select>
+                <main class="table" id="main-radar">
+                    <section class="table__header">
+                        <!-- Dropdown-Menü für Radius -->
+                        <select name="radius" id="radiusSelect" class=dropdown-menu>
+                            <option value="1000">1 km</option>
+                            <option value="2000">2 km</option>
+                            <option value="5000">5 km</option>
+                            <option value="10000">10 km</option>
+                            <option value="20000">20 km</option>
+                        </select>
+                    </section>
+                    <div class="radar-chart">
+                        <canvas id="meinRadarChart"></canvas>
+                    </div>
+
+
+                </main>
             </div>
 
             <div class="chart-card">
-                <div class="bubble-chart">
-                    <canvas id="meinGeoBubbleChart"></canvas>
-                </div>
-                <!-- Dropdown-Menü für verschiedene Amenities -->
-                <select id="amenitySelect2" class="dropdown-menu">
-                    <option value="bicycle_parking">Fahrradparkplatz</option>
-                    <option value="bicycle_repair_station">Reparaturstation</option>
-                    <option value="bicycle_rental">Fahrradverleih</option>
-                    <option value="compressed_air">Luftpumpe</option>
-                    <option value="drinking_water">Trinkwasser</option>
-                    <option value="shelter">Unterstand</option>
-                </select>
+                <main class="table" id="main-bubble">
+                    <section class="table__header">
+                        <!-- Dropdown-Menü für verschiedene Amenities -->
+                        <select id="amenitySelect2" class="dropdown-menu">
+                            <option value="bicycle_parking">Fahrradparkplatz</option>
+                            <option value="bicycle_repair_station">Reparaturstation</option>
+                            <option value="bicycle_rental">Fahrradverleih</option>
+                            <option value="compressed_air">Luftpumpe</option>
+                            <option value="drinking_water">Trinkwasser</option>
+                            <option value="shelter">Unterstand</option>
+                        </select>
+                    </section>
+                    <div class="bubble-chart">
+                        <canvas id="meinGeoBubbleChart"></canvas>
+                    </div>
+
+
+                </main>
             </div>
 
+            <!-- Tabelle -->
+            <div class="chart-card">
+                <body>
+                <main class="table" id="main-table">
+                    <section class="table__header">
+                        <h1>Fahrradwege</h1>
+                        <div class="input-group">
+                            <input type="search" placeholder="Suche Gemeinde...">
+                        </div>
+                    </section>
+                    <section class="table__body">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th> Gemeinde <span class="icon-arrow"><i class="bx bx-chevron-down toggle"></i></span>
+                                </th>
+                                <th> Fläche <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+                                <th> Wege <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+                                <th> Wege/km² <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+                                <th> Status <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Dynamische Inhalte werden hier geladen -->
+                            </tbody>
+                        </table>
+                    </section>
+                </main>
+                <script type="module" src="../static/js/dashboard/tabelle.js"></script>
+
+                </body>
+            </div>
 
             <!-- Container für die Karte: Einrichtungen pro Kanton -->
             <div class="chart-card">
-                <div class="map-chart">
-                    <canvas id="mapTopoJSON"></canvas>
-                </div>
-
-                <!-- Dropdown-Menü für verschiedene Amenities -->
-                <select id="amenitySelect" class="dropdown-menu">
-                    <option value="bicycle_parking">Fahrradparkplatz</option>
-                    <option value="bicycle_repair_station">Reparaturstation</option>
-                    <option value="bicycle_rental">Fahrradverleih</option>
-                    <option value="compressed_air">Luftpumpe</option>
-                    <option value="drinking_water">Trinkwasser</option>
-                    <option value="shelter">Unterstand</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Tabelle -->
-        <div class="table-card">
-            <body>
-            <main class="table" id="bike_table">
-                <section class="table__header">
-                    <h1>Fahrradwege</h1>
-                    <div class="input-group">
-                        <input type="search" placeholder="Suche Gemeinde...">
+                <main class="table" id="main-map">
+                    <section class="table__header">
+                        <!-- Dropdown-Menü für verschiedene Amenities -->
+                        <select id="amenitySelect" class="dropdown-menu">
+                            <option value="bicycle_parking">Fahrradparkplatz</option>
+                            <option value="bicycle_repair_station">Reparaturstation</option>
+                            <option value="bicycle_rental">Fahrradverleih</option>
+                            <option value="compressed_air">Luftpumpe</option>
+                            <option value="drinking_water">Trinkwasser</option>
+                            <option value="shelter">Unterstand</option>
+                        </select>
+                    </section>
+                    <div class="map-chart">
+                        <canvas id="mapTopoJSON"></canvas>
                     </div>
-                </section>
-                <section class="table__body">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th> Gemeinde <span class="icon-arrow"><i class="bx bx-chevron-down toggle"></i></span>
-                            </th>
-                            <th> Fläche <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-                            <th> Wege <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-                            <th> Wege/km² <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
-                            <th> Status <span class="icon-arrow"><i class="bx bx-chevron-down"></i></span></th>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- Dynamische Inhalte werden hier geladen -->
-                        </tbody>
-                    </table>
-                </section>
-            </main>
-            <script type="module" src="../static/js/dashboard/tabelle.js"></script>
 
-            </body>
+                </main>
+            </div>
         </div>
 
     </div>

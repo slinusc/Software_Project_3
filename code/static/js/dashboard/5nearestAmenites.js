@@ -51,8 +51,6 @@ function createGeoBubbleChart(userLocation, data) {
     // Sortieren der Daten nach Distanz
     const sortedData = data.sort((a, b) => a.distance - b.distance);
 
-    console.log(sortedData)
-
     const bubbleChartData = {
         datasets: [{
             label: 'Nearest Amenities',
@@ -68,7 +66,6 @@ function createGeoBubbleChart(userLocation, data) {
     };
     // Calculate maxRadius
     let maxRadius = Math.max(...bubbleChartData.datasets[0].data.map(d => Math.sqrt(d.x * d.x + d.y * d.y)));
-    console.log(bubbleChartData.datasets[0])
     // Wenn ein Diagramm bereits existiert, zerstören Sie es
     if (myChart) {
         myChart.destroy();
