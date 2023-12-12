@@ -4,10 +4,12 @@ import datetime as dt
 
 
 class MongoDBAssistent:
-    def __init__(self, db_name, collection_name, db_uri="mongodb://localhost:27017/"):
+    def __init__(self, db_name, collection_name,
+                 db_uri="mongodb://mongo:27017/"):  # docker: mongo:27017, lokal: localhost:27017
         self.client = MongoClient(db_uri)
         self.db = self.client[db_name]
         self.collection = self.db[collection_name]
+        self.collection_name = collection_name
 
     def drop_collection(self):
         try:
@@ -29,6 +31,16 @@ class MongoDBAssistent:
         except Exception as e:
             print(f"An error occurred while loading data: {e}")
 
+    def create_2dsphere_index(self):
+        if self.collection_name == "bicycle_amenities":
+            try:
+                self.collection.create_index([("node.location", "2dsphere")])
+                print("2dsphere index created on node.location in collection", self.collection_name)
+            except Exception as e:
+                print(f"An error occurred while creating the 2dsphere index: {e}")
+        else:
+            print("nur für bicycle_amenities möglich")
+
     def pull_from_db(self, file_name):
         try:
             daten = list(self.collection.find({}))
@@ -40,10 +52,17 @@ class MongoDBAssistent:
 
 
 if __name__ == '__main__':
-    mongoDB = MongoDBAssistent("data_base_OSM", "bike_ways")
-    mongoDB2 = MongoDBAssistent("data_base_OSM", "bicycle_amenities")
-    mongoDB.drop_collection()
-    mongoDB2.drop_collection()
-    mongoDB.load_in_db('../../data/raw_data/backup_2023-12-07')
-    mongoDB2.load_in_db('../../data/raw_data/amenities_2023-11-20')
-    #mongoDB.pull_from_db('../../data/raw_data/backup')
+    bike_ways = MongoDBAssistent("data_base_OSM", "bike_ways")
+    amenities = MongoDBAssistent("data_base_OSM", "bicycle_amenities")
+    bike_ways.drop_collection()
+    amenities.drop_collection()
+    try:
+        # bike_ways.load_in_db('../raw_data/bicycle_backup_2023-12-12_renamed') # lokal
+        # amenities.load_in_db('../raw_data/2023-12-12_cleaned_amenity_file') # lokal
+        bike_ways.load_in_db('data/raw_data/bicycle_backup_2023-12-12_renamed')  # docker
+        amenities.load_in_db('data/raw_data/2023-12-12_cleaned_amenity_file')  # docker
+        amenities.create_2dsphere_index()
+    except Exception as e:
+        print(f"An error occurred while running the mongoDBAssistent script: {e}")
+
+    # mongoDB.pull_from_db('../../data/raw_data/backup')

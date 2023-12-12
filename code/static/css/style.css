@@ -869,7 +869,7 @@ table, th, td {
 th, td {
     width: max-content;
     min-width: 50px; /* Optional: Setzt eine minimale Breite */
-    /* white-space: nowrap;  Verhindert einen Umbruch innerhalb der Kopfzelle */
+    white-space: nowrap;  /* Verhindert einen Umbruch innerhalb der Kopfzelle */
 }
 
 thead th {
@@ -879,7 +879,7 @@ thead th {
     background-color: #d5d1defe;
     cursor: pointer;
     text-transform: capitalize;
-    /* width: 100%; */
+    width: 100%;
 }
 
 tbody tr:nth-child(even) {
@@ -939,9 +939,9 @@ tbody tr.hide td img {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
     td:not(:first-of-type) {
-        min-width: 12.1rem;
+        min-width: 10rem;
     }
 }
 

@@ -30,10 +30,10 @@ function updateTable() {
                     const table_rows = document.createElement('tr');
                     table_rows.innerHTML = `
                         <td>${item.Gemeinde}</td>
-                        <td>${item['Fahrradwege pro km2'].toFixed(2)} km</td>
-                        <td>${getStatus(item['Fahrradwege pro km2'])}</td>
-                        <td>${item['Fläche in km²']} km²</td>
-                        <td>${item['Fahrradwege in km']} km</td>
+                        <td>${item['Fahrradwege_pro_km2'].toFixed(2)} km</td>
+                        <td>${getStatus(item['Fahrradwege_pro_km2'])}</td>
+                        <td>${item['Flaeche_in_km2']} km²</td>
+                        <td>${item['Fahrradwege_in_km']} km</td>
                         `;
                     // Füge die neue Zeile der Tabelle hinzu
                     tableBody.appendChild(table_rows);
