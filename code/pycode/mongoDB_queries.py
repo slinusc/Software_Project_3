@@ -3,7 +3,7 @@ import requests
 import json
 import time
 
-client = MongoClient("localhost", 27017)
+client = MongoClient("localhost", 27017)  # docker: mongo:27017, lokal: localhost:27017
 db = client["data_base_OSM"]
 amenities_collection = db["bicycle_amenities"]
 amenities_collection_2 = db["bike_ways"]
@@ -119,7 +119,7 @@ def calculate_distance_mapbox(lat1, lon1, lat2, lon2):
         # Die Entfernung wird in Metern zurückgegeben
         distance = data['routes'][0]['distance']
         return distance
-    except:
+    except Exception as e:
         return 0
 
 
@@ -175,7 +175,6 @@ def get_bike_ways_for_all_gemeinden():
     return result
 
 
-
 if __name__ == "__main__":
 
     """start_time = time.time()
@@ -187,8 +186,6 @@ if __name__ == "__main__":
     """nearest_amenities = number_amenities_in_radius(47.3769, 8.5417, radius=1000)  # 1km, Zürich
     print(nearest_amenities)"""
 
-
     test = get_bike_ways_for_all_gemeinden()
     for i in test:
         print(i)
-

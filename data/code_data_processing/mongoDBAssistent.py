@@ -11,6 +11,10 @@ class MongoDBAssistent:
         self.collection = self.db[collection_name]
         self.collection_name = collection_name
 
+    def collection_is_empty(self):
+        """Überprüft, ob die Sammlung leer ist."""
+        return self.collection.count_documents({}) == 0
+
     def drop_collection(self):
         try:
             self.collection.drop()
@@ -54,15 +58,15 @@ class MongoDBAssistent:
 if __name__ == '__main__':
     bike_ways = MongoDBAssistent("data_base_OSM", "bike_ways")
     amenities = MongoDBAssistent("data_base_OSM", "bicycle_amenities")
-    bike_ways.drop_collection()
-    amenities.drop_collection()
     try:
-        # bike_ways.load_in_db('../raw_data/bicycle_backup_2023-12-12_renamed') # lokal
-        # amenities.load_in_db('../raw_data/2023-12-12_cleaned_amenity_file') # lokal
-        bike_ways.load_in_db('data/raw_data/bicycle_backup_2023-12-12_renamed')  # docker
-        amenities.load_in_db('data/raw_data/2023-12-12_cleaned_amenity_file')  # docker
-        amenities.create_2dsphere_index()
+        if bike_ways.collection_is_empty():  # überprüft, ob die Collection leer ist
+            bike_ways.load_in_db('data/raw_data/bicycle_backup_2023-12-12_renamed')  # nur für docker
+        if amenities.collection_is_empty():  # überprüft, ob die Collection leer ist
+            amenities.load_in_db('data/raw_data/2023-12-12_cleaned_amenity_file')  # nur für docker
+            amenities.create_2dsphere_index()
     except Exception as e:
         print(f"An error occurred while running the mongoDBAssistent script: {e}")
 
+    # bike_ways.load_in_db('../raw_data/bicycle_backup_2023-12-12_renamed') # lokal
+    # amenities.load_in_db('../raw_data/2023-12-12_cleaned_amenity_file') # lokal
     # mongoDB.pull_from_db('../../data/raw_data/backup')

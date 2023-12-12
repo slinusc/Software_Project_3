@@ -1,4 +1,4 @@
-# Verwenden eines offiziellen Python-Runtime als Basis-Image
+# offizielles Python-Runtime als Basis-Image
 FROM python:3.8
 
 # Setzen des Arbeitsverzeichnisses im Container
