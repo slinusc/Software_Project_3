@@ -3,7 +3,7 @@ import requests
 import json
 import time
 
-client = MongoClient("localhost", 27017)
+client = MongoClient("localhost", 27017)  # docker: mongo:27017, lokal: localhost:27017
 db = client["data_base_OSM"]
 amenities_collection = db["bicycle_amenities"]
 amenities_collection_2 = db["bike_ways"]
@@ -119,7 +119,7 @@ def calculate_distance_mapbox(lat1, lon1, lat2, lon2):
         # Die Entfernung wird in Metern zurückgegeben
         distance = data['routes'][0]['distance']
         return distance
-    except:
+    except Exception as e:
         return 0
 
 
@@ -151,23 +151,23 @@ def get_bike_ways_for_all_gemeinden():
     pipeline = [
         {
             "$match": {
-                "Fläche in km²": {"$exists": True},
-                "Fahrradwege in km": {"$exists": True}
+                "Flaeche_in_km2": {"$exists": True},
+                "Fahrradwege_in_km": {"$exists": True}
             }
         },
         {
             "$group": {
                 "_id": "$Gemeinde",
-                "Fläche in km²": {"$first": "$Fläche in km²"},
-                "Fahrradwege in km": {"$first": "$Fahrradwege in km"}
+                "Flaeche_in_km2": {"$first": "$Flaeche_in_km2"},
+                "Fahrradwege_in_km": {"$first": "$Fahrradwege_in_km"}
             }
         },
         {
             "$project": {
                 "Gemeinde": "$_id",
-                "Fläche in km²": 1,
-                "Fahrradwege in km": {"$round": ["$Fahrradwege in km", 2]},
-                "Fahrradwege pro km2": {"$divide": ["$Fahrradwege in km", "$Fläche in km²"]}
+                "Flaeche_in_km2": "$Flaeche_in_km2",
+                "Fahrradwege_in_km": {"$round": ["$Fahrradwege_in_km", 2]},
+                "Fahrradwege_pro_km2": {"$divide": ["$Fahrradwege_in_km", "$Flaeche_in_km2"]}
             }
         }
     ]
@@ -175,20 +175,17 @@ def get_bike_ways_for_all_gemeinden():
     return result
 
 
-
 if __name__ == "__main__":
 
-    start_time = time.time()
+    """start_time = time.time()
     nearest_amenities = find_k_nearest_amenities(47.3759744, 8.5295104, "bicycle_parking", 5)
     print(nearest_amenities)
     end_time = time.time()
-    print(f"Time elapsed: {end_time - start_time} seconds")
+    print(f"Time elapsed: {end_time - start_time} seconds")"""
 
     """nearest_amenities = number_amenities_in_radius(47.3769, 8.5417, radius=1000)  # 1km, Zürich
     print(nearest_amenities)"""
 
-    """
     test = get_bike_ways_for_all_gemeinden()
     for i in test:
         print(i)
-    """

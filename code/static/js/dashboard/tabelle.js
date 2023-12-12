@@ -30,10 +30,10 @@ function updateTable() {
                     const table_rows = document.createElement('tr');
                     table_rows.innerHTML = `
                         <td>${item.Gemeinde}</td>
-                        <td>${item['Fläche in km²']} km²</td>
-                        <td>${item['Fahrradwege in km']} km</td>
-                        <td>${item['Fahrradwege pro km2'].toFixed(2)} km</td>
-                        <td>${getStatus(item['Fahrradwege pro km2'])}</td>
+                        <td>${item['Fahrradwege_pro_km2'].toFixed(2)} km</td>
+                        <td>${getStatus(item['Fahrradwege_pro_km2'])}</td>
+                        <td>${item['Flaeche_in_km2']} km²</td>
+                        <td>${item['Fahrradwege_in_km']} km</td>
                         `;
                     // Füge die neue Zeile der Tabelle hinzu
                     tableBody.appendChild(table_rows);
@@ -41,7 +41,7 @@ function updateTable() {
 
                 // Aktualisieren Sie die Referenz auf die Tabellenzeilen
                 table_rows = document.querySelectorAll('tbody tr');
-                sortTable(3, true)
+                sortTable(1, true)
             }
         })
         .catch(error => console.error('Fehler beim Abrufen der Daten:', error));
@@ -90,7 +90,7 @@ table_headings.forEach((head, i) => {
 function sortTable(column, sort_asc) {
     [...table_rows].sort((a, b) => {
         // Bestimmen Sie, ob die Spalte 3 oder 4 ist, und verwenden Sie in beiden Fällen den Wert von Spalte 3 für den Vergleich
-        let columnIndex = (column === 3 || column === 4) ? 3 : column;
+        let columnIndex = (column === 1 || column === 2) ? 1 : column;
 
         let first_row = a.querySelectorAll('td')[columnIndex].textContent.toLowerCase(),
             second_row = b.querySelectorAll('td')[columnIndex].textContent.toLowerCase();

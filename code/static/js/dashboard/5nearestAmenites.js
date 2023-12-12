@@ -202,3 +202,4 @@ function loadAndCreateChart(amenityType) {
 
 // Starten Sie das Diagramm mit dem standardmäßig ausgewählten Amenity
 loadAndCreateChart(document.getElementById('amenitySelect2').value);
+

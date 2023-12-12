@@ -553,8 +553,6 @@ body.dark .info-container-1 {
     padding: 10px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
-    height: 100%;
-    width: 100%;
 }
 
 /* ==== Bubble-Chart ==== */
@@ -567,16 +565,17 @@ body.dark .info-container-1 {
 }
 
 .bubble-chart canvas{
-    min-width: 100% !important;
-    min-height: 20dvh !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.square {
+    width: 300px;
+    height: 300px;
 }
 
 /* ==== Radar-Chart ==== */
 .radar-chart{
-    width: 100%;
-    height: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -585,6 +584,15 @@ body.dark .info-container-1 {
 .radar-chart canvas{
     max-width: 100%;
     max-height: 100%;
+}
+
+.square2 {
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    /* centering */
+    display: flex;
+    justify-content: center;
 }
 
 /* ==== Map-Chart ==== */
@@ -601,31 +609,8 @@ body.dark .info-container-1 {
     max-height: 100%;
 }
 
-#mapTopoJSON {
-            width: 100vw;
-            height: 100vh;
-        }
-
 /* ====== Media Queries for different screen sizes ====== */
-@media screen and (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
-        grid-template-areas:
-            "chart"
-            "chart"
-            "chart"
-            "chart";
-        gap: 10px;
-    }
-
-    .user-guide-container {
-        padding: 10px;
-        gap: 10px;
-    }
-}
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
     .grid-container {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
@@ -641,6 +626,12 @@ body.dark .info-container-1 {
     }
 }
 
+/* alter code */
+
+#mapTopoJSON {
+            width: 100vw;
+            height: 100vh;
+        }
 
 /* ====== Amenity Cluster Bubbles ====== */
 .cluster-bubble {
@@ -660,12 +651,13 @@ body.dark .info-container-1 {
 .dropdown-menu {
     position: relative;
     display: block;
-    width: 200px; /* Festgelegte Breite */
+    width: 180px; /* Festgelegte Breite */
     height: 40px;
     margin: 10px auto; /* Zentrierung unter dem Chart */
-    background-color: var(--primary-color-light);
+    background: var(--primary-color-light);
     border-radius: 6px;
     border: none;
+    padding: 10px;
 }
 
 .dropdown-menu:hover {
@@ -680,7 +672,7 @@ body.dark .info-container-1 {
 }
 
 body.dark .dropdown-menu {
-    background-color: var(--sidebar-color);
+    background: var(--primary-color-light);
     color: var(--text-color);
 }
 
@@ -781,23 +773,33 @@ body {
 }
 
 main.table, main.bubble-chart, main.radar-chart, main.map-chart {
-    width: 82vw;
-    height: 80vh;
+    width: 45vw;
+    height: 45vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);
     border-radius: 6px;
     overflow: hidden;
 }
 
+@media only screen and (max-width: 800px) {
+    main.table, main.bubble-chart, main.radar-chart, main.map-chart {
+        width: 85vw;
+        height: 45vh;
+        background-color: #fff5;
+        backdrop-filter: blur(7px);
+        border-radius: 6px;
+        overflow: hidden;
+    }
+}
+
 .table__header {
     width: 100%;
-    height: 10%;
+    height: 18%;
     background: var(--sidebar-color);
     color: var(--text-color);
     padding: .8rem 1rem;
     font-size: .9rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -812,6 +814,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     transition: .2s;
     background: var(--primary-color-light);
 }
+
 
 .table__header .input-group:hover {
     width: 37%;
@@ -834,7 +837,6 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     max-height: calc(89% - 1.6rem);
     background-color: #E4E9F7;
     margin: 0 auto;
-    border-radius: .6rem;
     overflow: auto;
 }
 
@@ -865,9 +867,9 @@ table, th, td {
 }
 
 th, td {
-    width: auto;
+    width: max-content;
     min-width: 50px; /* Optional: Setzt eine minimale Breite */
-    white-space: nowrap; /* Verhindert einen Umbruch innerhalb der Kopfzelle */
+    white-space: nowrap;  /* Verhindert einen Umbruch innerhalb der Kopfzelle */
 }
 
 thead th {
@@ -937,9 +939,9 @@ tbody tr.hide td img {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
     td:not(:first-of-type) {
-        min-width: 12.1rem;
+        min-width: 10rem;
     }
 }
 

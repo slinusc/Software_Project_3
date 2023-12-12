@@ -118,4 +118,4 @@ document.getElementById('radiusSelect').addEventListener('change', function() {
     fetchAmenities(selectedRadius);
 });
 
-fetchAmenities(1000); // Beispielradius als Startwert
+fetchAmenities(1000);

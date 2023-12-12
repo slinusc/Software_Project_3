@@ -70,6 +70,7 @@ def get_number_amenities_in_radius():
     results = number_amenities_in_radius(lat, lon, radius)
     return jsonify(results)
 
+
 @app.route('/bike_ways', methods=['POST'])
 def get_bike_ways():
     results = get_bike_ways_for_all_gemeinden()
@@ -83,4 +84,5 @@ def clear_cache():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(host='0.0.0.0', debug=True)  # for docker
+    app.run(debug=True) # for local
