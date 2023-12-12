@@ -558,7 +558,7 @@ body.dark .info-container-1 {
 /* ==== Bubble-Chart ==== */
 .bubble-chart{
     width: 100%;
-    height: 85%;
+    height: 83%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -570,8 +570,8 @@ body.dark .info-container-1 {
 }
 
 .square {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
 }
 
 /* ==== Radar-Chart ==== */
@@ -579,6 +579,8 @@ body.dark .info-container-1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 83%;
 }
 
 .radar-chart canvas{
@@ -590,23 +592,27 @@ body.dark .info-container-1 {
     width: 300px;
     height: 300px;
     padding: 20px;
-    /* centering */
     display: flex;
-    justify-content: center;
 }
 
 /* ==== Map-Chart ==== */
 .map-chart{
-    width: 100%;
-    height: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 83%;
 }
 
 .map-chart canvas{
     max-width: 100%;
     max-height: 100%;
+}
+
+.rectangle
+{
+    height: 220px;
+    width: 577px;
 }
 
 /* ====== Media Queries for different screen sizes ====== */
@@ -773,8 +779,8 @@ body {
 }
 
 main.table, main.bubble-chart, main.radar-chart, main.map-chart {
-    width: 45vw;
-    height: 45vh;
+    width: 46vw;
+    height: 47vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);
     border-radius: 6px;
@@ -783,10 +789,9 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 
 @media only screen and (max-width: 800px) {
     main.table, main.bubble-chart, main.radar-chart, main.map-chart {
-        width: 85vw;
-        height: 45vh;
+        width: 78vw;
+        height: 51vh;
         background-color: #fff5;
-        backdrop-filter: blur(7px);
         border-radius: 6px;
         overflow: hidden;
     }
@@ -801,6 +806,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     font-size: .9rem;
     display: flex;
     align-items: center;
+    opacity: 1;
 }
 
 .table__header .input-group {
@@ -831,7 +837,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 .table__body {
-    width: 95%;
+    width: 100%;
     /* schriftgrösse*/
     font-size: .9rem;
     max-height: calc(89% - 1.6rem);
@@ -842,33 +848,24 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 
 
 .table__body::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0px;
+    height: 0px;
     visibility: hidden;
 }
 
-.table__body::-webkit-scrollbar-thumb {
-    border-radius: 0.5rem;
-    background-color: #0004;
-    visibility: hidden;
-}
-
-.table__body:hover::-webkit-scrollbar-thumb {
-    visibility: visible;
-}
 
 
 
 table, th, td {
     border-collapse: collapse;
-    padding: 1rem;
+    padding: 0.9rem;
     text-align: left;
     table-layout: auto;
 }
 
 th, td {
     width: max-content;
-    min-width: 50px; /* Optional: Setzt eine minimale Breite */
+    min-width: 120px; /* Optional: Setzt eine minimale Breite */
     white-space: nowrap;  /* Verhindert einen Umbruch innerhalb der Kopfzelle */
 }
 
@@ -876,29 +873,53 @@ thead th {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #d5d1defe;
+    background-color: var(--body-color);
     cursor: pointer;
     text-transform: capitalize;
     width: 100%;
+
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background: white; /* Hintergrundfarbe ist notwendig, um die Zellen darüber zu verdecken */
+    z-index: 1; /* Z-Index ist notwendig, um sicherzustellen, dass die sticky Zellen über den anderen liegen */
+    padding: 0.9rem;
+}
+
+table th:first-of-type,
+table td:first-of-type {
+    position: sticky;
+    left: 0;
+    background-color: var(--body-color);
+    z-index: 1; /* Z-Index ist notwendig, um sicherzustellen, dass die sticky Zellen über den anderen liegen */
+}
+
+table tr:nth-child(odd) td:first-of-type {
+    background-color: var(--sidebar-color);
+}
+
+table tr:nth-child(even) td:first-of-type {
+    background-color: var(--body-color);
 }
 
 tbody tr:nth-child(even) {
-    background-color: #0000000b;
+    background-color: var(--body-color);
+    opacity: 0.7;
 }
 
-tbody tr {
-    --delay: .1s;
-    transition: .5s ease-in-out var(--delay), background-color 0s;
+tbody tr:nth-child(odd) {
+    background-color: var(--sidebar-color);
+    opacity: 0.7;
 }
+
 
 tbody tr.hide {
     opacity: 0;
     transform: translateX(100%);
 }
 
-tbody tr:hover {
-    background-color: #fff6 !important;
-}
 
 tbody tr td,
 tbody tr td p,
@@ -941,7 +962,7 @@ tbody tr.hide td img {
 
 @media (max-width: 800px) {
     td:not(:first-of-type) {
-        min-width: 10rem;
+        min-width: 1rem;
     }
 }
 
