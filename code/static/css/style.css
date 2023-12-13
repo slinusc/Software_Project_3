@@ -706,7 +706,7 @@ body.dark .dropdown-menu:hover option{
 /* User Guide spezifische Styles */
 .user-guide-container {
     margin-top: 15px;
-    margin-left: 35px;
+    margin-left: 25px;
     margin-right: 10px;
     max-height: 97vh;
     overflow-y: auto;
