@@ -36,7 +36,6 @@ export function initializeMap() {
     // Definition des TileLayers
     currentTileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         maxZoom: 19,
-        attribution: 'Map raw_data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox/streets-v11', // für dunklen Kartenstil: mapbox/dark-v10
         tileSize: 512,
         zoomOffset: -1,
