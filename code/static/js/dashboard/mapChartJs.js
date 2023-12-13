@@ -199,8 +199,8 @@ function updateMap(selectedAmenity) {
             let count = entry.count;
             let einwohnerzahl = einwohnerzahlen[entry._id];
             if (einwohnerzahl) {
-                // Berechnen der relativen Anzahl in %, falls der Toggle aktiviert ist
-                amenityCountPerCanton[entry._id] = toggleState ? (count * 100 / einwohnerzahl) : count;
+                // Berechnen der relativen Anzahl pro 1000 Einwohner, falls der Toggle aktiviert ist
+                amenityCountPerCanton[entry._id] = toggleState ? (count * 1000 / einwohnerzahl) : count;
             } else {
                 console.error('Keine Einwohnerzahl gefunden für:', entry._id);
             }
