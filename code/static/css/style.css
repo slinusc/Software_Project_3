@@ -813,8 +813,8 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 .table__header .input-group {
-    width: 35%;
-    height: 99%;
+    width: 180px;
+    height: 40px;
     padding: 0 .7rem;
     border-radius: 6px;
     display: flex;
@@ -827,8 +827,8 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 
 
 .table__header .input-group:hover {
-    width: 37%;
-    height: 100%;
+    width: 28%;
+    height: 80%;
     box-shadow: 0 .1rem .4rem #0002;
 }
 
