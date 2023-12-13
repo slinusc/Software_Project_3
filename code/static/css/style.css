@@ -7,12 +7,12 @@
     /* Colors */
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
-    --sidebar-toggle-color: #695CFE; /* Pfeil-toggle*/
-    --primary-color: #695CFE;
+    --sidebar-toggle-color: #007bff; /* Pfeil-toggle*/
+    --primary-color: #007bff;
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
-    --text-title-color: #695CFE;
+    --text-title-color: #007bff;
     --containercolor: rgba(246, 245, 255, 0.5);
     --containertextcolor: black;
     /* Transition */
@@ -986,15 +986,15 @@ thead th span.icon-arrow {
 }
 
 thead th:hover span.icon-arrow {
-    border: 1.4px solid #695CFE;
+    border: 1.4px solid #007bff;
 }
 
 thead th:hover {
-    color: #695CFE;
+    color: #007bff;
 }
 
 thead th.active span.icon-arrow {
-    background-color: #695CFE;
+    background-color: #007bff;
     color: #fff;
 }
 
@@ -1003,7 +1003,7 @@ thead th.asc span.icon-arrow {
 }
 
 thead th.active, tbody td.active {
-    color: #695CFE;
+    color: #007bff;
 }
 
 .export__file {

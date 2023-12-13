@@ -1,4 +1,4 @@
-import { getUserLocation } from '../getUserlocation.js';
+import {getUserLocation} from '../getUserlocation.js';
 
 let meinRadarChart = null; // Globale Variable für das Chart-Objekt
 
@@ -28,19 +28,19 @@ function fetchAmenities(radius) {
                 radius: radius
             })
         })
-        .then(response => response.json())
-        .then(data => {
-            let labels = Object.keys(data);
-            let dataPoints = Object.values(data);
+            .then(response => response.json())
+            .then(data => {
+                let labels = Object.keys(data);
+                let dataPoints = Object.values(data);
 
-            // Übersetzen der Labels
-            let translatedLabels = labels.map(label => translations[label] || label);
+                // Übersetzen der Labels
+                let translatedLabels = labels.map(label => translations[label] || label);
 
-            updateChart(translatedLabels, dataPoints);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+                updateChart(translatedLabels, dataPoints);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     });
 }
 
@@ -63,20 +63,20 @@ function updateChart(labels, data) {
                 data: logData,// Logarithmierte Daten für die Darstellung
                 originalData: data, // Speichern der ursprünglichen Daten im Dataset
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(153, 102, 255, 0.5)',
-                    'rgba(255, 159, 64, 0.5)'
+                    'rgba(153, 194, 255, 0.5)',  // Hellste Abstufung: #99c2ff
+                    'rgba(77, 142, 255, 0.5)',   // Heller: #4d8eff
+                    'rgba(0, 123, 255, 0.5)',    // Standard-Blau: #007bff
+                    'rgba(0, 81, 204, 0.5)',     // Dunkler: #0051cc
+                    'rgba(0, 59, 153, 0.5)',     // Dunkler: #003b99
+                    'rgba(0, 40, 102, 0.5)'      // Dunkelste Abstufung: #002866
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(153, 194, 255, 1)',    // Hellste Abstufung: #99c2ff
+                    'rgba(77, 142, 255, 1)',     // Heller: #4d8eff
+                    'rgba(0, 123, 255, 1)',      // Standard-Blau: #007bff
+                    'rgba(0, 81, 204, 1)',       // Dunkler: #0051cc
+                    'rgba(0, 59, 153, 1)',       // Dunkler: #003b99
+                    'rgba(0, 40, 102, 1)'        // Dunkelste Abstufung: #002866
                 ],
                 borderWidth: 1,
             }]
@@ -96,7 +96,7 @@ function updateChart(labels, data) {
                 tooltip: {
                     displayColors: false,
                     callbacks: {
-                        label: function(context) {
+                        label: function (context) {
                             let name = context.dataset.originalData[context.dataIndex];
                             return name;
                         }
@@ -113,7 +113,7 @@ function updateChart(labels, data) {
 
 
 // Event-Listener für die Auswahl des Radius
-document.getElementById('radiusSelect').addEventListener('change', function() {
+document.getElementById('radiusSelect').addEventListener('change', function () {
     let selectedRadius = parseInt(this.value);
     fetchAmenities(selectedRadius);
 });
