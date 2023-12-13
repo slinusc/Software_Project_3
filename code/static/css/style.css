@@ -872,6 +872,7 @@ th, td {
     width: max-content;
     min-width: 120px; /* Optional: Setzt eine minimale Breite */
     white-space: nowrap;  /* Verhindert einen Umbruch innerhalb der Kopfzelle */
+    color: var(--containertextcolor)
 }
 
 thead th {
