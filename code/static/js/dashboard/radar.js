@@ -63,12 +63,12 @@ function updateChart(labels, data) {
                 data: logData,// Logarithmierte Daten für die Darstellung
                 originalData: data, // Speichern der ursprünglichen Daten im Dataset
                 backgroundColor: [
-                    'rgba(153, 194, 255, 0.5)',  // Hellste Abstufung: #99c2ff
-                    'rgba(77, 142, 255, 0.5)',   // Heller: #4d8eff
-                    'rgba(0, 123, 255, 0.5)',    // Standard-Blau: #007bff
-                    'rgba(0, 81, 204, 0.5)',     // Dunkler: #0051cc
-                    'rgba(0, 59, 153, 0.5)',     // Dunkler: #003b99
-                    'rgba(0, 40, 102, 0.5)'      // Dunkelste Abstufung: #002866
+                    'rgba(153, 194, 255, 0.6)',  // Hellste Abstufung: #99c2ff
+                    'rgba(77, 142, 255, 0.6)',   // Heller: #4d8eff
+                    'rgba(0, 123, 255, 0.6)',    // Standard-Blau: #007bff
+                    'rgba(0, 81, 204, 0.6)',     // Dunkler: #0051cc
+                    'rgba(0, 59, 153, 0.6)',     // Dunkler: #003b99
+                    'rgba(0, 40, 102, 0.6)'      // Dunkelste Abstufung: #002866
                 ],
                 borderColor: [
                     'rgba(153, 194, 255, 1)',    // Hellste Abstufung: #99c2ff
