@@ -664,6 +664,8 @@ body.dark .info-container-1 {
     border-radius: 6px;
     border: none;
     padding: 10px;
+    color: var(--text-color);
+    margin-right: 1px; /*muss zusätzlich erwähnt werden, damit es rechtsbündig wird*/
 }
 
 .dropdown-menu:hover {
@@ -806,6 +808,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     font-size: .9rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     opacity: 1;
 }
 
@@ -819,6 +822,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     align-items: center;
     transition: .2s;
     background: var(--primary-color-light);
+    margin-right: 1px;
 }
 
 
@@ -834,6 +838,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     background-color: transparent;
     border: none;
     outline: none;
+    color: var(--text-color);
 }
 
 .table__body {
