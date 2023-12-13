@@ -827,8 +827,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 
 
 .table__header .input-group:hover {
-    width: 28%;
-    height: 80%;
+    width: 190px;
     box-shadow: 0 .1rem .4rem #0002;
 }
 
