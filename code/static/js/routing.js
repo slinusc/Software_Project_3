@@ -38,7 +38,7 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
                         map.removeLayer(routingControl);
                     }
                     // Routing-Kontrolle erstellen
-                    routingControl = L.geoJSON(geojson, {style: {color: '#695CFE', opacity: 1}});
+                    routingControl = L.geoJSON(geojson, {style: {color: '#007bff', opacity: 1}});
                     // Route auf der Karte anzeigen
                     routingControl.addTo(map);
 
