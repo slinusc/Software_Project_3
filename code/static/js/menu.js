@@ -6,7 +6,7 @@ const body = document.querySelector("body"),
     toggle = body.querySelector(".toggle"),
     searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
-    modeSwitchmap = body.querySelector(".toggle-map-switch"),
+    mapToggleSwitch = document.querySelector(".map-toggle-switch"),
     modeText = body.querySelector(".mode-text");
     localStorage.setItem('mapDarkMode', false);
 
@@ -37,6 +37,25 @@ modeSwitch.addEventListener("click", () => {
         localStorage.setItem('mapDarkMode', false);  // Speichert Light Mode im Web Storage
     }
 });
+
+// Event-Listener für CH-Karte Toggle
+// Platzhalter-Funktion, die später die Kartenanzeige ändert
+function toggleMapDisplay() {
+    // Logik zum Umschalten zwischen "pro Kanton" und "pro Kanton pro Einwohner"
+    // Hier können Sie Ihren Code zur Aktualisierung der Kartenansicht einfügen
+    console.log("Map Display toggled");
+}
+
+if (mapToggleSwitch) {
+    mapToggleSwitch.addEventListener("click", () => {
+        // Umschalten des Knopfes
+        const switchBtn = mapToggleSwitch.querySelector(".switch");
+        const isOn = switchBtn.classList.toggle("on");
+
+        // Aufruf der Funktion zum Ändern der Kartenanzeige
+        toggleMapDisplay(isOn);
+    });
+}
 
 
 
