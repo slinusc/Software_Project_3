@@ -68,7 +68,7 @@ function searchTable() {
 }
 
 
-// 2. Sorting | Ordering data of HTML table
+// 2. Sortierung der HTML Tabelle
 table_headings.forEach((head, i) => {
     let sort_asc = true;
     head.onclick = () => {
@@ -89,19 +89,19 @@ table_headings.forEach((head, i) => {
 
 function sortTable(column, sort_asc) {
     [...table_rows].sort((a, b) => {
-        // Bestimmen Sie, ob die Spalte 3 oder 4 ist, und verwenden Sie in beiden Fällen den Wert von Spalte 3 für den Vergleich
+        // Bestimmen Sie, ob es die Spalte 2 oder 3 ist, und verwenden Sie in beiden Fällen den Wert von Spalte 2 für den Vergleich
         let columnIndex = (column === 1 || column === 2) ? 1 : column;
 
         let first_row = a.querySelectorAll('td')[columnIndex].textContent.toLowerCase(),
             second_row = b.querySelectorAll('td')[columnIndex].textContent.toLowerCase();
 
-        // Konvertieren Sie die Werte in Zahlen für alle Spalten außer der ersten
+        // Konvertierung deer Werte in Zahlen für alle Spalten ausser der ersten
         if (columnIndex !== 0) {
             first_row = parseFloat(first_row);
             second_row = parseFloat(second_row);
         }
 
-        // Sortierlogik
+        // Sortierlogik2
         return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
     })
     .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));

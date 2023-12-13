@@ -81,7 +81,7 @@ function renderMapWithData(amenityData) {
         const colorScale = d3.scaleLinear() // scaleSqrt() für Wurzelskalierung
             .domain([1, d3.max(dataForMap, d => d.value)])
             .range([0, 1])
-            .interpolate(() => d3.interpolateBlues);
+            .interpolate(() => d3.interpolateRgb('#fff', '#007bff'));
 
 
         const ctx = document.getElementById("mapTopoJSON").getContext("2d");
