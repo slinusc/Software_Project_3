@@ -1137,3 +1137,8 @@ body.dark .map-toggle-switch .switch.on::before {
     display: flex;
     align-items: center;
 }
+
+
+.custom-link-color {
+    color: var(--text-title-color);
+}
