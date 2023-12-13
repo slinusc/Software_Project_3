@@ -3,6 +3,7 @@
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Color Variables, Transitions */
 :root{
     /* Colors */
     --body-color: #E4E9F7;
@@ -230,6 +231,82 @@ body.dark .menu-bar .mode i.moon{
     opacity: 0;
 }
 
+/* ===== Main Content Styles ===== */
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    margin-left: 210px;
+    background: var(--body-color);
+    transition: var(--tran-05);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.home .text{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+
+.sidebar.close ~ .home{
+    left: 60px;
+}
+
+/* Search Box */
+.sidebar .search-box{
+    background: var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+
+.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--primary-color-light);
+    color: var(--text-color);
+    transition: var(--tran-05);
+}
+
+.search-box:hover {
+    box-shadow: 0 .1rem .4rem #0002;
+}
+
+/* ========== Navigation Section ========== */
+
+/* ==== Map ==== */
+#map {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.home .content-section {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: calc(100% - 60px);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.home .content-section.active { /* Zeigt die aktive Section an */
+    display: block;
+
+}
+
+/* ==== Buttons and Switches ==== */
+/* Toggle-Switch in Sidebar*/
 .menu-bar .mode .toggle-switch{
     position: absolute;
     right: 0;
@@ -269,88 +346,7 @@ body.dark .toggle-switch .switch::before{
     left: 24px;
 }
 
-/* ===== Main Content Styles ===== */
-.home{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;
-    margin-left: 210px;
-    background: var(--body-color);
-    transition: var(--tran-05);
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 8px 40px;
-}
-
-.sidebar.close ~ .home{
-    left: 60px;
-}
-
-.sidebar .search-box{
-    background: var(--primary-color-light);
-    border-radius: 6px;
-    transition: var(--tran-05);
-}
-
-.search-box input {
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    background: var(--primary-color-light);
-    color: var(--text-color);
-    transition: var(--tran-05);
-}
-
-.search-box:hover {
-    box-shadow: 0 .1rem .4rem #0002;
-}
-
-/* ========== Navigation Section ========== */
-
-/* ==== Map ==== */
-#map {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-}
-
-#map_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    cursor: pointer;
-}
-
-.home .content-section {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 60px;
-    width: calc(100% - 60px);
-    height: 100vh;
-    overflow: hidden;
-}
-
-.home .content-section.active { /* Zeigt die aktive Section an */
-    display: block;
-
-}
-
-/* ====== Location Button ====== */
+/* Location Button */
 .location {
     position: absolute;
     display: flex;
@@ -399,7 +395,7 @@ body.dark .location:hover .icon{
     transition: var(--tran-05);
 }
 
-/* ====== Delete Route Button ====== */
+/* Delete Route Button */
 .deletebtn {
     position: absolute;
     align-items: center;
@@ -443,8 +439,7 @@ body.dark .deletebtn:hover .icon{
     color: var(--text-color)
 }
 
-
-/* ====== Menu-Button ====== */
+/* Menu-Button */
 .menu-button {
     position: absolute;
     display: flex;
@@ -488,7 +483,7 @@ body.dark .menu-button:hover .icon{
     color: var(--text-color)
 }
 
-/* ====== Checkbox ====== */
+/* Checkbox (on Map) */
 .checkbox-menu {
     position: absolute;
     bottom: 70px;
@@ -512,6 +507,13 @@ body.dark .checkbox-menu {
 .hidden {
   display: none;
 }
+
+
+
+
+
+
+
 
 /* ====== Routing-Info-Container ======*/
 .info-container-1 {
@@ -604,13 +606,12 @@ body.dark .info-container-1 {
     height: 83%;
 }
 
-.map-chart canvas{
+.map-chart canvas {
     max-width: 100%;
     max-height: 100%;
 }
 
-.rectangle
-{
+.rectangle {
     height: 220px;
     width: 577px;
 }
@@ -653,7 +654,7 @@ body.dark .info-container-1 {
 }
 
 
-/* ==== Stil für Dropdown-Menüs: Chart-Seite ==== */
+/* Dropdown-Menus */
 .dropdown-menu {
     position: relative;
     display: block;
@@ -696,14 +697,13 @@ body.dark .dropdown-menu:hover option{
 
 
 
-
+/* WHAT IS THIS */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
 
-/* ====== Stil für User-Guide / Help - Page ====== */
-/* User Guide spezifische Styles */
+/* ===== User-Guide ===== */
 .user-guide-container {
     margin-top: 15px;
     margin-left: 25px;
@@ -747,32 +747,22 @@ body.dark .dropdown-menu:hover option{
     color: var(--text-color);
 }
 
-.spacing-between-lines {
-    margin-bottom: 10px;
-}
-
 .user-guide-container p {
     color: var(--text-color);
 }
 
+.spacing-between-lines {
+    margin-bottom: 10px;
+}
 
 
-/* ====== Tabelle ====== */
 
+/* ===== Table ===== */
 * {
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
     font-family: sans-serif;
-}
-
-@media print {
-    .table, .table__body {
-        overflow: visible;
-        height: auto !important;
-        width: auto !important;
-    }
 }
 
 body {
@@ -791,6 +781,15 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     overflow: hidden;
 }
 
+/* ===== Media Queries ===== */
+@media print {
+    .table, .table__body {
+        overflow: visible;
+        height: auto !important;
+        width: auto !important;
+    }
+}
+
 @media only screen and (max-width: 800px) {
     main.table, main.bubble-chart, main.radar-chart, main.map-chart {
         width: 78vw;
@@ -800,6 +799,11 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
         overflow: hidden;
     }
 }
+
+
+
+
+
 
 .table__header {
     width: 100%;
@@ -827,7 +831,6 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     margin-right: 1px;
 }
 
-
 .table__header .input-group:hover {
     width: 190px;
     box-shadow: 0 .1rem .4rem #0002;
@@ -842,7 +845,6 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     color: var(--text-color);
 }
 
-
 .table__body {
     width: 100%;
     /* schriftgrösse*/
@@ -853,15 +855,11 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     overflow: auto;
 }
 
-
 .table__body::-webkit-scrollbar {
     width: 0px;
     height: 0px;
     visibility: hidden;
 }
-
-
-
 
 table, th, td {
     border-collapse: collapse;
@@ -885,7 +883,6 @@ thead th {
     cursor: pointer;
     text-transform: capitalize;
     width: 100%;
-
 }
 
 thead {
@@ -922,12 +919,10 @@ tbody tr:nth-child(odd) {
     opacity: 0.7;
 }
 
-
 tbody tr.hide {
     opacity: 0;
     transform: translateX(100%);
 }
-
 
 tbody tr td,
 tbody tr td p,
@@ -968,11 +963,15 @@ tbody tr.hide td img {
 }
 
 
+
+
 @media (max-width: 800px) {
     td:not(:first-of-type) {
         min-width: 1rem;
     }
 }
+
+
 
 thead th span.icon-arrow {
     display: inline-block;
@@ -980,10 +979,8 @@ thead th span.icon-arrow {
     height: 1.3rem;
     border-radius: 50%;
     border: 1.4px solid transparent;
-
     text-align: center;
     font-size: 1rem;
-
     margin-left: .5rem;
     transition: .2s ease-in-out;
 }
