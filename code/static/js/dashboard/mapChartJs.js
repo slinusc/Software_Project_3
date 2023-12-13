@@ -1,3 +1,12 @@
+let toggleState = false;
+let chart, colorScale;
+let cachedSwitzerlandData = null;
+let mapToggleSwitch = document.querySelector(".map-toggle-switch");
+
+
+// Eventlistener für absolute oder relative Werte in Karten-Diagramm
+
+
 function loadFlaskServerData(amenityType, callback) {
     // Daten vom Flask Server abrufen
     fetch('/amenities_per_canton', {
@@ -5,7 +14,7 @@ function loadFlaskServerData(amenityType, callback) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amenity_type: amenityType }),
+        body: JSON.stringify({amenity_type: amenityType}),
     })
         .then(response => response.json())
         .then(data => callback(data))
@@ -18,7 +27,7 @@ String.prototype.capitalize = function () {
 };
 
 // TopoJSON-Daten zwischenspeichern, um die Karte schneller zu laden
-let cachedSwitzerlandData = null;
+
 
 function getSwitzerlandData(callback) {
     // Überprüfen, ob die Daten bereits zwischengespeichert sind
@@ -36,7 +45,7 @@ function getSwitzerlandData(callback) {
 }
 
 // Deklarieren einer globalen Variablen für die Karte, um sie später zu zerstören
-let chart;
+
 
 const cantonNameMapping = {
     'Zürich': 'Zürich',
@@ -75,14 +84,15 @@ function renderMapWithData(amenityData) {
         const dataForMap = cantons.map(canton => {
             const cantonId = cantonNameMapping[canton.properties.name]; // Mapping der Namen
             const value = amenityData[cantonId] || 0;
-            return { feature: canton, value: value };
+            return {feature: canton, value: value};
         });
 
-        const colorScale = d3.scaleLinear() // scaleSqrt() für Wurzelskalierung
-            .domain([1, d3.max(dataForMap, d => d.value)])
-            .range([0, 1])
-            .interpolate(() => d3.interpolateRgb('#fff', '#007bff'));
+        const maxValue = d3.max(Object.values(amenityData));
 
+        colorScale = d3.scaleLinear()
+            .domain([0, maxValue]) // Anpassen des domain-Bereichs an den neuen Datenbereich
+            .range([0, 1])
+            .interpolate(() => d3.interpolateBlues);
 
         const ctx = document.getElementById("mapTopoJSON").getContext("2d");
 
@@ -100,7 +110,7 @@ function renderMapWithData(amenityData) {
                     label: 'Kantone der Schweiz',
                     outline: cantons,
                     data: dataForMap,
-                    backgroundColor: function(context) {
+                    backgroundColor: function (context) {
                         const data = context.dataset.data[context.dataIndex];
                         const value = data ? data.value : 1;
                         return colorScale(value);
@@ -112,7 +122,6 @@ function renderMapWithData(amenityData) {
                     tooltip: {
                         displayColors: false,
                         position: 'nearest',
-
                     },
                     legend: {
                         display: false
@@ -125,32 +134,76 @@ function renderMapWithData(amenityData) {
                     },
                     color: {
                         axis: 'x',
-                        quantize: 10, // Erhöhen Sie die Anzahl der Quantisierungsstufen
+                        quantize: 10, //  Quantisierungsstufen
                         legend: {
-                            position: 'bottom-right', // Ändern Sie die Position der Legende
-                            align: 'top', // Ändern Sie die Ausrichtung der Legende
-                            ticks: {
-                                // Anpassen der angezeigten Werte auf der Skala
-                                callback: function(value, index, values) {
-                                    // Konvertieren Sie den Wert zurück zur ursprünglichen Skala
-                                    return Math.round(Math.sqrt(value));
-                                }
-                            }
+                            position: 'bottom-right',
+                            align: 'top'
                         },
-                    }
-                },
+
+                    },
+                }
             }
         });
     });
 }
 
+
+// Einwohnerzahlen der Kantone
+const einwohnerzahlen = {
+    'Zürich': 1564662,
+    'Bern': 1047422,
+    'Luzern': 420326,
+    'Uri': 37047,
+    'Schwyz': 163689,
+    'Obwalden': 38435,
+    'Nidwalden': 43894,
+    'Glarus': 41190,
+    'Zug': 129787,
+    'Freiburg': 329860,
+    'Solothurn': 280245,
+    'Basel-Stadt': 196036,
+    'Basel-Landschaft': 292817,
+    'Schaffhausen': 83995,
+    'Appenzell Ausserrhoden': 55585,
+    'Appenzell Innerrhoden': 16360,
+    'St. Gallen': 519245,
+    'Graubünden': 201376,
+    'Aargau': 703086,
+    'Thurgau': 285964,
+    'Tessin': 352181,
+    'Waadt': 822968,
+    'Wallis': 353209,
+    'Neuenburg': 176166,
+    'Genf': 509448,
+    'Jura': 73798
+};
+
+
+// Event Listener für den Toggle-Schalter
+mapToggleSwitch.addEventListener("click", () => {
+    toggleState = !toggleState; // Umschalten des Zustands
+    const switchBtn = mapToggleSwitch.querySelector(".switch");
+    switchBtn.classList.toggle("on", toggleState); // Toggle-Klasse für visuelle Darstellung
+    updateMap(document.getElementById('amenitySelect').value); // Aktualisieren der Karte
+});
+
+
+
+// Funktion zum Updaten der Map
 function updateMap(selectedAmenity) {
     loadFlaskServerData(selectedAmenity, function (data) {
         var amenityCountPerCanton = {};
 
         // Füllen von amenityCountPerCanton mit den Daten von Flask
         data.forEach(function (entry) {
-            amenityCountPerCanton[entry._id] = entry.count;
+            let count = entry.count;
+            let einwohnerzahl = einwohnerzahlen[entry._id];
+            if (einwohnerzahl) {
+                // Berechnen der relativen Anzahl in %, falls der Toggle aktiviert ist
+                amenityCountPerCanton[entry._id] = toggleState ? (count * 100 / einwohnerzahl) : count;
+            } else {
+                console.error('Keine Einwohnerzahl gefunden für:', entry._id);
+            }
         });
 
         // Aktualisieren der Karte mit den neuen Daten
@@ -158,11 +211,13 @@ function updateMap(selectedAmenity) {
     });
 }
 
-// Initiieren der Karte mit der Standard-Annehmlichkeit (Trinkwasser)
-updateMap('drinking_water');
 
-// Hinzufügen eines Dropdown-Änderungsereignisses, um die Karte bei Auswahl zu aktualisieren
+// Event Listener für Dropdown-Änderungen
 document.getElementById('amenitySelect').addEventListener('change', function () {
     var selectedAmenity = this.value;
     updateMap(selectedAmenity);
 });
+
+
+// Initiieren der Karte mit der Standard-Annehmlichkeit (Trinkwasser)
+updateMap('bicycle_parking');

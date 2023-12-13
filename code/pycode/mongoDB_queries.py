@@ -186,6 +186,9 @@ if __name__ == "__main__":
     """nearest_amenities = number_amenities_in_radius(47.3769, 8.5417, radius=1000)  # 1km, Zürich
     print(nearest_amenities)"""
 
-    test = get_bike_ways_for_all_gemeinden()
+    """test = get_bike_ways_for_all_gemeinden()
     for i in test:
-        print(i)
+        print(i)"""
+
+
+    print(count_amenities_by_canton("bicycle_parking"))
