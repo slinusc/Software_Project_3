@@ -658,7 +658,7 @@ body.dark .info-container-1 {
     position: relative;
     display: block;
     width: 180px; /* Festgelegte Breite */
-    height: 40px;
+    height: 50px;
     margin: 10px auto; /* Zentrierung unter dem Chart */
     background: var(--primary-color-light);
     border-radius: 6px;
@@ -814,7 +814,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 
 .table__header .input-group {
     width: 180px;
-    height: 40px;
+    height: 50px;
     padding: 0 .7rem;
     border-radius: 6px;
     display: flex;
@@ -840,6 +840,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     outline: none;
     color: var(--text-color);
 }
+
 
 .table__body {
     width: 100%;
@@ -1080,4 +1081,53 @@ thead th.active, tbody td.active {
 
 .hide {
     display: none;
+}
+
+
+.map-toggle-switch {
+    /* Übernahme des bestehenden Stils und Anpassung für den Karten-Container */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-right: 5px;
+    background: var(--primary-color-light); /* oder einen anderen Stil */
+}
+
+.map-toggle-switch .switch {
+    /* Übernahme des bestehenden Switch-Stils */
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.map-toggle-switch .switch::before {
+    /* Übernahme des bestehenden Switch-Knopf-Stils */
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: var(--sidebar-color);
+    transition: var(--tran-03);
+}
+
+/* Anpassen für den dunklen Modus, falls erforderlich */
+body.dark .map-toggle-switch .switch::before {
+    left: 24px; /* oder eine andere Position im dunklen Modus */
+}
+
+.controls-container {
+    display: flex;
+    align-items: center;
 }

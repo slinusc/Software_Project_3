@@ -6,6 +6,7 @@ const body = document.querySelector("body"),
     toggle = body.querySelector(".toggle"),
     searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
+    modeSwitchmap = body.querySelector(".toggle-map-switch"),
     modeText = body.querySelector(".mode-text");
     localStorage.setItem('mapDarkMode', false);
 
@@ -36,6 +37,7 @@ modeSwitch.addEventListener("click", () => {
         localStorage.setItem('mapDarkMode', false);  // Speichert Light Mode im Web Storage
     }
 });
+
 
 
 // Event-Listener für den Seitenwechsel

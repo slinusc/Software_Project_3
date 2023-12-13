@@ -236,21 +236,29 @@
                 <main class="table" id="main-map">
                     <section class="table__header">
                         <h1>Karte</h1>
-                        <!-- Dropdown-Menü für verschiedene Amenities -->
-                        <select id="amenitySelect" class="dropdown-menu">
-                            <option value="bicycle_parking">Fahrradparkplatz</option>
-                            <option value="bicycle_repair_station">Reparaturstation</option>
-                            <option value="bicycle_rental">Fahrradverleih</option>
-                            <option value="compressed_air">Luftpumpe</option>
-                            <option value="drinking_water">Trinkwasser</option>
-                            <option value="shelter">Unterstand</option>
-                        </select>
+                        <div class="controls-container">
+                            <!-- Toggle für pro Einwohner -->
+                            <div class="map-toggle-switch">
+                                <span class="switch"></span>
+                            </div>
+
+                            <!-- Dropdown-Menü für verschiedene Amenities -->
+                            <select id="amenitySelect" class="dropdown-menu">
+                                <option value="bicycle_parking">Fahrradparkplatz</option>
+                                <option value="bicycle_repair_station">Reparaturstation</option>
+                                <option value="bicycle_rental">Fahrradverleih</option>
+                                <option value="compressed_air">Luftpumpe</option>
+                                <option value="drinking_water">Trinkwasser</option>
+                                <option value="shelter">Unterstand</option>
+                            </select>
+                        </div>
+
+
                     </section>
                     <div class="map-chart">
                         <div class="rectangle">
                             <canvas id="mapTopoJSON"></canvas>
                         </div>
-
                     </div>
 
 
