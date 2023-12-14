@@ -7,6 +7,7 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
     // Stellt sicher, dass die alte Routing-Kontrolle entfernt wird, bevor eine neue hinzugefügt wird
     if (routingControl) {
         map.removeLayer(routingControl);
+        map.removeLayer(destinationMarker);
         routingControl = null;
     }
 
@@ -119,6 +120,7 @@ function geocodeAddress(address) {
             }
         });
 }
+
 
 // Erweiterte navigateToCoordinates Funktion, um auch Adressen zu akzeptieren
 export function navigateToAddress(map, startCoordinates, endLocation) {
