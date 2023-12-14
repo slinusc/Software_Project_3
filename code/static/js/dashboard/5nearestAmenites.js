@@ -1,7 +1,7 @@
 import {getUserLocation} from "../getUserlocation.js";
 import {getAddressFromCoords} from "../routing.js";
 
-let myChart;
+let myChart; // Globale Variable für das Chart-Objekt
 
 async function fetchNearestAmenities(lat, lon, amenityType, k) {
     return fetch('/nearest_amenities', {
@@ -20,15 +20,14 @@ async function fetchNearestAmenities(lat, lon, amenityType, k) {
         if (!response.ok) {
             throw new Error('Netzwerkantwort war nicht ok');
         }
-        return response.json(); // Stellen Sie sicher, dass die Antwort als JSON geparst wird
+        return response.json();
     })
     .then(async data => {
-        // Verwenden Sie Promise.all, um alle Adressabfragen parallel auszuführen
-        const dataWithAddresses = await Promise.all(
+        const dataWithAddresses = await Promise.all( // Wartet, bis alle Adressen abgerufen wurden
             data.map(async item => {
                 try {
                     const address = await getAddressFromCoords([item.coordinates[1], item.coordinates[0]]);
-                    return { ...item, address }; // Füge die Adresse zu jedem Element hinzu
+                    return { ...item, address }; // Fügt die Adresse zu den Daten hinzu und gibt sie zurück
                 } catch (error) {
                     console.error('Fehler beim Abrufen der Adresse:', error);
                     return { ...item, address: 'Adresse nicht verfügbar' };
@@ -40,6 +39,7 @@ async function fetchNearestAmenities(lat, lon, amenityType, k) {
 }
 
 
+// Funktion zum Erstellen des Diagramms
 function createGeoBubbleChart(userLocation, data) {
     const canvas = document.getElementById('meinGeoBubbleChart');
     const ctx = canvas.getContext('2d');
@@ -66,12 +66,12 @@ function createGeoBubbleChart(userLocation, data) {
     };
     // Calculate maxRadius
     let maxRadius = Math.max(...bubbleChartData.datasets[0].data.map(d => Math.sqrt(d.x * d.x + d.y * d.y)));
-    // Wenn ein Diagramm bereits existiert, zerstören Sie es
+    // Wenn ein Diagramm bereits existiert, wird es zerstört
     if (myChart) {
         myChart.destroy();
     }
 
-    // Erstellen Sie ein neues Diagramm und speichern Sie die Instanz in myChart
+    // Erstellen eines neuen Diagramms
     myChart = new Chart(ctx, {
         type: 'bubble',
         data: bubbleChartData,
@@ -83,7 +83,7 @@ function createGeoBubbleChart(userLocation, data) {
                     display: false, // x-Achse ausblenden
                     type: 'linear',
                     position: 'bottom',
-                    min: -maxRadius * 1.2, // Skalieren Sie die x-Achse etwas, um die Blasen nicht zu überlappen
+                    min: -maxRadius * 1.2, // Skaliert die Achse, damit Bubbles nicht überlappen
                     max: maxRadius * 1.2,
                     grid: {
                         display: false,
@@ -95,7 +95,7 @@ function createGeoBubbleChart(userLocation, data) {
                 y: {
                     display: false, // y-Achse ausblenden
                     type: 'linear',
-                    min: -maxRadius * 1.2, // Skalieren Sie die y-Achse etwas, um die Blasen nicht zu überlappen
+                    min: -maxRadius * 1.2, // Skaliert die Achse, damit Bubbles nicht überlappen
                     max: maxRadius * 1.2,
                     grid: {
                         display: false,
@@ -135,7 +135,7 @@ function createGeoBubbleChart(userLocation, data) {
                 let yAxis = chart.scales.y;
                 let centerX = xAxis.getPixelForValue(0);
                 let centerY = yAxis.getPixelForValue(0);
-                let maxRadius = (Math.max(xAxis.width, yAxis.height) / 2);// * 1.15;
+                let maxRadius = (Math.max(xAxis.width, yAxis.height) / 2); // Radius des größten Kreises
 
                 ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)'; // Standardfarbe für Linien
 
@@ -174,15 +174,8 @@ function createGeoBubbleChart(userLocation, data) {
     });
 }
 
-// Event-Listener für das 'change'-Event hinzufügen
-document.getElementById('amenitySelect2').addEventListener('change', function () {
-    // Den ausgewählten Wert als Amenity setzen
-    let selectedAmenity = this.value;
 
-    // Diagramm mit dem ausgewählten Amenity aktualisieren
-    loadAndCreateChart(selectedAmenity);
-});
-
+// Funktion zum Abrufen der Daten und Anzeigen des Charts
 function loadAndCreateChart(amenityType) {
     getUserLocation().then(userLocation => {
         fetchNearestAmenities(userLocation.lat, userLocation.lng, amenityType, 5)
@@ -199,6 +192,17 @@ function loadAndCreateChart(amenityType) {
             });
     });
 }
+
+
+// Event-Listener für das 'change'-Event hinzufügen
+document.getElementById('amenitySelect2').addEventListener('change', function () {
+    // Den ausgewählten Wert als Amenity setzen
+    let selectedAmenity = this.value;
+
+    // Diagramm mit dem ausgewählten Amenity aktualisieren
+    loadAndCreateChart(selectedAmenity);
+});
+
 
 // Starten Sie das Diagramm mit dem standardmäßig ausgewählten Amenity
 loadAndCreateChart(document.getElementById('amenitySelect2').value);

@@ -3,18 +3,7 @@ let search = document.querySelector('.input-group input'),
     table_headings = document.querySelectorAll('thead th');
 
 
-// Funktion, die den Status basierend auf Fahrradwege pro km2 zurückgibt
-function getStatus(fahrradwegeProKm2) {
-    if (fahrradwegeProKm2 < 1) {
-        return `<p class="status wenig">wenig</p>`;
-    } else if (fahrradwegeProKm2 <= 2) {
-        return `<p class="status mittel">mittel</p>`;
-    } else {
-        return `<p class="status viel">viel</p>`;
-    }
-}
-
-// Funktion zum Abrufen von Daten und Aktualisieren der Tabelle
+// Funktion zum Abrufen und Anzeigen von Daten und Aktualisieren der Tabelle
 function updateTable() {
     fetch('/bike_ways', {method: 'POST'})
         .then(response => response.json())
@@ -47,12 +36,8 @@ function updateTable() {
         .catch(error => console.error('Fehler beim Abrufen der Daten:', error));
 }
 
-// Ruft die Funktion updateTable auf, um die Tabelle zu initialisieren, wenn die Seite geladen wird
-document.addEventListener('DOMContentLoaded', updateTable);
 
-// 1. Searching for specific data of HTML table
-search.addEventListener('input', searchTable);
-
+// Funktion zum Suchen nach Daten in der Tabelle
 function searchTable() {
     table_rows.forEach((row, i) => {
         let table_data = row.cells[0].textContent.toLowerCase(),
@@ -62,13 +47,57 @@ function searchTable() {
         row.style.setProperty('--delay', i / 2 + 's');
     });
 
+
+    // Alternierende Farben für die Zeilen
     document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
         visible_row.style.backgroundColor = (i % 2 == 0) ? 'color: var(--body-color);' : 'color: var(--sidebar-color);';
     });
 }
 
 
-// 2. Sortierung der HTML Tabelle
+// Funktion zum Sortieren der Zeilen der Tabelle
+function sortTable(column, sort_asc) {
+    [...table_rows].sort((a, b) => {
+        // Bestimmen Sie, ob es die Spalte 2 oder 3 ist, und verwenden Sie in beiden Fällen den Wert von Spalte 2 für den Vergleich
+        let columnIndex = (column === 1 || column === 2) ? 1 : column;
+
+        let first_row = a.querySelectorAll('td')[columnIndex].textContent.toLowerCase(),
+            second_row = b.querySelectorAll('td')[columnIndex].textContent.toLowerCase();
+
+        // Konvertierung deer Werte in Zahlen für alle Spalten ausser der ersten
+        if (columnIndex !== 0) {
+            first_row = parseFloat(first_row);
+            second_row = parseFloat(second_row);
+        }
+
+        // Sortierlogik2
+        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+    })
+        .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+}
+
+
+// Funktion, die den Status basierend auf Fahrradwege pro km2 zurückgibt
+function getStatus(fahrradwegeProKm2) {
+    if (fahrradwegeProKm2 < 1) {
+        return `<p class="status wenig">wenig</p>`;
+    } else if (fahrradwegeProKm2 <= 2) {
+        return `<p class="status mittel">mittel</p>`;
+    } else {
+        return `<p class="status viel">viel</p>`;
+    }
+}
+
+
+// Ruft die Funktion updateTable auf, um die Tabelle zu initialisieren, wenn die Seite geladen wird
+document.addEventListener('DOMContentLoaded', updateTable);
+
+
+// Event Listener für die Suchleiste
+search.addEventListener('input', searchTable);
+
+
+// Sortieren der Tabelle
 table_headings.forEach((head, i) => {
     let sort_asc = true;
     head.onclick = () => {
@@ -87,23 +116,4 @@ table_headings.forEach((head, i) => {
     }
 })
 
-function sortTable(column, sort_asc) {
-    [...table_rows].sort((a, b) => {
-        // Bestimmen Sie, ob es die Spalte 2 oder 3 ist, und verwenden Sie in beiden Fällen den Wert von Spalte 2 für den Vergleich
-        let columnIndex = (column === 1 || column === 2) ? 1 : column;
-
-        let first_row = a.querySelectorAll('td')[columnIndex].textContent.toLowerCase(),
-            second_row = b.querySelectorAll('td')[columnIndex].textContent.toLowerCase();
-
-        // Konvertierung deer Werte in Zahlen für alle Spalten ausser der ersten
-        if (columnIndex !== 0) {
-            first_row = parseFloat(first_row);
-            second_row = parseFloat(second_row);
-        }
-
-        // Sortierlogik2
-        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
-    })
-    .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
-}
 

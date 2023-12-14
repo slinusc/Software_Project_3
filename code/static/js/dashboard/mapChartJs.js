@@ -1,52 +1,35 @@
 let toggleState = false;
 let chart, colorScale;
-let cachedSwitzerlandData = null;
+let cachedSwitzerlandData = null; // TopoJSON-Daten zwischenspeichern, um die Karte schneller zu laden
 let mapToggleSwitch = document.querySelector(".map-toggle-switch");
-
-
-// Eventlistener für absolute oder relative Werte in Karten-Diagramm
-
-
-function loadFlaskServerData(amenityType, callback) {
-    // Daten vom Flask Server abrufen
-    fetch('/amenities_per_canton', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({amenity_type: amenityType}),
-    })
-        .then(response => response.json())
-        .then(data => callback(data))
-        .catch(error => console.error('Fehler beim Abrufen der Daten vom Flask Server:', error));
-}
-
-// Hinzufügen einer capitalize-Funktion zum Formatieren von Annehmlichkeiten für das Diagrammetikett
-String.prototype.capitalize = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
+const einwohnerzahlen = {
+    'Zürich': 1564662,
+    'Bern': 1047422,
+    'Luzern': 420326,
+    'Uri': 37047,
+    'Schwyz': 163689,
+    'Obwalden': 38435,
+    'Nidwalden': 43894,
+    'Glarus': 41190,
+    'Zug': 129787,
+    'Freiburg': 329860,
+    'Solothurn': 280245,
+    'Basel-Stadt': 196036,
+    'Basel-Landschaft': 292817,
+    'Schaffhausen': 83995,
+    'Appenzell Ausserrhoden': 55585,
+    'Appenzell Innerrhoden': 16360,
+    'St. Gallen': 519245,
+    'Graubünden': 201376,
+    'Aargau': 703086,
+    'Thurgau': 285964,
+    'Tessin': 352181,
+    'Waadt': 822968,
+    'Wallis': 353209,
+    'Neuenburg': 176166,
+    'Genf': 509448,
+    'Jura': 73798
 };
-
-// TopoJSON-Daten zwischenspeichern, um die Karte schneller zu laden
-
-
-function getSwitzerlandData(callback) {
-    // Überprüfen, ob die Daten bereits zwischengespeichert sind
-    if (cachedSwitzerlandData) {
-        callback(cachedSwitzerlandData);
-    } else {
-        // Daten abrufen und zwischenspeichern
-        fetch('https://swiss-maps.interactivethings.io/api/v0?shapes=cantons&format=topojson')
-            .then((r) => r.json())
-            .then((switzerland) => {
-                cachedSwitzerlandData = switzerland;
-                callback(switzerland);
-            });
-    }
-}
-
-// Deklarieren einer globalen Variablen für die Karte, um sie später zu zerstören
-
-
 const cantonNameMapping = {
     'Zürich': 'Zürich',
     'Bern / Berne': 'Bern',
@@ -76,6 +59,69 @@ const cantonNameMapping = {
     'Jura': 'Jura'
 };
 
+
+// Funktion zum Abrufen der Daten vom Flask Server
+function loadFlaskServerData(amenityType, callback) {
+    // Daten vom Flask Server abrufen
+    fetch('/amenities_per_canton', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({amenity_type: amenityType}),
+    })
+        .then(response => response.json())
+        .then(data => callback(data))
+        .catch(error => console.error('Fehler beim Abrufen der Daten vom Flask Server:', error));
+}
+
+// Hinzufügen einer capitalize-Funktion zum Formatieren von Annehmlichkeiten für das Diagrammetikett
+String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+
+// Funktion zum Abrufen der TopoJSON-Daten der Schweiz über API
+function getSwitzerlandData(callback) {
+    // Überprüfen, ob die Daten bereits zwischengespeichert sind
+    if (cachedSwitzerlandData) {
+        callback(cachedSwitzerlandData);
+    } else {
+        // Daten abrufen und zwischenspeichern
+        fetch('https://swiss-maps.interactivethings.io/api/v0?shapes=cantons&format=topojson')
+            .then((r) => r.json())
+            .then((switzerland) => {
+                cachedSwitzerlandData = switzerland;
+                callback(switzerland);
+            });
+    }
+}
+
+
+// Funktion zum Updaten der Map
+function updateMap(selectedAmenity) {
+    loadFlaskServerData(selectedAmenity, function (data) {
+        var amenityCountPerCanton = {};
+
+        // Füllen von amenityCountPerCanton mit den Daten von Flask
+        data.forEach(function (entry) {
+            let count = entry.count;
+            let einwohnerzahl = einwohnerzahlen[entry._id];
+            if (einwohnerzahl) {
+                // Berechnen der relativen Anzahl pro 1000 Einwohner, falls der Toggle aktiviert ist
+                amenityCountPerCanton[entry._id] = toggleState ? (count * 1000 / einwohnerzahl) : count;
+            } else {
+                console.error('Keine Einwohnerzahl gefunden für:', entry._id);
+            }
+        });
+
+        // Aktualisieren der Karte mit den neuen Daten
+        renderMapWithData(amenityCountPerCanton);
+    });
+}
+
+
+// Funktion zum Rendern der Karte mit den Daten
 function renderMapWithData(amenityData) {
     getSwitzerlandData((switzerland) => {
         const cantons = ChartGeo.topojson.feature(switzerland, switzerland.objects.cantons).features;
@@ -148,37 +194,6 @@ function renderMapWithData(amenityData) {
 }
 
 
-// Einwohnerzahlen der Kantone
-const einwohnerzahlen = {
-    'Zürich': 1564662,
-    'Bern': 1047422,
-    'Luzern': 420326,
-    'Uri': 37047,
-    'Schwyz': 163689,
-    'Obwalden': 38435,
-    'Nidwalden': 43894,
-    'Glarus': 41190,
-    'Zug': 129787,
-    'Freiburg': 329860,
-    'Solothurn': 280245,
-    'Basel-Stadt': 196036,
-    'Basel-Landschaft': 292817,
-    'Schaffhausen': 83995,
-    'Appenzell Ausserrhoden': 55585,
-    'Appenzell Innerrhoden': 16360,
-    'St. Gallen': 519245,
-    'Graubünden': 201376,
-    'Aargau': 703086,
-    'Thurgau': 285964,
-    'Tessin': 352181,
-    'Waadt': 822968,
-    'Wallis': 353209,
-    'Neuenburg': 176166,
-    'Genf': 509448,
-    'Jura': 73798
-};
-
-
 // Event Listener für den Toggle-Schalter
 mapToggleSwitch.addEventListener("click", () => {
     toggleState = !toggleState; // Umschalten des Zustands
@@ -186,30 +201,6 @@ mapToggleSwitch.addEventListener("click", () => {
     switchBtn.classList.toggle("on", toggleState); // Toggle-Klasse für visuelle Darstellung
     updateMap(document.getElementById('amenitySelect').value); // Aktualisieren der Karte
 });
-
-
-
-// Funktion zum Updaten der Map
-function updateMap(selectedAmenity) {
-    loadFlaskServerData(selectedAmenity, function (data) {
-        var amenityCountPerCanton = {};
-
-        // Füllen von amenityCountPerCanton mit den Daten von Flask
-        data.forEach(function (entry) {
-            let count = entry.count;
-            let einwohnerzahl = einwohnerzahlen[entry._id];
-            if (einwohnerzahl) {
-                // Berechnen der relativen Anzahl pro 1000 Einwohner, falls der Toggle aktiviert ist
-                amenityCountPerCanton[entry._id] = toggleState ? (count * 1000 / einwohnerzahl) : count;
-            } else {
-                console.error('Keine Einwohnerzahl gefunden für:', entry._id);
-            }
-        });
-
-        // Aktualisieren der Karte mit den neuen Daten
-        renderMapWithData(amenityCountPerCanton);
-    });
-}
 
 
 // Event Listener für Dropdown-Änderungen

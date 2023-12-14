@@ -1,7 +1,6 @@
 import {getUserLocation} from '../getUserlocation.js';
 
 let meinRadarChart = null; // Globale Variable für das Chart-Objekt
-
 const translations = {
     "bicycle_parking": "Fahrradparkplatz",
     "bicycle_rental": "Fahrradverleih",
@@ -10,6 +9,7 @@ const translations = {
     "drinking_water": "Trinkwasser",
     "shelter": "Unterstand"
 };
+
 
 // Funktion zum Abrufen von Annehmlichkeiten in einem bestimmten Radius
 function fetchAmenities(radius) {
@@ -43,6 +43,7 @@ function fetchAmenities(radius) {
             });
     });
 }
+
 
 // Funktion zur Aktualisierung des Charts
 function updateChart(labels, data) {
@@ -118,4 +119,6 @@ document.getElementById('radiusSelect').addEventListener('change', function () {
     fetchAmenities(selectedRadius);
 });
 
+
+// Initiales Laden der Daten mit einem Default-Radius von 1000 Metern
 fetchAmenities(1000);
