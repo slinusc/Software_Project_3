@@ -11,6 +11,9 @@ und Fahrradverleihstationen, Fahrradpumpen usw. Die Web-Applikation ist auch fü
 ## Dashboard
 ![image](https://github.com/slinusc/cycle_buddy_app/assets/94235012/5b522f42-91d5-403b-953b-375cb15a87da)
 
+## Mobile-Version
+
+![image](https://github.com/slinusc/cycle_buddy_app/assets/94235012/9632c34e-5bbd-45f2-8a9e-0acbc31fac99)
 
 ## Getting Started
 1. navigate in console to directory: /cycle_buddy_app
