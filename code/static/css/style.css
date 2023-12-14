@@ -305,6 +305,12 @@ body.dark .menu-bar .mode i.moon{
 
 }
 
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+
 /* ==== Buttons and Switches ==== */
 /* Toggle-Switch in Sidebar*/
 .menu-bar .mode .toggle-switch{
@@ -345,6 +351,8 @@ body.dark .menu-bar .mode i.moon{
 body.dark .toggle-switch .switch::before{
     left: 24px;
 }
+
+
 
 /* Location Button */
 .location {
@@ -535,6 +543,7 @@ body.dark .info-container-1 {
     background-color: var(--containercolor);
     color: var(--containertextcolor);
 }
+
 
 
 /* ========== Analyse Section ========== */
@@ -790,6 +799,8 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
     }
 }
 
+
+
 @media only screen and (max-width: 800px) {
     main.table, main.bubble-chart, main.radar-chart, main.map-chart {
         width: 78vw;
@@ -797,6 +808,16 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
         background-color: #fff5;
         border-radius: 6px;
         overflow: hidden;
+    }
+}
+
+
+/* Stil speziell für Mobilgeräte im Landscape-Modus (horizontal) */
+@media only screen and (max-width: 800px) and (orientation: landscape) {
+    main.table {
+        height: 95vh;
+        width: 100%;
+
     }
 }
 
