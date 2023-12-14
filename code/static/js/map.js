@@ -2,9 +2,6 @@ import { map, currentTileLayer, initializeMap, placeCurrentUserMarkerOnMap, getC
     updateAmenitiesMap, changeColorOfMarker, debounce } from './mapInitialization.js';
 import {navigateToCoordinates, deleteRoute, navigateToAddress, getAddressFromCoords} from './routing.js';
 
-
-// JavaScript Map ---------------------------------------------
-
 // Initialisieren der Karte
 initializeMap();
 
