@@ -7,8 +7,11 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
     // Stellt sicher, dass die alte Routing-Kontrolle entfernt wird, bevor eine neue hinzugefügt wird
     if (routingControl) {
         map.removeLayer(routingControl);
-        map.removeLayer(destinationMarker);
         routingControl = null;
+    }
+    if (destinationMarker) {
+        map.removeLayer(destinationMarker);
+        destinationMarker = null;
     }
 
     const [startLat, startLng] = startCoordinates; // Startkoordinaten
