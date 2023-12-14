@@ -1,8 +1,3 @@
-/* ===== Global Styles ===== */
-
-/* Google Font Import - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 /* Color Variables, Transitions */
 :root{
     /* Colors */
@@ -625,22 +620,6 @@ body.dark .info-container-1 {
     width: 577px;
 }
 
-/* ====== Media Queries for different screen sizes ====== */
-@media screen and (max-width: 800px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
-        grid-template-areas:
-            "chart"
-            "chart"
-            "chart"
-            "chart";
-        gap: 10px;
-    }
-    .user-guide-container {
-        padding: 5px;
-    }
-}
 
 /* alter code */
 
@@ -781,18 +760,61 @@ body {
     align-items: center;
 }
 
-main.table, main.bubble-chart, main.radar-chart, main.map-chart {
+main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
     width: 46vw;
     height: 47vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);
     border-radius: 6px;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 /* ===== Media Queries ===== */
+
+@media screen and (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
+        grid-template-areas:
+            "chart"
+            "chart"
+            "chart"
+            "chart";
+        gap: 10px;
+    }
+    .user-guide-container {
+        padding: 5px;
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
+        /*width minus 60px von links*/
+        width: calc(100vw - 98px);
+        height: 51vh;
+        background-color: #fff5;
+        border-radius: 6px;
+        overflow: hidden;
+        /*zentriert*/
+        margin: 0 auto;
+    }
+}
+
+
+/* Stil speziell für Mobilgeräte im Landscape-Modus (horizontal) */
+@media only screen and (max-width: 900px) and (min-aspect-ratio: 13/9) {
+    main.boxes {
+        height: 95vh;
+        width: 100%;
+    }
+}
+
+
+
 @media print {
-    .table, .table__body {
+    .boxes, .table__body {
         overflow: visible;
         height: auto !important;
         width: auto !important;
@@ -800,27 +822,7 @@ main.table, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 
-
-@media only screen and (max-width: 800px) {
-    main.table, main.bubble-chart, main.radar-chart, main.map-chart {
-        width: 78vw;
-        height: 51vh;
-        background-color: #fff5;
-        border-radius: 6px;
-        overflow: hidden;
-    }
-}
-
-
-/* Stil speziell für Mobilgeräte im Landscape-Modus (horizontal) */
-@media only screen and (max-width: 800px) and (orientation: landscape) {
-    main.table {
-        height: 95vh;
-        width: 100%;
-
-    }
-}
-
+/* =====Tabelle===== */
 .table__header {
     width: 100%;
     height: 18%;
@@ -981,7 +983,7 @@ tbody tr.hide td img {
 
 
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     td:not(:first-of-type) {
         min-width: 1rem;
     }
