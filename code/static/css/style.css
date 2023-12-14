@@ -556,7 +556,7 @@ body.dark .info-container-1 {
 }
 
 .chart-card {
-    padding: 10px;
+    padding: 5px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
 }
@@ -761,7 +761,7 @@ body {
 }
 
 main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
-    width: 46vw;
+    width: calc(46vw - 5px);
     height: 47vh;
     background-color: #fff5;
     backdrop-filter: blur(7px);
