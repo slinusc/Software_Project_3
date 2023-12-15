@@ -2,7 +2,7 @@
 
 ## Description
 Die Web-Applikation CycleBuddy ist eine Navigationstool, das speziell für Fahrradfahrer entwickelt wurde. 
-Es können Fahrradrouten angezeigt werden und für Fahrradfahrer relevante Orte wie Fahrradwerkstätten, Fahrradparkplätze 
+Es können beliebige Fahrradrouten angezeigt werden und für Fahrradfahrer relevante Orte wie Fahrradwerkstätten, Fahrradparkplätze 
 und Fahrradverleihstationen, Fahrradpumpen usw. Die Web-Applikation ist auch für die Nutzung auf mobilen Endgeräten ausgelegt.
 
 ## Navigation-Page
