@@ -7,6 +7,8 @@ und Fahrradverleihstationen, Fahrradpumpen usw. Die Web-Applikation ist auch fü
 
 ![image](https://github.com/slinusc/cycle_buddy_app/assets/94235012/f0e0bcbe-11d5-4922-a0c3-8075c1caf667)
 
+## Dark-Mode
+
 ![image](https://github.com/slinusc/cycle_buddy_app/assets/94235012/7b73e8ed-23c7-4d8b-b966-69e8cc09c607)
 
 
