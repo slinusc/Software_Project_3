@@ -61,12 +61,12 @@ if __name__ == '__main__':
     try:
         if bike_ways.collection_is_empty():  # überprüft, ob die Collection leer ist
             bike_ways.load_in_db('data/raw_data/bicycle_backup_2023-12-12_renamed')  # nur für docker
+            # bike_ways.load_in_db('../raw_data/bicycle_backup_2023-12-12_renamed') # lokal
         if amenities.collection_is_empty():  # überprüft, ob die Collection leer ist
             amenities.load_in_db('data/raw_data/2023-12-12_cleaned_amenity_file')  # nur für docker
+            # amenities.load_in_db('../raw_data/2023-12-12_cleaned_amenity_file') # lokal
             amenities.create_2dsphere_index()
     except Exception as e:
         print(f"An error occurred while running the mongoDBAssistent script: {e}")
 
-    # bike_ways.load_in_db('../raw_data/bicycle_backup_2023-12-12_renamed') # lokal
-    # amenities.load_in_db('../raw_data/2023-12-12_cleaned_amenity_file') # lokal
-    # mongoDB.pull_from_db('../../data/raw_data/backup')
+

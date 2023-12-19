@@ -4,7 +4,7 @@ export let map;
 export let currentTileLayer;
 let currentMarker = null;
 const START_COORDINATES = [47.497366, 8.7297876];
-const START_ZOOM_LEVEL = 13;
+const START_ZOOM_LEVEL = 16;
 
 // Funktion zum Erstellen des Icons je nach Modus
 export function getBikeIcon() {

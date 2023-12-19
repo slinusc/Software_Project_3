@@ -152,7 +152,7 @@
         <div class="grid-container">
             <!-- Container für Radar-Diagramme -->
             <div class="chart-card">
-                <main class="table" id="main-radar">
+                <main class="boxes" id="main-radar">
                     <section class="table__header">
                         <h1>Radius</h1>
                         <!-- Dropdown-Menü für Radius -->
@@ -175,7 +175,7 @@
             </div>
 
             <div class="chart-card">
-                <main class="table" id="main-bubble">
+                <main class="boxes" id="main-bubble">
                     <section class="table__header">
                         <h1>Radar</h1>
                         <!-- Dropdown-Menü für verschiedene Amenities -->
@@ -200,7 +200,7 @@
             <!-- Tabelle -->
             <div class="chart-card">
                 <body>
-                <main class="table" id="main-table">
+                <main class="boxes" id="main-table">
                     <section class="table__header">
                         <h1>Fahrradwege</h1>
                         <div class="input-group">
@@ -233,7 +233,7 @@
 
             <!-- Container für die Karte: Einrichtungen pro Kanton -->
             <div class="chart-card">
-                <main class="table" id="main-map">
+                <main class="boxes" id="main-map">
                     <section class="table__header">
                         <h1>Karte</h1>
                         <div class="controls-container">
@@ -388,8 +388,6 @@
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-<script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 
 <!-- Einbindung von Chart.js -->
 <script src="https://unpkg.com/chart.js@4"></script>
@@ -404,7 +402,7 @@
 <script type="module" src="../static/js/menu.js"></script>
 <script type="module" src="../static/js/map.js"></script>
 <script type="module" src="../static/js/dashboard/mapChartJs.js"></script>
-<script type="module" src="../static/js/dashboard/radar.js"></script>
+<script type="module" src="../static/js/dashboard/radius.js"></script>
 <script type="module" src="../static/js/dashboard/5nearestAmenites.js"></script>
 <script type="module" src="../static/js/dashboard/tabelle.js"></script>
 

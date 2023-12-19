@@ -9,6 +9,10 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
         map.removeLayer(routingControl);
         routingControl = null;
     }
+    if (destinationMarker) {
+        map.removeLayer(destinationMarker);
+        destinationMarker = null;
+    }
 
     const [startLat, startLng] = startCoordinates; // Startkoordinaten
     const [endLat, endLng] = endCoordinates; // Zielkoordinaten
@@ -119,6 +123,7 @@ function geocodeAddress(address) {
             }
         });
 }
+
 
 // Erweiterte navigateToCoordinates Funktion, um auch Adressen zu akzeptieren
 export function navigateToAddress(map, startCoordinates, endLocation) {
