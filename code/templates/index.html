@@ -30,20 +30,24 @@
 <nav class="sidebar close">
     <header>
         <div class="image-text">
+            <!-- Logo -->
                 <span class="image">
                     <img src="../static/images/img2.png" alt="logo">
                 </span>
 
             <div class="text header-text">
+                <!-- Titel der Seite -->
                 <span class="name">CycleBuddy</span>
                 <span class="sub">Navigation</span>
             </div>
         </div>
 
+        <!-- Toggle zum Öffnen und Schliessen der Sidebar -->
         <i class='bx bx-chevron-right toggle'></i>
     </header>
 
     <div class="menu-bar">
+        <!-- Menü für Wechsel auf einzelne Seiten -->
         <div class="menu">
             <li class="search-box">
                 <i class='bx bx-search icon'></i>
@@ -73,6 +77,7 @@
 
 
         <li class="mode">
+            <!-- Dark Mode - Switch und Text / Icon -->
             <div class="moon-sun">
                 <i class='bx bx-moon icon moon'></i>
                 <i class='bx bx-sun icon sun'></i>
@@ -149,7 +154,7 @@
     <!-- Section für Analytics -->
     <div id="analytics-section" class="content-section">
         <div class="grid-container">
-            <!-- Container für Radar-Diagramme -->
+            <!-- Container für Radius-Diagram -->
             <div class="chart-card">
                 <main class="boxes" id="main-radar">
                     <section class="table__header">
@@ -163,6 +168,7 @@
                             <option value="20000">20 km</option>
                         </select>
                     </section>
+                    <!-- Radius-Diagramm (radar-chart) -->
                     <div class="radar-chart">
                         <div class="square2">
                             <canvas id="meinRadarChart"></canvas>
@@ -187,6 +193,7 @@
                             <option value="shelter">Unterstand</option>
                         </select>
                     </section>
+                    <!-- Radar-Diagramm (bubble-chart) -->
                     <div class="bubble-chart">
                         <div class="square">
                             <canvas id="meinGeoBubbleChart"></canvas>
@@ -269,7 +276,6 @@
 
     <!-- Section für User Guide / Help -->
     <div id="info-section" class="content-section">
-        <!-- Info-Inhalte werden hier dynamisch geladen -->
         <div class="user-guide-container">
             <h1 class="user-guide-title">CycleBuddy Navigation</h1>
             <h2 class="user-guide-title">Benutzerhandbuch</h2>
@@ -277,6 +283,7 @@
                 Ihnen dabei, die Funktionen unserer App optimal zu nutzen.</p>
 
             <section id="general-navigation">
+                <!-- Informationen zur Seitenleiste / informations sidebar -->
                 <h3>Seitenleiste</h3>
                 <p>In der Seitenleiste können Sie zwischen verschiedenen Abschnitten wechseln:</p>
                 <ul>
@@ -300,6 +307,7 @@
             </section>
 
             <section id="map-view">
+                <!-- Informationen zur Karte / map -->
                 <h3>Navigation</h3>
                 <p class="spacing-between-lines">Diese Seite dient der eigentlichen Navigation und dem Aufzeigen
                     nützlicher Einrichtungen für Fahrradfahrende. Es können Fahrradparkplätze, Fahrradverleihstationen,
@@ -332,6 +340,7 @@
             </section>
 
             <section id="analysis-functions">
+                <!-- Informationen zu den Analysefunktionen / analysis functions -->
                 <h3>Dashboard</h3>
                 <p class="spacing-between-lines">Auf dieser Seite finden Sie Grafiken, welche Ihnen als Nutzer wertvolle
                     Informationen auf einen Blick geben.</p>
@@ -362,6 +371,7 @@
             </section>
 
             <section id="help-support">
+                <!-- Informationen zu Hilfe und Support / help and support -->
                 <h3>Hilfe</h3>
                 <p>Sollten Sie Fragen haben oder Unterstützung benötigen, schauen Sie sich diesen Bereich an oder
                     kontaktieren Sie uns direkt per E-Mail unter:
@@ -373,11 +383,14 @@
 
 
             <section id="sources">
+                <!-- Informationen zu den Quellen / sources -->
                 <h3>Quellen</h3>
                 <p>Die Daten, die auf dieser Seite präsentiert werden, wurden sorgfältig aus verschiedenen Quellen
                     zusammengestellt. Zu diesen Quellen gehören OpenStreetMap, Wikipedia, die Stadtverwaltung Zürich
                     sowie die Mapbox API. Diese Kombination unterschiedlicher Datenquellen ermöglicht es uns, umfassende
-                    und exakte Informationen bereitzustellen.</p>
+                    und exakte Informationen bereitzustellen. Bei weiteren Fragen zu unseren Datenquellen können Sie
+                    gerne Kontakt mit uns aufnehmen.
+                </p>
             </section>
         </div>
     </div>

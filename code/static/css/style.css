@@ -850,7 +850,7 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 
-/* =====Tabelle===== */
+/* =====Table ===== */
 .table__header {
     width: 100%;
     height: 18%;
@@ -865,6 +865,7 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 .table__header .input-group {
+    /* Search-Box in Table */
     width: 180px;
     height: 50px;
     padding: 0 .7rem;
@@ -878,11 +879,13 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 .table__header .input-group:hover {
+    /* Zoom of Search-Box while hovering over it */
     width: 190px;
     box-shadow: 0 .1rem .4rem #0002;
 }
 
 .table__header .input-group input {
+    /* Input-Field in Search-Box */
     width: 100%;
     padding: 0 .5rem 0 .3rem;
     background-color: transparent;
@@ -892,8 +895,8 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 .table__body {
+    /* Body of Table */
     width: 100%;
-    /* schriftgrösse*/
     font-size: .9rem;
     max-height: calc(89% - 1.6rem);
     background-color: #E4E9F7;
@@ -902,12 +905,14 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
 }
 
 .table__body::-webkit-scrollbar {
+    /* Scrollbar in Table */
     width: 0px;
     height: 0px;
     visibility: hidden;
 }
 
 table, th, td {
+    /* Table, Table-Head and Table-Body */
     border-collapse: collapse;
     padding: 0.9rem;
     text-align: left;
@@ -915,13 +920,15 @@ table, th, td {
 }
 
 th, td {
+    /* Table-Head and Table-Body */
     width: max-content;
-    min-width: 120px; /* Optional: Setzt eine minimale Breite */
-    white-space: nowrap; /* Verhindert einen Umbruch innerhalb der Kopfzelle */
+    min-width: 120px; /* optional: sets a minimal width */
+    white-space: nowrap; /* prevents break in header */
     color: var(--containertextcolor)
 }
 
 thead th {
+    /* Table-Head */
     position: sticky;
     top: 0;
     left: 0;
@@ -932,6 +939,7 @@ thead th {
 }
 
 thead {
+    /* Table-Head */
     position: sticky;
     top: 0;
     background: white; /* Hintergrundfarbe ist notwendig, um die Zellen darüber zu verdecken */
@@ -941,10 +949,11 @@ thead {
 
 table th:first-of-type,
 table td:first-of-type {
+    /* First Column of Table (needs to be visible at all times) */
     position: sticky;
     left: 0;
     background-color: var(--body-color);
-    z-index: 1; /* Z-Index ist notwendig, um sicherzustellen, dass die sticky Zellen über den anderen liegen */
+    z-index: 1; /* z-index is needed, to ensure that the sticky cells are above the others */
 }
 
 table tr:nth-child(odd) td:first-of-type {
@@ -956,11 +965,13 @@ table tr:nth-child(even) td:first-of-type {
 }
 
 tbody tr:nth-child(even) {
+    /* Background-Color of Table-Body while hovering over it: even-rows */
     background-color: var(--body-color);
     opacity: 0.7;
 }
 
 tbody tr:nth-child(odd) {
+    /* Background-Color of Table-Body while hovering over it: odd-rows */
     background-color: var(--sidebar-color);
     opacity: 0.7;
 }
@@ -995,16 +1006,19 @@ tbody tr.hide td img {
 }
 
 .status.viel {
+    /* Background-Color of Status-Column in Table */
     background-color: #86e49d;
     color: #006b21;
 }
 
 .status.wenig {
+    /* Background-Color of Status-Column in Table */
     background-color: #d893a3;
     color: #b30021;
 }
 
 .status.mittel {
+    /* Background-Color of Status-Column in Table */
     background-color: #ebc474;
 }
 
@@ -1017,6 +1031,7 @@ tbody tr.hide td img {
 
 
 thead th span.icon-arrow {
+    /* Arrow-Icon in Table-Head */
     display: inline-block;
     width: 1.3rem;
     height: 1.3rem;
@@ -1029,31 +1044,38 @@ thead th span.icon-arrow {
 }
 
 thead th:hover span.icon-arrow {
+    /* Color of Arrow-Icon in Table-Head while hovering over it */
     border: 1.4px solid #007bff;
 }
 
 thead th:hover {
+    /* Color of Table-Head while hovering over it */
     color: #007bff;
 }
 
 thead th.active span.icon-arrow {
+    /* Arrow-Icon in Table-Head while active */
     background-color: #007bff;
     color: #fff;
 }
 
 thead th.asc span.icon-arrow {
+    /* Arrow-Icon in Table-Head while ascending */
     transform: rotate(180deg);
 }
 
 thead th.active, tbody td.active {
+    /* Color of Table-Head and Table-Body while active */
     color: #007bff;
 }
 
 .export__file {
+    /* Export-Button */
     position: relative;
 }
 
 .export__file .export__file-btn {
+    /* Export-Button */
     display: inline-block;
     width: 2rem;
     height: 2rem;
@@ -1062,16 +1084,19 @@ thead th.active, tbody td.active {
 }
 
 .export__file .export__file-btn:hover {
+    /* Background-Color of Export-Button while hovering over it */
     background-color: #fff;
     transform: scale(1.15);
     cursor: pointer;
 }
 
 .export__file input {
+    /* Input-Field in Export-Button */
     display: none;
 }
 
 .export__file .export__file-options {
+    /* Options in Export-Button */
     position: absolute;
     right: 0;
     width: 12rem;
@@ -1086,47 +1111,51 @@ thead th.active, tbody td.active {
 }
 
 .export__file input:checked + .export__file-options {
+    /* Options in Export-Button while checked */
     opacity: 1;
     transform: scale(1);
     z-index: 100;
 }
 
 .export__file .export__file-options label {
+    /* Labels in Export-Button */
     display: block;
     width: 100%;
     padding: .6rem 0;
     background-color: #f2f2f2;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     transition: .2s ease-in-out;
 }
 
 .export__file .export__file-options label:first-of-type {
+    /* First Label in Export-Button */
     padding: 1rem 0;
     background-color: #86e49d !important;
 }
 
 .export__file .export__file-options label:hover {
+    /* Background-Color of Labels in Export-Button while hovering over them */
     transform: scale(1.05);
     background-color: #fff;
     cursor: pointer;
 }
 
 .export__file .export__file-options img {
+    /* Icons in Export-Button */
     width: 2rem;
     height: auto;
 }
 
 .hide {
+    /* Hide Table-Body */
     display: none;
 }
 
 
 .map-toggle-switch {
-    /* Übernahme des bestehenden Stils und Anpassung für den Karten-Container */
+    /* Adoption of the existing style and customisation for the map container */
     position: relative;
     display: flex;
     align-items: center;
@@ -1136,11 +1165,11 @@ thead th.active, tbody td.active {
     cursor: pointer;
     border-radius: 6px;
     margin-right: 5px;
-    background: var(--primary-color-light); /* oder einen anderen Stil */
+    background: var(--primary-color-light); /* or other color */
 }
 
 .map-toggle-switch .switch {
-    /* Übernahme des bestehenden Switch-Stils */
+    /* Adoption of the existing switch style */
     position: relative;
     height: 22px;
     width: 44px;
@@ -1150,7 +1179,7 @@ thead th.active, tbody td.active {
 }
 
 .map-toggle-switch .switch::before {
-    /* Übernahme des bestehenden Switch-Knopf-Stils */
+    /* Adoption of the existing switch button style */
     content: '';
     position: absolute;
     height: 15px;
@@ -1163,22 +1192,24 @@ thead th.active, tbody td.active {
     transition: var(--tran-03);
 }
 
-/* Anpassen für den dunklen Modus, falls erforderlich */
+/* Adjust for dark mode if required */
 .map-toggle-switch .switch.on::before {
-    left: 24px; /* oder eine andere Position im dunklen Modus */
+    left: 24px; /* or another position in dark mode */
 }
 
 body.dark .map-toggle-switch .switch.on::before {
-    left: 24px; /* oder eine andere Position im dunklen Modus */
+    left: 24px; /* or another position in dark mode */
 }
 
 
 .controls-container {
+    /* Adoption of the existing style and customisation for the map container */
     display: flex;
     align-items: center;
 }
 
 
 .custom-link-color {
+    /* Adoption of the existing style and customisation for the map container */
     color: var(--text-title-color);
 }
