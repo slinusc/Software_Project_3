@@ -872,7 +872,7 @@ th, td {
     width: max-content;
     min-width: 120px; /* optional: sets a minimal width */
     white-space: nowrap; /* prevents break in header */
-    color: var(--containertextcolor)
+    color: var(--text-color)
 }
 
 thead th {
