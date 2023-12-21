@@ -1,5 +1,5 @@
 /* Color Variables, Transitions */
-:root{
+:root {
     /* Colors */
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
@@ -11,27 +11,29 @@
     --text-title-color: #007bff;
     --containercolor: rgba(246, 245, 255, 0.5);
     --containertextcolor: black;
-    /* Transition */
+    /* Transitions */
     --tran-02: all 0.2s ease;
     --tran-03: all 0.3s ease;
     --tran-04: all 0.4s ease;
     --tran-05: all 0.5s ease;
 }
 
-*{
+* {
+    /* general */
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
     background: var(--body-color);
     transition: var(--tran-05);
 }
 
-body.dark{
+body.dark {
+    /* Colors for darkmode */
     --body-color: #3A3B3C;
     --sidebar-color: #242526;
     --sidebar-toggle-color: grey;
@@ -46,6 +48,7 @@ body.dark{
 
 /* ===== Sidebar Styles ===== */
 .sidebar {
+    /*general Sidebar design*/
     position: fixed;
     top: 0;
     left: 0;
@@ -57,11 +60,13 @@ body.dark{
     z-index: 100;
 }
 
-.sidebar.close{
+.sidebar.close {
+    /* Size of closed Sidebar */
     width: 60px;
 }
 
-.sidebar .text{
+.sidebar .text {
+    /* Text in Sidebar */
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
@@ -69,18 +74,21 @@ body.dark{
     white-space: nowrap;
 }
 
-.sidebar.close .text{
+.sidebar.close .text {
+    /* Blend out text when sidebar is closed */
     opacity: 0;
 }
 
-.sidebar .image{
+.sidebar .image {
+    /* Image in Sidebar (Logo on top) */
     min-width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sidebar li{
+.sidebar li {
+    /* List-Items in Sidebar */
     height: 50px;
     margin-top: 10px;
     list-style: none;
@@ -88,7 +96,8 @@ body.dark{
     align-items: center;
 }
 
-.sidebar li .icon{
+.sidebar li .icon {
+    /* Icons in Sidebar */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,40 +106,49 @@ body.dark{
 }
 
 .sidebar li .icon,
-.sidebar li .text{
+.sidebar li .text {
+    /* Color of Icons and Text in Sidebar */
     color: var(--text-color);
     transition: var(--tran-05);
 }
 
-.sidebar header{
+.sidebar header {
+    /* Header in Sidebar */
     position: relative;
 }
 
-.sidebar .image-text img{
+.sidebar .image-text img {
+    /* Size and Shape of Image (Logo) in Header */
     width: 40px;
     border-radius: 20px;
 }
 
-.sidebar header .image-text{
+.sidebar header .image-text {
+    /* Position of Image and Text in Header */
     display: flex;
     align-items: center;
 }
 
-header .image-text .header-text{
+header .image-text .header-text {
+    /* Position of Text in Header */
     display: flex;
     flex-direction: column;
     margin-left: 10px;
 }
 
-.header-text .name{
+.header-text .name {
+    /* Size of Name in Header */
     font-weight: 600;
 }
 
-.header-text .sub{
+.header-text .sub {
+    /* Size of Subtext in Header */
     margin-top: -2px;
 }
 
-.sidebar header .toggle{
+/* == Sidebar Toggle-Button == */
+.sidebar header .toggle {
+    /* Toggle-Button (>) in Header to open and close Sidebar */
     position: absolute;
     top: 50%;
     right: -25px;
@@ -147,24 +165,24 @@ header .image-text .header-text{
     transition: var(--tran-05);
 }
 
-.sidebar.close header .toggle{
-    transform: translateY(-50%);
+.sidebar.close header .toggle {
+    /* Position of Toggle-Button when Sidebar is closed */
+    transform: translateY(-50%); /* rotate(180deg) = (<) */
 }
 
-.sidebar.open header .search-box{
-    font-size: 16px;
-}
-
-body.dark .sidebar header .toggle{
+body.dark .sidebar header .toggle {
+    /* Color of Toggle-Button in Darkmode */
     color: var(--text-color);
 }
 
-.sidebar .menu{
+.sidebar .menu {
+    /* Menu in Sidebar */
     margin-top: 35px;
 }
 
 
-.sidebar li a{
+.sidebar li a {
+    /* Links to other Pages in Sidebar */
     height: 100%;
     width: 100%;
     display: flex;
@@ -174,60 +192,71 @@ body.dark .sidebar header .toggle{
     transition: var(--tran-04);
 }
 
-.sidebar li a:hover{
+.sidebar li a:hover {
+    /* Background-Color of Links while hovering over them */
     background: var(--primary-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
 .sidebar li a:hover .icon,
-.sidebar li a:hover .text{
+.sidebar li a:hover .text {
+    /* Color of Icons and Text while hovering over Links */
     color: var(--sidebar-color);
 }
 
 body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
+body.dark .sidebar li a:hover .text {
+    /* Color of Icons and Text while hovering over Links in Darkmode */
     color: var(--text-color)
 }
 
-.sidebar .menu-bar{
+.sidebar .menu-bar {
+    /* Menu-Bar at the bottom of the Sidebar */
     height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.menu-bar .mode{
+.menu-bar .mode {
+    /* Mode-Button in Menu-Bar */
     position: relative;
     border-radius: 6px;
     background: var(--primary-color-light);
 }
 
-.menu-bar .mode .moon-sun{
+.menu-bar .mode .moon-sun {
+    /* Moon and Sun Icons in Mode-Button */
     height: 50px;
     width: 50px;
     display: flex;
     align-items: center;
 }
 
-.menu-bar .mode i{
+.menu-bar .mode i {
+    /* Moon and Sun Icons in Mode-Button */
     position: absolute;
     transition: var(--tran-03);
 }
 
-.menu-bar .mode i.sun{
+.menu-bar .mode i.sun {
+    /* Sun Icon in Mode-Button = invisible */
     opacity: 0;
 }
 
-body.dark .menu-bar .mode i.sun{
+body.dark .menu-bar .mode i.sun {
+    /* Sun Icon in Mode-Button = visible */
     opacity: 1;
 }
 
-body.dark .menu-bar .mode i.moon{
+body.dark .menu-bar .mode i.moon {
+    /* Moon Icon in Mode-Button = invisible */
     opacity: 0;
 }
 
 /* ===== Main Content Styles ===== */
-.home{
+.home {
+    /* Main Content */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -240,25 +269,29 @@ body.dark .menu-bar .mode i.moon{
     box-sizing: border-box;
 }
 
-.home .text{
+.home .text {
+    /* Text in Main Content */
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
     padding: 8px 40px;
 }
 
-.sidebar.close ~ .home{
+.sidebar.close ~ .home {
+    /* Position of Main Content when Sidebar is closed */
     left: 60px;
 }
 
-/* Search Box */
-.sidebar .search-box{
+/* == Search Box == */
+.sidebar .search-box {
+    /* Search-Box in Sidebar */
     background: var(--primary-color-light);
     border-radius: 6px;
     transition: var(--tran-05);
 }
 
 .search-box input {
+    /* Input-Field in Search-Box */
     height: 100%;
     width: 100%;
     outline: none;
@@ -272,7 +305,13 @@ body.dark .menu-bar .mode i.moon{
 }
 
 .search-box:hover {
+    /* Background-Color of Search-Box while hovering over it */
     box-shadow: 0 .1rem .4rem #0002;
+}
+
+.sidebar.open header .search-box {
+    /* Font-Size of Search-Box when Sidebar is open */
+    font-size: 16px;
 }
 
 /* ========== Navigation Section ========== */
@@ -286,6 +325,7 @@ body.dark .menu-bar .mode i.moon{
 }
 
 .home .content-section {
+    /* Sections in Main Content */
     display: none;
     position: absolute;
     top: 0;
@@ -295,20 +335,20 @@ body.dark .menu-bar .mode i.moon{
     overflow: hidden;
 }
 
-.home .content-section.active { /* Zeigt die aktive Section an */
+.home .content-section.active {
+    /* Shows active Section */
     display: block;
-
 }
-
 
 .leaflet-control-attribution {
-  display: none;
+    /* Attribution-Text in Map */
+    display: none;
 }
 
-
 /* ==== Buttons and Switches ==== */
-/* Toggle-Switch in Sidebar*/
-.menu-bar .mode .toggle-switch{
+
+/* == Toggle-Switch in Sidebar == */
+.menu-bar .mode .toggle-switch {
     position: absolute;
     right: 0;
     display: flex;
@@ -321,7 +361,8 @@ body.dark .menu-bar .mode i.moon{
     background: var(--primary-color-light);
 }
 
-.toggle-switch .switch{
+.toggle-switch .switch {
+    /* Switch in Toggle-Switch */
     position: relative;
     height: 22px;
     width: 44px;
@@ -330,7 +371,8 @@ body.dark .menu-bar .mode i.moon{
     transition: var(--tran-05);
 }
 
-.toggle-switch .switch::before{
+.toggle-switch .switch::before {
+    /* Circle in Switch */
     content: '';
     position: absolute;
     height: 15px;
@@ -343,13 +385,13 @@ body.dark .menu-bar .mode i.moon{
     transition: var(--tran-03);
 }
 
-body.dark .toggle-switch .switch::before{
+body.dark .toggle-switch .switch::before {
+    /* Circle in Switch in Darkmode */
     left: 24px;
 }
 
 
-
-/* Location Button */
+/* == Location Button == */
 .location {
     position: absolute;
     display: flex;
@@ -367,38 +409,45 @@ body.dark .toggle-switch .switch::before{
 }
 
 .location .icon {
+    /* Icon in Location-Button */
     font-size: 20px;
 }
 
 .location:hover {
+    /* Background-Color of Location-Button while hovering over it */
     background-color: var(--primary-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-.location:hover .icon{
+.location:hover .icon {
+    /* Color of Icon in Location-Button while hovering over it */
     color: var(--sidebar-color)
 }
 
 body.dark .location {
+    /* Background-Color of Location-Button in Darkmode */
     background-color: var(--sidebar-color);
     color: var(--text-color);
 }
 
 body.dark .location:hover {
+    /* Background-Color of Location-Button in Darkmode while hovering over it */
     background-color: var(--primary-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-body.dark .location:hover .icon{
+body.dark .location:hover .icon {
+    /* Color of Icon in Location-Button in Darkmode while hovering over it */
     color: var(--text-color)
 }
 
 .sidebar.open ~ .location {
+    /* Position of Location-Button when Sidebar is open */
     left: 230px;
     transition: var(--tran-05);
 }
 
-/* Delete Route Button */
+/* == Delete Route Button == */
 .deletebtn {
     position: absolute;
     align-items: center;
@@ -416,33 +465,39 @@ body.dark .location:hover .icon{
 }
 
 .deletebtn .icon {
+    /* Icon in Delete-Button */
     font-size: 26px;
 }
 
 .deletebtn:hover {
+    /* Background-Color of Delete-Button while hovering over it */
     background-color: var(--primary-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-.deletebtn:hover .icon{
+.deletebtn:hover .icon {
+    /* Color of Icon in Delete-Button while hovering over it */
     color: var(--sidebar-color)
 }
 
 body.dark .deletebtn {
+    /* Background-Color of Delete-Button in Darkmode */
     background-color: var(--sidebar-color);
     color: var(--text-color);
 }
 
 body.dark .deletebtn:hover {
+    /* Background-Color of Delete-Button in Darkmode while hovering over it */
     background-color: var(--primary-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-body.dark .deletebtn:hover .icon{
+body.dark .deletebtn:hover .icon {
+    /* Color of Icon in Delete-Button in Darkmode while hovering over it */
     color: var(--text-color)
 }
 
-/* Menu-Button */
+/* == Menu-Button == */
 .menu-button {
     position: absolute;
     display: flex;
@@ -459,34 +514,40 @@ body.dark .deletebtn:hover .icon{
     backdrop-filter: blur(7px);
 }
 
-.menu-button .icon{
+.menu-button .icon {
+    /* Icon in Menu-Button */
     font-size: 20px;
 }
 
 .menu-button:hover {
+    /* Background-Color of Menu-Button while hovering over it */
     background-color: var(--primary-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-.menu-button:hover .icon{
+.menu-button:hover .icon {
+    /* Color of Icon in Menu-Button while hovering over it */
     color: var(--sidebar-color)
 }
 
 body.dark .menu-button {
+    /* Background-Color of Menu-Button in Darkmode */
     background-color: var(--sidebar-color);
     color: var(--text-color);
 }
 
 body.dark .menu-button:hover {
+    /* Background-Color of Menu-Button in Darkmode while hovering over it */
     background-color: var(--primary-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-body.dark .menu-button:hover .icon{
+body.dark .menu-button:hover .icon {
+    /* Color of Icon in Menu-Button in Darkmode while hovering over it */
     color: var(--text-color)
 }
 
-/* Checkbox (on Map) */
+/* == Checkbox (on Map) == */
 .checkbox-menu {
     position: absolute;
     bottom: 70px;
@@ -502,21 +563,15 @@ body.dark .menu-button:hover .icon{
 }
 
 body.dark .checkbox-menu {
+    /* Background-Color of Checkbox-Menu in Darkmode */
     background-color: var(--containercolor);
     color: var(--containertextcolor);
 }
 
-/* Hide Checkbox-Menu */
 .hidden {
-  display: none;
+    /* Hide Checkbox-Menu */
+    display: none;
 }
-
-
-
-
-
-
-
 
 /* ====== Routing-Info-Container ======*/
 .info-container-1 {
@@ -535,20 +590,19 @@ body.dark .checkbox-menu {
 }
 
 body.dark .info-container-1 {
+    /* Background-Color of Info-Container in Darkmode */
     background-color: var(--containercolor);
     color: var(--containertextcolor);
 }
 
 
-
 /* ========== Analyse Section ========== */
-
-.grid-container{
+.grid-container {
     display: grid;
     height: 100%;
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;  /*Zeile*/
+    grid-template-rows: 1fr 1fr; /*Zeile*/
     grid-template-areas:
         "chart chart"
         "chart chart";
@@ -556,13 +610,15 @@ body.dark .info-container-1 {
 }
 
 .chart-card {
+    /* Cards in Analyse Section */
     padding: 5px;
     box-sizing: border-box;
     -webkit-column-break-inside: avoid;
 }
 
-/* ==== Bubble-Chart ==== */
-.bubble-chart{
+/* ==== Bubble-Chart, Radar-Chart, Map-Chart ==== */
+.bubble-chart, .radar-chart, .map-chart {
+    /* Charts in Analyse Section */
     width: 100%;
     height: 83%;
     display: flex;
@@ -570,63 +626,37 @@ body.dark .info-container-1 {
     align-items: center;
 }
 
-.bubble-chart canvas{
+.bubble-chart canvas, .radar-chart canvas, .map-chart canvas {
+    /* Canvas-Size in Charts */
     max-width: 100%;
     max-height: 100%;
 }
 
 .square {
+    /* Square in Bubble-Chart */
     width: 280px;
     height: 280px;
 }
 
-/* ==== Radar-Chart ==== */
-.radar-chart{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 83%;
-}
-
-.radar-chart canvas{
-    max-width: 100%;
-    max-height: 100%;
-}
-
 .square2 {
+    /* Square in Radar-Chart */
     width: 300px;
     height: 300px;
     padding: 20px;
     display: flex;
 }
 
-/* ==== Map-Chart ==== */
-.map-chart{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 83%;
-}
-
-.map-chart canvas {
-    max-width: 100%;
-    max-height: 100%;
-}
-
 .rectangle {
+    /* Rectangle in Map-Chart */
     height: 220px;
     width: 577px;
 }
 
-
-/* alter code */
-
 #mapTopoJSON {
-            width: 100vw;
-            height: 100vh;
-        }
+    /* Map in Map-Chart */
+    width: 100vw;
+    height: 100vh;
+}
 
 /* ====== Amenity Cluster Bubbles ====== */
 .cluster-bubble {
@@ -641,55 +671,51 @@ body.dark .info-container-1 {
     opacity: 0.6;
 }
 
-
-/* Dropdown-Menus */
 .dropdown-menu {
+    /* Dropdown-Menus */
     position: relative;
     display: block;
-    width: 180px; /* Festgelegte Breite */
+    width: 180px; /* width of dropdown menu */
     height: 50px;
-    margin: 10px auto; /* Zentrierung unter dem Chart */
+    margin: 10px auto; /* center dropdown menu */
     background: var(--primary-color-light);
     border-radius: 6px;
     border: none;
     padding: 10px;
     color: var(--text-color);
-    margin-right: 1px; /*muss zusätzlich erwähnt werden, damit es rechtsbündig wird*/
+    margin-right: 1px; /* needs to be mentioned, otherwise the dropdown menus are not aligned correctly */
 }
 
 .dropdown-menu:hover {
+    /* Background-Color of Dropdown-Menus while hovering over them */
     background-color: var(--primary-color);
     color: var(--body-color);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-.dropdown-menu:hover option{
+.dropdown-menu:hover option {
+    /* Background-Color of Dropdown-Options while hovering over them */
     background-color: var(--primary-color-light);
-    color: #242526/* oder eine andere gewünschte Farbe */
+    color: #242526
 }
 
 body.dark .dropdown-menu {
+    /* Background-Color of Dropdown-Menus in Darkmode */
     background: var(--primary-color-light);
     color: var(--text-color);
 }
 
 body.dark .dropdown-menu:hover {
+    /* Background-Color of Dropdown-Menus in Darkmode while hovering over them */
     background-color: var(--primary-color-light);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
-body.dark .dropdown-menu:hover option{
+body.dark .dropdown-menu:hover option {
+    /* Background-Color of Dropdown-Options in Darkmode while hovering over them */
     background-color: var(--primary-color-light);
     color: var(--text-color);
 }
-
-
-
-/* WHAT IS THIS */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 
 /* ===== User-Guide ===== */
 .user-guide-container {
@@ -701,48 +727,55 @@ body.dark .dropdown-menu:hover option{
 }
 
 .user-guide-title {
+    /* Title of User-Guide */
     color: var(--text-title-color);
     margin-bottom: 20px;
 }
 
 .user-guide-container h2 {
+    /* Headings in User-Guide */
     color: var(--text-title-color);
     border-bottom: 2px solid var(--text-title-color);
     padding-bottom: 5px;
 }
 
 .user-guide-container h3 {
+    /* Subheadings in User-Guide */
     color: var(--text-title-color);
     margin-top: 20px;
     margin-bottom: 3px;
 }
 
 .user-guide-container ul {
+    /* Lists in User-Guide */
     list-style-type: none;
     padding-left: 20px;
     margin-bottom: 20px;
 }
 
 .user-guide-container li {
+    /* List-Items in User-Guide */
     padding: 5px 0;
     color: var(--text-color);
 }
 
 .user-guide-container li i {
-    font-size: 1.2rem; /* Größere Icons für bessere Sichtbarkeit */
-    width: 30px; /* Feste Breite für Icons */
+    /* Icons in User-Guide */
+    font-size: 1.2rem; /* bigger icons for visability */
+    width: 30px;
     text-align: center;
     color: var(--text-color);
 }
 
 .user-guide-container p {
+    /* Text in User-Guide */
     color: var(--text-color);
 }
 
 .spacing-between-lines {
+    /* Spacing between lines in User-Guide */
     margin-bottom: 10px;
 }
-
 
 
 /* ===== Table ===== */
@@ -761,6 +794,7 @@ body {
 }
 
 main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
+    /* Main of all Charts in Analyse Section */
     width: calc(46vw - 5px);
     height: 47vh;
     background-color: #fff5;
@@ -783,13 +817,11 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
             "chart";
         gap: 10px;
     }
+
     .user-guide-container {
         padding: 5px;
     }
-}
 
-
-@media only screen and (max-width: 900px) {
     main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
         /*width minus 60px von links*/
         width: calc(100vw - 98px);
@@ -797,11 +829,9 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
         background-color: #fff5;
         border-radius: 6px;
         overflow: hidden;
-        /*zentriert*/
-        margin: 0 auto;
+        margin: 0 auto; /*zentriert*/
     }
 }
-
 
 /* Stil speziell für Mobilgeräte im Landscape-Modus (horizontal) */
 @media only screen and (max-width: 900px) and (min-aspect-ratio: 13/9) {
@@ -810,8 +840,6 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
         width: 100%;
     }
 }
-
-
 
 @media print {
     .boxes, .table__body {
@@ -889,7 +917,7 @@ table, th, td {
 th, td {
     width: max-content;
     min-width: 120px; /* Optional: Setzt eine minimale Breite */
-    white-space: nowrap;  /* Verhindert einen Umbruch innerhalb der Kopfzelle */
+    white-space: nowrap; /* Verhindert einen Umbruch innerhalb der Kopfzelle */
     color: var(--containertextcolor)
 }
 
@@ -981,14 +1009,11 @@ tbody tr.hide td img {
 }
 
 
-
-
 @media (max-width: 900px) {
     td:not(:first-of-type) {
         min-width: 1rem;
     }
 }
-
 
 
 thead th span.icon-arrow {
