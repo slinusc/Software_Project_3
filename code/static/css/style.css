@@ -1,3 +1,15 @@
+/* ===== Cycle Buddy Navigation - Style Sheet ===== */
+/* content:
+    1. General Styles (Colors, Transitions)
+    2. Sidebar Styles (Sidebar, Toggle-Button, Toggle-Switch, Search-Box)
+    3. Main Content Styles
+    4. Navigation Section (Map, Location-Button, Delete-Button, Menu-Button, Checkbox-Menu, Routing-Info-Container)
+    5. Analyse Section (Charts, Cluster-Bubble, Dropdown-Menu, Map-Chart Toggle, Dashboard, Table)
+    6. Media Queries
+    7. User Guide Section
+ */
+
+/* ===== General Styles ===== */
 /* Color Variables, Transitions */
 :root {
     /* Colors */
@@ -146,7 +158,7 @@ header .image-text .header-text {
     margin-top: -2px;
 }
 
-/* == Sidebar Toggle-Button == */
+/* Sidebar Toggle-Button */
 .sidebar header .toggle {
     /* Toggle-Button (>) in Header to open and close Sidebar */
     position: absolute;
@@ -175,11 +187,11 @@ body.dark .sidebar header .toggle {
     color: var(--text-color);
 }
 
+/* Sidebar Menu Settings */
 .sidebar .menu {
     /* Menu in Sidebar */
     margin-top: 35px;
 }
-
 
 .sidebar li a {
     /* Links to other Pages in Sidebar */
@@ -254,100 +266,7 @@ body.dark .menu-bar .mode i.moon {
     opacity: 0;
 }
 
-/* ===== Main Content Styles ===== */
-.home {
-    /* Main Content */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;
-    margin-left: 210px;
-    background: var(--body-color);
-    transition: var(--tran-05);
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.home .text {
-    /* Text in Main Content */
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 8px 40px;
-}
-
-.sidebar.close ~ .home {
-    /* Position of Main Content when Sidebar is closed */
-    left: 60px;
-}
-
-/* == Search Box == */
-.sidebar .search-box {
-    /* Search-Box in Sidebar */
-    background: var(--primary-color-light);
-    border-radius: 6px;
-    transition: var(--tran-05);
-}
-
-.search-box input {
-    /* Input-Field in Search-Box */
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    background: var(--primary-color-light);
-    color: var(--text-color);
-    transition: var(--tran-05);
-}
-
-.search-box:hover {
-    /* Background-Color of Search-Box while hovering over it */
-    box-shadow: 0 .1rem .4rem #0002;
-}
-
-.sidebar.open header .search-box {
-    /* Font-Size of Search-Box when Sidebar is open */
-    font-size: 16px;
-}
-
-/* ========== Navigation Section ========== */
-
-/* ==== Map ==== */
-#map {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-}
-
-.home .content-section {
-    /* Sections in Main Content */
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 60px;
-    width: calc(100% - 60px);
-    height: 100vh;
-    overflow: hidden;
-}
-
-.home .content-section.active {
-    /* Shows active Section */
-    display: block;
-}
-
-.leaflet-control-attribution {
-    /* Attribution-Text in Map */
-    display: none;
-}
-
-/* ==== Buttons and Switches ==== */
-
-/* == Toggle-Switch in Sidebar == */
+/* Toggle-Switch in Sidebar */
 .menu-bar .mode .toggle-switch {
     position: absolute;
     right: 0;
@@ -390,8 +309,97 @@ body.dark .toggle-switch .switch::before {
     left: 24px;
 }
 
+/* Search Box */
+.sidebar .search-box {
+    /* Search-Box in Sidebar */
+    background: var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
 
-/* == Location Button == */
+.search-box input {
+    /* Input-Field in Search-Box */
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--primary-color-light);
+    color: var(--text-color);
+    transition: var(--tran-05);
+}
+
+.search-box:hover {
+    /* Background-Color of Search-Box while hovering over it */
+    box-shadow: 0 .1rem .4rem #0002;
+}
+
+.sidebar.open header .search-box {
+    /* Font-Size of Search-Box when Sidebar is open */
+    font-size: 16px;
+}
+
+/* ===== Main Content Styles ===== */
+.home {
+    /* Main Content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    margin-left: 210px;
+    background: var(--body-color);
+    transition: var(--tran-05);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.home .text {
+    /* Text in Main Content */
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+
+.sidebar.close ~ .home {
+    /* Position of Main Content when Sidebar is closed */
+    left: 60px;
+}
+
+.home .content-section {
+    /* Sections in Main Content (Navigation, Dashboard, User Guide) */
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: calc(100% - 60px);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.home .content-section.active {
+    /* Shows active Section */
+    display: block;
+}
+
+/* =====  Navigation Section ===== */
+/* Map */
+#map {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.leaflet-control-attribution {
+    /* Attribution-Text in Map */
+    display: none;
+}
+
+/* Location Button */
 .location {
     position: absolute;
     display: flex;
@@ -447,7 +455,7 @@ body.dark .location:hover .icon {
     transition: var(--tran-05);
 }
 
-/* == Delete Route Button == */
+/* Delete Route Button */
 .deletebtn {
     position: absolute;
     align-items: center;
@@ -497,7 +505,7 @@ body.dark .deletebtn:hover .icon {
     color: var(--text-color)
 }
 
-/* == Menu-Button == */
+/* Menu-Button (for Checkbox-Menu)*/
 .menu-button {
     position: absolute;
     display: flex;
@@ -547,7 +555,7 @@ body.dark .menu-button:hover .icon {
     color: var(--text-color)
 }
 
-/* == Checkbox (on Map) == */
+/* Checkbox Menu */
 .checkbox-menu {
     position: absolute;
     bottom: 70px;
@@ -573,7 +581,7 @@ body.dark .checkbox-menu {
     display: none;
 }
 
-/* ====== Routing-Info-Container ======*/
+/* Routing-Info-Container */
 .info-container-1 {
     position: absolute;
     top: 15px;
@@ -595,14 +603,13 @@ body.dark .info-container-1 {
     color: var(--containertextcolor);
 }
 
-
-/* ========== Analyse Section ========== */
+/* =====  Analyse Section ===== */
 .grid-container {
     display: grid;
     height: 100%;
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr; /*Zeile*/
+    grid-template-rows: 1fr 1fr;
     grid-template-areas:
         "chart chart"
         "chart chart";
@@ -616,7 +623,7 @@ body.dark .info-container-1 {
     -webkit-column-break-inside: avoid;
 }
 
-/* ==== Bubble-Chart, Radar-Chart, Map-Chart ==== */
+/* Bubble-Chart, Radar-Chart, Map-Chart */
 .bubble-chart, .radar-chart, .map-chart {
     /* Charts in Analyse Section */
     width: 100%;
@@ -658,9 +665,9 @@ body.dark .info-container-1 {
     height: 100vh;
 }
 
-/* ====== Amenity Cluster Bubbles ====== */
+/* Amenity Cluster Bubbles (for radar-bubble-chart) */
 .cluster-bubble {
-    background-color: #00A8FF; /* Dunkleres Hellblau */
+    background-color: #00A8FF; /* slightly darker light-blue */
     border-radius: 50%;
     color: white;
     display: flex;
@@ -671,8 +678,8 @@ body.dark .info-container-1 {
     opacity: 0.6;
 }
 
+/* Dropdown-Menus for charts */
 .dropdown-menu {
-    /* Dropdown-Menus */
     position: relative;
     display: block;
     width: 180px; /* width of dropdown menu */
@@ -717,68 +724,56 @@ body.dark .dropdown-menu:hover option {
     color: var(--text-color);
 }
 
-/* ===== User-Guide ===== */
-.user-guide-container {
-    margin-top: 15px;
-    margin-left: 25px;
-    margin-right: 10px;
-    max-height: 97vh;
-    overflow-y: auto;
+
+/* Map-Chart Toggle - Switch */
+.map-toggle-switch {
+    /* Adoption of the existing style and customisation for the map container */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-right: 5px;
+    background: var(--primary-color-light); /* or other color */
 }
 
-.user-guide-title {
-    /* Title of User-Guide */
-    color: var(--text-title-color);
-    margin-bottom: 20px;
+.map-toggle-switch .switch {
+    /* Adoption of the existing switch style */
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+    transition: var(--tran-05);
 }
 
-.user-guide-container h2 {
-    /* Headings in User-Guide */
-    color: var(--text-title-color);
-    border-bottom: 2px solid var(--text-title-color);
-    padding-bottom: 5px;
+.map-toggle-switch .switch::before {
+    /* Adoption of the existing switch button style */
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: var(--sidebar-color);
+    transition: var(--tran-03);
 }
 
-.user-guide-container h3 {
-    /* Subheadings in User-Guide */
-    color: var(--text-title-color);
-    margin-top: 20px;
-    margin-bottom: 3px;
+/* Adjust for dark mode if required */
+.map-toggle-switch .switch.on::before {
+    left: 24px; /* or another position in dark mode */
 }
 
-.user-guide-container ul {
-    /* Lists in User-Guide */
-    list-style-type: none;
-    padding-left: 20px;
-    margin-bottom: 20px;
+body.dark .map-toggle-switch .switch.on::before {
+    left: 24px; /* or another position in dark mode */
 }
 
-.user-guide-container li {
-    /* List-Items in User-Guide */
-    padding: 5px 0;
-    color: var(--text-color);
-}
-
-.user-guide-container li i {
-    /* Icons in User-Guide */
-    font-size: 1.2rem; /* bigger icons for visability */
-    width: 30px;
-    text-align: center;
-    color: var(--text-color);
-}
-
-.user-guide-container p {
-    /* Text in User-Guide */
-    color: var(--text-color);
-}
-
-.spacing-between-lines {
-    /* Spacing between lines in User-Guide */
-    margin-bottom: 10px;
-}
-
-
-/* ===== Table ===== */
+/* Dashboard - Cards for all Charts and Table */
 * {
     margin: 0;
     padding: 0;
@@ -804,53 +799,7 @@ main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
     margin: 0 auto;
 }
 
-/* ===== Media Queries ===== */
-
-@media screen and (max-width: 900px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
-        grid-template-areas:
-            "chart"
-            "chart"
-            "chart"
-            "chart";
-        gap: 10px;
-    }
-
-    .user-guide-container {
-        padding: 5px;
-    }
-
-    main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
-        /*width minus 60px von links*/
-        width: calc(100vw - 98px);
-        height: 51vh;
-        background-color: #fff5;
-        border-radius: 6px;
-        overflow: hidden;
-        margin: 0 auto; /*zentriert*/
-    }
-}
-
-/* Stil speziell für Mobilgeräte im Landscape-Modus (horizontal) */
-@media only screen and (max-width: 900px) and (min-aspect-ratio: 13/9) {
-    main.boxes {
-        height: 95vh;
-        width: 100%;
-    }
-}
-
-@media print {
-    .boxes, .table__body {
-        overflow: visible;
-        height: auto !important;
-        width: auto !important;
-    }
-}
-
-
-/* =====Table ===== */
+/* Table */
 .table__header {
     width: 100%;
     height: 18%;
@@ -991,14 +940,6 @@ tbody tr.hide {
     background-color: #ebc474;
 }
 
-
-@media (max-width: 900px) {
-    td:not(:first-of-type) {
-        min-width: 1rem;
-    }
-}
-
-
 thead th span.icon-arrow {
     /* Arrow-Icon in Table-Head */
     display: inline-block;
@@ -1122,63 +1063,123 @@ thead th.active, tbody td.active {
     display: none;
 }
 
-
-.map-toggle-switch {
-    /* Adoption of the existing style and customisation for the map container */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 6px;
-    margin-right: 5px;
-    background: var(--primary-color-light); /* or other color */
-}
-
-.map-toggle-switch .switch {
-    /* Adoption of the existing switch style */
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 25px;
-    background: var(--toggle-color);
-    transition: var(--tran-05);
-}
-
-.map-toggle-switch .switch::before {
-    /* Adoption of the existing switch button style */
-    content: '';
-    position: absolute;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    background: var(--sidebar-color);
-    transition: var(--tran-03);
-}
-
-/* Adjust for dark mode if required */
-.map-toggle-switch .switch.on::before {
-    left: 24px; /* or another position in dark mode */
-}
-
-body.dark .map-toggle-switch .switch.on::before {
-    left: 24px; /* or another position in dark mode */
-}
-
-
 .controls-container {
     /* Adoption of the existing style and customisation for the map container */
     display: flex;
     align-items: center;
 }
 
+/* ===== Media Queries ===== */
+@media screen and (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr); /*4 reihen, 1 chart)*/
+        grid-template-areas:
+            "chart"
+            "chart"
+            "chart"
+            "chart";
+        gap: 10px;
+    }
+
+    .user-guide-container {
+        padding: 5px;
+    }
+
+    main.boxes, main.bubble-chart, main.radar-chart, main.map-chart {
+        /*width minus 60px von links*/
+        width: calc(100vw - 98px);
+        height: 51vh;
+        background-color: #fff5;
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 0 auto; /*zentriert*/
+    }
+}
+
+/* Stil speziell für Mobilgeräte im Landscape-Modus (horizontal) */
+@media only screen and (max-width: 900px) and (min-aspect-ratio: 13/9) {
+    main.boxes {
+        height: 95vh;
+        width: 100%;
+    }
+}
+
+@media print {
+    .boxes, .table__body {
+        overflow: visible;
+        height: auto !important;
+        width: auto !important;
+    }
+}
+
+@media (max-width: 900px) {
+    td:not(:first-of-type) {
+        min-width: 1rem;
+    }
+}
+
+/* ===== User-Guide Section ===== */
+.user-guide-container {
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 10px;
+    max-height: 97vh;
+    overflow-y: auto;
+}
+
+.user-guide-title {
+    /* Title of User-Guide */
+    color: var(--text-title-color);
+    margin-bottom: 20px;
+}
+
+.user-guide-container h2 {
+    /* Headings in User-Guide */
+    color: var(--text-title-color);
+    border-bottom: 2px solid var(--text-title-color);
+    padding-bottom: 5px;
+}
+
+.user-guide-container h3 {
+    /* Subheadings in User-Guide */
+    color: var(--text-title-color);
+    margin-top: 20px;
+    margin-bottom: 3px;
+}
+
+.user-guide-container ul {
+    /* Lists in User-Guide */
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.user-guide-container li {
+    /* List-Items in User-Guide */
+    padding: 5px 0;
+    color: var(--text-color);
+}
+
+.user-guide-container li i {
+    /* Icons in User-Guide */
+    font-size: 1.2rem; /* bigger icons for visability */
+    width: 30px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.user-guide-container p {
+    /* Text in User-Guide */
+    color: var(--text-color);
+}
+
+.spacing-between-lines {
+    /* Spacing between lines in User-Guide */
+    margin-bottom: 10px;
+}
 
 .custom-link-color {
-    /* Adoption of the existing style and customisation for the map container */
+    /* Color of Links in User-Guide */
     color: var(--text-title-color);
 }
