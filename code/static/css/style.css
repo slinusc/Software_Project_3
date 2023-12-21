@@ -940,7 +940,6 @@ thead th {
 
 thead {
     /* Table-Head */
-    position: sticky;
     top: 0;
     background: white; /* Hintergrundfarbe ist notwendig, um die Zellen darüber zu verdecken */
     z-index: 1; /* Z-Index ist notwendig, um sicherzustellen, dass die sticky Zellen über den anderen liegen */
@@ -956,47 +955,17 @@ table td:first-of-type {
     z-index: 1; /* z-index is needed, to ensure that the sticky cells are above the others */
 }
 
-table tr:nth-child(odd) td:first-of-type {
-    background-color: var(--sidebar-color);
+thead th:first-of-type {
+    position: sticky;
+    top: 0; /* Fügen Sie dies hinzu, falls noch nicht vorhanden */
+    left: 0;
+    z-index: 2; /* Stellen Sie sicher, dass der z-index ausreichend hoch ist */
 }
 
-table tr:nth-child(even) td:first-of-type {
-    background-color: var(--body-color);
-}
-
-tbody tr:nth-child(even) {
-    /* Background-Color of Table-Body while hovering over it: even-rows */
-    background-color: var(--body-color);
-    opacity: 0.7;
-}
-
-tbody tr:nth-child(odd) {
-    /* Background-Color of Table-Body while hovering over it: odd-rows */
-    background-color: var(--sidebar-color);
-    opacity: 0.7;
-}
 
 tbody tr.hide {
     opacity: 0;
     transform: translateX(100%);
-}
-
-tbody tr td,
-tbody tr td p,
-tbody tr td img {
-    transition: .2s ease-in-out;
-}
-
-tbody tr.hide td,
-tbody tr.hide td p {
-    padding: 0;
-    transition: .2s ease-in-out .5s;
-}
-
-tbody tr.hide td img {
-    width: 0;
-    height: 0;
-    transition: .2s ease-in-out .5s;
 }
 
 .status {

@@ -3,6 +3,24 @@ let search = document.querySelector('.input-group input'),
     table_headings = document.querySelectorAll('thead th');
 
 
+// Funktion zum Anwenden der alternierenden Farben
+function applyAlternatingRowColors() {
+    // Auswählen der Zeilen
+    let visibleRows = Array.from(document.querySelectorAll('tbody tr:not(.hide)'));
+    visibleRows.forEach((row, index) => {
+        // Setzen der Hintergrundfarbe für die gesamte Zeile basierend auf dem Index der Zeile
+        let backgroundColor = index % 2 === 0 ? 'var(--body-color)' : 'var(--sidebar-color)';
+        row.style.backgroundColor = backgroundColor;
+
+        // Setzen der Hintergrundfarbe für die erste Zelle der Zeile
+        let firstCell = row.cells[0];
+        if (firstCell) {
+            firstCell.style.backgroundColor = backgroundColor;
+        }
+        row.style.opacity = "1";
+    });
+}
+
 // Funktion zum Abrufen und Anzeigen von Daten und Aktualisieren der Tabelle
 function updateTable() {
     fetch('/bike_ways', {method: 'POST'})
@@ -31,6 +49,7 @@ function updateTable() {
                 // Aktualisieren Sie die Referenz auf die Tabellenzeilen
                 table_rows = document.querySelectorAll('tbody tr');
                 sortTable(1, true)
+                applyAlternatingRowColors();
             }
         })
         .catch(error => console.error('Fehler beim Abrufen der Daten:', error));
@@ -43,15 +62,12 @@ function searchTable() {
         let table_data = row.cells[0].textContent.toLowerCase(),
             search_data = search.value.toLowerCase();
 
-        row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
-        row.style.setProperty('--delay', i / 2 + 's');
+        // Zeile verstecken oder anzeigen basierend auf der Suche
+        row.classList.toggle('hide', !table_data.includes(search_data));
     });
 
-
-    // Alternierende Farben für die Zeilen
-    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
-        visible_row.style.backgroundColor = (i % 2 == 0) ? 'color: var(--body-color);' : 'color: var(--sidebar-color);';
-    });
+    // Aufrufen der Funktion für alternierende Farben
+    applyAlternatingRowColors();
 }
 
 
@@ -74,6 +90,7 @@ function sortTable(column, sort_asc) {
         return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
     })
         .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+    applyAlternatingRowColors();
 }
 
 
