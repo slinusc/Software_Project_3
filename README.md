@@ -1,15 +1,14 @@
-# cycle_buddy_app
+# CycleBuddy
 
-## Description
+## Beschreibung
 CycleBuddy ist eine Web-Applikation, die speziell für Fahrradfahrer entwickelt wurde. Sie bietet verschiedene Fahrradrouten und für Radfahrer relevante Standorte, wie Fahrradwerkstätten, Fahrradparkplätze, Fahrradverleihstationen und Fahrradpumpen. Die Applikation ist für die Nutzung auf mobilen Endgeräten optimiert und bietet zudem ein Dashboard mit eine Reihe von Analysefunktionen, die speziell auf Fahrradfahrer ausgerichtet sind.
 
 ![image](https://github.com/slinusc/cycle_buddy_app/assets/94235012/f0e0bcbe-11d5-4922-a0c3-8075c1caf667)
 
-### Dark-Mode
+### Nacht-Modus
 Um zu verhindern, dass Radfahrer nachts durch einen grellen Bildschirm vom Verkehr abgelenkt werden, bietet die App eine Dark-Mode-Option an.
 
 ![image](https://github.com/slinusc/cycle_buddy_app/assets/94235012/7b73e8ed-23c7-4d8b-b966-69e8cc09c607)
-
 
 ## Erste Schritte
 Folgen Sie diesen Schritten, um die CycleBuddy App lokal als Docker-Container zu starten:
