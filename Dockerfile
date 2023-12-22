@@ -15,4 +15,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Ausführen der Datenlade-Skripte und dann Starten der Flask-App
-CMD python /app/code/pycode/mongoDB_assistent.py && python /app/app.py
+CMD python /app/pycode/mongoDB_assistent.py && python /app/app.py
