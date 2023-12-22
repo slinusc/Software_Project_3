@@ -11,13 +11,14 @@ app.config['CACHE_TYPE'] = 'simple'
 cache = Cache(app)
 
 
-# Routes
+# Routing for index.html
 @cache.cached(timeout=300)
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
+# Routing for fetching amenities
 @app.route('/locations', methods=['POST'])
 def get_locations():
     data = request.get_json()
@@ -30,6 +31,7 @@ def get_locations():
     return jsonify(results)
 
 
+# Routing for fetching amenities per canton
 @app.route('/amenities_per_canton', methods=['POST'])
 def get_amenities_per_canton():
     data = request.get_json()
@@ -42,6 +44,7 @@ def get_amenities_per_canton():
     return jsonify(results)
 
 
+# Routing for fetching k nearest amenities
 @app.route('/nearest_amenities', methods=['POST'])
 def get_nearest_amenities():
     data = request.get_json()
@@ -57,6 +60,7 @@ def get_nearest_amenities():
     return jsonify(results)
 
 
+# Routing for fetching number of amenities in radius
 @app.route('/number_amenities_in_radius', methods=['POST'])
 def get_number_amenities_in_radius():
     data = request.get_json()
@@ -71,12 +75,14 @@ def get_number_amenities_in_radius():
     return jsonify(results)
 
 
+# Routing for fetching bike ways
 @app.route('/bike_ways', methods=['POST'])
 def get_bike_ways():
     results = get_bike_ways_for_all_gemeinden()
     return jsonify(results)
 
 
+# Clear cache
 @app.route('/clear_cache', methods=['GET'])
 def clear_cache():
     cache.clear()
@@ -84,5 +90,4 @@ def clear_cache():
 
 
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0', debug=True)  # for docker
-    app.run(debug=True) # for local
+    app.run(host='0.0.0.0', debug=True)  # for docker | for local -> app.run(debug=True)

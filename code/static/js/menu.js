@@ -21,6 +21,7 @@ if (searchBtn) {
     });
 }
 
+
 // Event-Listener für Dark Mode / Light Mode
 modeSwitch.addEventListener("click", () => {
     body.classList.toggle("dark");
@@ -33,8 +34,6 @@ modeSwitch.addEventListener("click", () => {
         localStorage.setItem('mapDarkMode', false);  // Speichert Light Mode im Web Storage
     }
 });
-
-
 
 
 // Event-Listener für den Seitenwechsel

@@ -9,6 +9,7 @@ export function navigateToCoordinates(map, startCoordinates, endCoordinates) {
         map.removeLayer(routingControl);
         routingControl = null;
     }
+    // Stellt sicher, dass der alte Marker entfernt wird, bevor ein neuer hinzugefügt wird
     if (destinationMarker) {
         map.removeLayer(destinationMarker);
         destinationMarker = null;
@@ -92,6 +93,7 @@ export function deleteRoute(map) {
         destinationMarker = null;
     }
 
+    // Entfernen der Routing-Info
     if (routingInfo) {
         routingInfo.innerHTML = '';
         routingInfo.style.display = 'none';
@@ -101,7 +103,7 @@ export function deleteRoute(map) {
 }
 
 
-// Geokodierungsfunktion, um eine Adresse in Koordinaten umzuwandeln
+// Geokodierungsfunktion, um eine Adresse in Koordinaten umzuwandeln, mit Mapbox Geocoding API
 function geocodeAddress(address) {
     const accessToken = 'pk.eyJ1Ijoic3R1aGxsaW4iLCJhIjoiY2xvOXY3OTl5MGQwbTJrcGViYmI2MHRtZCJ9.MaOQcyZ99PH5hey-6isRpw';
     const geocodingUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${accessToken}`;
@@ -153,6 +155,7 @@ export function navigateToAddress(map, startCoordinates, endLocation) {
 }
 
 
+// Funktion zum Abrufen der Adresse aus Koordinaten mit Mapbox Geocoding API
 export function getAddressFromCoords(latlon) {
     const [lat, lon] = latlon;
     const accessToken = 'pk.eyJ1Ijoic3R1aGxsaW4iLCJhIjoiY2xvOXY3OTl5MGQwbTJrcGViYmI2MHRtZCJ9.MaOQcyZ99PH5hey-6isRpw';

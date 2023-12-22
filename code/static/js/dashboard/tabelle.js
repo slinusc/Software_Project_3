@@ -21,6 +21,7 @@ function applyAlternatingRowColors() {
     });
 }
 
+
 // Funktion zum Abrufen und Anzeigen von Daten und Aktualisieren der Tabelle
 function updateTable() {
     fetch('/bike_ways', {method: 'POST'})
@@ -132,5 +133,3 @@ table_headings.forEach((head, i) => {
         sortTable(i, sort_asc);
     }
 })
-
-

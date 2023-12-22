@@ -2,62 +2,6 @@ let toggleState = false;
 let chart, colorScale;
 let cachedSwitzerlandData = null; // TopoJSON-Daten zwischenspeichern, um die Karte schneller zu laden
 let mapToggleSwitch = document.querySelector(".map-toggle-switch");
-const einwohnerzahlen = {
-    'Zürich': 1564662,
-    'Bern': 1047422,
-    'Luzern': 420326,
-    'Uri': 37047,
-    'Schwyz': 163689,
-    'Obwalden': 38435,
-    'Nidwalden': 43894,
-    'Glarus': 41190,
-    'Zug': 129787,
-    'Freiburg': 329860,
-    'Solothurn': 280245,
-    'Basel-Stadt': 196036,
-    'Basel-Landschaft': 292817,
-    'Schaffhausen': 83995,
-    'Appenzell Ausserrhoden': 55585,
-    'Appenzell Innerrhoden': 16360,
-    'St. Gallen': 519245,
-    'Graubünden': 201376,
-    'Aargau': 703086,
-    'Thurgau': 285964,
-    'Tessin': 352181,
-    'Waadt': 822968,
-    'Wallis': 353209,
-    'Neuenburg': 176166,
-    'Genf': 509448,
-    'Jura': 73798
-};
-const cantonNameMapping = {
-    'Zürich': 'Zürich',
-    'Bern / Berne': 'Bern',
-    'Luzern': 'Luzern',
-    'Uri': 'Uri',
-    'Schwyz': 'Schwyz',
-    'Obwalden': 'Obwalden',
-    'Nidwalden': 'Nidwalden',
-    'Glarus': 'Glarus',
-    'Zug': 'Zug',
-    'Fribourg / Freiburg': 'Freiburg',
-    'Solothurn': 'Solothurn',
-    'Basel-Stadt': 'Basel-Stadt',
-    'Basel-Landschaft': 'Basel-Landschaft',
-    'Schaffhausen': 'Schaffhausen',
-    'Appenzell Ausserrhoden': 'Appenzell Ausserrhoden',
-    'Appenzell Innerrhoden': 'Appenzell Innerrhoden',
-    'St. Gallen': 'St. Gallen',
-    'Graubünden / Grigioni / Grischun': 'Graubünden',
-    'Aargau': 'Aargau',
-    'Thurgau': 'Thurgau',
-    'Ticino': 'Tessin',
-    'Vaud': 'Waadt',
-    'Valais / Wallis': 'Wallis',
-    'Neuchâtel': 'Neuenburg',
-    'Genève': 'Genf',
-    'Jura': 'Jura'
-};
 
 
 // Funktion zum Abrufen der Daten vom Flask Server
@@ -98,6 +42,37 @@ function getSwitzerlandData(callback) {
 }
 
 
+// Einwohnerzahlen der Kantone für relative Anzahl pro 1000 Einwohner
+const einwohnerzahlen = {
+    'Zürich': 1564662,
+    'Bern': 1047422,
+    'Luzern': 420326,
+    'Uri': 37047,
+    'Schwyz': 163689,
+    'Obwalden': 38435,
+    'Nidwalden': 43894,
+    'Glarus': 41190,
+    'Zug': 129787,
+    'Freiburg': 329860,
+    'Solothurn': 280245,
+    'Basel-Stadt': 196036,
+    'Basel-Landschaft': 292817,
+    'Schaffhausen': 83995,
+    'Appenzell Ausserrhoden': 55585,
+    'Appenzell Innerrhoden': 16360,
+    'St. Gallen': 519245,
+    'Graubünden': 201376,
+    'Aargau': 703086,
+    'Thurgau': 285964,
+    'Tessin': 352181,
+    'Waadt': 822968,
+    'Wallis': 353209,
+    'Neuenburg': 176166,
+    'Genf': 509448,
+    'Jura': 73798
+};
+
+
 // Funktion zum Updaten der Map
 function updateMap(selectedAmenity) {
     loadFlaskServerData(selectedAmenity, function (data) {
@@ -119,6 +94,37 @@ function updateMap(selectedAmenity) {
         renderMapWithData(amenityCountPerCanton);
     });
 }
+
+
+// Mapping der Kantonsnamen von TopoJSON zu den Namen in der Datenbank
+const cantonNameMapping = {
+    'Zürich': 'Zürich',
+    'Bern / Berne': 'Bern',
+    'Luzern': 'Luzern',
+    'Uri': 'Uri',
+    'Schwyz': 'Schwyz',
+    'Obwalden': 'Obwalden',
+    'Nidwalden': 'Nidwalden',
+    'Glarus': 'Glarus',
+    'Zug': 'Zug',
+    'Fribourg / Freiburg': 'Freiburg',
+    'Solothurn': 'Solothurn',
+    'Basel-Stadt': 'Basel-Stadt',
+    'Basel-Landschaft': 'Basel-Landschaft',
+    'Schaffhausen': 'Schaffhausen',
+    'Appenzell Ausserrhoden': 'Appenzell Ausserrhoden',
+    'Appenzell Innerrhoden': 'Appenzell Innerrhoden',
+    'St. Gallen': 'St. Gallen',
+    'Graubünden / Grigioni / Grischun': 'Graubünden',
+    'Aargau': 'Aargau',
+    'Thurgau': 'Thurgau',
+    'Ticino': 'Tessin',
+    'Vaud': 'Waadt',
+    'Valais / Wallis': 'Wallis',
+    'Neuchâtel': 'Neuenburg',
+    'Genève': 'Genf',
+    'Jura': 'Jura'
+};
 
 
 // Funktion zum Rendern der Karte mit den Daten

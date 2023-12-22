@@ -1,6 +1,5 @@
 import requests
 import math
-from pymongo import MongoClient
 
 
 class BicycleWays:

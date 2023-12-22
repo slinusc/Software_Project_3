@@ -3,6 +3,8 @@ import {getAddressFromCoords} from "../routing.js";
 
 let myChart; // Globale Variable für das Chart-Objekt
 
+
+// Funktion zum Abrufen der nächsten Amenities
 async function fetchNearestAmenities(lat, lon, amenityType, k) {
     return fetch('/nearest_amenities', {
         method: 'POST',
@@ -194,7 +196,7 @@ function loadAndCreateChart(amenityType) {
 }
 
 
-// Event-Listener für das 'change'-Event hinzufügen
+// Event-Listener für die Auswahl des Amenity-Typs
 document.getElementById('amenitySelect2').addEventListener('change', function () {
     // Den ausgewählten Wert als Amenity setzen
     let selectedAmenity = this.value;
@@ -204,6 +206,6 @@ document.getElementById('amenitySelect2').addEventListener('change', function ()
 });
 
 
-// Starten Sie das Diagramm mit dem standardmäßig ausgewählten Amenity
+// Starten des Diagramms mit dem standardmäßig ausgewählten Amenity
 loadAndCreateChart(document.getElementById('amenitySelect2').value);
 

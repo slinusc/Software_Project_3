@@ -1,10 +1,13 @@
 import { getUserLocation } from './getUserlocation.js';
 
+
+// Initialisierung globaler Variablen für die Karte
 export let map;
 export let currentTileLayer;
 let currentMarker = null;
 const START_COORDINATES = [47.497366, 8.7297876];
 const START_ZOOM_LEVEL = 16;
+
 
 // Funktion zum Erstellen des Icons je nach Modus
 export function getBikeIcon() {
@@ -28,7 +31,6 @@ export function getBikeIcon() {
 
 
 // initialize map
-
 export function initializeMap() {
     // Initialisierung der Karte
     map = L.map('map').setView(START_COORDINATES, START_ZOOM_LEVEL);

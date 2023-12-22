@@ -4,6 +4,9 @@ import datetime as dt
 
 
 class MongoDBAssistent:
+    """
+    Diese Klasse dient dazu, Daten in die MongoDB zu laden und aus der MongoDB zu ziehen.
+    """
     def __init__(self, db_name, collection_name,
                  db_uri="mongodb://mongo:27017/"):  # docker: mongo:27017, lokal: localhost:27017
         self.client = MongoClient(db_uri)
@@ -16,6 +19,7 @@ class MongoDBAssistent:
         return self.collection.count_documents({}) == 0
 
     def drop_collection(self):
+        """Löscht die Sammlung."""
         try:
             self.collection.drop()
             print("Collection has been dropped!")
@@ -23,6 +27,7 @@ class MongoDBAssistent:
             print(f"An error occurred while dropping the collection: {e}")
 
     def load_in_db(self, file_name):
+        """Lädt die Daten in die Datenbank."""
         try:
             with open(file_name + '.json', 'r') as file:
                 data = json.load(file)
@@ -36,6 +41,7 @@ class MongoDBAssistent:
             print(f"An error occurred while loading data: {e}")
 
     def create_2dsphere_index(self):
+        """Erstellt einen 2dsphere Index auf der Collection."""
         if self.collection_name == "bicycle_amenities":
             try:
                 self.collection.create_index([("node.location", "2dsphere")])
@@ -46,6 +52,7 @@ class MongoDBAssistent:
             print("nur für bicycle_amenities möglich")
 
     def pull_from_db(self, file_name):
+        """Zieht die Daten aus der Datenbank."""
         try:
             daten = list(self.collection.find({}))
             with open(f'{file_name}_{dt.datetime.now().date()}.json', 'w') as file:

@@ -1,6 +1,7 @@
 import {getUserLocation} from '../getUserlocation.js';
 
 let meinRadarChart = null; // Globale Variable für das Chart-Objekt
+// Übersetzungen für die Annehmlichkeiten für Tooltipps
 const translations = {
     "bicycle_parking": "Fahrradparkplatz",
     "bicycle_rental": "Fahrradverleih",
@@ -52,6 +53,7 @@ function updateChart(labels, data) {
         meinRadarChart.destroy();
     }
 
+    // Logarithmieren der Daten für die Darstellung
     let logData = data.map(value => Math.log(value + 1)); // +1, um zu verhindern, dass 0 logarithmiert wird
     var ctx = document.getElementById('meinRadarChart').getContext('2d');
 
@@ -97,7 +99,7 @@ function updateChart(labels, data) {
                 tooltip: {
                     displayColors: false,
                     callbacks: {
-                        label: function (context) {
+                        label: function (context) { // Verwenden Sie den ursprünglichen Werte für Tooltipps
                             let name = context.dataset.originalData[context.dataIndex];
                             return name;
                         }

@@ -1,3 +1,4 @@
+// Bezieht die aktuelle Position des Nutzers über Browser
 export function getUserLocation() {
     return new Promise((resolve, reject) => {
         if ("geolocation" in navigator) {
