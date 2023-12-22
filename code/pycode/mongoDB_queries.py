@@ -1,9 +1,8 @@
 from pymongo import MongoClient
 import requests
 import json
-import time
 
-client = MongoClient("localhost", 27017)  # docker: mongo:27017, lokal: localhost:27017
+client = MongoClient("mongo", 27017)  # docker: mongo:27017, lokal: localhost:27017
 db = client["data_base_OSM"]
 amenities_collection = db["bicycle_amenities"]
 amenities_collection_2 = db["bike_ways"]
@@ -103,7 +102,7 @@ def find_k_nearest_amenities(lat, lon, amenity_type, k=5):
 
 def calculate_distance_mapbox(lat1, lon1, lat2, lon2):
     """
-    Calculates distance for bicycles between two points using Mapbox API.
+    Berechnet die Distanz zwischen zwei Koordinaten mit dem Fahrrad durch die Mapbox API.
     :param lat1: Koordinaten des Users
     :param lon1: Koordinaten des Users
     :param lat2: Koordinaten von Amenity
@@ -125,6 +124,7 @@ def calculate_distance_mapbox(lat1, lon1, lat2, lon2):
 
 def count_amenities_by_canton(amenity_type):
     """
+    Bezieht die Anzahl der Amenities pro Kanton.
     :param amenity_type: Amenity-Typ, z.B. "bicycle_parking"
     :return: [{'_id': 'BE', 'count': 2}, {'_id': 'ZH', 'count': 1}]
     """
@@ -148,6 +148,9 @@ def count_amenities_by_canton(amenity_type):
 
 
 def get_bike_ways_for_all_gemeinden():
+    """
+    Bezieht die Anzahl der Fahrradwege pro km2 für alle Gemeinden.
+    """
     pipeline = [
         {
             "$match": {
